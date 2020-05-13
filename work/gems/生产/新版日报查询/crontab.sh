@@ -1,1 +1,0 @@
-20 18 * * 1-5 /home/oracle/daily/daily.sh >> "/home/oracle/daily/log/daily$(date +"\%Y\%m\%d\%H\%M\%S").log" 2>&1

@@ -1,0 +1,542 @@
+深圳灾备中心-数据库环境切换操作手册
+版本：v1.5
+
+
+
+一、	概述
+此文档所述内容根据切换场景分为”灾备环境演练切换操作”和”灾备环境应急切换操作”两部分。“灾备环境演练切换”为可逆操作，用于灾备演练，切换完成后可将数据库恢复至切换前的状态；“灾备环境应急切换”则为不可逆操作，用于灾难恢复。
+二、	操作步骤
+阅读说明:以下内容中红色标记部分，与实际情况会有所不同。请参考实际情况调整。
+1.灾备环境演练切换操作
+1.1切换
+摘要：Physical Standby to Snapshot standby
+create restore point
+创建DSG快照
+切换DSG软件版本
+1.1.1取消Redo Apply  
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户: oracle
+1）确认已连接至MRP进程所在节点。需要判断IP
+默认连接RAC的节点1，执行如下语句，如果返回记录，则表示MRP进程在当前节点，下一步执行步骤2)取消redo apply. 否则，连接至RAC的节点2，执行如下语句，如果返回记录，则表示MRP进程在当前节点，下一步执行步骤2)取消redo apply.否则，报错提示:未发现MRP进程，环境存在异常。
+SQL> select process from v$managed_standby where PROCESS like 'MRP%';
+2）取消redo apply
+SQL> alter database recover managed standby database cancel;
+
+结果检查：
+执行如下SQL,返回0 则正常。
+SQL> select count(*) from gv$managed_standby where process like 'MRP%';
+1.1.2确认DSG同步完成
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+1）确认DSG软件是否同步完成
+grep MINSCN /dsg/tohis/log/log.vagentd |tail -n 1
+隔一分钟在执行一次
+grep MINSCN /dsg/tohis/log/log.vagentd |tail -n 1
+两次结果相同，并且时间接近停机时间，证明数据已全部分析完成  循环判断结果一致（两此结果比对）反之 则等一分钟 在查询一次进行结果比对
+
+
+1.1.3停止DSG进程
+1)停止源端DSG进程
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/stop_vagentd
+串行： 先停止源端dsg进场
+
+结果检查：
+执行如下命令，返回0则正常。
+/dsg/tohis/scripts/check | wc -l
+
+2) 停止目标端DSG进程
+	操作目标：后线库
+	操作用户：dsg
+
+/dsg/fromtra/scripts/stop_vagentd
+/dsg/fromcln/scripts/stop_vagentd
+/dsg/fromreg/scripts/stop_vagentd
+
+串行：停止目标端DSG进程
+
+结果检查：
+执行如下命令，返回0则正常。
+/dsg/tohis/scripts/check | wc -l
+1.1.4创建DSG快照
+1）创建目标端DSG快照
+	操作目标：后线库
+	操作用户：dsg
+
+cd /dsg
+./rmpcp fromtra bak/
+./rmpcp fromreg bak/
+./rmpcp fromcln bak/
+
+结果检查：
+检查生成以下目录则表示正常：
+/dsg/bak/fromtra
+/dsg/bak/fromreg
+/dsg/bak/fromcln
+
+2）创建源端DSG快照
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+cd /dsg
+./rmpcp tohis bak/
+
+结果检查：
+检查生成以下目录则表示正常：
+/dsg/bak/tohis
+
+1.1.5后线库创建restore point
+	操作目标：后线库
+	操作用户：dsg
+
+
+SQL>create restore point before_drill guarantee flashback database;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$restore_point where name= 'BEFORE_DRILL';
+
+1.1.6切换备库至snapshot standby
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+在所有RAC节点上执行会话清理操作
+1）删除活动会话
+ps -ef|grep LOCAL=NO|grep -v grep|awk  '{print $2} ' |xargs -n1 kill -9
+
+
+以下操作均在RAC节点1上进行。
+
+如下的命令需要在每节点1上完成一次
+2）停止备库所有实例
+[oracle@~]$srvctl stop database -d sgeracdbdg（每节点数据库名称）
+
+结果检查：
+执行如下命令，返回0则正常。
+[oracle@~]$srvctl status database -d sgeracdbdg | grep 'is running' | wc -l
+
+3）启动备库实例1至mount状态
+[oracle@~]$sqlplus /as sysdba
+SQL> startup mount
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'MOUNTED';
+
+4）备库创建restore point
+SQL> create restore point before_drill guarantee flashback database;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$restore_point where name= 'BEFORE_DRILL';
+
+5）切为snapshot standby
+SQL> alter database convert to snapshot standby;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where database_role= 'SNAPSHOT STANDBY';
+
+6）OPEN备库实例1
+SQL> alter database open;
+SQL> exit
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'READ WRITE';
+
+
+7）启动备库所有实例
+[oracle@~]$srvctl start database -d sgeracdbdg （每节点数据库名称）
+
+结果检查：
+执行如下命令，返回2则正常。
+SQL>select count(*) from gv$database where OPEN_MODE= 'READ WRITE';
+
+1.1.7启动DSG进程
+1）启动目标端DSG进程
+	操作目标：后线库
+	操作用户：dsg
+
+/dsg/fromtra/scripts/start_vagentd
+/dsg/fromcln/scripts/start_vagentd
+/dsg/fromreg/scripts/start_vagentd
+
+结果检查：
+执行如下命令，返回8则正常。
+/dsg/fromtra/scripts/check | wc -l
+/dsg/fromcln/scripts/check | wc -l
+/dsg/fromreg/scripts/check | wc -l
+
+2）启动源端DSG进程(切换版本)
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/switch.sh
+
+结果检查：
+执行如下命令，返回9则正常。
+/dsg/tohis/scripts/check | wc -l
+
+1.1.8 启动服务
+以下操作均在RAC节点1上进行。
+1）备库启动SERVICE
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+[oracle@ ~]$srvctl start service -d sgeracdbdg （每节点数据库名称）
+
+结果检查：
+执行如下命令，返回1则正常
+[oracle@~]$ srvctl status service -d sgeracdbdg | grep 'is running' | wc -l
+
+2）后线库启动SERVICE
+	操作目标：后线库
+	操作用户：oracle
+
+[oracle@ ~]$srvctl start service -d sgehisdb （每节点数据库名称）
+
+结果检查：	
+执行如下命令，返回1则正常
+[oracle@~]$ srvctl status service -d sgehisdb | grep 'is running ' | wc -l
+
+1.2回退
+摘要： Snapshot Standby to Physical Standby
+Flashback database
+还原DSG快照
+1.2.1停止DSG进程
+1)停止源端DSG进程
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/stop_vagentd
+
+结果检查：
+执行如下命令，返回0则正常。
+/dsg/tohis/scripts/check | wc -l
+
+2) 停止目标端DSG进程
+	操作目标：后线库
+	操作用户：dsg
+
+/dsg/fromtra/scripts/stop_vagentd
+/dsg/fromcln/scripts/stop_vagentd
+/dsg/fromreg/scripts/stop_vagentd
+
+结果检查：
+执行如下命令，返回0则正常。
+/dsg/tohis/scripts/check | wc -l
+
+1.2.2切换备库至physical standby
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+以下所有操作，均在RAC的节点1上完成。
+1）停止备库所有实例
+[oracle@~]$srvctl stop database -d sgeracdbdg
+
+结果检查：
+执行如下命令，返回0则正常。
+[oracle@~]$srvctl status database -d sgeracdbdg | grep 'is running'| wc -l
+
+2）启动实例1至mount状态
+[oracle@~]$sqlplus / as sysdba
+SQL> startup mount
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'MOUNTED';
+
+3）切为physical standby
+SQL> alter database convert to physical standby;
+
+4）重启实例1至mount状态
+SQL> shutdown immediate
+SQL> startup mount
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'MOUNTED';
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where database_role= 'PHYSICAL STANDBY';
+
+5）drop restore point
+SQL>drop restore point before_drill;
+
+结果检查：
+执行如下命令，返回0则正常。
+SQL>select count(*) from v$restore_point where name= 'BEFORE_DRILL';
+
+6）恢复至一致性状态
+SQL> alter database recover managed standby database until consistent;
+alter database recover managed standby database using current logfile disconnect from session nodelay;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(distinct checkpoint_change#) from v$datafile_header;
+
+7）open数据库
+SQL> alter database open;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'READ ONLY';
+
+8）启动redo apply
+SQL> alter database recover managed standby database using current logfile disconnect;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'READ ONLY WITH APPLY';
+
+9）启动所有实例
+[oracle@ ~]$srvctl start database -d sgeracdbdg
+
+结果检查：
+执行如下命令，返回2则正常。
+SQL>select count(*) from gv$database where OPEN_MODE= 'READ ONLY WITH APPLY';
+
+1.2.3后线库flashback
+	操作目标：后线库
+	操作用户：oracle
+
+以下所有操作，均在RAC的节点1上完成。
+1）停止所有实例
+[oracle@ ~]$srvctl stop database -d sgehisdb
+
+结果检查：
+执行如下命令，返回0则正常。
+[oracle@~]$srvctl status database -d sgehisdb | grep 'is running' | wc -l
+
+2）启动实例1至mount
+[oracle@ ~]$sqlplus / as sysdba
+SQL> startup mount
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'MOUNTED';
+
+3）flashback database
+SQL> flashback database to restore point before_drill;
+
+结果检查：
+执行如下命令，返回1则正常。
+select count(*) from v$database a,v$restore_point b where a.controlfile_change# = b.scn+1;
+
+4）open resetlogs
+SQL> alter database open resetlogs;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL>select count(*) from v$database where OPEN_MODE= 'READ WRITE';
+
+5）drop restore point
+SQL>drop restore point before_drill;
+
+结果检查：
+执行如下命令，返回0则正常。
+SQL>select count(*) from v$restore_point where name= 'BEFORE_DRILL';
+
+6）启动所有实例
+[oracle@ ~]$srvctl start database -d sgehisdb
+
+结果检查：
+执行如下命令，返回2则正常。
+SQL>select count(*) from gv$database where OPEN_MODE= 'READ WRITE';
+
+1.2.4还原DSG快照
+1）还原目标端DSG快照
+	操作目标：后线库
+	操作用户：dsg
+
+cd /dsg
+mv fromtra baky1/
+mv fromreg baky1/
+mv fromcln baky1/
+mv bak/fromtra ./
+mv bak/fromreg ./
+mv bak/fromcln ./
+
+
+结果检查：
+检查以下目录已不存在则表示正常：
+ls /dsg/bak/fromtra
+ls /dsg/bak/fromreg
+ls /dsg/bak/fromcln
+
+2）还原源端DSG快照
+	操作目标：交易库、登记库、清算库 
+	操作用户：dsg
+
+cd /dsg
+mv tohis baky1/
+mv bak/tohis ./
+
+结果检查：
+检查以下目录已不存在则表示正常：
+/dsg/bak/tohis
+
+1.2.5启动DSG进程
+1）启动目标端DSG进程
+	操作目标：后线库
+	操作用户：dsg
+
+/dsg/fromtra/scripts/start_vagentd
+/dsg/fromcln/scripts/start_vagentd
+/dsg/fromreg/scripts/start_vagentd
+
+结果检查：
+执行如下命令，返回8则正常。
+/dsg/fromtra/scripts/check | wc -l
+/dsg/fromcln/scripts/check | wc -l
+/dsg/fromreg/scripts/check | wc -l
+
+2）启动源端DSG进程
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/start_vagentd
+
+结果检查：
+执行如下命令，返回9则正常。
+/dsg/tohis/scripts/check | wc -l
+
+2.灾备环境应急切换操作
+2.1 切换
+摘要： Data Guard switchover/failover
+切换DSG软件版本
+2.1.1取消Redo Apply
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+
+1）确认已连接至MRP进程所在节点。
+默认连接RAC的节点1，执行如下语句，如果返回记录，则表示MRP进程在当前节点，下一步执行步骤2)取消redo apply. 否则，连接至RAC的节点2，执行如下语句，如果返回记录，则表示MRP进程在当前节点，下一步执行步骤2)取消redo apply.否则，报错提示:未发现MRP进程，环境存在异常。
+SQL> select process from v$managed_standby where PROCESS like  'MRP%';
+
+2）取消redo apply
+SQL> alter database recover managed standby database cancel;
+
+结果检查：
+执行如下SQL,返回0 则正常。
+SQL> select count(*) from gv$managed_standby where process like  'MRP%';
+
+2.1.2 应用已接收到的redo日志
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+
+以下所有操作，均在RAC的节点1上完成。
+1）	删除活动会话（在所有RAC节点上执行会话清理操作）
+ps -ef|grep LOCAL=NO|grep -v grep|awk '{print $2}'|xargs -n1 kill -9
+
+2）	停备库所有实例
+[oracle@ ~]$srvctl stop database -d sgeracdbdg
+
+结果检查：
+执行如下命令，返回0则正常。
+[oracle@~]$ srvctl status database -d sgeracdbdg | grep  'is running '| wc -l
+
+2）启动实例1至OPEN状态
+[oracle@ ~]$sqlplus / as sysdba
+SQL> startup
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL> select count(*) from v$database where OPEN_MODE= 'READ ONLY';
+
+3）recover finish
+SQL>alter database recover managed standby database finish;
+注意：这一步记录命令返回是否报错，供2.1.5做判断
+2.1.3 确认DSG同步完成
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+grep MINSCN /dsg/tohis/log/log.vagentd
+隔一分钟在执行一次
+grep MINSCN /dsg/tohis/log/log.vagentd
+两次结果相同，并且时间接近停机时间，证明数据已全部分析完成  循环判断结果一致（两此结果比对）反之 则等一分钟 在查询一次进行结果比对
+
+
+2.1.4 停止DSG进程
+停止源端DSG进程
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/stop_vagentd
+
+结果检查：
+执行如下命令，返回0则正常。
+/dsg/tohis/scripts/check | wc -l
+
+2.1.5 切换数据库
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+
+如果recover finish无报错，则执行第1)步；否则，跳至第2)步(需人为确认是否执行)。
+
+1）switchover至Primary Role，如果无报错，则跳至第3步；否则，执行第2步(需人为确认是否执行)。
+SQL>alter database commit to switchover to primary with session shutdown;
+结果检查：
+执行如下命令，返回1则正常。
+SQL> select count(*) from v$database where database_role= 'PRIMARY';
+
+2）强制切换(需人为确认是否执行)
+SQL> alter database activate physical standby database;
+
+结果检查：
+执行如下命令，返回1则正常。
+SQL> select count(*) from v$database where database_role= 'PRIMARY';
+
+3) 停止实例1
+SQL>shutdown immediate
+
+结果检查：
+执行如下命令，返回0则正常。
+[oracle@~]$ srvctl status database -d sgeracdbdg | grep  'is running '| wc -l
+
+4）启动所有实例
+[oracle@ ~]$srvctl start database -d sgeracdbdg
+
+结果检查：
+执行如下命令，返回2则正常。
+SQL>select count(*) from gv$database where OPEN_MODE= 'READ WRITE';
+
+2.1.6启动DSG进程
+启动源端DSG进程(切换版本)
+	操作目标：交易库、登记库、清算库
+	操作用户：dsg
+
+/dsg/tohis/scripts/switch.sh
+
+结果检查：
+执行如下命令，返回9则正常。
+/dsg/tohis/scripts/check | wc -l
+
+2.1.7 启动服务
+以下操作均在RAC节点1上进行。
+1）备库启动SERVICE
+	操作目标：交易库、登记库、清算库、国际版
+	操作用户：oracle
+
+[oracle@ ~]$srvctl start service -d sgeracdbdg
+
+结果检查：
+执行如下命令，返回1则正常
+[oracle@~]$ srvctl status service -d sgeracdbdg | grep 'is running'| wc -l
+
+2）后线库启动SERVICE
+	操作目标：后线库
+	操作用户：oracle
+[oracle@ ~]$srvctl start service -d sgehisdb
+
+结果检查：
+执行如下命令，返回1则正常
+[oracle@~]$ srvctl status service -d sgeracdbdg | grep 'is running'| wc -l
+

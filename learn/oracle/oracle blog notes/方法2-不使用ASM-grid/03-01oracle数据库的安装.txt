@@ -1,0 +1,308 @@
+在https://edelivery.oracle.com/osdc/faces/SearchSoftware下载Oracle-Linux-7-Update-1-for-x86_64 (64 bit)V74844-01.iso
+
+硬盘给的有70G
+安装分区：
+/boot	100M
+swap	4G
+/tmp	4G
+/	16G
+/u01	剩下的全部给oracle软件安装用（u01目录是常见的数据库目录（数据库的根目录））
+
+[root@oracle ~]# cat /etc/yum.repos.d/base.repo 
+[base]						    
+name=base					 
+baseurl=file:///mnt/base
+gpgcheck=0					     
+enabled=1					     
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+[root@oracle58 ~]# mkdir /mnt/base
+[root@oracle58 ~]# mount -t iso9660 -o loop oraclelinux58.iso /mnt/base
+[root@oracle ~]# vim /etc/hosts
+192.168.56.13	oracle
+[root@oracle ~]# mount -t tmpfs shmfs -o size=10g /dev/shm		#修改shm
+[root@oracle ~]# vim /etc/fstab		#在最后一行加入
+shmfs			/dev/shm		tmpfs	size=10g	0
+[root@oracle ~]# df -h /dev/shm/		#检查
+Filesystem	      Size  Used Avail Use% Mounted on
+shmfs		       10G     0   10G	 0% /dev/shm
+[root@oracle ~]# uname -m		#检查版本（这一步很重要）
+x86_64
+[root@oracle ~]# df -h /tmp/		#检查tmp
+Filesystem              Size  Used Avail Use% Mounted on
+/dev/mapper/rhel-lvtmp  4.0G   33M  4.0G   1% /tmp
+
+
+#要检查我们安装的是11.2.x.x 下面这些包
+binutils-2.17.50.0.6
+compat-libstdc++-33-3.2.3
+elfutils-libelf-0.125
+elfutils-libelf-devel-0.125
+gcc-4.1.2
+gcc-c++-4.1.2
+glibc-2.5-24
+glibc-common-2.5
+glibc-devel-2.5
+glibc-headers-2.5
+ksh-20060214
+libaio-0.3.106
+libaio-devel
+libgcc-4.1.2
+libstdc++-4.1.2
+libstdc++-devel-4.1.2
+make-3.81
+sysstat-7.0.2
+
+[root@oracle-rhel7 ~]# rpm -qa| grep binutils
+binutils-2.23.52.0.1-30.el7.x86_64
+[root@oracle-rhel7 ~]# rpm -qa| grep compat-libstdc
+compat-libstdc++-33-3.2.3-72.el7.x86_64
+[root@oracle-rhel7 ~]# rpm -qa| grep elfutils
+elfutils-libelf-0.160-1.el7.x86_64
+elfutils-0.160-1.el7.x86_64
+elfutils-libs-0.160-1.el7.x86_64     
+[root@oracle-rhel7 ~]# yum install elfutils-libelf-devel.x86_64 
+[root@oracle-rhel7 ~]# rpm -qa| grep gcc
+gcc-c++-4.8.3-9.el7.x86_64
+libgcc-4.8.3-9.el7.x86_64
+gcc-4.8.3-9.el7.x86_64
+gcc-gfortran-4.8.3-9.el7.x86_64
+[root@oracle-rhel7 ~]# rpm -qa| grep glibc
+glibc-common-2.17-78.el7.x86_64
+glibc-2.17-78.el7.x86_64
+glibc-devel-2.17-78.el7.x86_64
+compat-glibc-2.12-4.el7.x86_64
+glibc-headers-2.17-78.el7.x86_64
+compat-glibc-headers-2.12-4.el7.x86_64
+[root@oracle-rhel7 ~]# rpm -qa| grep ksh
+[root@oracle-rhel7 ~]# yum install ksh
+[root@oracle ~]# rpm -qa| grep libaio
+libaio-0.3.109-12.el7.x86_64
+[root@oracle ~]# rpm -qa| grep unixODBC
+[root@oracle ~]# rpm -qa| grep sysstat
+sysstat-10.1.5-7.el7.x86_64
+[root@oracle ~]# yum install unixODBC
+[root@oracle ~]# yum install unixODBC-devel
+
+#还有一种方法，创建文本方式检测
+vim checkrpmsh.sh
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \binutils
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \compat-libstdc++-33
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \elfutils-libelf
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \elfutils-libelf-devel
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \gcc
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \gcc-c++
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \glibc
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \glibc-common
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \glibc-devel
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \glibc-headers
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \ksh
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \libaio
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \libaio-devel
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \libgcc
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \libstdc++
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \libstdc++-devel
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \make
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \sysstat
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \unixODBC
+rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' \unixODBC-devel
+[root@oracle ~]# sh oraclerpmcheck.sh | grep not
+package compat-libstdc++-33 is not installed
+package ksh is not installed
+[root@oracle64 ~]# yum install compat-libstdc++-33.x86_64 -y
+[root@oracle ~]# yum install ksh -y
+
+
+#接下来开始创建组和用户
+[root@oracle ~]#	groupadd oinstall
+[root@oracle ~]#	groupadd -g 502	dba
+[root@oracle ~]#	groupadd -g 503	oper
+[root@oracle ~]#	groupadd -g 504	asmadmin
+[root@oracle ~]#	groupadd -g 505	asmoper
+[root@oracle ~]#	groupadd -g 506	asmdba
+[root@oracle ~]#	useradd	-u 502 -g oinstall -G dba,oper,asmdba oracle	#创建oracle用户
+[root@oracle ~]#	passwd oracle		#设置密码
+oracle
+oracle
+[root@oracle ~]#	id oracle
+uid=502(oracle)	gid=500(oinstall) groups=500(oinstall),502(dba),503(oper),506(asmdba)
+#oracle必须属于oinstall组，主组是oinstall，附加组是dba，oper，asmdba
+
+#或者使用脚本
+[root@oracle ~]# vim gpusradd.sh 
+#!/bin/bash
+groupadd oinstall
+groupadd -g 502	dba
+groupadd -g 503	oper
+groupadd -g 504	asmadmin
+groupadd -g 505	asmoper
+groupadd -g 506	asmdba
+useradd	-u 502 -g oinstall -G dba,oper,asmdba oracle
+echo oracle | passwd --stdin oracle
+id oracle
+[root@oracle ~]# sh groupuseradd.sh 
+#用户和组创建完毕
+-------------------------------------------------------------------------
+
+#配置内核参数
+[root@oracle ~]#	vim /etc/security/limits.conf 
+#for oracle
+oracle		soft	nproc		2047
+oracle		hard	nproc		16384
+oracle		soft	nofile		1024
+oracle		hard	nofile		65536
+oracle		soft	stack		10240
+#for grid
+grid		soft	nproc		2047
+grid		hard	nproc		16384
+grid		soft	nofile		1024
+grid		hard	nofile		65536
+grid		soft	stack		10240
+
+#配置参数
+[root@oracle ~]#	vim /etc/sysctl.conf	#这个参数是oracle工程师官方调优已经调到最好了
+#for oracle softe
+fs.aio-max-nr =	1048576
+fs.file-max = 6815744
+kernel.shmall =	2097152
+kernel.shmmax =	4294967295 
+kernel.shmmni =	4096
+kernel.sem = 250 32000 100 128
+net.ipv4.ip_local_port_range = 9000 65500
+net.core.rmem_default =	262144
+net.core.rmem_max = 4194304
+net.core.wmem_default =	262144
+net.core.wmem_max = 1048576
+[root@oracle ~]#	sysctl -p	#改完后生效
+-----------------------------------------------------------
+
+#配置目录
+#一共要建立3个目录，第一个是软件安装的根目录，第二个属于列表目录，第三个属于软件目录
+[root@oracle ~]#	more /etc/oratab	#检查下服务器上有没有安装oracle软件
+/etc/oratab: No	such file or directory
+[root@oracle ~]#	mkdir -p /u01/app/oracle
+[root@oracle ~]#	mkdir -p /u01/app/grid
+[root@oracle ~]#	chown -R grid:oinstall /u01/
+[root@oracle ~]#	chown -R oracle:oinstall /u01/app/oracle/
+[root@oracle ~]#	chmod -R 775 /u01/		
+[root@oracle ~]#	ll -d /u01/app/grid/		#检查一下
+drwxrwxr-x. 2 grid oinstall 6 Oct  8	12:06 /u01/app/grid/
+[root@oracle ~]#	 ll -d /u01/app/oracle/
+drwxrwxr-x. 2 oracle oinstall 10 Oct	8 12:05	/u01/app/oracle/
+#grid是用来管理实例的，而实例是用来管理数据库的
+
+#使用脚本创建目录
+[root@oracle ~]# vim mkdir.sh 
+#!/bin/bash
+more /etc/oratab
+mkdir -p /u01/app/oracle
+mkdir /disk
+chown -R oracle:oinstall /u01/app/oracle/
+chown -R oracle:oinstall /u01/
+chmod -R 775 /u01/
+chmod -R 777 /disk
+
+---------------------------------------------------------------
+
+#关闭selinux和iptables
+[root@oracle ~]# chkconfig iptables off
+[root@oracle ~]# service iptables stop
+[root@oracle ~]# setenforce 0
+[root@oracle ~]# vim /etc/selinux/config
+SELINUX=disabled
+
+#配置用户的环境变量
+#2个用户oracle和grid都要配置环境变量
+[root@oracle ~]#	cd /home/oracle/      #分别到用户的家目录下修改
+[root@oracle oracle]# vim .bash_profile
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_SID=orcl			#实例的名字
+export ORACLE_HOME=$ORACLE_BASE/product/11.1.0/dbhome_1		#oracle	软件安装目录
+export PATH=$ORACLE_HOME/bin:$PATH
+[root@oracle oracle]# . .bash_profile
+[root@oracle oracle]# cd	/home/grid/
+[root@oracle grid]# vim .bash_profile
+export ORACLE_BASE=/u01/app/grid
+export ORACLE_SID=+ASM			#ASM实例
+export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/grid		#grid 软件安装目录
+export PATH=$ORACLE_HOME/bin:$PATH
+[root@oracle grid]# . .bash_profile
+
+#到现在为止就搭建了一个oracle所需要的安装环境
+-------------------------------------------------------------------------------------
+
+#Oracle不实用使用ASM作为存储
+#上传
+#开始装数据库oracle database 软件
+#在oracle用户下
+[root@oracle-server ContentsXML]# su - oracle
+[oracle@oracle-server ~]$ cd /disk/
+[oracle@oracle-server disk]$ unzip linux.x64_11gR2_database_1of2.zip
+[oracle@oracle-server disk]$ unzip linux.x64_11gR2_database_2of2.zip 
+[oracle@oracle-server disk]$ cd	database/
+[oracle@oracle-server database]$ export	DISPLAY=192.168.56.1:0.0
+[oracle@oracle-server database]$ xhost +
+access control disabled, clients can connect from any host
+[oracle@oracle-server database]$ ls
+doc  install  response	rpm  runInstaller  sshsetup  stage  welcome.html
+[oracle@oracle-server database]$ ./runInstaller	
+#因为没有使用grid和asm管理，所以没有监听，在安装时会提醒在oracle用户下使用netca创建监听，弹出图形化界面后一直按next就行
+#安装截图
+#在root用户下执行这个脚本
+[root@oracle-server ~]#	/u01/app/oracle/product/11.1.0/dbhome_1/root.sh
+#然后继续安装
+#安装完成，查看数据库软件装在什么地方
+[root@oracle-server ~]#	cd /u01/app/oraInventory/ContentsXML/
+[root@oracle-server ContentsXML]# ls
+comps.xml  inventory.xml  libs.xml
+[root@oracle-server ContentsXML]# cat inventory.xml 
+<?xml version="1.0" standalone="yes" ?>
+<!-- Copyright (c) 1999, 2009, Oracle. All rights reserved. -->
+<!-- Do	not modify the contents	of this	file by	hand. -->
+<INVENTORY>
+<VERSION_INFO>
+   <SAVED_WITH>11.2.0.1.0</SAVED_WITH>
+   <MINIMUM_VER>2.1.0.6.0</MINIMUM_VER>
+</VERSION_INFO>
+<HOME_LIST>
+<HOME NAME="Ora11g_gridinfrahome1" LOC="/u01/app/grid/product/11.2.0/grid" TYPE="O" IDX="1" CRS="true"/>
+<HOME NAME="OraDb11g_home1" LOC="/u01/app/oracle/product/11.1.0/dbhome_1" TYPE="O" IDX="2"/>		#这就是oracle
+</HOME_LIST>
+</INVENTORY>
+
+#现在开始建库。这个数据库软件是属于oracle用户的，而我们的库要建在oracle账号下面
+[oracle@oracle-server database]$ cd
+[oracle@oracle-server ~]$ vim .bash_profile 
+export PATH=$ORACLE_HOME/bin:$PATH
+[oracle@oracle-server ~]$ source .bash_profile
+[oracle@oracle-server ~]$ export DISPLAY=192.168.56.1:0.0
+[oracle@oracle-server ~]$ xhost	+
+access control disabled, clients can connect from any host
+[oracle@oracle-server ~]$ dbca	#dbca就是用来建库的
+#建库建库
+#截图
+
+[oracle@oracle-server ~]$ sql		#在oracle看能不能登录进去
+sqlite3	 sqlldr	  sqlldrO  sqlplus  
+[oracle@oracle-server ~]$ sqlplus / as sysdba
+SQL*Plus: Release 11.2.0.1.0 Production	on Sun Mar 13 22:11:44 2016
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+
+Connected to:
+Oracle Database	11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data	Mining
+and Real Application Testing options
+
+SQL> 
+
+#数据库环境刚刚搭建完毕，保存快照
+
+
+可以配置一下时间同步
+ntpdate cn.ntp.org.cn
+ntpdate pool.ntp.org
+
+
+
+
+
+

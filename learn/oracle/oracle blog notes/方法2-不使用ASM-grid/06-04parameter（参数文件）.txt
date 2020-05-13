@@ -1,0 +1,59 @@
+参数文件主要用来记录数据库中的配置。
+
+参数文件有两类
+	pfile	文本参数文件，可以被编辑器修改
+		init<sid>.ora
+	spfile	服务器的参数文件，二进制格式，只能放在oracle服务器端
+		spfile<sid>.ora
+		可以被rman备份
+
+vi修改pfile
+alter system|session set parameter_name=values <>; 修改spfile
+
+oracle启动要用参数文件
+先找spfile<sid>.ora，找不到再找spfile.ora，还找不到则再找init<sid>.ora
+
+$ORACLE_HOME/dbs/spfile$ORACLE_SID.ora，如果使用了ASM磁盘，则在ASM磁盘上
+$ORACLE_HOME/dbs/init$ORACLE_SID.ora
+
+参数文件转化
+SQL> create spfile from pfile;
+File created.
+SQL> create pfile from spfile;
+File created.
+SQL> create spfile='/u01/app/oracle/spfileorcl.ora' from pfile;
+File created.
+
+SQL> desc v$spparameter
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID						    VARCHAR2(80)
+ NAME						    VARCHAR2(80)
+ TYPE						    VARCHAR2(11)
+ VALUE						    VARCHAR2(255)
+ DISPLAY_VALUE					    VARCHAR2(255)
+ ISSPECIFIED					    VARCHAR2(6)
+ ORDINAL					    NUMBER
+ UPDATE_COMMENT 				    VARCHAR2(255)
+SQL> select distinct isspecified from v$spparameter;
+ISSPEC
+------
+TRUE
+FALSE
+看第一个值是TRUE，则使用的是spfile
+			FLASE，则		pfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

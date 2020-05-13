@@ -1,0 +1,1392 @@
+Sun Oct 01 00:40:42 2017
+Thread 2 advanced to log sequence 2349 (LGWR switch)
+  Current log# 10 seq# 2349 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2349 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 01 00:40:42 2017
+Archived Log entry 6442 added for thread 2 sequence 2348 ID 0x434d5f0d dest 1:
+Sun Oct 01 01:40:43 2017
+Thread 2 advanced to log sequence 2350 (LGWR switch)
+  Current log# 2 seq# 2350 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2350 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 01 01:40:43 2017
+Archived Log entry 6444 added for thread 2 sequence 2349 ID 0x434d5f0d dest 1:
+Sun Oct 01 02:40:41 2017
+Thread 2 advanced to log sequence 2351 (LGWR switch)
+  Current log# 4 seq# 2351 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2351 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 01 02:40:41 2017
+Archived Log entry 6446 added for thread 2 sequence 2350 ID 0x434d5f0d dest 1:
+Sun Oct 01 03:40:36 2017
+Thread 2 advanced to log sequence 2352 (LGWR switch)
+  Current log# 12 seq# 2352 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2352 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 01 03:40:36 2017
+Archived Log entry 6448 added for thread 2 sequence 2351 ID 0x434d5f0d dest 1:
+Sun Oct 01 04:40:37 2017
+Thread 2 advanced to log sequence 2353 (LGWR switch)
+  Current log# 14 seq# 2353 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2353 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 01 04:40:37 2017
+Archived Log entry 6450 added for thread 2 sequence 2352 ID 0x434d5f0d dest 1:
+Sun Oct 01 05:40:38 2017
+Thread 2 advanced to log sequence 2354 (LGWR switch)
+  Current log# 10 seq# 2354 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2354 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 01 05:40:38 2017
+Archived Log entry 6452 added for thread 2 sequence 2353 ID 0x434d5f0d dest 1:
+Sun Oct 01 06:40:36 2017
+Thread 2 advanced to log sequence 2355 (LGWR switch)
+  Current log# 2 seq# 2355 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2355 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 01 06:40:36 2017
+Archived Log entry 6454 added for thread 2 sequence 2354 ID 0x434d5f0d dest 1:
+Sun Oct 01 07:40:37 2017
+Thread 2 advanced to log sequence 2356 (LGWR switch)
+  Current log# 4 seq# 2356 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2356 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 01 07:40:37 2017
+Archived Log entry 6456 added for thread 2 sequence 2355 ID 0x434d5f0d dest 1:
+Sun Oct 01 08:40:36 2017
+Thread 2 advanced to log sequence 2357 (LGWR switch)
+  Current log# 12 seq# 2357 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2357 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 01 08:40:36 2017
+Archived Log entry 6458 added for thread 2 sequence 2356 ID 0x434d5f0d dest 1:
+Sun Oct 01 09:40:37 2017
+Thread 2 advanced to log sequence 2358 (LGWR switch)
+  Current log# 14 seq# 2358 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2358 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 01 09:40:37 2017
+Archived Log entry 6460 added for thread 2 sequence 2357 ID 0x434d5f0d dest 1:
+Sun Oct 01 10:40:37 2017
+Thread 2 advanced to log sequence 2359 (LGWR switch)
+  Current log# 10 seq# 2359 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2359 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 01 10:40:37 2017
+Archived Log entry 6462 added for thread 2 sequence 2358 ID 0x434d5f0d dest 1:
+Sun Oct 01 11:40:38 2017
+Thread 2 advanced to log sequence 2360 (LGWR switch)
+  Current log# 2 seq# 2360 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2360 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 01 11:40:38 2017
+Archived Log entry 6464 added for thread 2 sequence 2359 ID 0x434d5f0d dest 1:
+Sun Oct 01 12:40:36 2017
+Thread 2 advanced to log sequence 2361 (LGWR switch)
+  Current log# 4 seq# 2361 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2361 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 01 12:40:36 2017
+Archived Log entry 6466 added for thread 2 sequence 2360 ID 0x434d5f0d dest 1:
+Sun Oct 01 13:40:37 2017
+Thread 2 advanced to log sequence 2362 (LGWR switch)
+  Current log# 12 seq# 2362 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2362 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 01 13:40:37 2017
+Archived Log entry 6468 added for thread 2 sequence 2361 ID 0x434d5f0d dest 1:
+Sun Oct 01 14:40:38 2017
+Thread 2 advanced to log sequence 2363 (LGWR switch)
+  Current log# 14 seq# 2363 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2363 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 01 14:40:38 2017
+Archived Log entry 6470 added for thread 2 sequence 2362 ID 0x434d5f0d dest 1:
+Sun Oct 01 15:40:36 2017
+Thread 2 advanced to log sequence 2364 (LGWR switch)
+  Current log# 10 seq# 2364 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2364 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 01 15:40:36 2017
+Archived Log entry 6472 added for thread 2 sequence 2363 ID 0x434d5f0d dest 1:
+Sun Oct 01 16:40:37 2017
+Thread 2 advanced to log sequence 2365 (LGWR switch)
+  Current log# 2 seq# 2365 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2365 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 01 16:40:37 2017
+Archived Log entry 6474 added for thread 2 sequence 2364 ID 0x434d5f0d dest 1:
+Sun Oct 01 17:40:38 2017
+Thread 2 advanced to log sequence 2366 (LGWR switch)
+  Current log# 4 seq# 2366 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2366 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 01 17:40:38 2017
+Archived Log entry 6476 added for thread 2 sequence 2365 ID 0x434d5f0d dest 1:
+Sun Oct 01 18:40:37 2017
+Thread 2 advanced to log sequence 2367 (LGWR switch)
+  Current log# 12 seq# 2367 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2367 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 01 18:40:37 2017
+Archived Log entry 6478 added for thread 2 sequence 2366 ID 0x434d5f0d dest 1:
+Sun Oct 01 19:40:38 2017
+Thread 2 advanced to log sequence 2368 (LGWR switch)
+  Current log# 14 seq# 2368 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2368 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 01 19:40:38 2017
+Archived Log entry 6480 added for thread 2 sequence 2367 ID 0x434d5f0d dest 1:
+Sun Oct 01 20:40:36 2017
+Thread 2 advanced to log sequence 2369 (LGWR switch)
+  Current log# 10 seq# 2369 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2369 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 01 20:40:36 2017
+Archived Log entry 6482 added for thread 2 sequence 2368 ID 0x434d5f0d dest 1:
+Sun Oct 01 21:40:37 2017
+Thread 2 advanced to log sequence 2370 (LGWR switch)
+  Current log# 2 seq# 2370 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2370 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 01 21:40:37 2017
+Archived Log entry 6484 added for thread 2 sequence 2369 ID 0x434d5f0d dest 1:
+Sun Oct 01 22:40:37 2017
+Thread 2 advanced to log sequence 2371 (LGWR switch)
+  Current log# 4 seq# 2371 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2371 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 01 22:40:37 2017
+Archived Log entry 6486 added for thread 2 sequence 2370 ID 0x434d5f0d dest 1:
+Sun Oct 01 23:40:35 2017
+Thread 2 advanced to log sequence 2372 (LGWR switch)
+  Current log# 12 seq# 2372 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2372 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 01 23:40:36 2017
+Archived Log entry 6488 added for thread 2 sequence 2371 ID 0x434d5f0d dest 1:
+Mon Oct 02 00:40:37 2017
+Thread 2 advanced to log sequence 2373 (LGWR switch)
+  Current log# 14 seq# 2373 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2373 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 02 00:40:37 2017
+Archived Log entry 6490 added for thread 2 sequence 2372 ID 0x434d5f0d dest 1:
+Mon Oct 02 01:40:38 2017
+Thread 2 advanced to log sequence 2374 (LGWR switch)
+  Current log# 10 seq# 2374 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2374 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 02 01:40:38 2017
+Archived Log entry 6492 added for thread 2 sequence 2373 ID 0x434d5f0d dest 1:
+Mon Oct 02 02:40:38 2017
+Thread 2 advanced to log sequence 2375 (LGWR switch)
+  Current log# 2 seq# 2375 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2375 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 02 02:40:38 2017
+Archived Log entry 6494 added for thread 2 sequence 2374 ID 0x434d5f0d dest 1:
+Mon Oct 02 03:40:36 2017
+Thread 2 advanced to log sequence 2376 (LGWR switch)
+  Current log# 4 seq# 2376 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2376 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 02 03:40:37 2017
+Archived Log entry 6496 added for thread 2 sequence 2375 ID 0x434d5f0d dest 1:
+Mon Oct 02 04:40:38 2017
+Thread 2 advanced to log sequence 2377 (LGWR switch)
+  Current log# 12 seq# 2377 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2377 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 02 04:40:38 2017
+Archived Log entry 6498 added for thread 2 sequence 2376 ID 0x434d5f0d dest 1:
+Mon Oct 02 05:40:36 2017
+Thread 2 advanced to log sequence 2378 (LGWR switch)
+  Current log# 14 seq# 2378 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2378 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 02 05:40:36 2017
+Archived Log entry 6500 added for thread 2 sequence 2377 ID 0x434d5f0d dest 1:
+Mon Oct 02 06:40:37 2017
+Thread 2 advanced to log sequence 2379 (LGWR switch)
+  Current log# 10 seq# 2379 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2379 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 02 06:40:37 2017
+Archived Log entry 6502 added for thread 2 sequence 2378 ID 0x434d5f0d dest 1:
+Mon Oct 02 07:40:38 2017
+Thread 2 advanced to log sequence 2380 (LGWR switch)
+  Current log# 2 seq# 2380 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2380 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 02 07:40:38 2017
+Archived Log entry 6504 added for thread 2 sequence 2379 ID 0x434d5f0d dest 1:
+Mon Oct 02 08:40:36 2017
+Thread 2 advanced to log sequence 2381 (LGWR switch)
+  Current log# 4 seq# 2381 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2381 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 02 08:40:36 2017
+Archived Log entry 6506 added for thread 2 sequence 2380 ID 0x434d5f0d dest 1:
+Mon Oct 02 09:40:38 2017
+Thread 2 advanced to log sequence 2382 (LGWR switch)
+  Current log# 12 seq# 2382 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2382 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 02 09:40:38 2017
+Archived Log entry 6508 added for thread 2 sequence 2381 ID 0x434d5f0d dest 1:
+Mon Oct 02 10:40:36 2017
+Thread 2 advanced to log sequence 2383 (LGWR switch)
+  Current log# 14 seq# 2383 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2383 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 02 10:40:36 2017
+Archived Log entry 6510 added for thread 2 sequence 2382 ID 0x434d5f0d dest 1:
+Mon Oct 02 11:40:37 2017
+Thread 2 advanced to log sequence 2384 (LGWR switch)
+  Current log# 10 seq# 2384 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2384 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 02 11:40:37 2017
+Archived Log entry 6512 added for thread 2 sequence 2383 ID 0x434d5f0d dest 1:
+Mon Oct 02 12:40:38 2017
+Thread 2 advanced to log sequence 2385 (LGWR switch)
+  Current log# 2 seq# 2385 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2385 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 02 12:40:38 2017
+Archived Log entry 6514 added for thread 2 sequence 2384 ID 0x434d5f0d dest 1:
+Mon Oct 02 13:40:36 2017
+Thread 2 advanced to log sequence 2386 (LGWR switch)
+  Current log# 4 seq# 2386 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2386 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 02 13:40:36 2017
+Archived Log entry 6516 added for thread 2 sequence 2385 ID 0x434d5f0d dest 1:
+Mon Oct 02 14:40:37 2017
+Thread 2 advanced to log sequence 2387 (LGWR switch)
+  Current log# 12 seq# 2387 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2387 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 02 14:40:37 2017
+Archived Log entry 6518 added for thread 2 sequence 2386 ID 0x434d5f0d dest 1:
+Mon Oct 02 15:40:38 2017
+Thread 2 advanced to log sequence 2388 (LGWR switch)
+  Current log# 14 seq# 2388 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2388 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 02 15:40:38 2017
+Archived Log entry 6520 added for thread 2 sequence 2387 ID 0x434d5f0d dest 1:
+Mon Oct 02 16:40:36 2017
+Thread 2 advanced to log sequence 2389 (LGWR switch)
+  Current log# 10 seq# 2389 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2389 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 02 16:40:36 2017
+Archived Log entry 6522 added for thread 2 sequence 2388 ID 0x434d5f0d dest 1:
+Mon Oct 02 17:40:37 2017
+Thread 2 advanced to log sequence 2390 (LGWR switch)
+  Current log# 2 seq# 2390 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2390 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 02 17:40:37 2017
+Archived Log entry 6524 added for thread 2 sequence 2389 ID 0x434d5f0d dest 1:
+Mon Oct 02 18:40:38 2017
+Thread 2 advanced to log sequence 2391 (LGWR switch)
+  Current log# 4 seq# 2391 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2391 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 02 18:40:38 2017
+Archived Log entry 6526 added for thread 2 sequence 2390 ID 0x434d5f0d dest 1:
+Mon Oct 02 19:40:36 2017
+Thread 2 advanced to log sequence 2392 (LGWR switch)
+  Current log# 12 seq# 2392 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2392 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 02 19:40:36 2017
+Archived Log entry 6528 added for thread 2 sequence 2391 ID 0x434d5f0d dest 1:
+Mon Oct 02 20:40:37 2017
+Thread 2 advanced to log sequence 2393 (LGWR switch)
+  Current log# 14 seq# 2393 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2393 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 02 20:40:37 2017
+Archived Log entry 6530 added for thread 2 sequence 2392 ID 0x434d5f0d dest 1:
+Mon Oct 02 21:40:38 2017
+Thread 2 advanced to log sequence 2394 (LGWR switch)
+  Current log# 10 seq# 2394 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2394 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 02 21:40:38 2017
+Archived Log entry 6532 added for thread 2 sequence 2393 ID 0x434d5f0d dest 1:
+Mon Oct 02 22:40:36 2017
+Thread 2 advanced to log sequence 2395 (LGWR switch)
+  Current log# 2 seq# 2395 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2395 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 02 22:40:36 2017
+Archived Log entry 6534 added for thread 2 sequence 2394 ID 0x434d5f0d dest 1:
+Mon Oct 02 23:40:37 2017
+Thread 2 advanced to log sequence 2396 (LGWR switch)
+  Current log# 4 seq# 2396 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2396 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 02 23:40:37 2017
+Archived Log entry 6536 added for thread 2 sequence 2395 ID 0x434d5f0d dest 1:
+Tue Oct 03 00:40:36 2017
+Thread 2 advanced to log sequence 2397 (LGWR switch)
+  Current log# 12 seq# 2397 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2397 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 03 00:40:36 2017
+Archived Log entry 6538 added for thread 2 sequence 2396 ID 0x434d5f0d dest 1:
+Tue Oct 03 01:40:37 2017
+Thread 2 advanced to log sequence 2398 (LGWR switch)
+  Current log# 14 seq# 2398 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2398 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 03 01:40:37 2017
+Archived Log entry 6540 added for thread 2 sequence 2397 ID 0x434d5f0d dest 1:
+Tue Oct 03 02:40:38 2017
+Thread 2 advanced to log sequence 2399 (LGWR switch)
+  Current log# 10 seq# 2399 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2399 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 03 02:40:38 2017
+Archived Log entry 6542 added for thread 2 sequence 2398 ID 0x434d5f0d dest 1:
+Tue Oct 03 03:40:36 2017
+Thread 2 advanced to log sequence 2400 (LGWR switch)
+  Current log# 2 seq# 2400 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2400 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 03 03:40:36 2017
+Archived Log entry 6544 added for thread 2 sequence 2399 ID 0x434d5f0d dest 1:
+Tue Oct 03 04:40:37 2017
+Thread 2 advanced to log sequence 2401 (LGWR switch)
+  Current log# 4 seq# 2401 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2401 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 03 04:40:37 2017
+Archived Log entry 6546 added for thread 2 sequence 2400 ID 0x434d5f0d dest 1:
+Tue Oct 03 05:40:37 2017
+Thread 2 advanced to log sequence 2402 (LGWR switch)
+  Current log# 12 seq# 2402 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2402 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 03 05:40:38 2017
+Archived Log entry 6548 added for thread 2 sequence 2401 ID 0x434d5f0d dest 1:
+Tue Oct 03 06:40:36 2017
+Thread 2 advanced to log sequence 2403 (LGWR switch)
+  Current log# 14 seq# 2403 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2403 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 03 06:40:36 2017
+Archived Log entry 6550 added for thread 2 sequence 2402 ID 0x434d5f0d dest 1:
+Tue Oct 03 07:40:37 2017
+Thread 2 advanced to log sequence 2404 (LGWR switch)
+  Current log# 10 seq# 2404 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2404 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 03 07:40:37 2017
+Archived Log entry 6552 added for thread 2 sequence 2403 ID 0x434d5f0d dest 1:
+Tue Oct 03 08:40:38 2017
+Thread 2 advanced to log sequence 2405 (LGWR switch)
+  Current log# 2 seq# 2405 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2405 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 03 08:40:38 2017
+Archived Log entry 6554 added for thread 2 sequence 2404 ID 0x434d5f0d dest 1:
+Tue Oct 03 09:40:36 2017
+Thread 2 advanced to log sequence 2406 (LGWR switch)
+  Current log# 4 seq# 2406 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2406 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 03 09:40:36 2017
+Archived Log entry 6556 added for thread 2 sequence 2405 ID 0x434d5f0d dest 1:
+Tue Oct 03 10:40:37 2017
+Thread 2 advanced to log sequence 2407 (LGWR switch)
+  Current log# 12 seq# 2407 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2407 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 03 10:40:37 2017
+Archived Log entry 6558 added for thread 2 sequence 2406 ID 0x434d5f0d dest 1:
+Tue Oct 03 11:40:38 2017
+Thread 2 advanced to log sequence 2408 (LGWR switch)
+  Current log# 14 seq# 2408 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2408 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 03 11:40:38 2017
+Archived Log entry 6560 added for thread 2 sequence 2407 ID 0x434d5f0d dest 1:
+Tue Oct 03 12:40:36 2017
+Thread 2 advanced to log sequence 2409 (LGWR switch)
+  Current log# 10 seq# 2409 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2409 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 03 12:40:36 2017
+Archived Log entry 6562 added for thread 2 sequence 2408 ID 0x434d5f0d dest 1:
+Tue Oct 03 13:40:37 2017
+Thread 2 advanced to log sequence 2410 (LGWR switch)
+  Current log# 2 seq# 2410 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2410 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 03 13:40:37 2017
+Archived Log entry 6564 added for thread 2 sequence 2409 ID 0x434d5f0d dest 1:
+Tue Oct 03 14:40:38 2017
+Thread 2 advanced to log sequence 2411 (LGWR switch)
+  Current log# 4 seq# 2411 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2411 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 03 14:40:38 2017
+Archived Log entry 6566 added for thread 2 sequence 2410 ID 0x434d5f0d dest 1:
+Tue Oct 03 15:40:36 2017
+Thread 2 advanced to log sequence 2412 (LGWR switch)
+  Current log# 12 seq# 2412 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2412 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 03 15:40:36 2017
+Archived Log entry 6568 added for thread 2 sequence 2411 ID 0x434d5f0d dest 1:
+Tue Oct 03 16:40:37 2017
+Thread 2 advanced to log sequence 2413 (LGWR switch)
+  Current log# 14 seq# 2413 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2413 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 03 16:40:37 2017
+Archived Log entry 6570 added for thread 2 sequence 2412 ID 0x434d5f0d dest 1:
+Tue Oct 03 17:40:38 2017
+Thread 2 advanced to log sequence 2414 (LGWR switch)
+  Current log# 10 seq# 2414 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2414 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 03 17:40:38 2017
+Archived Log entry 6572 added for thread 2 sequence 2413 ID 0x434d5f0d dest 1:
+Tue Oct 03 18:40:36 2017
+Thread 2 advanced to log sequence 2415 (LGWR switch)
+  Current log# 2 seq# 2415 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2415 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 03 18:40:36 2017
+Archived Log entry 6574 added for thread 2 sequence 2414 ID 0x434d5f0d dest 1:
+Tue Oct 03 19:40:37 2017
+Thread 2 advanced to log sequence 2416 (LGWR switch)
+  Current log# 4 seq# 2416 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2416 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 03 19:40:37 2017
+Archived Log entry 6576 added for thread 2 sequence 2415 ID 0x434d5f0d dest 1:
+Tue Oct 03 20:40:38 2017
+Thread 2 advanced to log sequence 2417 (LGWR switch)
+  Current log# 12 seq# 2417 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2417 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 03 20:40:38 2017
+Archived Log entry 6578 added for thread 2 sequence 2416 ID 0x434d5f0d dest 1:
+Tue Oct 03 21:40:36 2017
+Thread 2 advanced to log sequence 2418 (LGWR switch)
+  Current log# 14 seq# 2418 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2418 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 03 21:40:36 2017
+Archived Log entry 6580 added for thread 2 sequence 2417 ID 0x434d5f0d dest 1:
+Tue Oct 03 22:40:37 2017
+Thread 2 advanced to log sequence 2419 (LGWR switch)
+  Current log# 10 seq# 2419 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2419 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 03 22:40:37 2017
+Archived Log entry 6582 added for thread 2 sequence 2418 ID 0x434d5f0d dest 1:
+Tue Oct 03 23:40:35 2017
+Thread 2 advanced to log sequence 2420 (LGWR switch)
+  Current log# 2 seq# 2420 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2420 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 03 23:40:36 2017
+Archived Log entry 6584 added for thread 2 sequence 2419 ID 0x434d5f0d dest 1:
+Wed Oct 04 00:40:37 2017
+Thread 2 advanced to log sequence 2421 (LGWR switch)
+  Current log# 4 seq# 2421 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2421 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Wed Oct 04 00:40:37 2017
+Archived Log entry 6586 added for thread 2 sequence 2420 ID 0x434d5f0d dest 1:
+Wed Oct 04 01:40:38 2017
+Thread 2 advanced to log sequence 2422 (LGWR switch)
+  Current log# 12 seq# 2422 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2422 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Wed Oct 04 01:40:38 2017
+Archived Log entry 6588 added for thread 2 sequence 2421 ID 0x434d5f0d dest 1:
+Wed Oct 04 02:40:36 2017
+Thread 2 advanced to log sequence 2423 (LGWR switch)
+  Current log# 14 seq# 2423 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2423 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Wed Oct 04 02:40:36 2017
+Archived Log entry 6590 added for thread 2 sequence 2422 ID 0x434d5f0d dest 1:
+Wed Oct 04 03:40:37 2017
+Thread 2 advanced to log sequence 2424 (LGWR switch)
+  Current log# 10 seq# 2424 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2424 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Wed Oct 04 03:40:37 2017
+Archived Log entry 6592 added for thread 2 sequence 2423 ID 0x434d5f0d dest 1:
+Wed Oct 04 04:40:38 2017
+Thread 2 advanced to log sequence 2425 (LGWR switch)
+  Current log# 2 seq# 2425 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2425 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Wed Oct 04 04:40:38 2017
+Archived Log entry 6594 added for thread 2 sequence 2424 ID 0x434d5f0d dest 1:
+Wed Oct 04 05:40:36 2017
+Thread 2 advanced to log sequence 2426 (LGWR switch)
+  Current log# 4 seq# 2426 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2426 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Wed Oct 04 05:40:36 2017
+Archived Log entry 6596 added for thread 2 sequence 2425 ID 0x434d5f0d dest 1:
+Wed Oct 04 06:40:37 2017
+Thread 2 advanced to log sequence 2427 (LGWR switch)
+  Current log# 12 seq# 2427 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2427 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Wed Oct 04 06:40:37 2017
+Archived Log entry 6598 added for thread 2 sequence 2426 ID 0x434d5f0d dest 1:
+Wed Oct 04 07:40:38 2017
+Thread 2 advanced to log sequence 2428 (LGWR switch)
+  Current log# 14 seq# 2428 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2428 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Wed Oct 04 07:40:38 2017
+Archived Log entry 6600 added for thread 2 sequence 2427 ID 0x434d5f0d dest 1:
+Wed Oct 04 08:40:36 2017
+Thread 2 advanced to log sequence 2429 (LGWR switch)
+  Current log# 10 seq# 2429 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2429 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Wed Oct 04 08:40:36 2017
+Archived Log entry 6602 added for thread 2 sequence 2428 ID 0x434d5f0d dest 1:
+Wed Oct 04 09:40:37 2017
+Thread 2 advanced to log sequence 2430 (LGWR switch)
+  Current log# 2 seq# 2430 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2430 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Wed Oct 04 09:40:37 2017
+Archived Log entry 6604 added for thread 2 sequence 2429 ID 0x434d5f0d dest 1:
+Wed Oct 04 10:40:38 2017
+Thread 2 advanced to log sequence 2431 (LGWR switch)
+  Current log# 4 seq# 2431 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2431 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Wed Oct 04 10:40:38 2017
+Archived Log entry 6606 added for thread 2 sequence 2430 ID 0x434d5f0d dest 1:
+Wed Oct 04 11:40:36 2017
+Thread 2 advanced to log sequence 2432 (LGWR switch)
+  Current log# 12 seq# 2432 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2432 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Wed Oct 04 11:40:36 2017
+Archived Log entry 6608 added for thread 2 sequence 2431 ID 0x434d5f0d dest 1:
+Wed Oct 04 12:40:38 2017
+Thread 2 advanced to log sequence 2433 (LGWR switch)
+  Current log# 14 seq# 2433 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2433 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Wed Oct 04 12:40:38 2017
+Archived Log entry 6610 added for thread 2 sequence 2432 ID 0x434d5f0d dest 1:
+Wed Oct 04 13:40:36 2017
+Thread 2 advanced to log sequence 2434 (LGWR switch)
+  Current log# 10 seq# 2434 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2434 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Wed Oct 04 13:40:36 2017
+Archived Log entry 6612 added for thread 2 sequence 2433 ID 0x434d5f0d dest 1:
+Wed Oct 04 14:40:37 2017
+Thread 2 advanced to log sequence 2435 (LGWR switch)
+  Current log# 2 seq# 2435 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2435 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Wed Oct 04 14:40:37 2017
+Archived Log entry 6614 added for thread 2 sequence 2434 ID 0x434d5f0d dest 1:
+Wed Oct 04 15:40:37 2017
+Thread 2 advanced to log sequence 2436 (LGWR switch)
+  Current log# 4 seq# 2436 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2436 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Wed Oct 04 15:40:37 2017
+Archived Log entry 6616 added for thread 2 sequence 2435 ID 0x434d5f0d dest 1:
+Wed Oct 04 16:40:36 2017
+Thread 2 advanced to log sequence 2437 (LGWR switch)
+  Current log# 12 seq# 2437 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2437 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Wed Oct 04 16:40:36 2017
+Archived Log entry 6618 added for thread 2 sequence 2436 ID 0x434d5f0d dest 1:
+Wed Oct 04 17:40:37 2017
+Thread 2 advanced to log sequence 2438 (LGWR switch)
+  Current log# 14 seq# 2438 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2438 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Wed Oct 04 17:40:37 2017
+Archived Log entry 6620 added for thread 2 sequence 2437 ID 0x434d5f0d dest 1:
+Wed Oct 04 18:40:38 2017
+Thread 2 advanced to log sequence 2439 (LGWR switch)
+  Current log# 10 seq# 2439 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2439 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Wed Oct 04 18:40:38 2017
+Archived Log entry 6622 added for thread 2 sequence 2438 ID 0x434d5f0d dest 1:
+Wed Oct 04 19:40:36 2017
+Thread 2 advanced to log sequence 2440 (LGWR switch)
+  Current log# 2 seq# 2440 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2440 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Wed Oct 04 19:40:36 2017
+Archived Log entry 6624 added for thread 2 sequence 2439 ID 0x434d5f0d dest 1:
+Wed Oct 04 20:40:37 2017
+Thread 2 advanced to log sequence 2441 (LGWR switch)
+  Current log# 4 seq# 2441 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2441 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Wed Oct 04 20:40:37 2017
+Archived Log entry 6626 added for thread 2 sequence 2440 ID 0x434d5f0d dest 1:
+Wed Oct 04 21:40:38 2017
+Thread 2 advanced to log sequence 2442 (LGWR switch)
+  Current log# 12 seq# 2442 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2442 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Wed Oct 04 21:40:38 2017
+Archived Log entry 6628 added for thread 2 sequence 2441 ID 0x434d5f0d dest 1:
+Wed Oct 04 22:40:36 2017
+Thread 2 advanced to log sequence 2443 (LGWR switch)
+  Current log# 14 seq# 2443 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2443 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Wed Oct 04 22:40:36 2017
+Archived Log entry 6630 added for thread 2 sequence 2442 ID 0x434d5f0d dest 1:
+Wed Oct 04 23:40:38 2017
+Thread 2 advanced to log sequence 2444 (LGWR switch)
+  Current log# 10 seq# 2444 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2444 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Wed Oct 04 23:40:38 2017
+Archived Log entry 6632 added for thread 2 sequence 2443 ID 0x434d5f0d dest 1:
+Thu Oct 05 00:40:36 2017
+Thread 2 advanced to log sequence 2445 (LGWR switch)
+  Current log# 2 seq# 2445 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2445 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Thu Oct 05 00:40:36 2017
+Archived Log entry 6634 added for thread 2 sequence 2444 ID 0x434d5f0d dest 1:
+Thu Oct 05 01:40:37 2017
+Thread 2 advanced to log sequence 2446 (LGWR switch)
+  Current log# 4 seq# 2446 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2446 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Thu Oct 05 01:40:37 2017
+Archived Log entry 6636 added for thread 2 sequence 2445 ID 0x434d5f0d dest 1:
+Thu Oct 05 02:40:37 2017
+Thread 2 advanced to log sequence 2447 (LGWR switch)
+  Current log# 12 seq# 2447 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2447 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Thu Oct 05 02:40:37 2017
+Archived Log entry 6638 added for thread 2 sequence 2446 ID 0x434d5f0d dest 1:
+Thu Oct 05 03:40:38 2017
+Thread 2 advanced to log sequence 2448 (LGWR switch)
+  Current log# 14 seq# 2448 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2448 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Thu Oct 05 03:40:38 2017
+Archived Log entry 6640 added for thread 2 sequence 2447 ID 0x434d5f0d dest 1:
+Thu Oct 05 04:40:36 2017
+Thread 2 advanced to log sequence 2449 (LGWR switch)
+  Current log# 10 seq# 2449 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2449 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Thu Oct 05 04:40:37 2017
+Archived Log entry 6642 added for thread 2 sequence 2448 ID 0x434d5f0d dest 1:
+Thu Oct 05 05:40:38 2017
+Thread 2 advanced to log sequence 2450 (LGWR switch)
+  Current log# 2 seq# 2450 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2450 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Thu Oct 05 05:40:38 2017
+Archived Log entry 6644 added for thread 2 sequence 2449 ID 0x434d5f0d dest 1:
+Thu Oct 05 06:40:38 2017
+Thread 2 advanced to log sequence 2451 (LGWR switch)
+  Current log# 4 seq# 2451 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2451 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Thu Oct 05 06:40:38 2017
+Archived Log entry 6646 added for thread 2 sequence 2450 ID 0x434d5f0d dest 1:
+Thu Oct 05 07:40:36 2017
+Thread 2 advanced to log sequence 2452 (LGWR switch)
+  Current log# 12 seq# 2452 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2452 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Thu Oct 05 07:40:36 2017
+Archived Log entry 6648 added for thread 2 sequence 2451 ID 0x434d5f0d dest 1:
+Thu Oct 05 08:40:37 2017
+Thread 2 advanced to log sequence 2453 (LGWR switch)
+  Current log# 14 seq# 2453 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2453 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Thu Oct 05 08:40:37 2017
+Archived Log entry 6650 added for thread 2 sequence 2452 ID 0x434d5f0d dest 1:
+Thu Oct 05 09:40:38 2017
+Thread 2 advanced to log sequence 2454 (LGWR switch)
+  Current log# 10 seq# 2454 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2454 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Thu Oct 05 09:40:38 2017
+Archived Log entry 6652 added for thread 2 sequence 2453 ID 0x434d5f0d dest 1:
+Thu Oct 05 10:40:36 2017
+Thread 2 advanced to log sequence 2455 (LGWR switch)
+  Current log# 2 seq# 2455 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2455 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Thu Oct 05 10:40:36 2017
+Archived Log entry 6654 added for thread 2 sequence 2454 ID 0x434d5f0d dest 1:
+Thu Oct 05 11:40:38 2017
+Thread 2 advanced to log sequence 2456 (LGWR switch)
+  Current log# 4 seq# 2456 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2456 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Thu Oct 05 11:40:38 2017
+Archived Log entry 6656 added for thread 2 sequence 2455 ID 0x434d5f0d dest 1:
+Thu Oct 05 12:40:36 2017
+Thread 2 advanced to log sequence 2457 (LGWR switch)
+  Current log# 12 seq# 2457 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2457 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Thu Oct 05 12:40:36 2017
+Archived Log entry 6658 added for thread 2 sequence 2456 ID 0x434d5f0d dest 1:
+Thu Oct 05 13:40:37 2017
+Thread 2 advanced to log sequence 2458 (LGWR switch)
+  Current log# 14 seq# 2458 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2458 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Thu Oct 05 13:40:37 2017
+Archived Log entry 6660 added for thread 2 sequence 2457 ID 0x434d5f0d dest 1:
+Thu Oct 05 14:40:37 2017
+Thread 2 advanced to log sequence 2459 (LGWR switch)
+  Current log# 10 seq# 2459 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2459 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Thu Oct 05 14:40:37 2017
+Archived Log entry 6662 added for thread 2 sequence 2458 ID 0x434d5f0d dest 1:
+Thu Oct 05 15:40:38 2017
+Thread 2 advanced to log sequence 2460 (LGWR switch)
+  Current log# 2 seq# 2460 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2460 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Thu Oct 05 15:40:38 2017
+Archived Log entry 6664 added for thread 2 sequence 2459 ID 0x434d5f0d dest 1:
+Thu Oct 05 16:40:36 2017
+Thread 2 advanced to log sequence 2461 (LGWR switch)
+  Current log# 4 seq# 2461 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2461 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Thu Oct 05 16:40:37 2017
+Archived Log entry 6666 added for thread 2 sequence 2460 ID 0x434d5f0d dest 1:
+Thu Oct 05 17:40:38 2017
+Thread 2 advanced to log sequence 2462 (LGWR switch)
+  Current log# 12 seq# 2462 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2462 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Thu Oct 05 17:40:38 2017
+Archived Log entry 6668 added for thread 2 sequence 2461 ID 0x434d5f0d dest 1:
+Thu Oct 05 18:40:38 2017
+Thread 2 advanced to log sequence 2463 (LGWR switch)
+  Current log# 14 seq# 2463 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2463 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Thu Oct 05 18:40:38 2017
+Archived Log entry 6670 added for thread 2 sequence 2462 ID 0x434d5f0d dest 1:
+Thu Oct 05 19:40:36 2017
+Thread 2 advanced to log sequence 2464 (LGWR switch)
+  Current log# 10 seq# 2464 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2464 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Thu Oct 05 19:40:36 2017
+Archived Log entry 6672 added for thread 2 sequence 2463 ID 0x434d5f0d dest 1:
+Thu Oct 05 20:40:37 2017
+Thread 2 advanced to log sequence 2465 (LGWR switch)
+  Current log# 2 seq# 2465 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2465 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Thu Oct 05 20:40:37 2017
+Archived Log entry 6674 added for thread 2 sequence 2464 ID 0x434d5f0d dest 1:
+Thu Oct 05 21:40:38 2017
+Thread 2 advanced to log sequence 2466 (LGWR switch)
+  Current log# 4 seq# 2466 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2466 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Thu Oct 05 21:40:38 2017
+Archived Log entry 6676 added for thread 2 sequence 2465 ID 0x434d5f0d dest 1:
+Thu Oct 05 22:40:36 2017
+Thread 2 advanced to log sequence 2467 (LGWR switch)
+  Current log# 12 seq# 2467 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2467 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Thu Oct 05 22:40:36 2017
+Archived Log entry 6678 added for thread 2 sequence 2466 ID 0x434d5f0d dest 1:
+Thu Oct 05 23:40:37 2017
+Thread 2 advanced to log sequence 2468 (LGWR switch)
+  Current log# 14 seq# 2468 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2468 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Thu Oct 05 23:40:37 2017
+Archived Log entry 6680 added for thread 2 sequence 2467 ID 0x434d5f0d dest 1:
+Fri Oct 06 00:40:35 2017
+Thread 2 advanced to log sequence 2469 (LGWR switch)
+  Current log# 10 seq# 2469 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2469 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Fri Oct 06 00:40:36 2017
+Archived Log entry 6682 added for thread 2 sequence 2468 ID 0x434d5f0d dest 1:
+Fri Oct 06 01:40:37 2017
+Thread 2 advanced to log sequence 2470 (LGWR switch)
+  Current log# 2 seq# 2470 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2470 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Fri Oct 06 01:40:37 2017
+Archived Log entry 6684 added for thread 2 sequence 2469 ID 0x434d5f0d dest 1:
+Fri Oct 06 02:40:38 2017
+Thread 2 advanced to log sequence 2471 (LGWR switch)
+  Current log# 4 seq# 2471 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2471 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Fri Oct 06 02:40:38 2017
+Archived Log entry 6686 added for thread 2 sequence 2470 ID 0x434d5f0d dest 1:
+Fri Oct 06 03:40:36 2017
+Thread 2 advanced to log sequence 2472 (LGWR switch)
+  Current log# 12 seq# 2472 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2472 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Fri Oct 06 03:40:36 2017
+Archived Log entry 6688 added for thread 2 sequence 2471 ID 0x434d5f0d dest 1:
+Fri Oct 06 04:40:37 2017
+Thread 2 advanced to log sequence 2473 (LGWR switch)
+  Current log# 14 seq# 2473 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2473 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Fri Oct 06 04:40:37 2017
+Archived Log entry 6690 added for thread 2 sequence 2472 ID 0x434d5f0d dest 1:
+Fri Oct 06 05:40:37 2017
+Thread 2 advanced to log sequence 2474 (LGWR switch)
+  Current log# 10 seq# 2474 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2474 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Fri Oct 06 05:40:37 2017
+Archived Log entry 6692 added for thread 2 sequence 2473 ID 0x434d5f0d dest 1:
+Fri Oct 06 06:40:36 2017
+Thread 2 advanced to log sequence 2475 (LGWR switch)
+  Current log# 2 seq# 2475 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2475 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Fri Oct 06 06:40:36 2017
+Archived Log entry 6694 added for thread 2 sequence 2474 ID 0x434d5f0d dest 1:
+Fri Oct 06 07:40:37 2017
+Thread 2 advanced to log sequence 2476 (LGWR switch)
+  Current log# 4 seq# 2476 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2476 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Fri Oct 06 07:40:37 2017
+Archived Log entry 6696 added for thread 2 sequence 2475 ID 0x434d5f0d dest 1:
+Fri Oct 06 08:40:38 2017
+Thread 2 advanced to log sequence 2477 (LGWR switch)
+  Current log# 12 seq# 2477 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2477 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Fri Oct 06 08:40:38 2017
+Archived Log entry 6698 added for thread 2 sequence 2476 ID 0x434d5f0d dest 1:
+Fri Oct 06 09:40:35 2017
+Thread 2 advanced to log sequence 2478 (LGWR switch)
+  Current log# 14 seq# 2478 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2478 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Fri Oct 06 09:40:36 2017
+Archived Log entry 6700 added for thread 2 sequence 2477 ID 0x434d5f0d dest 1:
+Fri Oct 06 10:40:37 2017
+Thread 2 advanced to log sequence 2479 (LGWR switch)
+  Current log# 10 seq# 2479 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2479 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Fri Oct 06 10:40:37 2017
+Archived Log entry 6702 added for thread 2 sequence 2478 ID 0x434d5f0d dest 1:
+Fri Oct 06 11:40:38 2017
+Thread 2 advanced to log sequence 2480 (LGWR switch)
+  Current log# 2 seq# 2480 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2480 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Fri Oct 06 11:40:38 2017
+Archived Log entry 6704 added for thread 2 sequence 2479 ID 0x434d5f0d dest 1:
+Fri Oct 06 12:40:36 2017
+Thread 2 advanced to log sequence 2481 (LGWR switch)
+  Current log# 4 seq# 2481 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2481 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Fri Oct 06 12:40:36 2017
+Archived Log entry 6706 added for thread 2 sequence 2480 ID 0x434d5f0d dest 1:
+Fri Oct 06 13:40:37 2017
+Thread 2 advanced to log sequence 2482 (LGWR switch)
+  Current log# 12 seq# 2482 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2482 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Fri Oct 06 13:40:37 2017
+Archived Log entry 6708 added for thread 2 sequence 2481 ID 0x434d5f0d dest 1:
+Fri Oct 06 14:40:35 2017
+Thread 2 advanced to log sequence 2483 (LGWR switch)
+  Current log# 14 seq# 2483 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2483 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Fri Oct 06 14:40:35 2017
+Archived Log entry 6710 added for thread 2 sequence 2482 ID 0x434d5f0d dest 1:
+Fri Oct 06 15:40:37 2017
+Thread 2 advanced to log sequence 2484 (LGWR switch)
+  Current log# 10 seq# 2484 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2484 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Fri Oct 06 15:40:37 2017
+Archived Log entry 6712 added for thread 2 sequence 2483 ID 0x434d5f0d dest 1:
+Fri Oct 06 16:40:37 2017
+Thread 2 advanced to log sequence 2485 (LGWR switch)
+  Current log# 2 seq# 2485 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2485 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Fri Oct 06 16:40:37 2017
+Archived Log entry 6714 added for thread 2 sequence 2484 ID 0x434d5f0d dest 1:
+Fri Oct 06 17:40:38 2017
+Thread 2 advanced to log sequence 2486 (LGWR switch)
+  Current log# 4 seq# 2486 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2486 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Fri Oct 06 17:40:38 2017
+Archived Log entry 6716 added for thread 2 sequence 2485 ID 0x434d5f0d dest 1:
+Fri Oct 06 18:40:36 2017
+Thread 2 advanced to log sequence 2487 (LGWR switch)
+  Current log# 12 seq# 2487 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2487 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Fri Oct 06 18:40:36 2017
+Archived Log entry 6718 added for thread 2 sequence 2486 ID 0x434d5f0d dest 1:
+Fri Oct 06 19:40:37 2017
+Thread 2 advanced to log sequence 2488 (LGWR switch)
+  Current log# 14 seq# 2488 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2488 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Fri Oct 06 19:40:37 2017
+Archived Log entry 6720 added for thread 2 sequence 2487 ID 0x434d5f0d dest 1:
+Fri Oct 06 20:40:38 2017
+Thread 2 advanced to log sequence 2489 (LGWR switch)
+  Current log# 10 seq# 2489 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2489 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Fri Oct 06 20:40:38 2017
+Archived Log entry 6722 added for thread 2 sequence 2488 ID 0x434d5f0d dest 1:
+Fri Oct 06 21:40:36 2017
+Thread 2 advanced to log sequence 2490 (LGWR switch)
+  Current log# 2 seq# 2490 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2490 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Fri Oct 06 21:40:36 2017
+Archived Log entry 6724 added for thread 2 sequence 2489 ID 0x434d5f0d dest 1:
+Fri Oct 06 22:40:37 2017
+Thread 2 advanced to log sequence 2491 (LGWR switch)
+  Current log# 4 seq# 2491 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2491 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Fri Oct 06 22:40:37 2017
+Archived Log entry 6726 added for thread 2 sequence 2490 ID 0x434d5f0d dest 1:
+Fri Oct 06 23:40:38 2017
+Thread 2 advanced to log sequence 2492 (LGWR switch)
+  Current log# 12 seq# 2492 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2492 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Fri Oct 06 23:40:38 2017
+Archived Log entry 6728 added for thread 2 sequence 2491 ID 0x434d5f0d dest 1:
+Sat Oct 07 00:40:36 2017
+Thread 2 advanced to log sequence 2493 (LGWR switch)
+  Current log# 14 seq# 2493 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2493 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sat Oct 07 00:40:37 2017
+Archived Log entry 6730 added for thread 2 sequence 2492 ID 0x434d5f0d dest 1:
+Sat Oct 07 01:40:38 2017
+Thread 2 advanced to log sequence 2494 (LGWR switch)
+  Current log# 10 seq# 2494 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2494 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sat Oct 07 01:40:38 2017
+Archived Log entry 6732 added for thread 2 sequence 2493 ID 0x434d5f0d dest 1:
+Sat Oct 07 02:40:36 2017
+Thread 2 advanced to log sequence 2495 (LGWR switch)
+  Current log# 2 seq# 2495 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2495 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sat Oct 07 02:40:36 2017
+Archived Log entry 6734 added for thread 2 sequence 2494 ID 0x434d5f0d dest 1:
+Sat Oct 07 03:40:38 2017
+Thread 2 advanced to log sequence 2496 (LGWR switch)
+  Current log# 4 seq# 2496 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2496 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sat Oct 07 03:40:38 2017
+Archived Log entry 6736 added for thread 2 sequence 2495 ID 0x434d5f0d dest 1:
+Sat Oct 07 04:40:36 2017
+Thread 2 advanced to log sequence 2497 (LGWR switch)
+  Current log# 12 seq# 2497 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2497 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sat Oct 07 04:40:36 2017
+Archived Log entry 6738 added for thread 2 sequence 2496 ID 0x434d5f0d dest 1:
+Sat Oct 07 05:40:37 2017
+Thread 2 advanced to log sequence 2498 (LGWR switch)
+  Current log# 14 seq# 2498 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2498 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sat Oct 07 05:40:37 2017
+Archived Log entry 6740 added for thread 2 sequence 2497 ID 0x434d5f0d dest 1:
+Sat Oct 07 06:40:38 2017
+Thread 2 advanced to log sequence 2499 (LGWR switch)
+  Current log# 10 seq# 2499 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2499 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sat Oct 07 06:40:38 2017
+Archived Log entry 6742 added for thread 2 sequence 2498 ID 0x434d5f0d dest 1:
+Sat Oct 07 07:40:36 2017
+Thread 2 advanced to log sequence 2500 (LGWR switch)
+  Current log# 2 seq# 2500 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2500 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sat Oct 07 07:40:37 2017
+Archived Log entry 6744 added for thread 2 sequence 2499 ID 0x434d5f0d dest 1:
+Sat Oct 07 08:40:37 2017
+Thread 2 advanced to log sequence 2501 (LGWR switch)
+  Current log# 4 seq# 2501 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2501 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sat Oct 07 08:40:37 2017
+Archived Log entry 6746 added for thread 2 sequence 2500 ID 0x434d5f0d dest 1:
+Sat Oct 07 09:40:38 2017
+Thread 2 advanced to log sequence 2502 (LGWR switch)
+  Current log# 12 seq# 2502 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2502 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sat Oct 07 09:40:38 2017
+Archived Log entry 6748 added for thread 2 sequence 2501 ID 0x434d5f0d dest 1:
+Sat Oct 07 10:40:36 2017
+Thread 2 advanced to log sequence 2503 (LGWR switch)
+  Current log# 14 seq# 2503 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2503 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sat Oct 07 10:40:36 2017
+Archived Log entry 6750 added for thread 2 sequence 2502 ID 0x434d5f0d dest 1:
+Sat Oct 07 11:40:37 2017
+Thread 2 advanced to log sequence 2504 (LGWR switch)
+  Current log# 10 seq# 2504 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2504 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sat Oct 07 11:40:37 2017
+Archived Log entry 6752 added for thread 2 sequence 2503 ID 0x434d5f0d dest 1:
+Sat Oct 07 12:40:38 2017
+Thread 2 advanced to log sequence 2505 (LGWR switch)
+  Current log# 2 seq# 2505 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2505 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sat Oct 07 12:40:38 2017
+Archived Log entry 6754 added for thread 2 sequence 2504 ID 0x434d5f0d dest 1:
+Sat Oct 07 13:40:36 2017
+Thread 2 advanced to log sequence 2506 (LGWR switch)
+  Current log# 4 seq# 2506 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2506 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sat Oct 07 13:40:36 2017
+Archived Log entry 6756 added for thread 2 sequence 2505 ID 0x434d5f0d dest 1:
+Sat Oct 07 14:40:37 2017
+Thread 2 advanced to log sequence 2507 (LGWR switch)
+  Current log# 12 seq# 2507 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2507 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sat Oct 07 14:40:37 2017
+Archived Log entry 6758 added for thread 2 sequence 2506 ID 0x434d5f0d dest 1:
+Sat Oct 07 15:40:38 2017
+Thread 2 advanced to log sequence 2508 (LGWR switch)
+  Current log# 14 seq# 2508 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2508 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sat Oct 07 15:40:38 2017
+Archived Log entry 6760 added for thread 2 sequence 2507 ID 0x434d5f0d dest 1:
+Sat Oct 07 16:40:36 2017
+Thread 2 advanced to log sequence 2509 (LGWR switch)
+  Current log# 10 seq# 2509 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2509 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sat Oct 07 16:40:36 2017
+Archived Log entry 6762 added for thread 2 sequence 2508 ID 0x434d5f0d dest 1:
+Sat Oct 07 17:40:37 2017
+Thread 2 advanced to log sequence 2510 (LGWR switch)
+  Current log# 2 seq# 2510 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2510 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sat Oct 07 17:40:37 2017
+Archived Log entry 6764 added for thread 2 sequence 2509 ID 0x434d5f0d dest 1:
+Sat Oct 07 18:40:36 2017
+Thread 2 advanced to log sequence 2511 (LGWR switch)
+  Current log# 4 seq# 2511 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2511 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sat Oct 07 18:40:36 2017
+Archived Log entry 6766 added for thread 2 sequence 2510 ID 0x434d5f0d dest 1:
+Sat Oct 07 19:40:37 2017
+Thread 2 advanced to log sequence 2512 (LGWR switch)
+  Current log# 12 seq# 2512 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2512 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sat Oct 07 19:40:37 2017
+Archived Log entry 6768 added for thread 2 sequence 2511 ID 0x434d5f0d dest 1:
+Sat Oct 07 20:40:37 2017
+Thread 2 advanced to log sequence 2513 (LGWR switch)
+  Current log# 14 seq# 2513 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2513 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sat Oct 07 20:40:37 2017
+Archived Log entry 6770 added for thread 2 sequence 2512 ID 0x434d5f0d dest 1:
+Sat Oct 07 21:40:38 2017
+Thread 2 advanced to log sequence 2514 (LGWR switch)
+  Current log# 10 seq# 2514 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2514 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sat Oct 07 21:40:38 2017
+Archived Log entry 6772 added for thread 2 sequence 2513 ID 0x434d5f0d dest 1:
+Sat Oct 07 22:40:36 2017
+Thread 2 advanced to log sequence 2515 (LGWR switch)
+  Current log# 2 seq# 2515 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2515 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sat Oct 07 22:40:37 2017
+Archived Log entry 6774 added for thread 2 sequence 2514 ID 0x434d5f0d dest 1:
+Sat Oct 07 23:40:37 2017
+Thread 2 advanced to log sequence 2516 (LGWR switch)
+  Current log# 4 seq# 2516 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2516 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sat Oct 07 23:40:37 2017
+Archived Log entry 6776 added for thread 2 sequence 2515 ID 0x434d5f0d dest 1:
+Sun Oct 08 00:40:38 2017
+Thread 2 advanced to log sequence 2517 (LGWR switch)
+  Current log# 12 seq# 2517 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2517 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 08 00:40:38 2017
+Archived Log entry 6778 added for thread 2 sequence 2516 ID 0x434d5f0d dest 1:
+Sun Oct 08 01:40:37 2017
+Thread 2 advanced to log sequence 2518 (LGWR switch)
+  Current log# 14 seq# 2518 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2518 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 08 01:40:37 2017
+Archived Log entry 6780 added for thread 2 sequence 2517 ID 0x434d5f0d dest 1:
+Sun Oct 08 02:40:38 2017
+Thread 2 advanced to log sequence 2519 (LGWR switch)
+  Current log# 10 seq# 2519 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2519 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 08 02:40:38 2017
+Archived Log entry 6782 added for thread 2 sequence 2518 ID 0x434d5f0d dest 1:
+Sun Oct 08 03:40:36 2017
+Thread 2 advanced to log sequence 2520 (LGWR switch)
+  Current log# 2 seq# 2520 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2520 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 08 03:40:36 2017
+Archived Log entry 6784 added for thread 2 sequence 2519 ID 0x434d5f0d dest 1:
+Sun Oct 08 04:40:37 2017
+Thread 2 advanced to log sequence 2521 (LGWR switch)
+  Current log# 4 seq# 2521 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2521 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 08 04:40:37 2017
+Archived Log entry 6786 added for thread 2 sequence 2520 ID 0x434d5f0d dest 1:
+Sun Oct 08 05:40:37 2017
+Thread 2 advanced to log sequence 2522 (LGWR switch)
+  Current log# 12 seq# 2522 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2522 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 08 05:40:37 2017
+Archived Log entry 6788 added for thread 2 sequence 2521 ID 0x434d5f0d dest 1:
+Sun Oct 08 06:40:36 2017
+Thread 2 advanced to log sequence 2523 (LGWR switch)
+  Current log# 14 seq# 2523 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2523 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 08 06:40:36 2017
+Archived Log entry 6790 added for thread 2 sequence 2522 ID 0x434d5f0d dest 1:
+Sun Oct 08 07:40:37 2017
+Thread 2 advanced to log sequence 2524 (LGWR switch)
+  Current log# 10 seq# 2524 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2524 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 08 07:40:37 2017
+Archived Log entry 6792 added for thread 2 sequence 2523 ID 0x434d5f0d dest 1:
+Sun Oct 08 08:40:38 2017
+Thread 2 advanced to log sequence 2525 (LGWR switch)
+  Current log# 2 seq# 2525 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2525 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 08 08:40:38 2017
+Archived Log entry 6794 added for thread 2 sequence 2524 ID 0x434d5f0d dest 1:
+Sun Oct 08 09:40:35 2017
+Thread 2 advanced to log sequence 2526 (LGWR switch)
+  Current log# 4 seq# 2526 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2526 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 08 09:40:36 2017
+Archived Log entry 6796 added for thread 2 sequence 2525 ID 0x434d5f0d dest 1:
+Sun Oct 08 10:40:37 2017
+Thread 2 advanced to log sequence 2527 (LGWR switch)
+  Current log# 12 seq# 2527 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2527 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 08 10:40:37 2017
+Archived Log entry 6798 added for thread 2 sequence 2526 ID 0x434d5f0d dest 1:
+Sun Oct 08 11:40:38 2017
+Thread 2 advanced to log sequence 2528 (LGWR switch)
+  Current log# 14 seq# 2528 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2528 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 08 11:40:38 2017
+Archived Log entry 6800 added for thread 2 sequence 2527 ID 0x434d5f0d dest 1:
+Sun Oct 08 12:40:36 2017
+Thread 2 advanced to log sequence 2529 (LGWR switch)
+  Current log# 10 seq# 2529 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2529 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 08 12:40:36 2017
+Archived Log entry 6802 added for thread 2 sequence 2528 ID 0x434d5f0d dest 1:
+Sun Oct 08 13:40:37 2017
+Thread 2 advanced to log sequence 2530 (LGWR switch)
+  Current log# 2 seq# 2530 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2530 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 08 13:40:37 2017
+Archived Log entry 6804 added for thread 2 sequence 2529 ID 0x434d5f0d dest 1:
+Sun Oct 08 14:40:35 2017
+Thread 2 advanced to log sequence 2531 (LGWR switch)
+  Current log# 4 seq# 2531 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2531 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 08 14:40:35 2017
+Archived Log entry 6806 added for thread 2 sequence 2530 ID 0x434d5f0d dest 1:
+Sun Oct 08 15:40:37 2017
+Thread 2 advanced to log sequence 2532 (LGWR switch)
+  Current log# 12 seq# 2532 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2532 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 08 15:40:37 2017
+Archived Log entry 6808 added for thread 2 sequence 2531 ID 0x434d5f0d dest 1:
+Sun Oct 08 16:40:37 2017
+Thread 2 advanced to log sequence 2533 (LGWR switch)
+  Current log# 14 seq# 2533 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2533 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 08 16:40:37 2017
+Archived Log entry 6810 added for thread 2 sequence 2532 ID 0x434d5f0d dest 1:
+Sun Oct 08 17:40:38 2017
+Thread 2 advanced to log sequence 2534 (LGWR switch)
+  Current log# 10 seq# 2534 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2534 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 08 17:40:38 2017
+Archived Log entry 6812 added for thread 2 sequence 2533 ID 0x434d5f0d dest 1:
+Sun Oct 08 18:40:36 2017
+Thread 2 advanced to log sequence 2535 (LGWR switch)
+  Current log# 2 seq# 2535 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2535 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 08 18:40:36 2017
+Archived Log entry 6814 added for thread 2 sequence 2534 ID 0x434d5f0d dest 1:
+Sun Oct 08 19:40:37 2017
+Thread 2 advanced to log sequence 2536 (LGWR switch)
+  Current log# 4 seq# 2536 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2536 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Sun Oct 08 19:40:37 2017
+Archived Log entry 6816 added for thread 2 sequence 2535 ID 0x434d5f0d dest 1:
+Sun Oct 08 20:40:37 2017
+Thread 2 advanced to log sequence 2537 (LGWR switch)
+  Current log# 12 seq# 2537 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2537 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Sun Oct 08 20:40:37 2017
+Archived Log entry 6818 added for thread 2 sequence 2536 ID 0x434d5f0d dest 1:
+Sun Oct 08 21:40:36 2017
+Thread 2 advanced to log sequence 2538 (LGWR switch)
+  Current log# 14 seq# 2538 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2538 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Sun Oct 08 21:40:36 2017
+Archived Log entry 6820 added for thread 2 sequence 2537 ID 0x434d5f0d dest 1:
+Sun Oct 08 22:40:37 2017
+Thread 2 advanced to log sequence 2539 (LGWR switch)
+  Current log# 10 seq# 2539 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2539 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Sun Oct 08 22:40:37 2017
+Archived Log entry 6822 added for thread 2 sequence 2538 ID 0x434d5f0d dest 1:
+Sun Oct 08 23:40:37 2017
+Thread 2 advanced to log sequence 2540 (LGWR switch)
+  Current log# 2 seq# 2540 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2540 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Sun Oct 08 23:40:38 2017
+Archived Log entry 6824 added for thread 2 sequence 2539 ID 0x434d5f0d dest 1:
+Mon Oct 09 00:40:35 2017
+Thread 2 advanced to log sequence 2541 (LGWR switch)
+  Current log# 4 seq# 2541 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2541 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 09 00:40:36 2017
+Archived Log entry 6826 added for thread 2 sequence 2540 ID 0x434d5f0d dest 1:
+Mon Oct 09 01:40:37 2017
+Thread 2 advanced to log sequence 2542 (LGWR switch)
+  Current log# 12 seq# 2542 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2542 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 09 01:40:37 2017
+Archived Log entry 6828 added for thread 2 sequence 2541 ID 0x434d5f0d dest 1:
+Mon Oct 09 02:40:38 2017
+Thread 2 advanced to log sequence 2543 (LGWR switch)
+  Current log# 14 seq# 2543 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2543 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 09 02:40:38 2017
+Archived Log entry 6830 added for thread 2 sequence 2542 ID 0x434d5f0d dest 1:
+Mon Oct 09 03:40:36 2017
+Thread 2 advanced to log sequence 2544 (LGWR switch)
+  Current log# 10 seq# 2544 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2544 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 09 03:40:36 2017
+Archived Log entry 6832 added for thread 2 sequence 2543 ID 0x434d5f0d dest 1:
+Mon Oct 09 04:40:37 2017
+Thread 2 advanced to log sequence 2545 (LGWR switch)
+  Current log# 2 seq# 2545 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2545 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 09 04:40:37 2017
+Archived Log entry 6834 added for thread 2 sequence 2544 ID 0x434d5f0d dest 1:
+Mon Oct 09 05:40:35 2017
+Thread 2 advanced to log sequence 2546 (LGWR switch)
+  Current log# 4 seq# 2546 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2546 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 09 05:40:36 2017
+Archived Log entry 6836 added for thread 2 sequence 2545 ID 0x434d5f0d dest 1:
+Mon Oct 09 06:40:37 2017
+Thread 2 advanced to log sequence 2547 (LGWR switch)
+  Current log# 12 seq# 2547 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2547 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 09 06:40:37 2017
+Archived Log entry 6838 added for thread 2 sequence 2546 ID 0x434d5f0d dest 1:
+Mon Oct 09 07:40:38 2017
+Thread 2 advanced to log sequence 2548 (LGWR switch)
+  Current log# 14 seq# 2548 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2548 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 09 07:40:38 2017
+Archived Log entry 6840 added for thread 2 sequence 2547 ID 0x434d5f0d dest 1:
+Mon Oct 09 08:40:36 2017
+Thread 2 advanced to log sequence 2549 (LGWR switch)
+  Current log# 10 seq# 2549 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2549 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 09 08:40:36 2017
+Archived Log entry 6842 added for thread 2 sequence 2548 ID 0x434d5f0d dest 1:
+Mon Oct 09 09:40:37 2017
+Thread 2 advanced to log sequence 2550 (LGWR switch)
+  Current log# 2 seq# 2550 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2550 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 09 09:40:37 2017
+Archived Log entry 6844 added for thread 2 sequence 2549 ID 0x434d5f0d dest 1:
+Mon Oct 09 10:40:37 2017
+Thread 2 advanced to log sequence 2551 (LGWR switch)
+  Current log# 4 seq# 2551 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2551 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 09 10:40:38 2017
+Archived Log entry 6846 added for thread 2 sequence 2550 ID 0x434d5f0d dest 1:
+Mon Oct 09 11:40:36 2017
+Thread 2 advanced to log sequence 2552 (LGWR switch)
+  Current log# 12 seq# 2552 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2552 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 09 11:40:36 2017
+Archived Log entry 6848 added for thread 2 sequence 2551 ID 0x434d5f0d dest 1:
+Mon Oct 09 12:40:37 2017
+Thread 2 advanced to log sequence 2553 (LGWR switch)
+  Current log# 14 seq# 2553 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2553 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 09 12:40:37 2017
+Archived Log entry 6850 added for thread 2 sequence 2552 ID 0x434d5f0d dest 1:
+Mon Oct 09 13:40:38 2017
+Thread 2 advanced to log sequence 2554 (LGWR switch)
+  Current log# 10 seq# 2554 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2554 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 09 13:40:38 2017
+Archived Log entry 6852 added for thread 2 sequence 2553 ID 0x434d5f0d dest 1:
+Mon Oct 09 14:40:36 2017
+Thread 2 advanced to log sequence 2555 (LGWR switch)
+  Current log# 2 seq# 2555 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2555 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 09 14:40:36 2017
+Archived Log entry 6854 added for thread 2 sequence 2554 ID 0x434d5f0d dest 1:
+Mon Oct 09 15:40:37 2017
+Thread 2 advanced to log sequence 2556 (LGWR switch)
+  Current log# 4 seq# 2556 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2556 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 09 15:40:37 2017
+Archived Log entry 6856 added for thread 2 sequence 2555 ID 0x434d5f0d dest 1:
+Mon Oct 09 16:40:38 2017
+Thread 2 advanced to log sequence 2557 (LGWR switch)
+  Current log# 12 seq# 2557 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2557 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 09 16:40:38 2017
+Archived Log entry 6858 added for thread 2 sequence 2556 ID 0x434d5f0d dest 1:
+Mon Oct 09 17:40:36 2017
+Thread 2 advanced to log sequence 2558 (LGWR switch)
+  Current log# 14 seq# 2558 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2558 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 09 17:40:36 2017
+Archived Log entry 6860 added for thread 2 sequence 2557 ID 0x434d5f0d dest 1:
+Mon Oct 09 18:40:37 2017
+Thread 2 advanced to log sequence 2559 (LGWR switch)
+  Current log# 10 seq# 2559 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2559 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 09 18:40:37 2017
+Archived Log entry 6862 added for thread 2 sequence 2558 ID 0x434d5f0d dest 1:
+Mon Oct 09 19:40:38 2017
+Thread 2 advanced to log sequence 2560 (LGWR switch)
+  Current log# 2 seq# 2560 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2560 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Mon Oct 09 19:40:38 2017
+Archived Log entry 6864 added for thread 2 sequence 2559 ID 0x434d5f0d dest 1:
+Mon Oct 09 20:40:36 2017
+Thread 2 advanced to log sequence 2561 (LGWR switch)
+  Current log# 4 seq# 2561 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2561 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Mon Oct 09 20:40:36 2017
+Archived Log entry 6866 added for thread 2 sequence 2560 ID 0x434d5f0d dest 1:
+Mon Oct 09 21:40:37 2017
+Thread 2 advanced to log sequence 2562 (LGWR switch)
+  Current log# 12 seq# 2562 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2562 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Mon Oct 09 21:40:37 2017
+Archived Log entry 6868 added for thread 2 sequence 2561 ID 0x434d5f0d dest 1:
+Mon Oct 09 22:40:38 2017
+Thread 2 advanced to log sequence 2563 (LGWR switch)
+  Current log# 14 seq# 2563 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2563 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Mon Oct 09 22:40:38 2017
+Archived Log entry 6870 added for thread 2 sequence 2562 ID 0x434d5f0d dest 1:
+Mon Oct 09 23:40:36 2017
+Thread 2 advanced to log sequence 2564 (LGWR switch)
+  Current log# 10 seq# 2564 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2564 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Mon Oct 09 23:40:36 2017
+Archived Log entry 6872 added for thread 2 sequence 2563 ID 0x434d5f0d dest 1:
+Tue Oct 10 00:40:37 2017
+Thread 2 advanced to log sequence 2565 (LGWR switch)
+  Current log# 2 seq# 2565 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2565 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 10 00:40:37 2017
+Archived Log entry 6874 added for thread 2 sequence 2564 ID 0x434d5f0d dest 1:
+Tue Oct 10 01:40:38 2017
+Thread 2 advanced to log sequence 2566 (LGWR switch)
+  Current log# 4 seq# 2566 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2566 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 10 01:40:38 2017
+Archived Log entry 6876 added for thread 2 sequence 2565 ID 0x434d5f0d dest 1:
+Tue Oct 10 02:40:37 2017
+Thread 2 advanced to log sequence 2567 (LGWR switch)
+  Current log# 12 seq# 2567 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2567 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 10 02:40:37 2017
+Archived Log entry 6878 added for thread 2 sequence 2566 ID 0x434d5f0d dest 1:
+Tue Oct 10 03:40:38 2017
+Thread 2 advanced to log sequence 2568 (LGWR switch)
+  Current log# 14 seq# 2568 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2568 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 10 03:40:38 2017
+Archived Log entry 6880 added for thread 2 sequence 2567 ID 0x434d5f0d dest 1:
+Tue Oct 10 04:40:36 2017
+Thread 2 advanced to log sequence 2569 (LGWR switch)
+  Current log# 10 seq# 2569 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2569 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 10 04:40:36 2017
+Archived Log entry 6882 added for thread 2 sequence 2568 ID 0x434d5f0d dest 1:
+Tue Oct 10 05:40:37 2017
+Thread 2 advanced to log sequence 2570 (LGWR switch)
+  Current log# 2 seq# 2570 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2570 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 10 05:40:37 2017
+Archived Log entry 6884 added for thread 2 sequence 2569 ID 0x434d5f0d dest 1:
+Tue Oct 10 06:40:35 2017
+Thread 2 advanced to log sequence 2571 (LGWR switch)
+  Current log# 4 seq# 2571 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2571 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 10 06:40:35 2017
+Archived Log entry 6886 added for thread 2 sequence 2570 ID 0x434d5f0d dest 1:
+Tue Oct 10 07:40:37 2017
+Thread 2 advanced to log sequence 2572 (LGWR switch)
+  Current log# 12 seq# 2572 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2572 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 10 07:40:37 2017
+Archived Log entry 6888 added for thread 2 sequence 2571 ID 0x434d5f0d dest 1:
+Tue Oct 10 08:40:38 2017
+Thread 2 advanced to log sequence 2573 (LGWR switch)
+  Current log# 14 seq# 2573 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2573 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 10 08:40:38 2017
+Archived Log entry 6890 added for thread 2 sequence 2572 ID 0x434d5f0d dest 1:
+Tue Oct 10 09:40:38 2017
+Thread 2 advanced to log sequence 2574 (LGWR switch)
+  Current log# 10 seq# 2574 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2574 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 10 09:40:38 2017
+Archived Log entry 6892 added for thread 2 sequence 2573 ID 0x434d5f0d dest 1:
+Tue Oct 10 10:40:37 2017
+Thread 2 advanced to log sequence 2575 (LGWR switch)
+  Current log# 2 seq# 2575 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2575 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 10 10:40:37 2017
+Archived Log entry 6894 added for thread 2 sequence 2574 ID 0x434d5f0d dest 1:
+Tue Oct 10 11:40:37 2017
+Thread 2 advanced to log sequence 2576 (LGWR switch)
+  Current log# 4 seq# 2576 mem# 0: +DATA/sgehisdb/onlinelog/group_4.291.951143577
+  Current log# 4 seq# 2576 mem# 1: +ARCH/sgehisdb/onlinelog/group_4.258.951143579
+Tue Oct 10 11:40:38 2017
+Archived Log entry 6896 added for thread 2 sequence 2575 ID 0x434d5f0d dest 1:
+Tue Oct 10 12:40:36 2017
+Thread 2 advanced to log sequence 2577 (LGWR switch)
+  Current log# 12 seq# 2577 mem# 0: +DATA/sgehisdb/onlinelog/group_12.316.951143257
+  Current log# 12 seq# 2577 mem# 1: +ARCH/sgehisdb/onlinelog/group_12.670.951143259
+Tue Oct 10 12:40:36 2017
+Archived Log entry 6898 added for thread 2 sequence 2576 ID 0x434d5f0d dest 1:
+Tue Oct 10 13:40:37 2017
+Thread 2 advanced to log sequence 2578 (LGWR switch)
+  Current log# 14 seq# 2578 mem# 0: +DATA/sgehisdb/onlinelog/group_14.318.951143269
+  Current log# 14 seq# 2578 mem# 1: +ARCH/sgehisdb/onlinelog/group_14.649.951143273
+Tue Oct 10 13:40:37 2017
+Archived Log entry 6900 added for thread 2 sequence 2577 ID 0x434d5f0d dest 1:
+Tue Oct 10 14:40:38 2017
+Thread 2 advanced to log sequence 2579 (LGWR switch)
+  Current log# 10 seq# 2579 mem# 0: +DATA/sgehisdb/onlinelog/group_10.314.951143241
+  Current log# 10 seq# 2579 mem# 1: +ARCH/sgehisdb/onlinelog/group_10.693.951143245
+Tue Oct 10 14:40:38 2017
+Archived Log entry 6902 added for thread 2 sequence 2578 ID 0x434d5f0d dest 1:
+Tue Oct 10 15:40:36 2017
+Thread 2 advanced to log sequence 2580 (LGWR switch)
+  Current log# 2 seq# 2580 mem# 0: +DATA/sgehisdb/onlinelog/group_2.293.951143563
+  Current log# 2 seq# 2580 mem# 1: +ARCH/sgehisdb/onlinelog/group_2.260.951143567
+Tue Oct 10 15:40:36 2017
+Archived Log entry 6904 added for thread 2 sequence 2579 ID 0x434d5f0d dest 1:

@@ -1,0 +1,226 @@
+set line 300 pages 1000
+col file_name for a60
+col file_name for a80
+col member for a70
+col name for a80
+spool db_file_information.log
+select FILE_ID,FILE_NAME,TABLESPACE_NAME,BYTES/1024/1024 MB,STATUS,AUTOEXTENSIBLE from dba_data_files order by 1;
+
+select FILE#,TS#,NAME,STATUS,BYTES/1024/1024 MB from v$datafile  order by 1;
+
+select FILE_ID,FILE_NAME,TABLESPACE_NAME,BYTES/1024/1024 MB,STATUS,AUTOEXTENSIBLE from dba_temp_files order by 1;
+select FILE#,TS#,NAME,STATUS,BYTES/1024/1024 MB from v$tempfile  order by 1;
+
+select GROUP#,MEMBER,STATUS from v$logfile order by 1;
+
+
+archive log list 
+spool off
+
+
+create pfile='/home/oracle/backup_db/pfile_20180821.ora' from spfile;
+
+df -h
+
+ls -R /ora* | grep ^/
+
+
+---DG备库停止redo应用
+SQL> ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL;
+
+SQL> shut immediate
+shutdown immediate
+
+---DSG备库停库
+SQL> shut immediate
+shutdown immediate
+
+
+--传备库/ora*目录下的文件到新存储上
+cp/ftp命令
+
+---DG备库启动
+SQL> startup mount
+
+SQL> alter database recover managed standby database disconnect from session;
+SQL> alter database recover managed standby database cancel;
+SQL> alter database open read only;
+SQL> alter database recover managed standby database using current logfile disconnect from session;
+
+set line 180 pages 1000
+col file_name for a60
+col file_name for a80
+col member for a70
+col name for a80
+select max(sequence#) from v$log;
+select name,SEQUENCE#,APPLIED from v$archived_log order by sequence#;
+
+
+intdg
+
+alter system set fal_server='sgeclndg' scope=both;
+
+
+--DSG备库启动
+SQL> startup 
+
+
+ls -R /ora* | grep ^/
+ls -R /dsg | grep ^/
+
+hisdsgdb、intdsgdb、rmdsgdb
+/oradata
+/oraarch
+/oraredo
+/dsg
+ 
+clndgdb、dspdsgdb、intdgdp、tradgdb
+/oradata
+/oraredo
+/oraarch
+
+
+
+
+clndg是open的
+dspdg是mount的
+intdg是mount的
+tradg（sgetradg、sgeregdg）是mount的
+
+
+
+mkdir /dsg1
+chown -R dsg:oinstall /dsg1
+
+mkdir /oraarch1
+mkdir /oradata1
+mkdir /oraredo1
+chown -R oracle:oinstall /oraarch1
+chown -R oracle:oinstall /oradata1
+chown -R oracle:oinstall /oraredo1
+
+
+
+
+DG备库停库操作
+备库停止redo应用
+SQL> ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL;
+关闭备库
+SQL> shutdown immediate;
+
+DSG备库停库
+	主端停止dsg同步./stop_vagentd
+	备端停止dsg同步./stop_vagentd
+关闭备库
+SQL> shutdown immediate;
+
+
+DG 
+create pfile from spfile;
+alter system set log_archive_config='' scope=both sid='*';	#修改主库参数，使其取消DG的服务配置
+show parameter log_archive_dest_1
+alter system set log_archive_dest_1='location=+ARCH' scope=both sid='*'; location=+ARCH这部分按照show的查询更改
+alter system set log_archive_dest_2='' scope=both sid='*';
+
+log_archive_dest_1这个是修改本实例的归档目录，只保留本机的就行
+log_archive_dest_2是DG备库实例的归档目录
+
+DG
+修改主库参数，取消DG的服务配置；修改本实例的归档目录，只保留本机的就行；取消DG备库实例的归档目录
+
+
+dsp
+SQL> show parameter  log_archive_config
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+log_archive_config		     string	 DG_CONFIG=(sgedspdb,sgedspdg)
+SQL> show parameter  log_archive_config
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+log_archive_config		     string
+SQL> show parameter log_archive_dest_1;
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+log_archive_dest_1		     string	 LOCATION=/oraarch VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=sgedspdb
+log_archive_dest_10		     string
+log_archive_dest_11		     string
+log_archive_dest_12		     string
+log_archive_dest_13		     string
+log_archive_dest_14		     string
+log_archive_dest_15		     string
+log_archive_dest_16		     string
+log_archive_dest_17		     string
+log_archive_dest_18		     string
+log_archive_dest_19		     string
+alter system set log_archive_dest_1='location=/oraarch' scope=both sid='*';
+alter system set log_archive_dest_2='' scope=both sid='*';
+
+
+创建rmdsgdb
+/oradata/sgermlg/RM_TBS01.dbf
+create tablespace RM_TBS datafile '/oradata/sgermlg/RM_TBS01.dbf' size 30720m autoextend off extent management local segment space management auto;
+alter tablespace RM_TBS add datafile '/oradata/sgermlg/RM_TBS02.dbf' size 30720m autoextend off;
+alter tablespace RM_TBS add datafile '/oradata/sgermlg/RM_TBS03.dbf' size 30720m autoextend off;
+create user RMC identified by "gems2rmc!" default tablespace RM_TBS;
+grant connect,resource TO RMC;
+grant create session TO RMC;
+grant create any table TO RMC;
+create user dsg identified by dsg default tablespace users temporary tablespace temp;
+grant dba to dsg;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

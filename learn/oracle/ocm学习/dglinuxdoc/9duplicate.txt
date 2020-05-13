@@ -1,0 +1,30 @@
+之前修改了参数,主备都要重启
+--p
+export ORACLE_SID=orcl
+sqlplus / as sysdba
+shutdown immediate
+startup
+--s
+export ORACLE_SID=orcl
+sqlplus / as sysdba
+shutdown immediate
+startup nomount
+
+--p
+--rman target / auxiliary sys/oracle@orcldg
+--orapwd file=$ORACLE_HOME/dbs/orapworcldg password=oracle entries=5 ;
+
+--s
+rman target sys/oracle@orcl auxiliary /
+--duplicate target database for standby;
+duplicate target database for standby nofilenamecheck;
+
+
+
+
+
+--下面的跳过
+ORA-12528: TNS: 监听程序: 所有适用例程都无法建立新连接
+
+duplicate target database for standby from active database dorecover nofilenamecheck;
+duplicate target database for standby nofilenamecheck;

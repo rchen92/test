@@ -1,0 +1,446 @@
+2017-07-16 17:47:34.532: 
+[client(18307)]CRS-2101:The OLR was formatted using version 3.
+2017-07-16 17:48:07.107: 
+[ohasd(18796)]CRS-2112:The OLR service started on node intracdb2.
+2017-07-16 17:48:07.112: 
+[ohasd(18796)]CRS-1301:Oracle High Availability Service started on node intracdb2.
+[client(19044)]CRS-10001:16-Jul-17 17:48 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(19046)]CRS-10001:16-Jul-17 17:48 ACFS-9201: Not Supported
+[client(19240)]CRS-10001:16-Jul-17 17:48 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+2017-07-16 17:48:22.178: 
+[gpnpd(19451)]CRS-2328:GPNPD started on node intracdb2. 
+2017-07-16 17:48:24.374: 
+[cssd(19510)]CRS-1713:CSSD daemon is started in exclusive mode
+2017-07-16 17:48:26.258: 
+[ohasd(18796)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 17:48:26.258: 
+[ohasd(18796)]CRS-2769:Unable to failover resource 'ora.diskmon'.
+2017-07-16 17:49:49.027: 
+[cssd(19510)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+[cssd(19510)]CRS-1636:The CSS daemon was started in exclusive mode but found an active CSS daemon on node intracdb1 and is terminating; details at (:CSSNM00006:) in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log
+2017-07-16 17:49:49.741: 
+[ohasd(18796)]CRS-2765:Resource 'ora.cssdmonitor' has failed on server 'intracdb2'.
+2017-07-16 17:49:56.356: 
+[gpnpd(19451)]CRS-2329:GPNPD on node intracdb2 shutdown. 
+2017-07-16 17:49:58.695: 
+[mdnsd(19441)]CRS-5602:mDNS service stopping by request.
+2017-07-16 17:50:16.743: 
+[gpnpd(19868)]CRS-2328:GPNPD started on node intracdb2. 
+2017-07-16 17:50:19.295: 
+[cssd(19931)]CRS-1713:CSSD daemon is started in clustered mode
+2017-07-16 17:50:21.178: 
+[ohasd(18796)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 17:50:21.178: 
+[ohasd(18796)]CRS-2769:Unable to failover resource 'ora.diskmon'.
+2017-07-16 17:50:38.853: 
+[cssd(19931)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+2017-07-16 17:50:40.116: 
+[cssd(19931)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 17:50:40.121: 
+[cssd(19931)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 17:50:40.127: 
+[cssd(19931)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 17:50:41.801: 
+[cssd(19931)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-07-16 17:50:44.482: 
+[ctssd(20045)]CRS-2403:The Cluster Time Synchronization Service on host intracdb2 is in observer mode.
+2017-07-16 17:50:44.722: 
+[ctssd(20045)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb1.
+2017-07-16 17:50:44.723: 
+[ctssd(20045)]CRS-2401:The Cluster Time Synchronization Service started on host intracdb2.
+2017-07-16 17:50:58.746: 
+[ctssd(20045)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-16 17:51:10.187: 
+[crsd(20203)]CRS-1012:The OCR service started on node intracdb2.
+2017-07-16 17:51:10.195: 
+[evmd(20219)]CRS-1401:EVMD started on node intracdb2.
+2017-07-16 17:51:11.504: 
+[crsd(20203)]CRS-1201:CRSD started on node intracdb2.
+2017-07-16 18:20:59.081: 
+[ctssd(20045)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-16 18:34:01.849: 
+[/app/11.2.0/grid/bin/orarootagent.bin(20342)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:8} in /app/11.2.0/grid/log/intracdb2/agent/crsd/orarootagent_root/orarootagent_root.log.
+2017-07-16 18:34:02.768: 
+[ctssd(20045)]CRS-2405:The Cluster Time Synchronization Service on host intracdb2 is shutdown by user
+2017-07-16 18:34:02.770: 
+[mdnsd(19855)]CRS-5602:mDNS service stopping by request.
+2017-07-16 18:34:14.291: 
+[cssd(19931)]CRS-1603:CSSD on node intracdb2 shutdown by user.
+2017-07-16 18:34:14.395: 
+[ohasd(18796)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-07-16 18:34:14.395: 
+[ohasd(18796)]CRS-2769:Unable to failover resource 'ora.cssdmonitor'.
+2017-07-16 18:34:14.492: 
+[cssd(19931)]CRS-1660:The CSS daemon shutdown has completed
+2017-07-16 18:34:15.656: 
+[ohasd(18796)]CRS-2769:Unable to failover resource 'ora.cssd'.
+2017-07-16 18:34:16.639: 
+[gpnpd(19868)]CRS-2329:GPNPD on node intracdb2 shutdown. 
+[client(39967)]CRS-10001:16-Jul-17 18:39 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(39969)]CRS-10001:16-Jul-17 18:39 ACFS-9201: Not Supported
+2017-07-16 18:39:29.538: 
+[ohasd(39975)]CRS-2112:The OLR service started on node intracdb2.
+2017-07-16 18:39:29.543: 
+[ohasd(39975)]CRS-1301:Oracle High Availability Service started on node intracdb2.
+2017-07-16 18:39:29.543: 
+[ohasd(39975)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-07-16 18:39:32.735: 
+[/app/11.2.0/grid/bin/orarootagent.bin(40060)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-07-16 18:39:37.088: 
+[gpnpd(40197)]CRS-2328:GPNPD started on node intracdb2. 
+2017-07-16 18:39:39.415: 
+[cssd(40264)]CRS-1713:CSSD daemon is started in clustered mode
+2017-07-16 18:39:41.266: 
+[ohasd(39975)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 18:39:58.983: 
+[cssd(40264)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+2017-07-16 18:40:00.230: 
+[cssd(40264)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 18:40:00.235: 
+[cssd(40264)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 18:40:00.241: 
+[cssd(40264)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-07-16 18:40:03.605: 
+[cssd(40264)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-07-16 18:40:05.423: 
+[ctssd(40549)]CRS-2403:The Cluster Time Synchronization Service on host intracdb2 is in observer mode.
+2017-07-16 18:40:05.664: 
+[ctssd(40549)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb1.
+2017-07-16 18:40:05.664: 
+[ctssd(40549)]CRS-2401:The Cluster Time Synchronization Service started on host intracdb2.
+2017-07-16 18:40:07.416: 
+[ohasd(39975)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 18:40:17.683: 
+[ctssd(40549)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-16 18:40:26.388: 
+[crsd(40803)]CRS-1012:The OCR service started on node intracdb2.
+2017-07-16 18:40:26.397: 
+[evmd(40577)]CRS-1401:EVMD started on node intracdb2.
+2017-07-16 18:40:28.305: 
+[crsd(40803)]CRS-1201:CRSD started on node intracdb2.
+2017-07-16 18:41:52.791: 
+[client(1396)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 15925(New), 13378(Old) bytes)
+2017-07-16 18:42:19.235: 
+[ctssd(40549)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb2.
+2017-07-16 18:42:19.845: 
+[cssd(40264)]CRS-1625:Node intracdb1, number 1, was shut down
+2017-07-16 18:42:19.849: 
+[cssd(40264)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb2 .
+2017-07-16 18:42:19.851: 
+[crsd(40803)]CRS-5504:Node down event reported for node 'intracdb1'.
+2017-07-16 18:42:19.851: 
+[crsd(40803)]CRS-2773:Server 'intracdb1' has been removed from pool 'Free'.
+2017-07-16 18:48:12.644: 
+[cssd(40264)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-07-16 18:48:39.067: 
+[crsd(40803)]CRS-2772:Server 'intracdb1' has been assigned to pool 'Free'.
+2017-07-16 21:20:39.985: 
+[crsd(40803)]CRS-2773:Server 'intracdb1' has been removed from pool 'Free'.
+2017-07-16 21:20:39.985: 
+[crsd(40803)]CRS-2772:Server 'intracdb1' has been assigned to pool 'Generic'.
+2017-07-16 21:20:39.985: 
+[crsd(40803)]CRS-2773:Server 'intracdb2' has been removed from pool 'Free'.
+2017-07-16 21:20:39.985: 
+[crsd(40803)]CRS-2772:Server 'intracdb2' has been assigned to pool 'Generic'.
+2017-07-16 21:20:39.986: 
+[crsd(40803)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb'.
+2017-07-16 21:20:39.986: 
+[crsd(40803)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb'.
+2017-07-17 00:42:17.277: 
+[client(27400)]CRS-10051:CVU found following errors with Clusterware setup : PRVF-7573 : Sufficient swap size is not available on node "intracdb2" [Required = 16GB (1.6777216E7KB) ; Found = 16GB (1.6777212E7KB)]
+PRVF-7532 : Package "pdksh" is missing on node "intracdb2"
+PRVF-5415 : Check to see if NTP daemon or service is running failed
+PRVG-1101 : SCAN name "intracdb-scan" failed to resolve
+PRVF-4657 : Name resolution setup check for "intracdb-scan" (IP address: 20.28.5.18) failed
+PRVF-4664 : Found inconsistent name resolution entries for SCAN name "intracdb-scan"
+
+2017-07-18 14:53:52.114: 
+[crsd(40803)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-07-18 14:53:52.114: 
+[crsd(40803)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-07-19 19:01:42.491: 
+[crsd(40803)]CRS-2767:Resource state recovery not attempted for 'ora.sgeintdb.sgeint.svc' as its target state is OFFLINE
+2017-07-19 19:01:42.492: 
+[crsd(40803)]CRS-2769:Unable to failover resource 'ora.sgeintdb.sgeint.svc'.
+2017-08-03 18:14:09.450: 
+[crsd(40803)]CRS-2767:Resource state recovery not attempted for 'ora.sgeintdb.sgeint.svc' as its target state is OFFLINE
+2017-08-03 18:14:09.450: 
+[crsd(40803)]CRS-2769:Unable to failover resource 'ora.sgeintdb.sgeint.svc'.
+2017-08-03 18:14:15.420: 
+[crsd(40803)]CRS-2767:Resource state recovery not attempted for 'ora.sgeintdb.db' as its target state is OFFLINE
+2017-08-03 18:14:15.420: 
+[crsd(40803)]CRS-2769:Unable to failover resource 'ora.sgeintdb.db'.
+2017-08-04 14:15:17.104: 
+[gpnpd(40197)]CRS-2341:GPNPD on node intracdb2 shutting down on signal 15. 
+2017-08-04 14:15:17.105: 
+[cssd(40264)]CRS-1656:The CSS daemon is terminating due to a fatal error; Details at (:CSSSC00012:) in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log
+2017-08-04 14:20:05.408: 
+[ohasd(4529)]CRS-2112:The OLR service started on node intracdb2.
+2017-08-04 14:20:05.429: 
+[ohasd(4529)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-08-04 14:20:05.428: 
+[ohasd(4529)]CRS-1301:Oracle High Availability Service started on node intracdb2.
+2017-08-04 14:20:05.842: 
+[/app/11.2.0/grid/bin/oraagent.bin(4584)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-08-04 14:20:08.881: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4588)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-08-04 14:20:11.031: 
+[gpnpd(4681)]CRS-2328:GPNPD started on node intracdb2. 
+2017-08-04 14:20:13.344: 
+[cssd(4753)]CRS-1713:CSSD daemon is started in clustered mode
+2017-08-04 14:20:15.189: 
+[ohasd(4529)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-04 14:20:32.925: 
+[cssd(4753)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+2017-08-04 14:20:34.188: 
+[cssd(4753)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-04 14:20:34.203: 
+[cssd(4753)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-04 14:20:34.211: 
+[cssd(4753)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-04 14:20:46.527: 
+[cssd(4753)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-08-04 14:20:48.342: 
+[ctssd(5024)]CRS-2403:The Cluster Time Synchronization Service on host intracdb2 is in observer mode.
+2017-08-04 14:20:48.580: 
+[ctssd(5024)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb1.
+2017-08-04 14:20:48.580: 
+[ctssd(5024)]CRS-2401:The Cluster Time Synchronization Service started on host intracdb2.
+2017-08-04 14:20:50.334: 
+[ohasd(4529)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-04 14:20:55.579: 
+[/app/11.2.0/grid/bin/oraagent.bin(4660)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-08-04 14:21:01.309: 
+[/app/11.2.0/grid/bin/oraagent.bin(4660)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-08-04 14:21:02.601: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 14:21:20.194: 
+[crsd(5324)]CRS-1012:The OCR service started on node intracdb2.
+2017-08-04 14:21:20.384: 
+[evmd(5047)]CRS-1401:EVMD started on node intracdb2.
+2017-08-04 14:21:21.293: 
+[crsd(5324)]CRS-1201:CRSD started on node intracdb2.
+2017-08-04 14:21:22.694: 
+[/app/11.2.0/grid/bin/oraagent.bin(5453)]CRS-5011:Check of resource "sgeintdb" failed: details at "(:CLSN00007:)" in "/app/11.2.0/grid/log/intracdb2/agent/crsd/oraagent_oracle//oraagent_oracle.log"
+2017-08-04 14:21:24.634: 
+[crsd(5324)]CRS-2772:Server 'intracdb2' has been assigned to pool 'Generic'.
+2017-08-04 14:21:24.634: 
+[crsd(5324)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb'.
+2017-08-04 14:21:24.635: 
+[crsd(5324)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-08-04 14:21:24.819: 
+[client(5629)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-08-04 14:21:41.285: 
+[crsd(5324)]CRS-2772:Server 'intracdb1' has been assigned to pool 'Generic'.
+2017-08-04 14:21:41.285: 
+[crsd(5324)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb'.
+2017-08-04 14:21:41.286: 
+[crsd(5324)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-08-04 14:51:02.891: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 15:21:03.358: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 15:51:03.610: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 16:21:03.779: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 16:51:03.951: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 17:21:04.132: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 17:51:04.305: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 23:05:02.457: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 23:35:02.774: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 00:05:03.098: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-06 02:07:28.078: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-06 02:40:08.436: 
+[ctssd(5024)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-07 14:30:51.563: 
+[crsd(5324)]CRS-2757:Command 'Stop' timed out waiting for response from the resource 'ora.DATA.dg'. Details at (:CRSPE00111:) {1:7402:157} in /app/11.2.0/grid/log/intracdb2/crsd/crsd.log.
+2017-08-07 14:30:53.237: 
+[/app/11.2.0/grid/bin/orarootagent.bin(5444)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:188} in /app/11.2.0/grid/log/intracdb2/agent/crsd/orarootagent_root//orarootagent_root.log.
+2017-08-07 14:30:54.138: 
+[ctssd(5024)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb2.
+2017-08-07 14:30:54.155: 
+[ctssd(5024)]CRS-2405:The Cluster Time Synchronization Service on host intracdb2 is shutdown by user
+2017-08-07 14:30:54.155: 
+[mdnsd(4671)]CRS-5602:mDNS service stopping by request.
+2017-08-07 14:31:04.213: 
+[cssd(4753)]CRS-1625:Node intracdb1, number 1, was shut down
+2017-08-07 14:31:04.215: 
+[cssd(4753)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb2 .
+2017-08-07 14:31:05.116: 
+[cssd(4753)]CRS-1603:CSSD on node intracdb2 shutdown by user.
+2017-08-07 14:31:05.220: 
+[ohasd(4529)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-08-07 14:31:05.317: 
+[cssd(4753)]CRS-1660:The CSS daemon shutdown has completed
+2017-08-07 14:31:08.800: 
+[gpnpd(4681)]CRS-2329:GPNPD on node intracdb2 shutdown. 
+2017-08-07 14:32:11.154: 
+[ohasd(5975)]CRS-2112:The OLR service started on node intracdb2.
+2017-08-07 14:32:11.159: 
+[ohasd(5975)]CRS-1301:Oracle High Availability Service started on node intracdb2.
+2017-08-07 14:32:11.159: 
+[ohasd(5975)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-08-07 14:32:14.351: 
+[/app/11.2.0/grid/bin/orarootagent.bin(6022)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-08-07 14:32:18.688: 
+[gpnpd(6116)]CRS-2328:GPNPD started on node intracdb2. 
+2017-08-07 14:32:21.002: 
+[cssd(6187)]CRS-1713:CSSD daemon is started in clustered mode
+2017-08-07 14:32:22.857: 
+[ohasd(5975)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 14:32:40.531: 
+[cssd(6187)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+2017-08-07 14:32:41.782: 
+[cssd(6187)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-07 14:32:41.786: 
+[cssd(6187)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-07 14:32:41.791: 
+[cssd(6187)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-08-07 14:32:50.905: 
+[cssd(6187)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb2 .
+2017-08-07 14:32:52.008: 
+[ctssd(6457)]CRS-2403:The Cluster Time Synchronization Service on host intracdb2 is in observer mode.
+2017-08-07 14:32:52.242: 
+[ctssd(6457)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb2.
+2017-08-07 14:32:52.243: 
+[ctssd(6457)]CRS-2401:The Cluster Time Synchronization Service started on host intracdb2.
+2017-08-07 14:32:54.011: 
+[ohasd(5975)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 14:32:55.578: 
+[cssd(6187)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-08-07 14:33:14.346: 
+[crsd(6713)]CRS-1012:The OCR service started on node intracdb2.
+2017-08-07 14:33:15.047: 
+[evmd(6479)]CRS-1401:EVMD started on node intracdb2.
+2017-08-07 14:33:15.920: 
+[crsd(6713)]CRS-1201:CRSD started on node intracdb2.
+2017-08-07 14:33:21.363: 
+[crsd(6713)]CRS-2772:Server 'intracdb2' has been assigned to pool 'Generic'.
+2017-08-07 14:33:21.364: 
+[crsd(6713)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb'.
+2017-08-07 14:33:21.364: 
+[crsd(6713)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-08-07 14:33:21.565: 
+[client(7048)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-08-07 14:33:46.905: 
+[crsd(6713)]CRS-2772:Server 'intracdb1' has been assigned to pool 'Generic'.
+2017-08-07 14:33:46.905: 
+[crsd(6713)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb'.
+2017-08-07 14:33:46.905: 
+[crsd(6713)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-08-07 14:51:00.541: 
+[crsd(6713)]CRS-2773:Server 'intracdb1' has been removed from pool 'ora.sgeintdb_sgeint'.
+2017-08-07 14:51:00.541: 
+[crsd(6713)]CRS-2773:Server 'intracdb2' has been removed from pool 'ora.sgeintdb_sgeint'.
+2017-08-07 14:51:18.222: 
+[crsd(6713)]CRS-2772:Server 'intracdb1' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-08-07 14:51:18.222: 
+[crsd(6713)]CRS-2772:Server 'intracdb2' has been assigned to pool 'ora.sgeintdb_sgeint'.
+2017-09-20 13:49:44.990: 
+[cssd(6187)]CRS-1656:The CSS daemon is terminating due to a fatal error; Details at (:CSSSC00012:) in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log
+2017-09-20 13:49:44.990: 
+[gpnpd(6116)]CRS-2341:GPNPD on node intracdb2 shutting down on signal 15. 
+2017-09-20 13:54:29.250: 
+[ohasd(4535)]CRS-2112:The OLR service started on node intracdb2.
+2017-09-20 13:54:29.257: 
+[ohasd(4535)]CRS-1301:Oracle High Availability Service started on node intracdb2.
+2017-09-20 13:54:29.258: 
+[ohasd(4535)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-09-20 13:54:29.601: 
+[/app/11.2.0/grid/bin/oraagent.bin(4583)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 13:54:32.590: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4587)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-09-20 13:54:34.732: 
+[gpnpd(4681)]CRS-2328:GPNPD started on node intracdb2. 
+2017-09-20 13:54:37.058: 
+[cssd(4739)]CRS-1713:CSSD daemon is started in clustered mode
+2017-09-20 13:54:38.940: 
+[ohasd(4535)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-20 13:55:04.623: 
+[cssd(4739)]CRS-1707:Lease acquisition for node intracdb2 number 2 completed
+2017-09-20 13:55:05.866: 
+[cssd(4739)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-09-20 13:55:05.874: 
+[cssd(4739)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-09-20 13:55:05.880: 
+[cssd(4739)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/intracdb2/cssd/ocssd.log.
+2017-09-20 13:55:09.401: 
+[cssd(4739)]CRS-1601:CSSD Reconfiguration complete. Active nodes are intracdb1 intracdb2 .
+2017-09-20 13:55:11.097: 
+[ctssd(4999)]CRS-2403:The Cluster Time Synchronization Service on host intracdb2 is in observer mode.
+2017-09-20 13:55:11.335: 
+[ctssd(4999)]CRS-2407:The new Cluster Time Synchronization Service reference node is host intracdb1.
+2017-09-20 13:55:11.336: 
+[ctssd(4999)]CRS-2401:The Cluster Time Synchronization Service started on host intracdb2.
+2017-09-20 13:55:13.091: 
+[ohasd(4535)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-20 13:55:18.332: 
+[/app/11.2.0/grid/bin/oraagent.bin(4657)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 13:55:24.099: 
+[/app/11.2.0/grid/bin/oraagent.bin(4657)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/intracdb2/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 13:55:32.358: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 13:55:42.555: 
+[crsd(5266)]CRS-1012:The OCR service started on node intracdb2.
+2017-09-20 13:55:42.562: 
+[evmd(5020)]CRS-1401:EVMD started on node intracdb2.
+2017-09-20 13:55:43.523: 
+[crsd(5266)]CRS-1201:CRSD started on node intracdb2.
+2017-09-20 13:55:45.163: 
+[/app/11.2.0/grid/bin/oraagent.bin(5390)]CRS-5011:Check of resource "sgeintdb" failed: details at "(:CLSN00007:)" in "/app/11.2.0/grid/log/intracdb2/agent/crsd/oraagent_oracle//oraagent_oracle.log"
+2017-09-20 14:33:16.762: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 15:12:21.182: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 16:36:30.090: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 21:47:29.472: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 14:59:08.562: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 15:29:08.908: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 20:18:00.074: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 20:48:00.394: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-23 11:26:49.029: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-23 11:58:01.365: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-27 21:42:45.374: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-29 02:44:07.933: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-01 18:46:01.217: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-01 19:16:33.543: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-01 19:46:41.874: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-03 18:18:23.629: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-03 21:48:57.867: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-03 22:20:34.204: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-04 14:30:04.606: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-05 06:00:30.583: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-05 19:26:39.203: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-08 23:08:47.709: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-08 23:38:48.025: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-10-10 08:32:45.092: 
+[ctssd(4999)]CRS-2409:The clock on host intracdb2 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.

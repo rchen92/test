@@ -1,0 +1,331 @@
+内存实际分配
+set pagesize 100 linesize 2000 TRIMSPOOL on
+    col inst for a4
+    col COMPONENT for a21;
+    col CURRENT_SIZE for a12;
+    col MIN_SIZE for a8;
+    col MAX_SIZE for a18;
+    col USER_SPECIFIED_SIZE for a19;    
+    ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:ss';
+    select inst_id inst, component,
+        case when current_size/1024/1024/1024>1 then  current_size/1024/1024/1024||'G' else current_size/1024/1024||'M' end  current_size,
+        case when min_size/1024/1024/1024>1 then  min_size/1024/1024/1024||'G' else min_size/1024/1024||'M' end  min_size,
+        case when max_size/1024/1024/1024>1 then  max_size/1024/1024/1024||'G' else max_size/1024/1024||'M' end  max_size,
+        case when USER_SPECIFIED_SIZE/1024/1024/1024>1 then  USER_SPECIFIED_SIZE/1024/1024/1024||'G' else USER_SPECIFIED_SIZE/1024/1024||'M' end USER_SPECIFIED_SIZE,
+        OPER_COUNT,LAST_OPER_TYPE,LAST_OPER_MODE,LAST_OPER_TIME ,(select name from v$database) db_name,(select DB_UNIQUE_NAME from v$database) DB_UNIQUE_NAME ,(select DATABASE_ROLE from v$database) DATABASE_ROLE,sysdate sysdate_
+        from gv$memory_dynamic_components mdc
+        where current_size>0
+        order by inst_id,current_size desc, component;
+
+
+
+--快照间隔内 总的数据库时间，判断数据库是繁忙还是空闲**********************
+select ss.INSTANCE_NUMBER,ss.SNAP_ID,sn.begin_interval_time , to_char( begin_interval_time,'DY') week_n,sn.end_interval_time , ss.stat_name , ss.value end_value,
+    lag(ss.value, 1) over(partition by ss.instance_number order by ss.instance_number,ss.snap_id) "begin_value(lag last)" ,
+    round((ss.value-lag(ss.value, 1) over(partition by ss.instance_number order by ss.instance_number,ss.snap_id))/1000/1000) "DB time(s)",
+    round((ss.value-lag(ss.value, 1) over(partition by ss.instance_number order by ss.instance_number,ss.snap_id))/1000/1000/(extract(day from(end_interval_time - begin_interval_time))*24*60*60 + 
+    extract(hour from(end_interval_time - begin_interval_time))*60*60 + 
+        extract(minute from(end_interval_time - begin_interval_time)) * 60 + 
+        extract(second from(end_interval_time - begin_interval_time))),2) "倍数(DBtime/快照间隔)"
+    from dba_hist_sys_time_model ss, dba_hist_snapshot sn 
+    where trunc(sn.begin_interval_time) >= sysdate-7  
+         and ss.dbid = sn.dbid
+        and ss.instance_number = sn.instance_number 
+        and ss.SNAP_ID=sn.SNAP_ID
+        and ss.dbid = (select dbid from v$database)
+        --and ss.instance_number = (select instance_number from v$instance) --只看当前实例
+        --and ss.instance_number =1  --1 or 2 看特定实例
+        and ss.stat_name = 'DB time'
+    order by to_char(sn.begin_interval_time,'yyyy/mm/dd hh24:mi') desc,ss.INSTANCE_NUMBER
+    ;
+
+
+使用addm脚本分析查看
+
+
+
+
+语句优化
+HR用户查看employees表的索引
+select index_name, blevel, num_rows,DISTINCT_KEYS,CLUSTERING_FACTOR,LAST_ANALYZED,SAMPLE_SIZE  from user_indexes 
+where table_name = 'EMPLOYEES'; 
+-CLUSTERING_FACTOR聚簇因子太大，越小越好（<=表块)，越小越有序。但是不强求一个列的聚簇因子很小，因为此列的聚簇因子越小，其他列就越混乱。
+
+		##降低高水位线
+set autotrace traceonly
+set autotrace on
+select * from employees where employee_id=102;
+
+--set autotrace traceonly
+set autotrace ON
+SELECT * FROM  EMPLOYEES WHERE EMPLOYEE_ID=102;
+
+set autotrace ON
+SELECT EMPLOYEE_ID FROM  EMPLOYEES WHERE EMPLOYEE_ID=102;
+
+set autotrace ON
+SELECT * FROM  EMPLOYEES;
+
+set autotrace traceonly
+--set autotrace ON
+SELECT * FROM  EMPLOYEES;
+
+
+SQL> set autotrace traceonly;
+SP2-0618: Cannot find the Session Identifier.  Check PLUSTRACE role is enabled
+SP2-0611: Error enabling STATISTICS report
+
+--linux开启autotrace
+	--linux or unix
+	su - oracle
+	sqlplus / as sysdba
+	@?/rdbms/admin/utlxplan.sql;  
+	@?/sqlplus/admin/plustrce;
+	grant plustrace to public;
+	grant select on v_$session to public;	#让toad有权限
+
+
+范围扫描（非唯一索引）
+
+dba权限
+--20查看实际计划(包含执行次数，估计行数，实际提取行数，执行耗时，一致读等) 自动生成sqlplus或toad能执行的带绑定变量的sql ** 
+    --set autotrace traceonly
+    set serveroutput off
+    alter session set statistics_level='all';
+    set timing on
+    set sqlblanklines on
+    --******modify
+    --如果是当前用户,alter session set current_schema=;可省去
+    alter session set current_schema=hr;
+    SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;
+    set linesize 2000
+    SET TRIMSPOOL on
+    set pagesize 0
+    select * from table(dbms_xplan.display_cursor(null,null,'ALLSTATS LAST'));
+
+
+--20查看实际计划(包含执行次数，估计行数，实际提取行数，执行耗时，一致读等) 自动生成sqlplus或toad能执行的带绑定变量的sql ** 
+    --set autotrace traceonly
+    set serveroutput off
+    alter session set statistics_level='all';
+    set timing on
+    set sqlblanklines on
+    --******modify
+    --如果是当前用户,alter session set current_schema=;可省去
+    alter session set current_schema=hr;
+     select e.last_name || ', ' || e.first_name as full_name,
+        e.phone_number, e.email, e.department_id,
+        d.department_name, c.country_name, l.city, l.state_province,
+        r.region_name
+        from hr.employees e, hr.departments d, hr.countries c,
+        hr.locations l, hr.regions r
+        where e.department_id = d.department_id
+        and d.location_id = l.location_id
+        and l.country_id = c.country_id
+        and c.region_id = r.region_id;
+
+    set linesize 2000
+    SET TRIMSPOOL on
+    set pagesize 0
+    select * from table(dbms_xplan.display_cursor(null,null,'ALLSTATS LAST'));
+
+
+
+分区，一个分区一个分区的进行迁移，对生产没有影响
+
+
+
+set autotrace traceonly
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID is null;		#为空，建一个伪列的索引
+        --TABLE ACCESS FULL | EMPLOYEES
+--set autotrace ON
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;
+    --Plan
+    SELECT STATEMENT  ALL_ROWSCost: 8  Bytes: 483  Cardinality: 7          
+        2 TABLE ACCESS BY GLOBAL INDEX ROWID TABLE HR.EMPLOYEES Cost: 8  Bytes: 483  Cardinality: 7  Partition #: 1  Partition access computed by row location    
+            1 INDEX RANGE SCAN INDEX HR.EMP_DEPARTMENT_IX Cost: 1  Cardinality: 7  
+
+
+CREATE INDEX HR.if$emp$DEPARTMENT_ID$1 ON HR.EMPLOYEES
+(DEPARTMENT_ID,1)
+NOLOGGING
+TABLESPACE EXAMPLE
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+NOPARALLEL online;
+
+
+此时还有个问题，索引。。。
+HR.EMP_DEPARTMENT_IX
+if$emp$DEPARTMENT_ID$1
+
+现在可以使用下面两种查询
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID is null;
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;
+那么就不需要HR.EMP_DEPARTMENT_IX这个索引了，因为现在SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;查询的时候可以走上面的两个索引，而且效果是一样的，那么还需要HR.EMP_DEPARTMENT_IX这个索引干嘛。
+
+set autotrace ON
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;
+        --走的是INDEX RANGE SCAN HR.EMP_DEPARTMENT_IX索引，4个consisent gets（一致读）
+drop index HR.EMP_DEPARTMENT_IX;
+set autotrace ON
+SELECT * FROM  EMPLOYEES WHERE DEPARTMENT_ID=100;
+        --现在走的是HR.if$emp$DEPARTMENT_ID$1索引，也是4个consisent gets（一致读）
+
+
+
+set autotrace traceonly
+SELECT count(*) cnt1,count(1) cnt2 FROM  EMPLOYEES ;
+
+
+
+alter session set current_schema=hr;
+--产生一个13万记录表
+create table test_index_skip_scan as select * from dba_objects;
+--112个用户的最小对象id都修改为1
+update test_index_skip_scan set object_id=1 where object_id in
+  (select object_id from (select min(object_id) object_id ,owner from test_index_skip_scan group by owner));
+commit;
+--112个用户的最大对象id都修改为100000000
+update test_index_skip_scan set object_id=100000000 where object_id in
+ (select object_id from (select max(object_id) object_id ,owner from test_index_skip_scan group by owner));
+ commit;
+--产生组合索引:用户+对象id
+create index i$tiss$owner$object_id on test_index_skip_scan(owner,object_id);
+exec dbms_stats.gather_table_stats('hr','test_index_skip_scan');
+--select * from test_index_skip_scan;
+set autotrace traceonly
+select /*+ index_ffs(test_index_skip_scan) */ count(*) from test_index_skip_scan where object_id=1;
+set autotrace traceonly
+select count(*) from test_index_skip_scan where object_id=1;
+set autotrace traceonly
+select count(*) from test_index_skip_scan where object_id=100000000;
+
+set autotrace traceonly
+select count(*) from test_index_skip_scan where object_id=1;
+
+select distinct owner from test_index_skip_scan;
+	--32rows
+
+1.提示 hint
+	/*+ index_ffs(test_index_skip_scan) */
+2.大纲 outline
+3. Sqlprofile
+现在不建议使用上面的1和2，基本上都废除了，最好使用3
+
+
+
+set autotrace traceonly
+select * from employees order by last_name;
+	#索引是排序的，通过排序时走索引
+pga+temp表空间
+
+set autotrace traceonly
+select * from employees;
+
+
+
+多表连接方式
+--20查看实际计划(包含执行次数，估计行数，实际提取行数，执行耗时，一致读等) 自动生成sqlplus或toad能执行的带绑定变量的sql ** 
+    --set autotrace traceonly
+    set serveroutput off
+    alter session set statistics_level='all';
+    set timing on
+    set sqlblanklines on
+    --******modify
+    --如果是当前用户,alter session set current_schema=;可省去
+    alter session set current_schema=scott;				--##没有加索引
+select d.dname,e.ENAME
+　　from emp e,dept d
+　　where d.deptno = e.deptno and e.empno=7369;
+set linesize 2000
+    SET TRIMSPOOL on
+    set pagesize 0
+    select * from table(dbms_xplan.display_cursor(null,null,'ALLSTATS LAST'));
+
+--20查看实际计划(包含执行次数，估计行数，实际提取行数，执行耗时，一致读等) 自动生成sqlplus或toad能执行的带绑定变量的sql ** 
+    --set autotrace traceonly
+    set serveroutput off
+    alter session set statistics_level='all';
+    set timing on
+    set sqlblanklines on
+    --******modify
+    --如果是当前用户,alter session set current_schema=;可省去
+    alter session set current_schema=scott;
+    create index i$emp$deptno on emp(deptno) online;		--##加一个索引
+select d.dname,e.ENAME
+　　from emp e,dept d
+　　where d.deptno = e.deptno and e.empno=7369;
+set linesize 2000
+    SET TRIMSPOOL on
+    set pagesize 0
+    select * from table(dbms_xplan.display_cursor(null,null,'ALLSTATS LAST'));
+    --结论:驱动表的连接列上加不加索引都一样,被驱动表的连接列上一定需要
+
+
+驱动表，被驱动表
+
+
+--20查看实际计划(包含执行次数，估计行数，实际提取行数，执行耗时，一致读等) 自动生成sqlplus或toad能执行的带绑定变量的sql ** 
+    --set autotrace traceonly
+    set serveroutput off
+    alter session set statistics_level='all';
+    set timing on
+    set sqlblanklines on
+    --******modify
+    --如果是当前用户,alter session set current_schema=;可省去
+    alter session set current_schema=scott;
+    --drop index scott.I$EMP$DEPTNO ;
+select  a.dname,b.ENAME
+　　from dept a,emp b
+　　where a.deptno = b.deptno;
+--关联列上不需要加索引
+set linesize 2000
+    SET TRIMSPOOL on
+    set pagesize 0
+    select * from table(dbms_xplan.display_cursor(null,null,'ALLSTATS LAST'));
+
+
+
+查看索引是否经常使用，删除基本上不用的
+
+
+
+
+重建online，不阻塞业务
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

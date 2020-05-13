@@ -1,0 +1,33 @@
+安装以下三个软件之后
+IO-Tty
+Term-ReadLine-Gnu
+uniread
+
+IO-Tty
+	# perl Makefile.PL
+	#make 
+	#make install
+Term-ReadLine-Gnu
+	# perl Makefile.PL
+	# make 
+	# make install
+uniread
+	# perl Makefile.PL
+	# make 
+	# make install
+
+执行uniread sqlplus / as sysdba
+进入到oracle里面后，就可以按键盘的上下键来调出之前的命令。
+
+
+
+
+
+
+
+
+
+
+
+
+

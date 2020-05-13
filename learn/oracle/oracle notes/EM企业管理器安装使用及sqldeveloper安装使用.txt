@@ -1,0 +1,101 @@
+第一企业常用oracle数据量管理工具EM
+工具2：EM企业管理dbconsole图形管理界面
+服务器配置
+	1、数据启动
+		[root@oracle-server ~]# su - oracle
+		[oracle@oracle-server ~]$ sqlplus / as sysdba
+		SQL> select status from v$instance;
+		STATUS
+		------------
+		OPEN			#如果不是OPEN，要SQL> startup启动
+	2、保证侦听启动，数据库orcl服务注册到侦听
+		[root@oracle-server ~]# su - grid
+		[grid@oracle-server ~]$ lsnrctl status
+		......
+		  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+		  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=oracle-server)(PORT=1521)))
+		Services Summary...
+		Service "+ASM" has 1 instance(s).
+		  Instance "+ASM", status READY, has 1 handler(s) for this service...
+		Service "orcl.example.com" has 1 instance(s).
+		  Instance "orcl", status READY, has 1 handler(s) for this service...
+		Service "orclXDB.example.com" has 1 instance(s).
+		  Instance "orcl", status READY, has 1 handler(s) for this service...
+		The command completed successfully
+			#没有看到端口1521或者没有看到orcl服务，则必须重启侦听
+			[grid@oracle-server ~]$ lsnrctl stop
+			[grid@oracle-server ~]$ lsnrctl start
+
+----------------------------------------------------
+	[oracle@oracle-server ~]$ emctl status dbconsole
+	...
+	Oracle Enterprise Manager 11g is running. 
+	...
+	[oracle@oracle-server ~]$ emctl stop dbconsole
+	Stopping Oracle Enterprise Manager 11g Database Control ... 
+	 ...  Stopped. 
+	[oracle@oracle-server ~]$ emctl status dbconsole
+	Oracle Enterprise Manager 11g is not running.
+	[oracle@oracle-server ~]$ emctl start dbconsole
+	...
+	Starting Oracle Enterprise Manager 11g Database Control ....... started. 
+	[oracle@oracle-server ~]$ emctl status dbconsole
+	...
+	Oracle Enterprise Manager 11g is running.
+
+	打开谷歌浏览器，输入IP地址：https://192.168.56.10:1158/em （orclXDB.example.com），显示不是安全的链接，点确定继续，进入登录界面，用户sys，密码oracle，连接身份选SYSDBA，截图EM001，登录（语言设置一定要是中文，不然有些按钮是不显示的），就进入到了oracle的EM企业级管理器，截图EM002。
+
+--------------------------------------------------------
+练习：要求建立以web_admin的账户，允许登录EM实施管理权限
+		Server ---> Users ---> create ---> 输入 web_admin
+												oracle
+		Roles ---> dba
+		System Privileges ---> sysdba
+		点右上角有一个 show sql 按钮，点ok
+
+		允许登录EM
+		EM的右上角 ---> Setup  ---> Administrators ---> create
+		选择 web_admin，给超级管理员权限
+
+	要求用web_admin登录em，然后给scott用户创建一个表 scott.xs {id name}
+		EM的右上角 ---> logout ---> login
+		web_admin
+		oracel	登录
+		
+		Schema ---> tables ---> create
+
+	em也可以输入SQL语句
+	回到home页面，最下面 SQL Worksheet
+
+
+课后练习：输入select * from scott.emp，查看执行的统计信息、执行计划等，并做出中文翻译
+
+课后练习：要求建立一个自己名字命名的账户，允许登录EM实施管理权限，然后用自己的名字建立的账户登录EM，然后给scott用户创建一个表，表名叫goodman(id name)
+
+------------------------------------------------------
+第二管理开发
+工具1：oracle sql developer 免费操作都和 pl-sql developer			#基本上是oracle开发人员用的
+先下载软件
+www.oracle.com
+Developer Tools
+SQL Developer
+Downloads ---> Oracle SQL Developer 4.x.x
+实验1：使用sql developer连接数据库
+	查看 ---> 连接
+	新建立连接
+	输入
+		连接名：to_orcl_sys		例如：chenoracle.sys或者其他的
+		用户名：sys
+		口令：oracle
+		连接类型 基本	角色 sysdba
+		主机名：192.168.56.10
+		端口：1521
+		sid:orcl	或者 服务器名orcl.example.com
+
+
+
+
+
+
+
+

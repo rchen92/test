@@ -1,0 +1,266 @@
+restore还原（类似于copy）
+recover恢复（类似于修复）
+
+
+rman的环境变量及配置
+	修改默认的变量
+	使用run 临时修改
+
+RMAN> show all ;
+using target database control file instead of recovery catalog
+RMAN configuration parameters for database with db_unique_name ORCL are:
+CONFIGURE RETENTION POLICY TO REDUNDANCY 1; # default
+CONFIGURE BACKUP OPTIMIZATION OFF; # default
+CONFIGURE DEFAULT DEVICE TYPE TO DISK; # default	#默认备份到磁盘
+CONFIGURE CONTROLFILE AUTOBACKUP OFF; # default
+CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO '%F'; # default
+CONFIGURE DEVICE TYPE DISK PARALLELISM 1 BACKUP TYPE TO BACKUPSET; # default
+CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE MAXSETSIZE TO UNLIMITED; # default
+CONFIGURE ENCRYPTION FOR DATABASE OFF; # default
+CONFIGURE ENCRYPTION ALGORITHM 'AES128'; # default
+CONFIGURE COMPRESSION ALGORITHM 'BASIC' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD TRUE ; # default
+CONFIGURE ARCHIVELOG DELETION POLICY TO NONE; # default
+CONFIGURE SNAPSHOT CONTROLFILE NAME TO '/u01/app/oracle/product/11.1.0/dbhome_1/dbs/snapcf_orcl.f'; # default
+
+RMAN> CONFIGURE RETENTION POLICY TO;
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "none, recovery, redundancy"
+	#这里会告诉你需要跟什么	none
+							redundancy，备份冗余度，默认为1，表示备份集只有一个就行
+							recovery，备份过期时间
+RMAN> CONFIGURE RETENTION POLICY TO recovery;
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "window"		#告诉你后面需要跟一个window
+RMAN> CONFIGURE RETENTION POLICY TO recovery window;
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "of"
+RMAN> CONFIGURE RETENTION POLICY TO recovery window of;		
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "integer"  #需要跟一个整数，所以这些值都不需要去记，只要记得在什么地方就行
+RMAN> CONFIGURE RETENTION POLICY TO recovery window of 10;
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "days"
+RMAN> CONFIGURE RETENTION POLICY TO recovery window of 10 days;		#现在就配置默认的备份集时间在10天之后就无效了，指数据文件
+new RMAN configuration parameters:
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 10 DAYS;
+new RMAN configuration parameters are successfully stored
+
+在数据库的结构发生变化的时候，去备份一下控制文件
+RMAN> CONFIGURE CONTROLFILE AUTOBACKUP on;		
+new RMAN configuration parameters:
+CONFIGURE CONTROLFILE AUTOBACKUP ON;
+new RMAN configuration parameters are successfully stored
+RMAN> list backup of controlfile;
+List of Backup Sets
+===================
+BS Key  Type LV Size       Device Type Elapsed Time Completion Time
+------- ---- -- ---------- ----------- ------------ ---------------
+11      Full    9.36M      DISK        00:00:05     18-OCT-16      
+        BP Key: 11   Status: AVAILABLE  Compressed: NO  Tag: TAG20161018T235012
+        Piece Name: +FRA/orcl/backupset/2016_10_18/ncsnf0_tag20161018t235012_0.274.925602861
+  Control File Included: Ckp SCN: 1141434      Ckp time: 18-OCT-16
+BS Key  Type LV Size       Device Type Elapsed Time Completion Time
+------- ---- -- ---------- ----------- ------------ ---------------
+13      Full    9.36M      DISK        00:00:03     19-OCT-16      
+        BP Key: 13   Status: AVAILABLE  Compressed: NO  Tag: TAG20161019T000431
+        Piece Name: /backup/dbfull_0drin5p1_1_1
+  Control File Included: Ckp SCN: 1146079      Ckp time: 19-OCT-16
+
+SQL> create tablespace u1 datafile '+DATA/orcl/datafile.dbf' size 5m;
+Tablespace created.
+
+#定义多个通道
+CONFIGURE DEVICE TYPE DISK PARALLELISM 1 BACKUP TYPE TO BACKUPSET; # default
+RMAN> CONFIGURE DEVICE TYPE DISK PARALLELISM 2 BACKUP TYPE TO BACKUPSET;          
+new RMAN configuration parameters:
+CONFIGURE DEVICE TYPE DISK PARALLELISM 2 BACKUP TYPE TO BACKUPSET;
+new RMAN configuration parameters are successfully stored
+released channel: ORA_DISK_1
+RMAN> backup current controlfile;
+Starting backup at 24-OCT-16
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=67 device type=DISK
+allocated channel: ORA_DISK_2
+channel ORA_DISK_2: SID=51 device type=DISK		#ORA_DISK_2: SID=51，这就是第二个通道
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+including current control file in backup set
+channel ORA_DISK_1: starting piece 1 at 24-OCT-16
+channel ORA_DISK_1: finished piece 1 at 24-OCT-16
+piece handle=+FRA/orcl/backupset/2016_10_24/ncnnf0_tag20161024t102333_0.260.926072617 tag=TAG20161024T102333 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:03
+Finished backup at 24-OCT-16
+Starting Control File and SPFILE Autobackup at 24-OCT-16
+piece handle=+FRA/orcl/autobackup/2016_10_24/s_926072620.278.926072623 comment=NONE
+Finished Control File and SPFILE Autobackup at 24-OCT-16
+
+
+#做多个备份，在不同的目录下
+	+DATA/orcl/backup
+	+FRA/orcl/backup
+CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+
+RMAN> CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 2;          
+new RMAN configuration parameters:
+CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 2;
+new RMAN configuration parameters are successfully stored
+RMAN> CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 2;         
+new RMAN configuration parameters:
+CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 2;
+new RMAN configuration parameters are successfully stored
+RMAN> CONFIGURE CHANNEL 2 DEVICE TYPE DISK FORMAT '+DATA/backup','+FRA/backup';
+#同时还要改一个参数
+SQL> show parameter db_re
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_file_dest		     string	 +FRA
+db_recovery_file_dest_size	     big integer 3882M
+db_recycle_cache_size		     big integer 0
+SQL> alter system set db_recovery_file_dest='';			#设置为空，则OMF自动管理文件就关闭了，不建议这样。
+#之后的备份就都是多元备份
+#但是一般情况下，10g之后就不需要这样，所以还是改回来
+SQL> alter system set db_recovery_file_dest='+FRA';
+RMAN> CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; 
+RMAN> CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1;   
+
+
+
+#优化默认值
+CONFIGURE BACKUP OPTIMIZATION OFF; # default		#改为ON就可以了
+
+#压缩备份
+CONFIGURE DEVICE TYPE DISK PARALLELISM 2 BACKUP TYPE TO BACKUPSET;
+RMAN> CONFIGURE DEVICE TYPE DISK PARALLELISM 2 BACKUP TYPE TO;          
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00558: error encountered while parsing input commands
+RMAN-01009: syntax error: found ";": expecting one of: "backupset, compressed, copy"
+RMAN> CONFIGURE DEVICE TYPE DISK PARALLELISM 2 BACKUP TYPE TO compressed backupset;
+
+#加密备份
+CONFIGURE ENCRYPTION FOR DATABASE OFF; # default
+RMAN> CONFIGURE ENCRYPTION FOR DATABASE ON;
+
+
+#临时修改参数
+RMAN> run {
+2> allocate channel a1 type disk;
+3> allocate channel a2 type disk;
+4> backup database;
+5> release channel a1;
+6> release channel a2;
+7> }
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of allocate command at 10/24/2016 10:59:21
+ORA-01013: user requested cancel of current operation		#此时是因为连接过久，退出重新连接
+RMAN> exit
+
+[oracle@oracle58iso ~]$ rman target /
+RMAN> run {
+2> allocate channel a1 type disk;
+3> allocate channel a2 type disk;
+4> backup database;
+5> release channel a1;
+6> release channel a2;
+7> }
+...
+ORA-19809: limit exceeded for recovery files		#快速恢复区空间不够了
+ORA-19804: cannot reclaim 53477376 bytes disk space from 4070572032 limit
+...
+RMAN> delete noprompt archivelog until time 'sysdate -7';
+
+[oracle@oracle58iso ~]$ cd /backup/
+[oracle@oracle58iso backup]$ vim run	
+run {
+allocate channel a1 type disk;		allocate channel a1 type disk maxpiecesize 1g;
+allocate channel a2 type disk;		allocate channel a2 type disk maxpiecesize 1g;
+backup database;					backup database filesperset 3;#每三个文件一个备份集，如果有5个文件，则就会生成两个备份集
+release channel a1;
+release channel a2;
+}
+
+[oracle@oracle58iso backup]$ rman target / @ /backup/run
+RMAN> run {
+2> allocate channel a1 type disk;
+3> allocate channel a2 type disk;
+4> backup database;
+5> release channel a1;
+6> release channel a2;
+7> }
+8> 
+using target database control file instead of recovery catalog
+allocated channel: a1
+channel a1: SID=66 device type=DISK
+
+allocated channel: a2
+channel a2: SID=65 device type=DISK
+
+Starting backup at 24-OCT-16
+channel a1: starting full datafile backup set
+channel a1: specifying datafile(s) in backup set
+input datafile file number=00001 name=+DATA/orcl/datafile/system.256.924877991
+input datafile file number=00003 name=+DATA/orcl/datafile/undotbs1.258.924877993
+channel a1: starting piece 1 at 24-OCT-16
+channel a2: starting full datafile backup set
+channel a2: specifying datafile(s) in backup set
+input datafile file number=00002 name=+DATA/orcl/datafile/sysaux.257.924877991
+input datafile file number=00005 name=+DATA/orcl/datafile/example.265.924878469
+input datafile file number=00004 name=+DATA/orcl/datafile/users.259.924877995
+channel a2: starting piece 1 at 24-OCT-16
+channel a2: finished piece 1 at 24-OCT-16
+piece handle=+FRA/orcl/backupset/2016_10_24/nnndf0_tag20161024t122729_0.260.926080055 tag=TAG20161024T122729 comment=NONE
+channel a2: backup set complete, elapsed time: 00:02:46
+channel a1: finished piece 1 at 24-OCT-16
+piece handle=+FRA/orcl/backupset/2016_10_24/nnndf0_tag20161024t122729_0.278.926080053 tag=TAG20161024T122729 comment=NONE
+channel a1: backup set complete, elapsed time: 00:02:58
+Finished backup at 24-OCT-16
+
+Starting Control File and SPFILE Autobackup at 24-OCT-16
+piece handle=+FRA/orcl/autobackup/2016_10_24/s_926080228.262.926080231 comment=NONE
+Finished Control File and SPFILE Autobackup at 24-OCT-16
+
+released channel: a1
+
+released channel: a2
+
+Recovery Manager complete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

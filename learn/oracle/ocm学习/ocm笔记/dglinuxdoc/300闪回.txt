@@ -1,0 +1,38 @@
+--10 在灾备库开启闪回,主库可不开启(减轻主库压力)
+--20直接对物理备库闪回
+
+--10 在灾备库开启闪回,主库可不开启(减轻主库压力)
+	alter database flashback on;
+	ORA-01153: 激活了不兼容的介质恢复
+	alter database recover managed standby database cancel; --dba
+	alter database flashback on;
+	ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect;--sysdba
+
+	show parameter db_flashback_retention_target;
+	--db_flashback_retention_target 1440 minute=1day
+	--modify to 3days
+	alter system set db_flashback_retention_target=4320 scope=both sid='*';
+	--可以闪回到哪个时间点
+	select * from v$flashback_database_log;
+	select * from  v$database;
+
+--20直接对物理备库闪回。
+	--主要是应对3种错误操作
+	--1. truncate table hr.JOB_HISTORY;
+	--2. drop table hr.JOB_HISTORY purge;
+	--3. 删除用户 Drop user hr cascade;
+--开始闪回,可多次闪回,找到需要的数据
+	alter database recover managed standby database cancel;
+	shutdown immediate
+	startup nomount
+	alter database mount standby database;
+	flashback database to scn 35659021;--时间或scn,用日志挖掘,alert日志找到精确时间
+	 alter database open ;--read 
+--导出数据,导入到主库 
+	expdp数据到主库,挽救用户误删除的数据
+--取消闪回
+	shutdown immediate
+	startup nomount
+	alter database mount standby database;
+	alter database open read only;
+	ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect;

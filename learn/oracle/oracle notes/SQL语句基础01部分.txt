@@ -1,0 +1,577 @@
+OCP一共要学习4门课程
+1：sql1
+2：sql2
+--------------sql专家
+3：dba1	 ---> oca
+4：dba2  ---> ocp
+---------------------------------
+
+
+#先开始select
+#作用：从1个或者多个表中找到数据
+#select语法；
+	SELECT * |{[DISTINCT] column|expression [alias],...} FROM table;
+#sql语句本身是不分大小写，但是建议关键字大写，非关键字小写
+	*		代表所有的列
+	|		或
+	{}		必须输入
+	[]		可选：可以输入，也可以不输入
+	...		可以出现多次
+
+	SQL> conn scott/oracle;
+	Connected.
+	SQL> select * from tab;
+	TNAME							TABTYPE	CLUSTERID
+	------------------------------ ------- ----------
+	BIN$LhHGZW5W0rbgUKjACjhQNw==$0	TABLE
+	BONUS							TABLE
+	DEPT							TABLE
+	EMP								TABLE
+	SALGRADE						TABLE
+	XUESHENG						TABLE
+#从oracle10g开始删除数据库表的时候并不是真正删除，而是放到了recyclebin中，类似windows里面删除的文件会被临时放到回收站中。删除的表系统会自动给他重命名就是你看到的[BIN$]开头的名字。通过：show recyclebin 命令可以查看被删掉的表的详细信息，或者查询：select * from recyclebin。收回表的命令：flashback table 原表名 to before drop。清空回收站的命令：purge recyclebin。如果不想删除的表经过回收站：
+drop table 表名 purge。或者停用数据库的回收战功能，修改隐藏参数 _recyclebin。10.1版本中：alter system set "_recyclebin" = false。10.2版本中：alter system set recyclebin = off;		不建议将其关闭，不安全
+	SQL> SHOW parameter recyclebin;
+	NAME				     TYPE	 VALUE
+	------------------------------------ ----------- ------------------------------
+	recyclebin			     string	 on
+
+	SQL> PURGE RECYCLEBIN;
+	Recyclebin purged.
+	SQL> select * from tab;
+	TNAME					TABTYPE	CLUSTERID
+	------------------------------ ------- ----------
+	BONUS					TABLE
+	DEPT					TABLE
+	EMP						TABLE
+	SALGRADE				TABLE
+	XUESHENG				TABLE
+
+---------------------------------------------------------------------------
+#写SQL语句，必须先了解E-R通过ER图知道数据库各个表之间的关系，每个表存储数据内容，
+#Oracle中scott、HR表的E-R模型图
+
+----------------------------------------
+一般上课的情况下演示的案例  scott方案
+	SQL> CONN SCOTT/oracle;
+	Connected.
+	SQL> SHOW USER;
+	USER is "SCOTT"
+		#注意：如果在建库完毕的时候没有对scott用户解锁，那么要做一下操作
+	SQL> alter user scott account unlock identified by oracle;
+	User altered		#这样scott用户才能解锁
+#scott有那些表
+	SQL> select * from tab;
+	TNAME					TABTYPE	CLUSTERID
+	------------------------------ ------- ----------
+	BONUS					TABLE
+	DEPT					TABLE
+	EMP						TABLE
+	SALGRADE				TABLE
+	XUESHENG				TABLE
+#查看EMP表里面有多少列
+	SQL> DESC EMP;						
+	 Name					   Null?    Type
+	 ------------------------- -------- ----------------------------
+	 EMPNO					   NOT NULL NUMBER(4)
+	 ENAME								VARCHAR2(10)
+	 JOB								VARCHAR2(9)
+	 MGR								NUMBER(4)
+	 HIREDATE							DATE
+	 SAL								NUMBER(7,2)
+	 COMM								NUMBER(7,2)
+	 DEPTNO 							NUMBER(2)
+	SQL> SELECT * FROM EMP;
+		 EMPNO ENAME      JOB	           MGR	HIREDATE	    SAL       COMM
+	---------- ---------- --------- ---------- --------- ---------- ----------
+		DEPTNO
+	----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800
+		20
+		  7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300
+		30
+	SQL> SET LINESIZE 100		#输出结果一行最多显示100个字符，超过一百个字符就换行
+	SQL> SELECT * FROM EMP;			#查看表里面的内容
+		 EMPNO ENAME      JOB	       MGR     HIREDATE	       SAL        COMM     DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800 				   20
+		  7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600		   300		   30
+		  7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500		   30
+		  7566 JONES      MANAGER	      7839 02-APR-81	   2975 				   20
+		  7654 MARTIN     SALESMAN	      7698 28-SEP-81	   1250       1400		   30
+		  7698 BLAKE      MANAGER	      7839 01-MAY-81	   2850 				   30
+		  7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 				   10
+		  7788 SCOTT      ANALYST	      7566 19-APR-87	   3000 				   20
+		  7839 KING       PRESIDENT 		   17-NOV-81	   5000 				   10
+		  7844 TURNER     SALESMAN	      7698 08-SEP-81	   1500 		0		   30
+		  7876 ADAMS      CLERK			  7788 23-MAY-87	   1100 				   20
+
+		 EMPNO ENAME      JOB	       MGR     HIREDATE	       SAL       COMM      DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7900 JAMES      CLERK			  7698 03-DEC-81	    950 				   30
+		  7902 FORD       ANALYST	      7566 03-DEC-81	   3000 				   20
+		  7934 MILLER     CLERK			  7782 23-JAN-82	   1300 				   10
+	14 rows selected.
+
+--------------------------
+#开始学习SQL语句
+#所有的字段名可以用 * 代替
+		SELECT * FROM EMP;	等价于	SELECT DEPTNO,DNAME,LOC FROM DEPT;
+	SQL> SELECT * FROM EMP;
+		 EMPNO ENAME      JOB	           MGR HIREDATE			SAL       COMM     DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800 				   20
+		  7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300		   30
+		  7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500		   30
+	SQL> SELECT EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO
+	  2  FROM EMP;
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800 				   20
+		  7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300		   30
+		  7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500		   30
+
+--------------------------------
+#查看员工编号，姓名，工资
+#两种方法
+	#方法一：在刚才的基础上
+	SQL> DEFINE _EDITOR=vi;
+	SQL> ed
+	SELECT EMPNO,ENAME,SAL		#将JOB,MGR,HIREDATE,COMM,DEPTNO去掉，然后保存退出
+	FROM EMP
+	/
+	SQL> /
+		 EMPNO ENAME			 SAL
+	---------- ---------- ----------
+		  7369 SMITH			 800
+		  7499 ALLEN			1600
+		  7521 WARD 			1250
+		  7566 JONES			2975
+		  7654 MARTIN			1250
+	#方法二：
+	SQL> SELECT EMPNO,ENAME,SAL
+	  2  FROM EMP;
+		 EMPNO ENAME			 SAL
+	---------- ---------- ----------
+		  7369 SMITH			 800
+		  7499 ALLEN			1600
+		  7521 WARD 			1250
+		  7566 JONES			2975
+		  7654 MARTIN			1250
+
+------------------------------
+#看一下格式
+	SQL> SELECT EMPNO,ENAME,SAL,HIREDATE
+	  2  FROM EMP;
+		 EMPNO ENAME			 SAL HIREDATE
+	---------- ---------- ---------- ---------
+		  7369 SMITH			 800 17-DEC-80
+		  7499 ALLEN			1600 20-FEB-81
+		  7521 WARD 			1250 22-FEB-81
+		  7566 JONES			2975 02-APR-81
+		  7654 MARTIN			1250 28-SEP-81
+		  7698 BLAKE			2850 01-MAY-81
+		  7782 CLARK			2450 09-JUN-81
+		  7788 SCOTT			3000 19-APR-87
+		  7839 KING 			5000 17-NOV-81
+		  7844 TURNER			1500 08-SEP-81
+		  7876 ADAMS			1100 23-MAY-87
+
+		 EMPNO ENAME	     SAL HIREDATE
+	---------- ---------- ---------- ---------
+		  7900 JAMES	     950 03-DEC-81
+		  7902 FORD 	    3000 03-DEC-81
+		  7934 MILLER	    1300 23-JAN-82
+	#默认：数值是右对齐，字母是左对齐
+
+	SQL> SELECT EMPNO,ENAME,SAL,COMM
+	  2  FROM EMP;
+		 EMPNO ENAME			 SAL       COMM
+	---------- ---------- ---------- ----------
+		  7369 SMITH			 800
+		  7499 ALLEN			1600		300
+		  7521 WARD 			1250		500
+		  7566 JONES			2975
+		  7654 MARTIN			1250       1400
+		  7698 BLAKE			2850
+		  7782 CLARK			2450
+		  7788 SCOTT			3000
+		  7839 KING 			5000
+		  7844 TURNER			1500		  0
+		  7876 ADAMS			1100
+
+------------------------------------------------
+#查看员工的编号，姓名，工资，奖金，工资+奖金
+	SQL> SELECT EMPNO,ENAME,SAL,COMM,SAL+COMM
+	  2  FROM EMP;
+		 EMPNO ENAME			 SAL       COMM   SAL+COMM
+	---------- ---------- ---------- ---------- ----------
+		  7369 SMITH			 800
+		  7499 ALLEN			1600		300		  1900
+		  7521 WARD 			1250		500		  1750
+		  7566 JONES			2975
+		  7654 MARTIN			1250       1400		  2650
+		  7698 BLAKE			2850
+		  7782 CLARK			2450
+		  7788 SCOTT			3000
+		  7839 KING 			5000
+		  7844 TURNER			1500		  0		  1500
+		  7876 ADAMS			1100
+		#注意：在表达式的任何地方，如果有空，则整个表达式的值就是空。不允许空参与任何运算
+		#这种算出来的COMM（奖金）为空的，最后要发的工资没有了。因为oracle里面空值不参与运算。空与0不一样。所有要把奖金为空的运算时改为0。一个简单的函数
+	SQL> SELECT EMPNO,ENAME,SAL,COMM,SAL+NVL(COMM,0)			#SAL+NVL(COMM,0)或者NVL(COMM,0)+SAL
+	  2  FROM EMP;
+		 EMPNO ENAME			 SAL       COMM SAL+NVL(COMM,0)
+	---------- ---------- ---------- ---------- ---------------
+		  7369 SMITH			 800						800
+		  7499 ALLEN			1600		300			   1900
+		  7521 WARD 			1250		500			   1750
+		  7566 JONES			2975					   2975
+		  7654 MARTIN			1250       1400			   2650
+		  7698 BLAKE			2850					   2850
+		  7782 CLARK			2450					   2450
+		  7788 SCOTT			3000					   3000
+		  7839 KING 			5000					   5000
+		  7844 TURNER			1500		  0			   1500
+		  7876 ADAMS			1100					   1100
+	#如果要将COMM（奖金）为空的（没有的）一个人加200
+	SQL> ed
+	SELECT EMPNO,ENAME,SAL,COMM,SAL+NVL(COMM,200)
+	FROM EMP
+	/
+	SQL> /
+		 EMPNO ENAME			 SAL       COMM SAL+NVL(COMM,200)
+	---------- ---------- ---------- ---------- -----------------
+		  7369 SMITH			 800						 1000
+		  7499 ALLEN			1600		300				 1900
+		  7521 WARD 			1250		500				 1750
+		  7566 JONES			2975						 3175
+		  7654 MARTIN			1250       1400				 2650
+		  7698 BLAKE			2850						 3050
+		  7782 CLARK			2450						 2650
+		  7788 SCOTT			3000						 3200
+		  7839 KING 			5000						 5200
+		  7844 TURNER			1500		  0				 1500	#但是这个人的COMM为0，他最后发的工资没有加200，这个问题以后再解决
+		  7876 ADAMS			1100						 1300
+	#SAL+NVL(COMM,200)这种显示太明显了
+
+--------------------------
+#使用别名
+#作用：如果字段参与运算，则整个表达式是没有字段名的   --->   取个别名
+#方法一：字段名 [ ] 别名
+#方法二：字段名 as 别名
+#注意：如果别名区分大小写（默认是大写），别名包含空格、特殊符号，必须使用双引号。
+	SQL> ed
+	SELECT EMPNO,ENAME,SAL,COMM,SAL+NVL(COMM,200) as NEWSAL
+	FROM EMP
+	/
+	SQL> /
+		 EMPNO ENAME			 SAL       COMM		NEWSAL		#现在这里显示NEWSAL
+	---------- ---------- ---------- ---------- ----------
+		  7369 SMITH			 800				  1000
+		  7499 ALLEN			1600		300		  1900
+		  7521 WARD 			1250		500		  1750
+		  7566 JONES			2975				  3175
+		  7654 MARTIN			1250       1400		  2650
+		  7698 BLAKE			2850				  3050
+		  7782 CLARK			2450				  2650
+		  7788 SCOTT			3000				  3200
+		  7839 KING 			5000				  5200
+		  7844 TURNER			1500		  0		  1500
+		  7876 ADAMS			1100				  1300
+	SQL> ed
+	SELECT EMPNO,ENAME,SAL,COMM,SAL+NVL(COMM,200) NEWSAL		#as可以省略
+	FROM EMP
+	/
+	SQL> /
+		 EMPNO ENAME			 SAL       COMM		NEWSAL
+	---------- ---------- ---------- ---------- ----------
+		  7369 SMITH			 800				  1000
+		  7499 ALLEN			1600		300		  1900
+
+	SQL> SELECT e.empno,e.ename,e.sal,e.comm
+	  2  FROM emp e;								#将emp表取个别名为e
+		 EMPNO ENAME			 SAL       COMM
+	---------- ---------- ---------- ----------
+		  7369 SMITH			 800
+		  7499 ALLEN			1600		300
+		  7521 WARD 			1250		500
+		  7566 JONES			2975
+		  7654 MARTIN			1250       1400
+		  7698 BLAKE			2850
+		  7782 CLARK			2450
+		  7788 SCOTT			3000
+		  7839 KING 			5000
+		  7844 TURNER			1500		  0
+		  7876 ADAMS			1100
+
+-----------------------------------------
+#曾经腾讯的面试题：显示员工的编号 empno，员工的姓名 name，员工的工资salary
+#一般情况下我们写的是：SQL> SELECT empno,ename name,sal salary FROM emp;  如果是这样写那就错了（他们看中的不是结果，而是你怎么写的语句），所以应该这样写：SQL> SELECT empno empno,ename name,sal salary FROM emp;
+#分析；为什么这样写，因为这个题目的要求是需要我们写别名
+
+-----------------
+#连接符
+#符号：||
+	SQL> SELECT empno,ename
+	  2  FROM emp;
+		 EMPNO ENAME
+	---------- ----------
+		  7369 SMITH
+		  7499 ALLEN
+		  7521 WARD
+		  7566 JONES
+		  7654 MARTIN
+	#现在要将其显示为enameempno
+	SQL> SELECT ename||empno
+	  2  FROM emp;
+	ENAME||EMPNO
+	--------------------------------------------------
+	SMITH7369
+	ALLEN7499
+	WARD7521
+	JONES7566
+	MARTIN7654
+
+#如果要显示的是：dr_scott_7788这种格式，那该怎么办？
+#学习原意显示。原意显示可以是字符、数字、日期。如果日期和字符原意显示，必须用单引号引起来。每行都有一个输出（表有几行，就输出几行）
+	SQL> SELECT 1 FROM emp;
+			 1
+	----------
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+			 1
+
+			 1
+	----------
+			 1
+			 1
+			 1
+	14 rows selected.
+	SQL> SELECT COUNT(*) FROM emp;		#统计emp 有多少行
+	  COUNT(*)
+	----------
+			14
+
+	SQL> SELECT Tom FROM emp;		#emp里面没有Tom
+	SELECT Tom FROM emp
+		   *
+	ERROR at line 1:
+	ORA-00904: "TOM": invalid identifier
+	SQL> SELECT 'Tom' FROM emp;		#Tom加上单引号后就显示为Tom了。
+	'TO
+	---
+	Tom
+	Tom
+	Tom
+	Tom
+	Tom
+	Tom
+	Tom
+
+#完成dr_scott_7788这种格式
+	SQL> SELECT 'dr_'||ename||'_'||empno
+	  2  FROM emp;
+	'DR_'||ENAME||'_'||EMPNO
+	------------------------------------------------------
+	dr_SMITH_7369
+	dr_ALLEN_7499
+	dr_WARD_7521
+	dr_JONES_7566
+	dr_MARTIN_7654
+	dr_BLAKE_7698
+	dr_CLARK_7782
+	dr_SCOTT_7788
+
+
+--------------------------------
+练习：写一个脚本
+#场景1：在所有文件系统上，cp 复制（系统命令），host操作系统命令。
+	v$datafile 列出所有的数据文件，v$logfile 列出所有的日志文件，v$controlfile 列出所有的控制文件。 所有的视图 ---> Reference（记录所有视图的作用，每个视图字段的含义）
+	答：1、查出所有数据文件。如果不知道怎么写，可以先停下来看看desc再写。再次扩展：我怎么知道使用name，看书查v$datafile，我们就可以看到name的用途
+		SQL> conn / as sysdba
+		Connected.
+		SQL> SELECT name FROM v$datafile;
+		NAME
+		----------------------------------------------------------------------------------------------------
+		+DATA/orcl/datafile/system.256.906413617
+		+DATA/orcl/datafile/sysaux.257.906413619
+		+DATA/orcl/datafile/undotbs1.258.906413621
+		+DATA/orcl/datafile/users.259.906413623
+		+DATA/orcl/datafile/example.265.906414135
+	2、查出所有log位置
+		SQL> SELECT member FROM v$logfile;
+		MEMBER
+		----------------------------------------------------------------------------------------------------
+		+DATA/orcl/onlinelog/group_3.263.906414079
+		+FRA/orcl/onlinelog/group_3.259.906414091
+		+DATA/orcl/onlinelog/group_2.262.906414055
+		+FRA/orcl/onlinelog/group_2.258.906414071
+		+DATA/orcl/onlinelog/group_1.261.906414031
+		+FRA/orcl/onlinelog/group_1.257.906414047
+	3、查出控制文件
+		SQL> SELECT name FROM v$controlfile;
+		NAME
+		----------------------------------------------------------------------------------------------------
+		+DATA/orcl/controlfile/current.260.906414017
+		+FRA/orcl/controlfile/current.256.906414023
+	#查完以后学以致用
+--------------------------------------------
+	#例子：假设备份目录/u01/app/oracle/backup
+		#自动创建备份命令（拷贝命令）
+		SQL> SELECT 'host cp '||name||' /u01/app/oracle/backup' FROM v$datafile;
+		host cp +DATA/orcl/datafile/system.256.906413617 /u01/app/oracle/backup
+		host cp +DATA/orcl/datafile/sysaux.257.906413619 /u01/app/oracle/backup
+		host cp +DATA/orcl/datafile/undotbs1.258.906413621 /u01/app/oracle/backup
+		host cp +DATA/orcl/datafile/users.259.906413623 /u01/app/oracle/backup
+		host cp +DATA/orcl/datafile/example.265.906414135 /u01/app/oracle/backup
+		#把屏幕输出保存为一个脚本
+		SQL> SPOOL /u01/app/oracle/lb.sql
+		SELECT 'host cp '||name||' /u01/app/oracle/backup' FROM v$datafile;
+		SELECT 'host cp '||member||' /u01/app/oracle/backup' FROM v$logfile;
+		SELECT 'host cp '||name||' /u01/app/oracle/backup' FROM v$controlfile;
+		SQL> SPOOL OFF
+		#然后到oracle目录
+		[oracle@oracle-server oracle]$ ls
+		admin  backup  cfgtoollogs  checkpoints  diag  lb.sql  product		#这里可以看到一个冷备脚本
+		[oracle@oracle-server oracle]$ vim lb.sql		#删除不需要的东西
+		#写一个shell脚本调用lb.sql，执行冷备（以下脚本全部都是通用冷备脚本）
+		[oracle@oracle-server oracle]$ vim lb.sh
+		#!/bin/bash
+		export ORACLE_SID=orcl
+		export ORACLE_BASE=/u01/app/oracle
+		export ORACLE_HOME=/u01/app/oracle/product/11.1.0/dbhome_1
+		$ORACLE_HOME/bin/sqlplus sys/oracle as sysdba <<EOF		#EOF就是等待你输入脚本以EOF开始，以EOF结束
+		shutdown immediate;
+		@/u01/app/oracle/lb.sql
+		startup
+		exit
+		EOF
+		[oracle@oracle-server oracle]$ chmod u+x lb.sh
+
+------------------------------------------------------------------
+#场景2：如果你的文件不是在文件系统上，在ASM上面（暂时不需要看懂）
+	#先 生成lb.sql
+		SQL> SPOOL /u01/app/oracle/lb.sql
+		SELECT 'cp '||name||' /u01/app/oracle/backup' FROM v$datafile;
+		SELECT 'cp '||member||' /u01/app/oracle/backup' FROM v$logfile;
+		SELECT 'cp '||name||' /u01/app/oracle/backup' FROM v$controlfile;
+		SQL> SPOOL OFF
+	#到oracle目录
+		[oracle@oracle-server oracle]$ vim lb.sql		#删除不需要的东西
+		[oracle@oracle-server oracle]$ cat lb.sql
+		cp +DATA/orcl/datafile/system.256.906413617 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/sysaux.257.906413619 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/undotbs1.258.906413621 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/users.259.906413623 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/example.265.906414135 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_3.263.906414079 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_3.259.906414091 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_2.262.906414055 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_2.258.906414071 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_1.261.906414031 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_1.257.906414047 /u01/app/oracle/backup
+		cp +DATA/orcl/controlfile/current.260.906414017 /u01/app/oracle/backup
+		cp +FRA/orcl/controlfile/current.256.906414023 /u01/app/oracle/backup
+	#写一个shell脚本调用lb.sql，执行冷备
+		[root@oracle-server ~]# su - grid
+		[grid@oracle-server ~]$ vim lb.sh
+		#!/bin/bash
+		export ORACLE_SID=orcl
+		export ORACLE_BASE=/u01/app/oracle
+		export ORACLE_HOME=/u01/app/oracle/product/11.1.0/dbhome_1
+		srvctl stop database -d orcl
+		$ORACLE_HOME/bin/asmcmd <<EOF
+		cp +DATA/orcl/datafile/system.256.906413617 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/sysaux.257.906413619 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/undotbs1.258.906413621 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/users.259.906413623 /u01/app/oracle/backup
+		cp +DATA/orcl/datafile/example.265.906414135 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_3.263.906414079 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_3.259.906414091 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_2.262.906414055 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_2.258.906414071 /u01/app/oracle/backup
+		cp +DATA/orcl/onlinelog/group_1.261.906414031 /u01/app/oracle/backup
+		cp +FRA/orcl/onlinelog/group_1.257.906414047 /u01/app/oracle/backup
+		cp +DATA/orcl/controlfile/current.260.906414017 /u01/app/oracle/backup
+		cp +FRA/orcl/controlfile/current.256.906414023 /u01/app/oracle/backup
+		exit
+		srvctl start database -d orcl
+		EOF
+		[grid@oracle-server ~]$ chmod u+x lb.sh
+
+
+-----------------------------
+#回到正常的课堂上
+#如果原意显示的字符串包含了很多单引号怎么办？
+#如要显示 it's a box
+	SQL> conn scott/oracle
+	SQL> SELECT 'it's a box' from emp;
+	ERROR:
+	ORA-01756: quoted string not properly terminated
+#方法：把你要显示的用括号括起来  ()[]{}
+	(it's a box)
+#字符串单引号，括号加单引号 '(it's a box)'
+#最后用标识符q	---> q'(it's a box)'
+#正确答案
+	SQL> SELECT q'(it's a box)' FROM emp;
+	Q'(IT'SABO
+	----------
+	it's a box
+	it's a box
+	it's a box
+	it's a box
+	it's a box
+
+	SQL> SELECT Q'(it's'''''''' a box)' FROM emp;
+	Q'(IT'S''''''''ABO
+	------------------
+	it's'''''''' a box
+	it's'''''''' a box
+	it's'''''''' a box
+
+-----------------------
+#消除重复的行
+#distinct：出现在select的后面，字段的前面
+	#查看员工所在的部门，平时的
+		SQL> SELECT deptno FROM emp;
+			DEPTNO
+		----------
+				20
+				30
+				30
+				20
+				30
+				30
+				10
+				20
+				10
+				30
+				20
+
+			DEPTNO
+		----------
+				30
+				20
+				10
+	#但是这都是重复的，如何消除
+		SQL> SELECT DISTINCT deptno FROM emp;
+
+			DEPTNO
+		----------
+				30
+				20
+				10
+
+
+
+
+
+

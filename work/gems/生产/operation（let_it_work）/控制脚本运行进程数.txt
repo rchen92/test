@@ -1,0 +1,36 @@
+!/bin/sh
+
+##control only one Process running 
+##按需修改pid文件
+pidfile=/var/run/impdp.pid
+if [ ! -f $pidfile ]; then
+  touch $pidfile
+fi
+pid_f=`cat $pidfile`
+
+if [ "$pid_f"x != "x" ]; then
+  echo "process is running, now I exit."
+  exit 1
+fi
+echo $$ > $pidfile
+##
+
+
+
+##do something follow
+########在下面添加脚本代码
+n=1
+while [ $n -lt 10 ]
+do
+  echo $n
+  echo "PID of this script: $$"
+  sleep 3
+  n=$[$n + 1]
+done
+########脚本代码结束
+
+
+
+
+##clearthe pidfile
+echo  > $pidfile

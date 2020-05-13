@@ -1,0 +1,7 @@
+查看日志del_audfile_before_90days.sh.log是否报如下信息
+The audit direcotry is null!
+是，则修改del_audfile_before_90days.sh脚本
+ALERT_FILE修改为AUDIT_DEST
+执行命令
+/home/oracle/scripts/run.sh /home/oracle/scripts/del_audfile_before_90days.sh
+查看日志del_audfile_before_90days.sh.log是否正确执行！

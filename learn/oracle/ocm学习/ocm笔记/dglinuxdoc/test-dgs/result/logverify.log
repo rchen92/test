@@ -1,0 +1,2542 @@
+SQL> @result\list.txt
+SQL> 
+SQL> select count(1) from  CASHBOX.AREA@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.AREA@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       367                                                                      
+       367                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.DEVICE_AUTH@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.DEVICE_AUTH@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     33514                                                                      
+     33514                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.THIRDPARTY_TERNIMAL@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.THIRDPARTY_TERNIMAL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.MERCHNAT_TYPE@dgp
+  2  
+  3   union all
+  4  select count(1) from  CASHBOX.MERCHNAT_TYPE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       157                                                                      
+       157                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.MERCHANT_GROUP@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.MERCHANT_GROUP@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.BANK_INSTITUTION@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.BANK_INSTITUTION@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        54                                                                      
+        54                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.SERVICE_TYPE@dgp
+  2   union all
+  3  
+  4  select count(1) from  CASHBOX.SERVICE_TYPE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        21                                                                      
+        21                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.DEDUCTION_RATE@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.DEDUCTION_RATE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        11                                                                      
+        11                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.MERCHANT_TEMP@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.MERCHANT_TEMP@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39830                                                                      
+     39830                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.MERCHANT_CLEAR@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.MERCHANT_CLEAR@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39750                                                                      
+     39750                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX.OPEN_AUDIT@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.OPEN_AUDIT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.CARD_BIN@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.CARD_BIN@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1610                                                                      
+      1610                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.CARD_INFO@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.CARD_INFO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1610                                                                      
+      1610                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX.SYS_CONFIG@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.SYS_CONFIG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        31                                                                      
+        31                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.ACCESS_USER@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.ACCESS_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       330                                                                      
+       330                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.TRADE_WATER@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.TRADE_WATER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    836230                                                                      
+    836230                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.GOODS@dgp
+  2  
+  3   union all
+  4  select count(1) from  CASHBOX.GOODS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1674                                                                      
+      1674                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.ORDER_DETAIL@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.ORDER_DETAIL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    836016                                                                      
+    836016                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.MERCHANT_EXT@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.MERCHANT_EXT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     41610                                                                      
+     41610                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.LOGIN_LOG@dgp
+  2   union all
+  3  
+  4  select count(1) from  CASHBOX.LOGIN_LOG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+   1197855                                                                      
+   1197855                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.LOGIN_AUTH@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.LOGIN_AUTH@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+   1197857                                                                      
+   1197857                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.DEVICE_BIND_HISTORY@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.DEVICE_BIND_HISTORY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     43250                                                                      
+     43250                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.DEVICE_BIND@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.DEVICE_BIND@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     38104                                                                      
+     38104                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX.CLIENT_VERSION@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.CLIENT_VERSION@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        23                                                                      
+        23                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.CASHBOX_ORDER_BAK@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.CASHBOX_ORDER_BAK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    131473                                                                      
+    131473                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.SMS_VERIFY_CODE@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.SMS_VERIFY_CODE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         4                                                                      
+         4                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX.ADVICE@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.ADVICE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        50                                                                      
+        50                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX.CASHBOX_ORDER@dgp
+  2   union all
+  3  select count(1) from  CASHBOX.CASHBOX_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    843610                                                                      
+    843610                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.TEST2@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.TEST2@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    131473                                                                      
+    131473                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.TEST1@dgp
+  2  
+  3   union all
+  4  select count(1) from  CASHBOX_REPORT.TEST1@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    350098                                                                      
+    350098                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_WEEKSTATS@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_WEEKSTATS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       231                                                                      
+       231                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_LASTMONTH@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_LASTMONTH@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       113                                                                      
+       113                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_5THWEEK@dgp
+  2   union all
+  3  
+  4  select count(1) from  CASHBOX_REPORT.KEEN_5THWEEK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       103                                                                      
+       103                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_4THWEEK@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_4THWEEK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       106                                                                      
+       106                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.WEEKLY_REVENUE@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.WEEKLY_REVENUE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1880                                                                      
+      1880                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_2NDWEEK@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_2NDWEEK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       104                                                                      
+       104                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_1STWEEK@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_1STWEEK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       102                                                                      
+       102                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_MONTHSTATS@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_MONTHSTATS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       113                                                                      
+       113                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.DAILY_REVENUE@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.DAILY_REVENUE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     10244                                                                      
+     10244                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.WEEK_STATS@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.WEEK_STATS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1358                                                                      
+      1358                                                                      
+
+SQL> 
+SQL> select count(1) from  CASHBOX_REPORT.KEEN_3RDWEEK@dgp
+  2   union all
+  3  select count(1) from  CASHBOX_REPORT.KEEN_3RDWEEK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       108                                                                      
+       108                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBBLACKLIST@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBBLACKLIST@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         2                                                                      
+         2                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.GAME_ORDER@dgp
+  2  
+  3   union all
+  4  select count(1) from  CHINAUMS_SH.GAME_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1328                                                                      
+      1328                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.ADVERTISEMENT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.ADVERTISEMENT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         4                                                                      
+         4                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.IBOX@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.IBOX@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    465110                                                                      
+    465110                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SMS@dgp
+  2   union all
+  3  
+  4  select count(1) from  CHINAUMS_SH.SMS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     30016                                                                      
+     30016                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CARD_BIN_LIMIT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.CARD_BIN_LIMIT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.BLACK_LIST@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.BLACK_LIST@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       262                                                                      
+       262                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SCHEMES@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.SCHEMES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT_1014@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT_1014@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     34982                                                                      
+     34982                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SYS_EXPORT_SCHEMA_01@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.SYS_EXPORT_SCHEMA_01@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      2022                                                                      
+      2022                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.HT_BASE_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.HT_BASE_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CARD_BIN@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.CARD_BIN@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      6015                                                                      
+      6015                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.AREA@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.AREA@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       367                                                                      
+       367                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.BASE_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.BASE_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    568574                                                                      
+    568574                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CARD_BIND@dgp
+  2  
+  3   union all
+  4  select count(1) from  CHINAUMS_SH.CARD_BIND@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    359577                                                                      
+    359577                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CARD_HISTORY@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.CARD_HISTORY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    111099                                                                      
+    111099                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CLIENT_VERSION@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.CLIENT_VERSION@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        31                                                                      
+        31                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.COOPERATE_MERBER@dgp
+  2   union all
+  3  
+  4  select count(1) from  CHINAUMS_SH.COOPERATE_MERBER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         4                                                                      
+         4                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39858                                                                      
+     39858                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.COOPERATION_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.COOPERATION_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     22250                                                                      
+     22250                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.CREDIT_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.CREDIT_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    212549                                                                      
+    212549                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.ERROR_CODE@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.ERROR_CODE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       153                                                                      
+       153                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.ERROR_CODE_BAK@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.ERROR_CODE_BAK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       139                                                                      
+       139                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.IBOX_BIND@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.IBOX_BIND@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     51069                                                                      
+     51069                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.IBOX_BIND_HISTORY@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.IBOX_BIND_HISTORY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    107287                                                                      
+    107287                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MEMBER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.MEMBER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    112473                                                                      
+    112473                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MEMBER_BIND@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.MEMBER_BIND@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     23703                                                                      
+     23703                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MEMBER_MERCHANT@dgp
+  2  
+  3   union all
+  4  select count(1) from  CHINAUMS_SH.MEMBER_MERCHANT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39406                                                                      
+     39406                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MEMBER_MO@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.MEMBER_MO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1551                                                                      
+      1551                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MEMBER_OPERATE_RECORD@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.MEMBER_OPERATE_RECORD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     96709                                                                      
+     96709                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MERCHANT_ORDER@dgp
+  2   union all
+  3  
+  4  select count(1) from  CHINAUMS_SH.MERCHANT_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      2869                                                                      
+      2869                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.MOBILE_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.MOBILE_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    187217                                                                      
+    187217                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.NOTIFICATIONS@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.NOTIFICATIONS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        15                                                                      
+        15                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.NOTIFY@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.NOTIFY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       455                                                                      
+       455                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.PRODUCT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.PRODUCT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       107                                                                      
+       107                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.PUNCH_CARD_RECORD@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.PUNCH_CARD_RECORD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     64678                                                                      
+     64678                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.QQ_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.QQ_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      7332                                                                      
+      7332                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.QRCODE@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.QRCODE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.RCO@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.RCO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        26                                                                      
+        26                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.RECEIVER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.RECEIVER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        64                                                                      
+        64                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SUGGEST@dgp
+  2  
+  3   union all
+  4  select count(1) from  CHINAUMS_SH.SUGGEST@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      3027                                                                      
+      3027                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBRECORD@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBRECORD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     12486                                                                      
+     12486                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBRESOURCE@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBRESOURCE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        52                                                                      
+        52                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBROLE@dgp
+  2   union all
+  3  
+  4  select count(1) from  CHINAUMS_SH.TBROLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        10                                                                      
+        10                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBROLE_RESOURCE@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBROLE_RESOURCE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       196                                                                      
+       196                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBUSER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBUSER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        52                                                                      
+        52                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TBUSER_ROLE@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TBUSER_ROLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        50                                                                      
+        50                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TOKEN@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TOKEN@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TRADE_STAT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TRADE_STAT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     43734                                                                      
+     43734                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TRADE_WATER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TRADE_WATER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1662                                                                      
+      1662                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TRANSFER_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.TRANSFER_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    113633                                                                      
+    113633                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.WASTB@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.WASTB@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+   2204027                                                                      
+   2204027                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.WEG_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.WEG_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     12903                                                                      
+     12903                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.WORKKEY@dgp
+  2  
+  3   union all
+  4  select count(1) from  CHINAUMS_SH.WORKKEY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     48539                                                                      
+     48539                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SALE_RCO@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.SALE_RCO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      8558                                                                      
+      8558                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.SALE_TRADE_STAT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.SALE_TRADE_STAT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39221                                                                      
+     39221                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.TRANSFERS@dgp
+  2   union all
+  3  
+  4  select count(1) from  CHINAUMS_SH.TRANSFERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     12928                                                                      
+     12928                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.BANK@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.BANK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       120                                                                      
+       120                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.ALIPAY_ORDER@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.ALIPAY_ORDER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     11362                                                                      
+     11362                                                                      
+
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH.RECHARGE_WASTB@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH.RECHARGE_WASTB@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     18426                                                                      
+     18426                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  CHINAUMS_SH_READ.RCO_FOR_MCHT@dgp
+  2   union all
+  3  select count(1) from  CHINAUMS_SH_READ.RCO_FOR_MCHT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      8505                                                                      
+      8505                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.UNIONDICT@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.UNIONDICT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    111393                                                                      
+    111393                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.ROLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.ROLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.ACCNTSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.ACCNTSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    309664                                                                      
+    309664                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.ACCOUNTS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.ACCOUNTS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39777                                                                      
+     39777                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.AWARD@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.AWARD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      2400                                                                      
+      2400                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BALANCE@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXCLEAR.BALANCE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BANKAREA@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BANKAREA@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BANKCODE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BANKCODE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        27                                                                      
+        27                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BSGROUPS@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXCLEAR.BSGROUPS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BSSUBJCT@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BSSUBJCT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BSTEAM@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BSTEAM@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39777                                                                      
+     39777                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.CARDBIN@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.CARDBIN@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.CFGPARAMS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.CFGPARAMS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        22                                                                      
+        22                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.CLRTRANSDETAILSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.CLRTRANSDETAILSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.GAINALLOT@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.GAINALLOT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.HISRCDLIST@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.HISRCDLIST@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.IMPORTFILES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.IMPORTFILES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       849                                                                      
+       849                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.ISSBASE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.ISSBASE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_ACCOUNTS@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXCLEAR.LOGS_ACCOUNTS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     34968                                                                      
+     34968                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_BSTEAM@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOGS_BSTEAM@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     67426                                                                      
+     67426                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_MCHT_TRN_RULE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOGS_MCHT_TRN_RULE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     46048                                                                      
+     46048                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.MCHSETTLE@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXCLEAR.MCHSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    309664                                                                      
+    309664                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.MCHT_TM_RULE_DTL@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.MCHT_TM_RULE_DTL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.MCHT_TRN_RULE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.MCHT_TRN_RULE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     39781                                                                      
+     39781                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.MERCHANT@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.MERCHANT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.MOVEHIST@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.MOVEHIST@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.OPENACCNTBANK@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.OPENACCNTBANK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.RULES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.RULES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.SCHEMES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.SCHEMES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        10                                                                      
+        10                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.SINGLEPAY@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.SINGLEPAY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1198                                                                      
+      1198                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TEAMSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TEAMSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TERMINAL@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXCLEAR.TERMINAL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TRANSDETAILSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TRANSDETAILSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    309665                                                                      
+    309665                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TRANSDEF@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TRANSDEF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.USERS@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXCLEAR.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        15                                                                      
+        15                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    664977                                                                      
+    664977                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.UNIONDICT_OLD@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.UNIONDICT_OLD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    113130                                                                      
+    113130                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_SCHEMES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOGS_SCHEMES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        24                                                                      
+        24                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.DETAILQRY@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.DETAILQRY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1415                                                                      
+      1415                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_BSGROUPS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOGS_BSGROUPS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.SYSLOGS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.SYSLOGS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       647                                                                      
+       647                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TRANSLOGSFILES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TRANSLOGSFILES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       350                                                                      
+       350                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TRANSLOGSDETAIL@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TRANSLOGSDETAIL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    611670                                                                      
+    611670                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_01@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_01@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1500                                                                      
+      1500                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_02@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_02@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1509                                                                      
+      1509                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BROKERS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BROKERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       107                                                                      
+       107                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BKSCHEMES@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BKSCHEMES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         5                                                                      
+         5                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BKRULES@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXCLEAR.BKRULES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        13                                                                      
+        13                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BROKERSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BROKERSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       345                                                                      
+       345                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.UNIONDICT_BAK@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.UNIONDICT_BAK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    118479                                                                      
+    118479                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.BRKACCOUNTS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.BRKACCOUNTS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOGS_BRKACCOUNTS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOGS_BRKACCOUNTS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TMP_REFNO@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TMP_REFNO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       168                                                                      
+       168                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.LOG_BROKERS@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.LOG_BROKERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        61                                                                      
+        61                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.CHANNLSETTLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.CHANNLSETTLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.CARDNO_ERR@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.CARDNO_ERR@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        79                                                                      
+        79                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.TOAD_PLAN_TABLE@dgp
+  2   union all
+  3  select count(1) from  IBOXCLEAR.TOAD_PLAN_TABLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         4                                                                      
+         4                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXCLEAR.NETUNIONDICT@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXCLEAR.NETUNIONDICT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.IBOX@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.IBOX@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.PARAMETERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.PARAMETERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.ROLES@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXPAYGW.ROLES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.TERMINAL_MAP@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.TERMINAL_MAP@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.TERMINALS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.TERMINALS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         5                                                                      
+         5                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.USERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        14                                                                      
+        14                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.MERCHANTS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.MERCHANTS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       341                                                                      
+       341                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.TRADEWASTE_BAK@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.TRADEWASTE_BAK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1782                                                                      
+      1782                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_01@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_01@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1153                                                                      
+      1153                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_02@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_02@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1165                                                                      
+      1165                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+   1747060                                                                      
+   1747060                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW.TRADEWASTE_BAK2@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW.TRADEWASTE_BAK2@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       612                                                                      
+       612                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_AIA.ROLES@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXPAYGW_AIA.ROLES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_AIA.USERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_AIA.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        14                                                                      
+        14                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_AIA.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_AIA.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     13142                                                                      
+     13142                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_AIA.TERMINALS@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXPAYGW_AIA.TERMINALS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        17                                                                      
+        17                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_CNTVPAY.USERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_CNTVPAY.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        11                                                                      
+        11                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_CNTVPAY.TERMINALS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_CNTVPAY.TERMINALS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_CNTVPAY.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_CNTVPAY.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     87426                                                                      
+     87426                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_CNTVPAY.ROLES@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_CNTVPAY.ROLES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_UNIBANK.ROLES@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_UNIBANK.ROLES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         2                                                                      
+         2                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_UNIBANK.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_UNIBANK.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        73                                                                      
+        73                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_UNIBANK.USERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_UNIBANK.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_UNIBANK.TERMINALS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_UNIBANK.TERMINALS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         9                                                                      
+         9                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_YEEPAY.USERS@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_YEEPAY.USERS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         3                                                                      
+         3                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_YEEPAY.TERMINALS@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXPAYGW_YEEPAY.TERMINALS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        31                                                                      
+        31                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_YEEPAY.TRADEWASTE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_YEEPAY.TRADEWASTE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    431637                                                                      
+    431637                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYGW_YEEPAY.ROLES@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYGW_YEEPAY.ROLES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         2                                                                      
+         2                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_AMOUNT@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXPAYRT.TB_AMOUNT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         2                                                                      
+         2                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_AMOUNTRULE_REF_ROUTER@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_AMOUNTRULE_REF_ROUTER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_ROUTER_TERMINAL@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_ROUTER_TERMINAL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        24                                                                      
+        24                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.OPT_LOG@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.OPT_LOG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       116                                                                      
+       116                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_USER@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_ROUTER_APP@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_ROUTER_APP@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        31                                                                      
+        31                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_ROUTER_RULE@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_ROUTER_RULE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         3                                                                      
+         3                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_ROUTER_RECORD@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_ROUTER_RECORD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    533494                                                                      
+    533494                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYRT.TB_ROUTER@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYRT.TB_ROUTER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYSMS.ADMIN_USER@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYSMS.ADMIN_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYSMS.KLTX_UC@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBOXPAYSMS.KLTX_UC@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        10                                                                      
+        10                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYSMS.SMS_CONTENT@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYSMS.SMS_CONTENT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    132836                                                                      
+    132836                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYSMS.SENDSMS_USER@dgp
+  2   union all
+  3  select count(1) from  IBOXPAYSMS.SENDSMS_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    222221                                                                      
+    222221                                                                      
+
+SQL> 
+SQL> select count(1) from  IBOXPAYSMS.RET_MSG@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBOXPAYSMS.RET_MSG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       105                                                                      
+       105                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXPYC.PYCREDIT_PERSON@dgp
+  2   union all
+  3  select count(1) from  IBXPYC.PYCREDIT_PERSON@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1295                                                                      
+      1295                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXPYC.PYCREDIT_COMPANY@dgp
+  2   union all
+  3  select count(1) from  IBXPYC.PYCREDIT_COMPANY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       109                                                                      
+       109                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_TXN_INFO_HIS@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_TXN_INFO_HIS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_TXN_INFO@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_TXN_INFO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_SYS_PARAM@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_SYS_PARAM@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        44                                                                      
+        44                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_ROLE_FUNC_MAP@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_ROLE_FUNC_MAP@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      8849                                                                      
+      8849                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_RISK_INF@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_RISK_INF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        16                                                                      
+        16                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_OPR_INFO@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_OPR_INFO@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_ROLE_INF@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBXRISK.TBL_ROLE_INF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_FUNC_INF@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_FUNC_INF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_EXAMPLE_MNT@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_EXAMPLE_MNT@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_CTL_MCHT_INF@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBXRISK.TBL_CTL_MCHT_INF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         6                                                                      
+         6                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_CTL_CARD_INF@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_CTL_CARD_INF@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       287                                                                      
+       287                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_BATCH_MON@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_BATCH_MON@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.SYS_CONFIG@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.SYS_CONFIG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBXRISK.OPT_LOG@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.OPT_LOG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     68430                                                                      
+     68430                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_RISK_MON@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_RISK_MON@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     55794                                                                      
+     55794                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL_0913@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL_0913@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      5853                                                                      
+      5853                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  IBXRISK.MMS_PROXY@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.MMS_PROXY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.MMS_MENUS@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.MMS_MENUS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        23                                                                      
+        23                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.MMS_RESOURCES@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.MMS_RESOURCES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        49                                                                      
+        49                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.MMS_ROLE@dgp
+  2  
+  3   union all
+  4  select count(1) from  IBXRISK.MMS_ROLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         5                                                                      
+         5                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXRISK.MMS_SYSTEMUSER@dgp
+  2   union all
+  3  select count(1) from  IBXRISK.MMS_SYSTEMUSER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        13                                                                      
+        13                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXSMS.TB_BASE_SMS@dgp
+  2   union all
+  3  select count(1) from  IBXSMS.TB_BASE_SMS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+    113051                                                                      
+    113051                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXSMS.TB_SMS_USER@dgp
+  2   union all
+  3  
+  4  select count(1) from  IBXSMS.TB_SMS_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  IBXSMS.TB_SMS_ROUTER@dgp
+  2   union all
+  3  select count(1) from  IBXSMS.TB_SMS_ROUTER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.OPT_LOG@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.OPT_LOG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+   3969102                                                                      
+   3969102                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_THRIDPART_HISTROY@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_THRIDPART_HISTROY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         2                                                                      
+         2                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_PROXY@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_PROXY@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       108                                                                      
+       108                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_RESOURCES@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_RESOURCES@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        97                                                                      
+        97                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_ROLE@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_ROLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       319                                                                      
+       319                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_SYSTEMUSER@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_SYSTEMUSER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      2232                                                                      
+      2232                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_ROLE_20130823@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_ROLE_20130823@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       278                                                                      
+       278                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.COOPERATE_MERCHANT_20130905@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.COOPERATE_MERCHANT_20130905@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     22842                                                                      
+     22842                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MERCHANT_TRANSFER@dgp
+  2  
+  3   union all
+  4  select count(1) from  MERCHANT.MERCHANT_TRANSFER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1693                                                                      
+      1693                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.DIRTY_FIELD@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.DIRTY_FIELD@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         8                                                                      
+         8                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MERCHANT_TRANSFER_BAK@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MERCHANT_TRANSFER_BAK@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+     10088                                                                      
+     10088                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MERCHANT_LOWRATE@dgp
+  2   union all
+  3  
+  4  select count(1) from  MERCHANT.MERCHANT_LOWRATE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+       107                                                                      
+       107                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.AUDIT_LOG@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.AUDIT_LOG@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      2990                                                                      
+      2990                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_NOTICE@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_NOTICE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_NOTICE_USER@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_NOTICE_USER@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+         0                                                                      
+         0                                                                      
+
+SQL> 
+SQL> 
+SQL> select count(1) from  MERCHANT.MMS_MENUS@dgp
+  2   union all
+  3  select count(1) from  MERCHANT.MMS_MENUS@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+        41                                                                      
+        41                                                                      
+
+SQL> 
+SQL> select count(1) from  TXY.BIG_TABLE@dgp
+  2   union all
+  3  select count(1) from  TXY.BIG_TABLE@dgs;
+
+  COUNT(1)                                                                      
+----------                                                                      
+      1000                                                                      
+      1000                                                                      
+
+SQL> 
+SQL> 
+SQL> 已选择246行。
+SP2-0734: 未知的命令开头 "已选择246..." - 忽略了剩余的行。
+SQL> 
+SQL> spool off

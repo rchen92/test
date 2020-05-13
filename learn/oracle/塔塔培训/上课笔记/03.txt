@@ -1,0 +1,925 @@
+--系统默认的临时，undo表空间，用户表空间
+show parameter  undo_tablespace  
+select property_name, property_value
+from   database_properties
+where  property_name in ('DEFAULT_TEMP_TABLESPACE', 'DEFAULT_PERMANENT_TABLESPACE') ;
+2016/6/4 9:51:42
+田新营 2016/6/4 9:51:42
+show parameter undo
+田新营 2016/6/4 9:51:49
+    alter system set  undo_retention=7200 scope=both sid='*';
+田新营 2016/6/4 9:52:13
+--新建undo表空间    
+    CREATE UNDO TABLESPACE UNDOTBS11 DATAFILE 
+  '+data' SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE 32256M
+ONLINE
+RETENTION NOGUARANTEE
+BLOCKSIZE 8K
+FLASHBACK ON;
+田新营 2016/6/4 9:52:24
+--修改系统默认的undo表空间
+alter system set  undo_tablespace=undotbs11 scope=both ;
+2016/6/4 9:58:16
+田新营 2016/6/4 9:58:16
+--undotbs强制保留
+--select * from dba_tablespaces ;
+select tablespace_name,retention from dba_tablespaces where CONTENTS='UNDO';
+alter tablespace undotbs11 retention GUARANTEE;
+--alter tablespace undotbs11 retention noGUARANTEE;
+2016/6/4 10:20:48
+田新营 2016/6/4 10:20:48
+--rac
+select * from gv$parameter  where name in ('undo_management','undo_retention','undo_tablespace') order by inst_id,name; 
+2016/6/4 10:22:59
+田新营 2016/6/4 10:22:59
+
+2016/6/4 10:29:06
+田新营 2016/6/4 10:29:06
+ALTER DATABASE 
+  DATAFILE '+DATA/shpa/datafile/undotbs1.296.887735023'
+ RESIZE 4G;
+2016/6/4 10:30:39
+田新营 2016/6/4 10:30:39
+ORA-03297: 文件包含在请求的 RESIZE 值以外使用的数据
+田新营 2016/6/4 10:30:55
+create undo
+田新营 2016/6/4 10:31:17
+shrink
+田新营 2016/6/4 10:31:35
+uses
+田新营 2016/6/4 10:31:39
+users
+2016/6/4 10:40:05
+田新营 2016/6/4 10:40:05
+txy
+田新营 2016/6/4 10:40:20
+grant dba to txy;
+田新营 2016/6/4 10:40:34
+sysdba
+田新营 2016/6/4 10:40:43
+grant sysdba to txy;
+田新营 2016/6/4 10:40:45
+sys
+田新营 2016/6/4 10:41:07
+revoke
+田新营 2016/6/4 10:41:36
+revoke sysdba from txy;
+2016/6/4 10:47:07
+田新营 2016/6/4 10:47:07
+hr
+田新营 2016/6/4 10:47:24
+grant select on oe.tablea to hr;
+田新营 2016/6/4 10:47:55
+grant select any table to hr;
+2016/6/4 10:49:46
+田新营 2016/6/4 10:49:46
+select * from scott.emp;
+ORA-00942: 表或视图不存在
+田新营 2016/6/4 10:50:47
+grant select any table to public;
+2016/6/4 10:55:42
+田新营 2016/6/4 10:55:42
+sys.dba_audit_session 
+田新营 2016/6/4 10:57:14
+sys.aud$
+2016/6/4 10:59:41
+田新营 2016/6/4 10:59:41
+
+2016/6/4 11:12:31
+田新营 2016/6/4 11:12:31
+--Move aud$和fga_log$数据到其它Tablespace
+田新营 2016/6/4 11:13:37
+--1.查看AUD$和FGA_LOG$所在表空间
+SELECT table_name, tablespace_name FROM dba_tables WHERE table_name IN ('AUD$', 'FGA_LOG$') ORDER BY table_name;
+2016/6/4 11:17:05
+田新营 2016/6/4 11:17:05
+--大表一次性全量删除*
+--sys.fga_log$ 无任何索引,如果有索引，删除会慢很多
+--grant all on sys.fga_log$ to system;
+grant all on sys.AUD$ to txy;
+grant all on sys.fga_log$ to txy;
+grant select on sys.V_$STATNAME to system;
+
+create or replace procedure prc_AUDIT_detete_all AUTHID CURRENT_USER is
+    i number;
+    v_delete_rows NUMBER(18);
+    v_PROGRAMME_NAME varchar2(100);
+    v_begin_date date;   
+    v_errm        VARCHAR2(255);
+    lv_sql varchar2(2000);
+    ln_redo_size number;  
+    lv_redo_size_diff varchar2(2000);
+begin
+  --sysdba或dba有两个视图的直接授权,否则，编译无法通过ORA-00942: 表或视图不存在
+  --select m.value into ln_redo_size from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+  --dba没有被直接授权,用动态sql,只有执行时才检查权限
+  execute immediate  'select m.value from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name=''redo size''' into ln_redo_size ;
+  execute immediate 'alter session enable parallel dml';
+  v_PROGRAMME_NAME:='prc_AUDIT_detete_all'; 
+  v_begin_date:=sysdate;
+  lv_sql:='删除应用服务器非分页sql审计记录或30天前的所有审计，开发人员的审计永久保留';
+  delete /*+ parallel(fl,3) */ from sys.fga_log$ fl 
+       where (upper(OSHST)  like 'SH%' and upper(TO_NCHAR (SUBSTR (lsqltext, 1, 2000))) not like upper('%rownum%') and upper(TO_NCHAR (SUBSTR (lsqltext, 1, 2000))) like upper('%where%'))
+        or (upper(OSHST)  like 'SH%' and NTIMESTAMP#<trunc(sysdate)-30);
+       v_delete_rows:=SQL%ROWCOUNT;
+       SYS.dbms_output.put_line ('delete_rows:'||v_delete_rows);
+   commit;   
+  execute immediate 'alter session disable parallel dml';
+  --sysdba或dba有两个视图的直接授权
+  --select to_char(m.value-ln_redo_size,'999,999,999,999') into lv_redo_size_diff from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+  --dba没有被直接授权
+  execute immediate  'select to_char(m.value-'||ln_redo_size||',''999,999,999,999'') from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name=''redo size''' into lv_redo_size_diff ;
+  SYS.dbms_output.put_line ('redo_size:'||lv_redo_size_diff);
+  prc_job_log(v_PROGRAMME_NAME, v_begin_date,SYSDATE,' 全部清理完成，行数'||v_delete_rows||',redo_size:'||lv_redo_size_diff ,NULL);  
+excEPTION
+   WHEN NO_DATA_FOUND
+   THEN
+      NULL;
+   WHEN OTHERS
+   THEN
+       ROLLBACK;
+      v_errm := substr(SQLERRM, 1, 255);
+      prc_job_log(v_PROGRAMME_NAME,v_begin_date, SYSDATE,lv_sql||'异常回滚',v_errm);
+      RAISE;
+end;
+/
+2016/6/4 11:25:06
+田新营 2016/6/4 11:25:06
+shutdown immediate
+startup
+田新营 2016/6/4 11:25:14
+startup force
+2016/6/4 11:30:38
+田新营 2016/6/4 11:30:38
+
+2016/6/4 14:11:22
+田新营 2016/6/4 14:11:22
+SELECT COUNT(*) FROM hr.employees;
+2016/6/4 14:13:40
+田新营 2016/6/4 14:13:40
+set timing on
+set autotrace on
+SELECT COUNT(*) FROM hr.employees;
+田新营 2016/6/4 14:14:36
+--linux开启autotrace
+--linux or unix
+su - oracle
+sqlplus / as sysdba
+
+@?/rdbms/admin/utlxplan.sql;  
+@?/sqlplus/admin/plustrce;
+grant plustrace to public;
+grant select on v_$session to public;
+2016/6/4 14:16:33
+田新营 2016/6/4 14:16:33
+echo $ORACLE_HOME
+田新营 2016/6/4 14:17:44
+view $ORACLE_HOME/rdbms/admin/utlxplan.sql
+田新营 2016/6/4 14:17:58
+--
+田新营 2016/6/4 14:18:00
+rem
+2016/6/4 14:20:22
+田新营 2016/6/4 14:20:22
+
+田新营 2016/6/4 14:20:28
+set timing on
+set autotrace on
+SELECT COUNT(*) FROM hr.employees;
+2016/6/4 14:24:35
+田新营 2016/6/4 14:24:35
+set timing on
+set autotrace on
+SELECT num_rows FROM dba_tables
+   WHERE owner='HR' AND table_name = 'EMPLOYEES';
+田新营 2016/6/4 14:25:21
+  NUM_ROWS
+----------
+        98
+
+已用时间:  00: 00: 00.03
+
+执行计划
+----------------------------------------------------------
+Plan hash value: 3987874822
+
+--------------------------------------------------------------------------------
+
+-----------------------
+
+| Id  | Operation                            | Name           | Rows  | Bytes |
+Cost (%CPU)| Time     |
+
+--------------------------------------------------------------------------------
+
+-----------------------
+
+|   0 | SELECT STATEMENT                     |                |     1 |   185 |
+   10   (0)| 00:00:01 |
+
+|*  1 |  HASH JOIN                           |                |     1 |   185 |
+   10   (0)| 00:00:01 |
+
+|   2 |   MERGE JOIN CARTESIAN               |                |     1 |   172 |
+   10   (0)| 00:00:01 |
+
+|   3 |    NESTED LOOPS OUTER                |                |     1 |   117 |
+   10   (0)| 00:00:01 |
+
+|   4 |     NESTED LOOPS OUTER               |                |     1 |   113 |
+    9   (0)| 00:00:01 |
+
+|   5 |      NESTED LOOPS OUTER              |                |     1 |   105 |
+    8   (0)| 00:00:01 |
+
+|   6 |       NESTED LOOPS OUTER             |                |     1 |   100 |
+    7   (0)| 00:00:01 |
+
+|   7 |        NESTED LOOPS                  |                |     1 |    89 |
+    6   (0)| 00:00:01 |
+
+|   8 |         NESTED LOOPS                 |                |     1 |    86 |
+    5   (0)| 00:00:01 |
+
+|   9 |          NESTED LOOPS                |                |     1 |    53 |
+    4   (0)| 00:00:01 |
+
+|  10 |           TABLE ACCESS BY INDEX ROWID| USER$          |     1 |    17 |
+    1   (0)| 00:00:01 |
+
+|* 11 |            INDEX UNIQUE SCAN         | I_USER1        |     1 |       |
+    0   (0)| 00:00:01 |
+
+|* 12 |           TABLE ACCESS BY INDEX ROWID| OBJ$           |     1 |    36 |
+    3   (0)| 00:00:01 |
+
+|* 13 |            INDEX RANGE SCAN          | I_OBJ2         |     1 |       |
+    2   (0)| 00:00:01 |
+
+|* 14 |          TABLE ACCESS CLUSTER        | TAB$           |     1 |    33 |
+    1   (0)| 00:00:01 |
+
+|* 15 |           INDEX UNIQUE SCAN          | I_OBJ#         |     1 |       |
+    0   (0)| 00:00:01 |
+
+|  16 |         TABLE ACCESS CLUSTER         | TS$            |     1 |     3 |
+    1   (0)| 00:00:01 |
+
+|* 17 |          INDEX UNIQUE SCAN           | I_TS#          |     1 |       |
+    0   (0)| 00:00:01 |
+
+|  18 |        TABLE ACCESS CLUSTER          | SEG$           |     1 |    11 |
+    1   (0)| 00:00:01 |
+
+|* 19 |         INDEX UNIQUE SCAN            | I_FILE#_BLOCK# |     1 |       |
+    0   (0)| 00:00:01 |
+
+|* 20 |       INDEX RANGE SCAN               | I_OBJ1         |     1 |     5 |
+    1   (0)| 00:00:01 |
+
+|* 21 |      INDEX RANGE SCAN                | I_OBJ1         |     1 |     8 |
+    1   (0)| 00:00:01 |
+
+|* 22 |     INDEX RANGE SCAN                 | I_USER2        |     1 |     4 |
+    1   (0)| 00:00:01 |
+
+|  23 |    BUFFER SORT                       |                |     1 |    55 |
+    9   (0)| 00:00:01 |
+
+|* 24 |     FIXED TABLE FULL                 | X$KSPPI        |     1 |    55 |
+    0   (0)| 00:00:01 |
+
+|  25 |   FIXED TABLE FULL                   | X$KSPPCV       |   100 |  1300 |
+    0   (0)| 00:00:01 |
+
+--------------------------------------------------------------------------------
+
+-----------------------
+
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   1 - access("KSPPI"."INDX"="KSPPCV"."INDX")
+  11 - access("U"."NAME"='HR')
+  12 - filter(BITAND("O"."FLAGS",128)=0)
+  13 - access("O"."OWNER#"="U"."USER#" AND "O"."NAME"='EMPLOYEES')
+  14 - filter(BITAND("T"."PROPERTY",1)=0)
+  15 - access("O"."OBJ#"="T"."OBJ#")
+  17 - access("T"."TS#"="TS"."TS#")
+  19 - access("T"."TS#"="S"."TS#"(+) AND "T"."FILE#"="S"."FILE#"(+) AND
+              "T"."BLOCK#"="S"."BLOCK#"(+))
+  20 - access("T"."BOBJ#"="CO"."OBJ#"(+))
+  21 - access("T"."DATAOBJ#"="CX"."OBJ#"(+))
+  22 - access("CX"."OWNER#"="CU"."USER#"(+))
+  24 - filter("KSPPI"."KSPPINM"='_dml_monitoring_enabled')
+
+
+统计信息
+----------------------------------------------------------
+         19  recursive calls
+          0  db block gets
+         30  consistent gets
+          0  physical reads
+          0  redo size
+        354  bytes sent via SQL*Net to client
+        363  bytes received via SQL*Net from client
+          2  SQL*Net roundtrips to/from client
+          1  sorts (memory)
+          0  sorts (disk)
+          1  rows processed
+
+SQL>
+FROM sys.user$ u,
+          sys.ts$ ts,
+          sys.seg$ s,
+          sys.obj$ co,
+          sys.tab$ t,
+          sys.obj$ o,
+          sys.obj$ cx,
+          sys.user$ cu,
+          x$ksppcv ksppcv,
+          x$ksppi ksppi,
+          sys.deferred_stg$ ds
+    WHERE     o.owner# = u.user#
+          AND o.obj# = t.obj#
+          AND BITAND (t.property, 1) = 0
+          AND BITAND (o.flags, 128) = 0
+          AND t.bobj# = co.obj#(+)
+          AND t.ts# = ts.ts#
+          AND t.obj# = ds.obj#(+)
+          AND t.file# = s.file#(+)
+          AND t.block# = s.block#(+)
+          AND t.ts# = s.ts#(+)
+          AND t.dataobj# = cx.obj#(+)
+          AND cx.owner# = cu.user#(+)
+          AND ksppi.indx = ksppcv.indx
+          AND ksppi.ksppinm = '_dml_monitoring_enabled';
+
+emctl status dbconsole
+2016/6/4 14:33:49
+田新营 2016/6/4 14:33:49
+
+田新营 2016/6/4 14:34:10
+
+2016/6/4 14:38:14
+田新营 2016/6/4 14:38:14
+--修改时间窗开始时间和持续时间 11g
+  --oracle自己的时间窗
+田新营 2016/6/4 14:38:26
+    select t1.window_name,t1.repeat_interval,t1.duration from dba_scheduler_windows t1,dba_scheduler_wingroup_members t2 where t1.window_name=t2.window_name and t2.window_group_name in ('MAINTENANCE_WINDOW_GROUP','BSLN_MAINTAIN_STATS_SCHED');
+田新营 2016/6/4 14:38:50
+--开始修改
+        --备份 目的：出错后,还原现场
+          select 
+                    'begin'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''repeat_interval'',value=>'''||t1.repeat_interval||''');'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''duration'',value=>'''||extract(day from t1.duration)||' '||extract(hour from t1.duration)||':'||extract(minute from t1.duration)||':'||extract(second from t1.duration)||''');'||chr(10)||
+                    'end;'||chr(10)||
+                    '/' set_attribute_sql
+            from dba_scheduler_windows t1,dba_scheduler_wingroup_members t2 where t1.window_name=t2.window_name and t2.window_group_name in ('MAINTENANCE_WINDOW_GROUP','BSLN_MAINTAIN_STATS_SCHED');
+               
+2016/6/4 14:39:31
+田新营 2016/6/4 14:39:31
+  begin
+                      sys.dbms_scheduler.set_attribute(name=>'SYS.MONDAY_WINDOW',attribute=>'repeat_interval',value=>'FREQ=WEEKLY;BYDAY=MON;BYHOUR=23;byminute=30; bysecond=0');
+                      sys.dbms_scheduler.set_attribute(name=>'SYS.MONDAY_WINDOW',attribute=>'duration',value=>'0 4:0:0');
+                    end;
+                    /
+                    begin
+                      sys.dbms_scheduler.set_attribute(name=>'SYS.TUESDAY_WINDOW',attribute=>'repeat_interval',value=>'freq=daily;byday=TUE;byhour=22;byminute=0; bysecond=0');
+                      sys.dbms_scheduler.set_attribute(name=>'SYS.TUESDAY_WINDOW',attribute=>'duration',value=>'0 4:0:0');
+                    end;
+                    /
+田新营 2016/6/4 14:39:59
+--都修改为23:30,4小时
+        --instr区分大小,byhour有时大写,有时小写,要用正则表达式.
+          select --t1.window_name,
+                    --t1.repeat_interval,
+                    'begin'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''repeat_interval'',value=>'''||substr(t1.repeat_interval,1,instr(upper(t1.repeat_interval),'BYHOUR=')+6)||'15;byminute=30; bysecond=0'');'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''duration'',value=>''0 04:00:00'');'||chr(10)||
+                    'end;'||chr(10)||
+                    '/' set_attribute_sql
+            from dba_scheduler_windows t1,dba_scheduler_wingroup_members t2 
+            where t1.window_name=t2.window_name and t2.window_group_name in ('MAINTENANCE_WINDOW_GROUP','BSLN_MAINTAIN_STATS_SCHED');
+             
+田新营 2016/6/4 14:40:54
+ --都修改为23:30,4小时
+        --instr区分大小,byhour有时大写,有时小写,要用正则表达式.
+          select --t1.window_name,
+                    --t1.repeat_interval,
+                    'begin'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''repeat_interval'',value=>'''||substr(t1.repeat_interval,1,instr(upper(t1.repeat_interval),'BYHOUR=')+6)||'23;byminute=30; bysecond=0'');'||chr(10)||
+                    '  sys.dbms_scheduler.set_attribute(name=>''SYS.'||t1.window_name||''',attribute=>''duration'',value=>''0 04:00:00'');'||chr(10)||
+                    'end;'||chr(10)||
+                    '/' set_attribute_sql
+            from dba_scheduler_windows t1,dba_scheduler_wingroup_members t2 
+            where t1.window_name=t2.window_name and t2.window_group_name in ('MAINTENANCE_WINDOW_GROUP','BSLN_MAINTAIN_STATS_SCHED');
+                   
+2016/6/4 14:44:23
+田新营 2016/6/4 14:44:23
+--dba 全库
+        set timing on
+        exec DBMS_STATS.GATHER_DATABASE_STATS_JOB_PROC;
+田新营 2016/6/4 14:44:47
+sysdba
+田新营 2016/6/4 14:45:26
+ ---人工采集一个表的统计信息
+2016/6/4 14:46:36
+田新营 2016/6/4 14:46:36
+set timing on
+        EXEC   dbms_stats.gather_table_stats (ownname=>'TZERO',tabname=>'T_EB_BATCHPAYMENT', method_opt =>'for all indexed columns', cascade=>TRUE,degree=>4 );
+    
+田新营 2016/6/4 14:48:28
+---人工采集一个用户下所有对象的统计信息
+        --dba or user
+        set timing on
+        execute dbms_stats.gather_schema_stats(ownname=>'report0916',degree=>12);
+2016/6/4 15:05:42
+田新营 2016/6/4 15:05:42
+---人工采集一个用户下所有对象的统计信息
+        --dba or user
+        set timing on
+        execute dbms_stats.gather_schema_stats(ownname=>'hr',degree=>12);
+    -- 全库 sysdba
+        set timing on
+        exec DBMS_STATS.GATHER_DATABASE_STATS_JOB_PROC;
+        exec dbms_stats.set_table_prefs('hr','employees','STALE_PERCENT','13');
+田新营 2016/6/4 15:05:56
+        EXEC   dbms_stats.gather_table_stats (ownname=>'hr',tabname=>'employees', method_opt =>'for all indexed columns', cascade=>TRUE,degree=>4 );
+2016/6/4 15:09:52
+田新营 2016/6/4 15:09:52
+show parameter STATISTICS_LEVEL
+statistics_level                     string   TYPICAL
+田新营 2016/6/4 15:10:33
+alter system set STATISTICS_LEVEL='ALL' scope=both;
+2016/6/4 15:13:18
+田新营 2016/6/4 15:13:18
+--保留时间和间隔修改
+    --备份
+    with interval_convert_minutes as 
+        (
+            select SNAP_INTERVAL, 
+             extract(day from SNAP_INTERVAL)*24*60+
+                extract(hour from SNAP_INTERVAL)*60+
+                    extract(minute from SNAP_INTERVAL) SNAP_INTERVAL_minutes,
+             RETENTION,
+             extract(day from RETENTION)*24*60+
+                  extract(hour from RETENTION)*60+
+                    extract(minute from RETENTION) RETENTION_minutes
+             from dba_hist_wr_control
+        )
+    select 'exec DBMS_WORKLOAD_REPOSITORY.MODIFY_SNAPSHOT_SETTINGS(interval  =>'||
+        SNAP_INTERVAL_minutes
+        ||',retention =>'||RETENTION_minutes
+        ||');' SNAPSHOT_SETTINGS_bak ,RETENTION_minutes/24/60 RETENTION_days from interval_convert_minutes;
+            --exec DBMS_WORKLOAD_REPOSITORY.MODIFY_SNAPSHOT_SETTINGS(interval  =>60,retention =>11520);
+            
+    --修改
+        exec DBMS_WORKLOAD_REPOSITORY.MODIFY_SNAPSHOT_SETTINGS(interval  =>30,retention =>8*24*60);
+        select 8*24*60 from  dual;
+    --拿备份脚本还原
+        exec DBMS_WORKLOAD_REPOSITORY.MODIFY_SNAPSHOT_SETTINGS(interval  =>60,retention =>11520);
+2016/6/4 15:19:09
+田新营 2016/6/4 15:19:09
+
+田新营 2016/6/4 15:21:08
+
+2016/6/4 16:18:11
+田新营 2016/6/4 16:18:11
+日志挖掘结果
+SCN XID              TO_CHAR(TIMESTAMP,'YYYY-MM-DDHH24:MI:S USERNAME
+---------- ---------------- -------------------------------------- ------------------------------------------------------------
+OS_USERNAME
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MACHINE_NAME
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SESSION_INFO
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL_REDO
+   1184299 0A00040054030000 2016-06-03 18:09:30                    HR
+ThinkPad
+WORKGROUP\TXY
+login_username=HR client_info= OS_username=ThinkPad Machine_name=WORKGROUP\TXY OS_terminal=TXY OS_process_id=11644:7684 OS_program_name=Toad.exe
+delete from "HR"."DEPT60_BONUSES" where "EMPLOYEE_ID" = '103' and "BONUS_AMT" = '0' and ROWID = 'AAAVqDAAEAAAAIjAAA'; 
+when matched then :  delete where (b.salary > 7500) 没有update ,直接删除了,猜测:matched,会优先删除,然后才是update
+--a,b表如果工号相同,b表薪资>7500,就删除a表记录,工号103薪资9000满足条件,删除
+                               --但是,工号103也满足上面的条件,难道也要更新?,然后删除
+
+   1184299 0A00040054030000 2016-06-03 18:09:30                    HR
+ThinkPad
+WORKGROUP\TXY
+login_username=HR client_info= OS_username=ThinkPad Machine_name=WORKGROUP\TXY OS_terminal=TXY OS_process_id=11644:7684 OS_program_name=Toad.exe
+update "HR"."DEPT60_BONUSES" set "BONUS_AMT" = '960' where "EMPLOYEE_ID" = '105' and "BONUS_AMT" = '0' and ROWID = 'AAAVqDAAEAAAAIjAAC';
+when matched then , update set a.bonus_amt = b.salary * 0.2
+where a.bonus_amt = 0 --a,b表如果工号相同,且a表的奖金=0,就更新a表,发20%的奖金 
+
+merge
+
+alter system checkpoint;
+
+shutdown immediate
+
+ALTER SYSTEM SET LOG_checkpointS_TO_ALERT=TRUE scope=both sid='*' ;
+
+Beginning global checkpoint up to RBA [0xa.1bc.10], SCN: 1123088
+
+
+select * from v$log;
+select * from v$logfile order by 1;
+
+shutdown abort
+
+select 'view '||value||'/a' view_alert from v$parameter where name= 'background_dump_dest';
+
+Beginning crash recovery of 1 threads
+Started redo scan
+Completed redo scan
+ read 5000 KB redo, 1092 data blocks need recovery
+Started redo application at
+ Thread 1: logseq 20, block 43298
+Recovery of Online Redo Log: Thread 1 Group 2 Seq 20 Reading mem 0
+  Mem# 0: +DATA/ocp/onlinelog/group_2.262.912526711
+  Mem# 1: +FRA/ocp/onlinelog/group_2.258.912526715
+Completed redo application of 3.96MB
+Completed crash recovery at
+ Thread 1: logseq 20, block 53299, scn 1258053
+ 1092 data blocks read, 1092 data blocks written, 5000 redo k-bytes read
+
+
+
+1.oracle 软件
+ cat /home/grid/.bash_profile
+ cat /home/oracle/.bash_profile
+     ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE  
+    ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1; export ORACLE_HOME  
+    ORACLE_SID=ocp; export ORACLE_SID 
+    
+    chown -Rf /u01 oracle.oinstall
+    
+    cp -Rf /u01 /oracleback
+    本地磁盘
+    
+2.oracle database
+类型      存储路径     默认是否有           可否丢失                   什么时候用
+口令文件   本地        有                   可丢失,dataguard必备       sys远程连接
+参数文件   本地或asm   有                   不可丢失                   数据库nomount
+控制文件   asm         有                   不可丢失                   mount
+数据文件   asm         有                   不可丢失                   open,用户dml,ddl,dcl
+在线日志   asm         有                   日志组不可丢,可丢一个成员  dml,ddl,dcl,logminer,实例恢复
+归档日志   asm         无(开启归档模式)     可以丢                     介质故障,恢复用 ,logminer 
+闪回日志   asm         无(闪回数据库)       可以丢                     用户无操作
+块跟踪文件 asm         无(rman增量,dba配置) 可以丢                     加快rman每天增量备份的速度 
+
+参数文件 +data
+控制文件 +data +fra
+数据文件 +data
+在线日志 +data +fra
+归档日志 +data +fra
+备份文件       +fra
+田新营 2016/6/5 9:22:04
+alert_<sid>.log
+9:23:52
+田新营 2016/6/5 9:23:52
+--控制文件镜像
+SQL> SHOW parameter control
+9:26:09
+田新营 2016/6/5 9:26:09
+su - oracle
+sqlplus / as sysdba
+shutdown immediate
+田新营 2016/6/5 9:27:44
+su - grid
+asmcmd
+cp +FRA/ocp/controlfile/current.256.912526701 +FRA/ocp/controlfile/control03.dbf
+9:29:58
+田新营 2016/6/5 9:29:58
+su - oracle
+sqlplus / as sysdba
+ALTER SYSTEM SET control_files='+DATA/ocp/controlfile/current.260.912526701','+FRA/ocp/controlfile/contol03.dbf' scope=spfile;
+shutdown immediate
+startup
+田新营 2016/6/5 9:30:25
+su - oracle
+sqlplus / as sysdba
+startup nomount
+ALTER SYSTEM SET control_files='+DATA/ocp/controlfile/current.260.912526701','+FRA/ocp/controlfile/contol03.dbf' scope=spfile;
+shutdown immediate
+startup
+田新营 2016/6/5 9:31:54
+ORA-00210: cannot open the specified control file
+ORA-00202: control file: '+FRA/ocp/controlfile/contol03.dbf'
+ORA-17503: ksfdopn:2 Failed to open file +FRA/ocp/controlfile/contol03.dbf
+ORA-15173: entry 'contol03.dbf' does not exist in directory 'controlfile'
+9:32:57
+田新营 2016/6/5 9:32:57
+su - oracle
+sqlplus / as sysdba
+startup nomount
+ALTER SYSTEM SET control_files='+DATA/ocp/controlfile/current.260.912526701','+FRA/ocp/controlfile/contol03.dbf' scope=spfile;
+shutdown immediate
+startup
+
+
+ALTER SYSTEM SET control_files='+FRA/ocp/controlfile/current.256.904921501','+data/ocp/controlfile/current03.ctl' scope=spfile;
+shutdown immediate
+9:36:39
+田新营 2016/6/5 9:36:39
+control_files                        string   +DATA/ocp/controlfile/current.260.912526701, +FRA/ocp/controlfile/control03.dbf
+田新营 2016/6/5 9:37:49
+select * from gv$log;
+--select * from v$log@dgp;
+select * from gv$logfile order by 1,2;
+9:39:10
+田新营 2016/6/5 9:39:10
+echo $ORACLE_HOME
+田新营 2016/6/5 9:40:23
+mkdir -p /u01/app/oracle/fast_recovery_area/ocp
+田新营 2016/6/5 9:40:54
+ALTER DATABASE ADD LOGFILE MEMBER '/u01/app/oracle/fast_recovery_area/ocp/redo01.log'  REUSE TO GROUP 1;
+ALTER DATABASE ADD LOGFILE MEMBER '/u01/app/oracle/fast_recovery_area/ocp/redo02.log'  REUSE TO GROUP 2;
+ALTER DATABASE ADD LOGFILE MEMBER '/u01/app/oracle/fast_recovery_area/ocp/redo03.log'  REUSE TO GROUP 3;
+9:41:37
+田新营 2016/6/5 9:41:37
+alter system switch logfile;
+9:44:04
+田新营 2016/6/5 9:44:04
+Additional information: 3
+Errors in file /u01/app/oracle/diag/rdbms/ocp/ocp/trace/ocp_arc0_16434.trc:
+ORA-00313: open failed for members of log group 1 of thread 1
+ORA-00312: online log 1 thread 1: '/u01/app/oracle/fast_recovery_area/ocp/redo01.log'
+ORA-27037: unable to obtain file status
+Linux-x86_64 Error: 2: No such file or directory
+9:46:47
+田新营 2016/6/5 9:46:47
+ALTER DATABASE DROP LOGFILE MEMBER '/u01/app/oracle/fast_recovery_area/ocp/redo01.log';
+ALTER DATABASE ADD LOGFILE MEMBER '/u01/app/oracle/fast_recovery_area/ocp/redo01.log'  REUSE TO GROUP 1;
+
+archive log list
+田新营 2016/6/5 10:08:13
+--**************开启归档模式************
+    sqlplus / as sysdba
+    archive log list
+    shutdown immediate
+    startup mount
+    --可选
+    select status from v$instance;
+     alter database archivelog;
+     -- alter database noarchivelog;
+     alter database open;
+     show parameter db_recovery_file_
+     --可选
+     alter system switch logfile;
+     --必选
+    alter system set db_recovery_file_dest_size=20g scope=both;
+    --可选
+    alter system set log_archive_dest_1='location=/opt/arch' sid='RACDB1';
+     alter system set log_archive_dest_1='location=/opt/arch' sid='*' scope=both;
+     archive log list
+
+alter system set log_archive_dest_1='location=/+fra' sid='*' scope=both;
+
+Archive destination            USE_DB_RECOVERY_FILE_DEST
+田新营 2016/6/5 10:13:06
+show parameter db_recovery_file_
+田新营 2016/6/5 10:13:16
+db_recovery_file_dest                string
++FRA
+
+--目前还有多少归档没删除
+select thread#,NAME, SEQUENCE#,APPLIED,creator,REGISTRAR,STANDBY_DEST,ARCHIVED,DELETED,STATUS,to_char(RESETLOGS_TIME,'yyyy/mm/dd hh24:mi:ss') RESETLOGS_TIME,first_CHANGE#,NEXT_CHANGE#, to_char(NEXT_TIME,'yyyy/mm/dd hh24:mi:ss') NEXT_TIME,to_char(first_TIME,'yyyy/mm/dd hh24:mi:ss') first_TIME  
+    from v$archived_log a
+    where name is not null 
+    and STANDBY_DEST<>'YES'
+    --and first_time between to_date('') and 
+    order by first_TIME ;
+10:33:45
+田新营 2016/6/5 10:33:45
+1.oracle 软件
+ cat /home/grid/.bash_profile
+ cat /home/oracle/.bash_profile
+     ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE  
+    ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1; export ORACLE_HOME  
+    ORACLE_SID=ocp; export ORACLE_SID 
+    
+    cp -Rf /u01 /oracleback
+    本地磁盘
+    
+2.oracle database
+类型      存储路径     默认是否有           可否丢失                   什么时候用
+口令文件   本地        有                   可丢失,dataguard必备       sys远程连接
+参数文件   本地或asm   有                   不可丢失                   数据库nomount
+控制文件   asm         有                   不可丢失                   mount
+数据文件   asm         有                   不可丢失                   open,用户dml,ddl,dcl
+在线日志   asm         有                   日志组不可丢,可丢一个成员  dml,ddl,dcl,logminer,实例恢复
+归档日志   asm         无(开启归档模式)     可以丢                     介质故障,恢复用 ,logminer 
+闪回日志   asm         无(闪回数据库)       可以丢                     用户无操作
+块跟踪文件 asm         无(rman增量,dba配置) 可以丢                     加快rman每天增量备份的速度 
+
+参数文件 +data
+控制文件 +data +fra
+数据文件 +data
+在线日志 +data +fra
+归档日志 +data +fra
+备份文件       +fra
+
+田新营
+$ORACLE_HOME/dbs/orapw<sid>
+田新营 2016/6/5 10:40:14
+ls $ORACLE_HOME/dbs/orapw*
+田新营 2016/6/5 10:42:04
+sqlplus  sys/password@192.168.46.191 as sysdba
+rm /u01/app/oracle/product/11.2.0/db_1/dbs/orapworcl
+客户端 sqlplus  sys/password@192.168.46.191 as sysdb
+
+--ORA-01017: invalid username/password; logon denied
+口令文件的恢复
+orapwd file=$ORACLE_HOME/dbs/orapwocp password=password entries=5 
+
+[oracle@ocp-chen ~]$ strings /u01/app/oracle/product/11.2.0/db_1/dbs/orapworcl 
+]\[Z
+ORACLE Remote Password file
+INTERNAL
+AB27B53EDC5FEF41
+zdQA#
+8A8F025737A9097A
+
+--有几个sysdba
+Select * from v$pwfile_users;
+grant sysdba to hr;
+revoke sysdba from hr;
+
+--查看数据库正在使用哪个参数文件(spfile or pfile)
+show parameter pfile
+select inst_id,name,value,ISINSTANCE_MODIFIABLE,ISSYS_MODIFIABLE,DESCRIPTION from gv$parameter
+order by inst_id,name;
+[grid@ocp-chen ~]$
+ASMCMD> cp +DATA/ocp/spfileocp.ora /u01
+
+view  /u01/spfileocp.ora
+strings /u01/spfileocp.ora
+
+备份
+--纯文本方式
+SQL> create pfile from spfile;
+
+ls $ORACLE_HOME/dbs -lrt
+cat $ORACLE_HOME/dbs/initocp.ora
+
+--rman备份
+rman target /
+backup CURRENT CONTROLFILE;
+rman target /
+backup CURRENT spfile;
+田新营 2016/6/5 11:09:00
+using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=53 device type=DISK
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+including current SPFILE in backup set
+channel ORA_DISK_1: starting piece 1 at 2016-06-05 11:08:31
+channel ORA_DISK_1: finished piece 1 at 2016-06-05 11:08:32
+piece handle=+FRA/ocp/backupset/2016_06_05/nnsnf0_tag20160605t110831_0.288.913720111 tag=TAG20160605T110831 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 2016-06-05 11:08:32
+
+--控制文件输出到文本
+alter database backup controlfile to trace;
+
+
+[oracle@ocp-chen ~]$ rman target /
+RMAN> backup CURRENT CONTROLFILE;
+Starting backup at 2016-06-05 03:23:41
+using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=25 device type=DISK
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+including current control file in backup set
+channel ORA_DISK_1: starting piece 1 at 2016-06-05 03:23:50
+channel ORA_DISK_1: finished piece 1 at 2016-06-05 03:23:53
+piece handle=+FRA/orcl/backupset/2016_06_05/ncnnf0_tag20160605t032342_0.260.913692231 tag=TAG20160605T032342 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:03
+Finished backup at 2016-06-05 03:23:53
+
+BACKUP DATABASE;
+
+
+[root@localhost ~]# su - oracle
+[oracle@localhost ~]$  rman target /
+
+list backup of spfile;
+list backup of CONTROLFILE;
+
+
+[oracle@localhost db_bak]$ echo $NLS_LANG
+SIMPLIFIED CHINESE_CHINA.ZHS16GBK
+
+export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+
+
+10分钟备份一次归档日志
+cd /oraclemgr/db_bak/
+vi arch.sql
+run {
+BACKUP
+  incremental level=1
+   filesperset 200
+   FORMAT '+fra/db_bak/diskar1_T.%T_s.%s_d.%d'
+   ARCHIVELOG ALL  not backed up;
+   }
+
+vi arch.sh
+source /home/oracle/.bash_profile
+export ORACLE_SID=ocp
+$ORACLE_HOME/bin/rman target / nocatalog cmdfile=/oraclemgr/db_bak/arch.sql log=/oraclemgr/db_bak/arch.log append
+
+
+chmod +x arch.sh
+
+su - oracle
+crontab -e
+*/10 * * * * /oraclemgr/db_bak/arch.sh
+
+
+
+--纯文本方式
+create pfile from spfile;
+ls $ORACLE_HOME/dbs -lrt
+cat $ORACLE_HOME/dbs/initocp.ora
+
+--rman备份
+rman target /
+backup spfile;
+backup database;
+
+sqlplus / as sysdba
+show parameter pfile
+    --+DATA/ocp/spfileocp.ora
+    su - grid
+    asmcmd
+    rm +DATA/ocp/spfileocp.ora
+
+rman target /
+startup nomount
+
+RMAN> startup nomount
+
+startup failed: ORA-01078: failure in processing system parameters
+ORA-01565: error in identifying file '+DATA/ocp/spfileocp.ora'
+ORA-17503: ksfdopn:2 Failed to open file +DATA/ocp/spfileocp.ora
+ORA-15056: additional error message
+ORA-17503: ksfdopn:2 Failed to open file +DATA/ocp/spfileocp.ora
+ORA-15173: entry 'spfileocp.ora' does not exist in directory 'ocp'
+ORA-06512: at line 4
+
+starting Oracle instance without parameter file for retrieval of spfile
+Oracle instance started
+
+Total System Global Area    1068937216 bytes
+
+Fixed Size                     2260088 bytes
+Variable Size                281019272 bytes
+Database Buffers             780140544 bytes
+Redo Buffers                   5517312 bytes
+
+select inst_id,name,value,ISINSTANCE_MODIFIABLE,ISSYS_MODIFIABLE,DESCRIPTION from gv$parameter
+order by inst_id,name
+ ;
+
+db_unique_name	DUMMY
+
+db_unique_name    DUMMY
+view rmanbaklevel1.log
+
+including current control file in backup set
+including current SPFILE in backup set
+channel ORA_DISK_1: starting piece 1 at 2016-06-05 15:22:47
+channel ORA_DISK_1: finished piece 1 at 2016-06-05 15:22:48
+piece handle=+FRA/db_bak/diskdb1_t.20160605_s.17_d.ocp tag=TAG20160605T152239 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 2016-06-05 15:22:48
+
+restore spfile from '+FRA/db_bak/diskdb1_t.20160605_s.17_d.ocp';
+--rman 备份控制文件
+rman target /
+backup CURRENT CONTROLFILE;
+backup database;
+list backup of CONTROLFILE;
+
+restore datafile 1;
+田新营 2016/6/5 16:45:13
+recover datafile 1;
+
+
+
+
+
+
+
+
+
+
+

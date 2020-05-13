@@ -1,0 +1,219 @@
+阶段1：启动数据库实例
+alert文件跟踪文件并记录信息：/u01/app/oracle/diag/rdbms/orcl/orcl/trace/alert_orcl.log
+
+SQL> startup nomount		
+#oracle可以启动到nomount状态，必须要有一个参数文件
+SQL> show parameter spfile		#只要value有结果，就是使用的spfile启动，如果是空值，则是pfile启动
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+spfile				     string	 /u01/app/oracle/product/11.1.0/dbhome_1/dbs/spfileorcl.ora
+#本阶段使用的文件是参数文件，instance启动完毕，处于nomount阶段
+
+阶段2：装载数据库
+SQL> alter database mount;
+SQL> show parameter control_file;
+NAME								 TYPE		 VALUE
+------------------------------------ ----------- ------------------------------
+control_file_record_keep_time	     integer	 7
+control_files						 string		 /u01/app/oracle/oradata/orcl/control01.ctl,
+												 /u01/app/oracle/flash_recovery_area/orcl/control02.ctl
+#本阶段使用的文件是控制文件，数据库处于mount阶段，只可以对数据库的物理结构进行操作
+
+阶段3：打开数据库
+验证所有数据文件和联机重做日志文件是否可以打开，并检查数据库的一致性。
+如果需要，系统监视器后台进程（SMON）启动实例恢复
+前滚以恢复尚未记录在数据文件中但已记录在联机重做日志中的数据
+打开数据库而不是等待回退全部事务后才使数据库可用
+未恢复事务锁定的数据立即可用
+在SMON和各个服务器进程访问锁定的数据时回退他们未提交的事务
+SQL> alter database open;
+SQL> select OPEN_MODE from v$database;
+OPEN_MODE
+--------------------
+READ WRITE
+#本阶段数据库使用数据文件，日志文件，物理文件的逻辑关系，验证一致性。数据库处于open阶段，数据库启动完毕，数据库的逻辑结构与物理结构可以正常工作了
+
+
+
+#判断数据库的状态
+SQL> select open_mode from v$database;
+select open_mode from v$database
+*
+ERROR at line 1:
+ORA-01034: ORACLE not available			#数据库没有启动
+SQL> startup nomount		#现在将数据库启动到nomount状态
+ORACLE instance started.
+
+Total System Global Area  534462464 bytes
+Fixed Size		    2215064 bytes
+Variable Size		  390071144 bytes
+Database Buffers	  138412032 bytes
+Redo Buffers		    3764224 bytes
+SQL> select open_mode from v$database;
+select open_mode from v$database
+                      *
+ERROR at line 1:
+ORA-01507: database not mounted		#这个时候报的错误是数据库启动到nomount状态，数据库没有mounted
+SQL> alter database mount;			#数据库启动到mount阶段
+Database altered.
+SQL> select open_mode from v$database;
+OPEN_MODE
+--------------------
+MOUNTED
+SQL> alter database open;			#数据库在 open阶段
+Database altered.
+SQL> select open_mode from v$database;
+OPEN_MODE
+--------------------
+READ WRITE
+
+
+#数据库启动的指令
+startup [force][restrict][pfile=filename] 
+			[open[recover][database][mount|nomount]		
+	open：使用户得以访问数据库
+	mount：为某些DBA活动装载数据库但不允许用户访问数据库
+	nomount：创建SGA并启动后台进程但不允许访问数据库
+	pfile=parfile：允许使用非缺省参数文件配置网络
+	force：在执行正常启动之前终止运行的例程
+	restricted：只允许具有restricted session权限的用户访问数据库
+	recover：在启动数据库时开始介质恢复
+startup [open]		#数据库按照三阶段逐一判断，如果没有故障，则会启动到open阶段
+startup mount
+startup mount pfile='<dir>'		#使用pfile启动到mount
+startup nomount
+startup nomount pfile='<dir>'	#使用pfile启动到nomount
+startup force restrict
+alter database mount		#由nomount启动到mount
+alter database open			#由mount启动到open
+startup force nomount; startup force mount;  startup force命令不要随便使用，因为force表示先强制关闭再启动数据库，而强制关闭会出现异常
+
+#关闭数据库
+会将缓冲区高速缓存中的更改以及重做日志缓冲区高速缓存中的条目写入数据文件和联机重做日志文件
+关闭所有联机数据文件和联机重做日志
+卸载数据库
+关闭其控制文件
+关闭实例
+ALERT文件和跟踪文件将关闭
+SGA被收回且后台进程被终止
+shutdown [normal|transactional|immediate|abort]
+	关闭模式：
+		A=abort		I=immediate		T=transactional		N=normal
+	shutdown命令可以关闭数据库，后面可以有如上四个选项，其中最后一个normal是默认值
+		关闭模式						A	I	T	N
+		允许建立新连接					否	否	否	否
+		等待当前会话结束				否	否	否	是
+		等待当前事务处理结束			否	否	是	是
+		强制执行检查点操作并关闭文件	否	是	是	是
+shutdown immediate	
+shutdown normal			#不建议使用，建议使用其他的
+shutdown transactional
+	#前面三种关闭数据库是一致的数据库
+shutdown abort			#这个也不建议使用，下次再启动时可能会导致异常现象（只有在数据库实在是不能关闭时使用）
+	#可以使用abort的这种关闭数据库的方式来模拟数据库出现故障后的情况，来熟悉如死机、断电等突发情况后的oracle的使用
+
+
+
+#使用dbstart和dbshut来启动关闭数据库
+要修改/etc/oratab
+[oracle@oracle ~]$ vim /etc/oratab		#将N改为Y
+orcl:/u01/app/oracle/product/11.1.0/dbhome_1:Y
+#oracle数据库和em开机自启动
+[oracle@oracle ~]$ dbshut 
+ORACLE_HOME_LISTNER is not SET, unable to auto-stop Oracle Net Listener		#解决这个问题
+解决方法
+dbstart和dbshut脚本文件中ORACLE_HOME_LISTNER的设置有问题
+分别打开两个文件找到：ORACLE_HOME_LISTNER=$1,修改为ORACLE_HOME_LISTNER=$ORACLE_HOME
+[oracle@oracle ~]$ vim /u01/app/oracle/product/11.1.0/dbhome_1/bin/dbshut
+[oracle@oracle ~]$ vim /u01/app/oracle/product/11.1.0/dbhome_1/bin/dbstart 
+
+到root用户写脚本
+[root@oracle ~]# head -n 6 /etc/init.d/network > /etc/init.d/oracle11g
+[root@oracle ~]# vim /etc/init.d/oracle11g
+#! /bin/bash
+#
+# oracle11g       start oracle
+#
+# chkconfig: 345 10 99
+# description: oracle11g server
+
+ORACLE_HOME=/u01/app/oracle/product/11.1.0/dbhome_1
+
+if [ ! -f $ORACLE_HOME/bin/dbstart ]
+then
+  echo "oracle cannot start"
+exit
+fi
+
+if [ ! -f $ORACLE_HOME/bin/lsnrctl ]
+then
+  echo "lsnrctl cannot start"
+exit
+fi
+
+case "$1" in
+  'start')
+    echo "starting oracle11g ..."
+    su - oracle -c "$ORACLE_HOME/bin/dbstart"
+	su - oracle -c "$ORACLE_HOME/bin/lsnrctl start"
+    #su - oracle -c "$ORACLE_HOME/bin/emctl start dbconsole"			#如果不用em，那么可以不要这个
+  ;;
+  'stop')
+    echo "stoping oracle11g ..."
+    #su - oracle -c "$ORACLE_HOME/bin/emctl stop dbconsole"		    #如果不用em，那么可以不要这个
+	su - oracle -c "$ORACLE_HOME/bin/lsnrctl stop"
+    su - oracle -c "$ORACLE_HOME/bin/dbshut"
+  ;;
+  *)
+    echo "usage $0: start|stop"
+  ;;
+esac
+[root@oracle ~]# chmod +x /etc/init.d/oracle11g
+[root@oracle58 ~]# /etc/init.d/oracle11g stop			#现在可以使用了
+stoping oracle11g ...
+Oracle Enterprise Manager 11g Database Control Release 11.2.0.1.0 
+Copyright (c) 1996, 2009 Oracle Corporation.  All rights reserved.
+https://oracle58.oracle58.com:1158/em/console/aboutApplication
+Stopping Oracle Enterprise Manager 11g Database Control ... 
+ ...  Stopped. 
+Processing Database instance "orcl": log file /u01/app/oracle/product/11.1.0/dbhome_1/shutdown.log
+[root@oracle58 ~]# ps -elf | grep ora_
+0 S root      3313  2583  0  80   0 - 15304 pipe_w 10:56 pts/0    00:00:00 grep ora_
+[root@oracle58 ~]# /etc/init.d/oracle11g start
+starting oracle11g ...
+Processing Database instance "orcl": log file /u01/app/oracle/product/11.1.0/dbhome_1/startup.log
+Oracle Enterprise Manager 11g Database Control Release 11.2.0.1.0 
+Copyright (c) 1996, 2009 Oracle Corporation.  All rights reserved.
+https://oracle58.oracle58.com:1158/em/console/aboutApplication
+Starting Oracle Enterprise Manager 11g Database Control ................. started. 
+------------------------------------------------------------------
+Logs are generated in directory /u01/app/oracle/product/11.1.0/dbhome_1/oracle58.oracle58.com_orcl/sysman/log 
+[root@oracle58 ~]# chkconfig  oracle11g on
+[root@oracle58 ~]# chkconfig --list oracle11g		#使oracle服务自动启动
+oracle11g      	0:off	1:off	2:on	3:on	4:on	5:on	6:off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

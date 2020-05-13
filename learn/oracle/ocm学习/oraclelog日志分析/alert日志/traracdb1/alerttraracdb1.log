@@ -1,0 +1,1237 @@
+2017-07-16 18:04:11.737: 
+[client(12940)]CRS-2101:The OLR was formatted using version 3.
+2017-07-16 18:04:52.602: 
+[ohasd(14225)]CRS-2112:The OLR service started on node traracdb1.
+2017-07-16 18:04:52.606: 
+[ohasd(14225)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+[client(14461)]CRS-10001:16-Jul-17 18:05 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(14463)]CRS-10001:16-Jul-17 18:05 ACFS-9201: Not Supported
+[client(14637)]CRS-10001:16-Jul-17 18:05 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+2017-07-16 18:05:07.101: 
+[gpnpd(14828)]CRS-2328:GPNPD started on node traracdb1. 
+2017-07-16 18:05:09.290: 
+[cssd(14887)]CRS-1713:CSSD daemon is started in exclusive mode
+2017-07-16 18:05:11.168: 
+[ohasd(14225)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 18:05:11.168: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.diskmon'.
+2017-07-16 18:05:15.792: 
+[cssd(14887)]CRS-1709:Lease acquisition failed for node traracdb1 because no voting file has been configured; Details at (:CSSNM00031:) in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log
+2017-07-16 18:05:24.534: 
+[cssd(14887)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-16 18:05:26.741: 
+[ctssd(14938)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-07-16 18:05:26.977: 
+[ctssd(14938)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-07-16 18:05:26.977: 
+[ctssd(14938)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+[client(15026)]CRS-10001:16-Jul-17 18:05 ACFS-9204: false
+2017-07-16 18:05:47.594: 
+[client(15259)]CRS-1001:The OCR was formatted using version 3.
+2017-07-16 18:05:48.367: 
+[crsd(15308)]CRS-1012:The OCR service started on node traracdb1.
+2017-07-16 18:05:49.359: 
+[cssd(14887)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:05:49.359: 
+[cssd(14887)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:05:49.359: 
+[cssd(14887)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:05:49.359: 
+[cssd(14887)]CRS-1626:A Configuration change request completed successfully
+2017-07-16 18:05:49.361: 
+[cssd(14887)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-16 18:06:03.243: 
+[ctssd(14938)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-07-16 18:06:20.875: 
+[cssd(14887)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-07-16 18:06:20.975: 
+[cssd(14887)]CRS-1625:Node traracdb1, number 1, was manually shut down
+2017-07-16 18:06:21.060: 
+[ohasd(14225)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-07-16 18:06:21.060: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.cssdmonitor'.
+2017-07-16 18:06:21.076: 
+[cssd(14887)]CRS-1660:The CSS daemon shutdown has completed
+2017-07-16 18:06:22.225: 
+[ohasd(14225)]CRS-2767:Resource state recovery not attempted for 'ora.cssd' as its target state is OFFLINE
+2017-07-16 18:06:22.225: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.cssd'.
+2017-07-16 18:06:23.642: 
+[gpnpd(14828)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+2017-07-16 18:06:26.113: 
+[mdnsd(14818)]CRS-5602:mDNS service stopping by request.
+2017-07-16 18:06:33.010: 
+[gpnpd(15943)]CRS-2328:GPNPD started on node traracdb1. 
+2017-07-16 18:06:35.470: 
+[cssd(16007)]CRS-1713:CSSD daemon is started in clustered mode
+2017-07-16 18:06:37.448: 
+[ohasd(14225)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 18:06:37.448: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.diskmon'.
+2017-07-16 18:07:58.094: 
+[cssd(16007)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-07-16 18:07:59.340: 
+[cssd(16007)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:07:59.352: 
+[cssd(16007)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:07:59.359: 
+[cssd(16007)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 18:08:08.475: 
+[cssd(16007)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-16 18:08:10.662: 
+[ctssd(16262)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-07-16 18:08:10.898: 
+[ctssd(16262)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-07-16 18:08:10.899: 
+[ctssd(16262)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-07-16 18:08:32.417: 
+[crsd(16436)]CRS-1012:The OCR service started on node traracdb1.
+2017-07-16 18:08:33.041: 
+[evmd(16452)]CRS-1401:EVMD started on node traracdb1.
+2017-07-16 18:08:34.917: 
+[crsd(16436)]CRS-1201:CRSD started on node traracdb1.
+2017-07-16 18:08:35.001: 
+[crsd(16436)]CRS-2772:Server 'traracdb1' has been assigned to pool 'Free'.
+[client(16959)]CRS-10001:16-Jul-17 18:09 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(16961)]CRS-10001:16-Jul-17 18:09 ACFS-9201: Not Supported
+2017-07-16 18:09:11.814: 
+[client(17195)]CRS-4742:OCR updated with contents of /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml (New = 13378, Old = 0 bytes)
+2017-07-16 18:09:11.876: 
+[client(17203)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13377(New), 13378(Old) bytes)
+2017-07-16 18:09:11.907: 
+[client(17207)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13377(New), 13378(Old) bytes)
+2017-07-16 18:09:11.948: 
+[client(17211)]CRS-4742:OCR updated with contents of /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml (New = 13378, Old = 13378 bytes)
+2017-07-16 18:09:23.091: 
+[client(17651)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13377(New), 13378(Old) bytes)
+[client(17827)]CRS-10001:16-Jul-17 18:09 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(17829)]CRS-10001:16-Jul-17 18:09 ACFS-9201: Not Supported
+2017-07-16 18:15:44.938: 
+[cssd(16007)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-16 18:16:13.476: 
+[crsd(16436)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Free'.
+[client(18812)]CRS-10001:16-Jul-17 18:17 ACFS-9204: false
+[client(19233)]CRS-10001:16-Jul-17 18:18 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(19235)]CRS-10001:16-Jul-17 18:18 ACFS-9201: Not Supported
+2017-07-16 18:56:15.443: 
+[/app/11.2.0/grid/bin/orarootagent.bin(17333)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:4} in /app/11.2.0/grid/log/traracdb1/agent/crsd/orarootagent_root/orarootagent_root.log.
+2017-07-16 18:56:16.362: 
+[ctssd(16262)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-07-16 18:56:16.365: 
+[mdnsd(15930)]CRS-5602:mDNS service stopping by request.
+2017-07-16 18:56:29.701: 
+[cssd(16007)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-07-16 18:56:29.804: 
+[ohasd(14225)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-07-16 18:56:29.804: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.cssdmonitor'.
+2017-07-16 18:56:29.902: 
+[cssd(16007)]CRS-1660:The CSS daemon shutdown has completed
+2017-07-16 18:56:31.068: 
+[ohasd(14225)]CRS-2769:Unable to failover resource 'ora.cssd'.
+2017-07-16 18:56:32.045: 
+[gpnpd(15943)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+[client(8986)]CRS-10001:16-Jul-17 19:01 ACFS-9459: ADVM/ACFS is not supported on this OS version: 'unknown'
+[client(8988)]CRS-10001:16-Jul-17 19:01 ACFS-9201: Not Supported
+2017-07-16 19:01:45.316: 
+[ohasd(8999)]CRS-2112:The OLR service started on node traracdb1.
+2017-07-16 19:01:45.321: 
+[ohasd(8999)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-07-16 19:01:45.321: 
+[ohasd(8999)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-07-16 19:01:48.500: 
+[/app/11.2.0/grid/bin/orarootagent.bin(9119)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-07-16 19:01:52.836: 
+[gpnpd(9223)]CRS-2328:GPNPD started on node traracdb1. 
+2017-07-16 19:01:55.172: 
+[cssd(9388)]CRS-1713:CSSD daemon is started in clustered mode
+2017-07-16 19:01:57.021: 
+[ohasd(8999)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 19:02:14.707: 
+[cssd(9388)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-07-16 19:02:15.949: 
+[cssd(9388)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 19:02:15.954: 
+[cssd(9388)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 19:02:15.960: 
+[cssd(9388)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-16 19:02:19.953: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-16 19:02:22.178: 
+[ctssd(9561)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-07-16 19:02:22.415: 
+[ctssd(9561)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb2.
+2017-07-16 19:02:22.416: 
+[ctssd(9561)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-07-16 19:02:24.172: 
+[ohasd(8999)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-16 19:02:37.439: 
+[ctssd(9561)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-16 19:02:41.183: 
+[crsd(9812)]CRS-1012:The OCR service started on node traracdb1.
+2017-07-16 19:02:41.189: 
+[evmd(9646)]CRS-1401:EVMD started on node traracdb1.
+2017-07-16 19:02:43.059: 
+[crsd(9812)]CRS-1201:CRSD started on node traracdb1.
+2017-07-16 19:05:40.941: 
+[client(11362)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 15925(New), 13378(Old) bytes)
+2017-07-16 19:06:06.021: 
+[ctssd(9561)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-07-16 19:06:08.171: 
+[cssd(9388)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-07-16 19:06:08.175: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-16 19:06:08.176: 
+[crsd(9812)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-07-16 19:06:08.176: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'Free'.
+2017-07-16 19:11:59.620: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-16 19:12:27.382: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Free'.
+[client(30820)]CRS-10001:16-Jul-17 19:30 ACFS-9204: false
+2017-07-16 19:57:06.553: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'Free'.
+2017-07-16 19:57:06.553: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-07-16 19:57:06.554: 
+[crsd(9812)]CRS-2773:Server 'traracdb1' has been removed from pool 'Free'.
+2017-07-16 19:57:06.554: 
+[crsd(9812)]CRS-2772:Server 'traracdb1' has been assigned to pool 'Generic'.
+2017-07-16 19:57:06.554: 
+[crsd(9812)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb'.
+2017-07-16 19:57:06.554: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-07-17 01:06:05.449: 
+[client(29568)]CRS-10051:CVU found following errors with Clusterware setup : PRVF-7573 : Sufficient swap size is not available on node "traracdb1" [Required = 16GB (1.6777216E7KB) ; Found = 16GB (1.6777212E7KB)]
+PRVF-7532 : Package "pdksh" is missing on node "traracdb1"
+PRVF-5415 : Check to see if NTP daemon or service is running failed
+PRVG-1101 : SCAN name "traracdb-scan" failed to resolve
+PRVF-4657 : Name resolution setup check for "traracdb-scan" (IP address: 20.1.2.38) failed
+PRVF-4664 : Found inconsistent name resolution entries for SCAN name "traracdb-scan"
+
+2017-07-18 14:55:08.746: 
+[crsd(9812)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-07-18 14:55:08.747: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-07-27 13:06:05.226: 
+[client(32464)]CRS-10051:CVU found following errors with Clusterware setup : PRVF-7573 : Sufficient swap size is not available on node "traracdb1" [Required = 16GB (1.6777216E7KB) ; Found = 16GB (1.6777212E7KB)]
+PRVF-7532 : Package "pdksh" is missing on node "traracdb1"
+PRVF-5410 : Check of common NTP Time Server failed
+PRVF-5416 : Query of NTP daemon failed on all nodes
+PRVG-1101 : SCAN name "traracdb-scan" failed to resolve
+PRVF-4657 : Name resolution setup check for "traracdb-scan" (IP address: 20.1.2.38) failed
+PRVF-4664 : Found inconsistent name resolution entries for SCAN name "traracdb-scan"
+
+2017-07-27 18:45:13.675: 
+[cssd(9388)]CRS-1612:Network communication with node traracdb2 (2) missing for 50% of timeout interval.  Removal of this node from cluster in 14.210 seconds
+2017-07-27 18:45:20.676: 
+[cssd(9388)]CRS-1611:Network communication with node traracdb2 (2) missing for 75% of timeout interval.  Removal of this node from cluster in 7.200 seconds
+2017-07-27 18:45:25.677: 
+[cssd(9388)]CRS-1610:Network communication with node traracdb2 (2) missing for 90% of timeout interval.  Removal of this node from cluster in 2.200 seconds
+2017-07-27 18:45:27.878: 
+[cssd(9388)]CRS-1632:Node traracdb2 is being removed from the cluster in cluster incarnation 395694492
+2017-07-27 18:45:27.883: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-27 18:45:27.884: 
+[crsd(9812)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-07-27 18:45:30.425: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-07-27 18:45:30.426: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-07-27 18:45:30.426: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-07-27 18:59:52.988: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-27 19:00:33.923: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-07-27 19:00:33.923: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-07-27 19:00:33.923: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-07-27 19:01:27.896: 
+[crsd(9812)]CRS-2807:Resource 'ora.sgetradb.db' failed to start automatically.
+2017-07-27 20:05:15.793: 
+[crsd(9812)]CRS-2765:Resource 'ora.net1.network' has failed on server 'traracdb2'.
+2017-07-27 20:05:15.793: 
+[crsd(9812)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-07-27 20:05:24.124: 
+[crsd(9812)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-07-27 20:05:36.314: 
+[cssd(9388)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-07-27 20:05:36.318: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-07-27 20:05:36.319: 
+[crsd(9812)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-07-27 20:05:36.320: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-07-27 20:05:36.320: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-07-27 20:05:36.320: 
+[crsd(9812)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-07-27 20:13:49.444: 
+[cssd(9388)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-27 20:14:21.747: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-07-27 20:14:21.747: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-07-27 20:14:21.748: 
+[crsd(9812)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-07-27 20:15:01.922: 
+[crsd(9812)]CRS-2807:Resource 'ora.sgetradb.db' failed to start automatically.
+2017-07-27 20:18:53.185: 
+[cssd(9388)]CRS-1656:The CSS daemon is terminating due to a fatal error; Details at (:CSSSC00012:) in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log
+2017-07-27 20:18:53.186: 
+[gpnpd(9223)]CRS-2341:GPNPD on node traracdb1 shutting down on signal 15. 
+2017-07-27 20:33:04.697: 
+[ohasd(4878)]CRS-2112:The OLR service started on node traracdb1.
+2017-07-27 20:33:04.819: 
+[ohasd(4878)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-07-27 20:33:04.734: 
+[ohasd(4878)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-07-27 20:33:05.291: 
+[/app/11.2.0/grid/bin/oraagent.bin(4931)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-07-27 20:33:08.551: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4935)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-07-27 20:33:10.717: 
+[gpnpd(5027)]CRS-2328:GPNPD started on node traracdb1. 
+2017-07-27 20:33:13.044: 
+[cssd(5095)]CRS-1713:CSSD daemon is started in clustered mode
+2017-07-27 20:33:14.881: 
+[ohasd(4878)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-27 20:33:32.596: 
+[cssd(5095)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-07-27 20:33:33.841: 
+[cssd(5095)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-27 20:33:33.849: 
+[cssd(5095)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-27 20:33:33.855: 
+[cssd(5095)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-07-27 20:33:36.373: 
+[cssd(5095)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-07-27 20:33:38.031: 
+[ctssd(5347)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-07-27 20:33:38.266: 
+[ctssd(5347)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb2.
+2017-07-27 20:33:38.266: 
+[ctssd(5347)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-07-27 20:33:40.035: 
+[ohasd(4878)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-07-27 20:33:47.259: 
+[/app/11.2.0/grid/bin/oraagent.bin(5002)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-07-27 20:33:52.286: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 20:33:53.035: 
+[/app/11.2.0/grid/bin/oraagent.bin(5002)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-07-27 20:34:11.371: 
+[crsd(5628)]CRS-1012:The OCR service started on node traracdb1.
+2017-07-27 20:34:11.427: 
+[evmd(5372)]CRS-1401:EVMD started on node traracdb1.
+2017-07-27 20:34:12.573: 
+[crsd(5628)]CRS-1201:CRSD started on node traracdb1.
+2017-07-27 20:34:14.219: 
+[/app/11.2.0/grid/bin/oraagent.bin(5753)]CRS-5011:Check of resource "sgetradb" failed: details at "(:CLSN00007:)" in "/app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_oracle//oraagent_oracle.log"
+2017-07-27 21:03:52.580: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 21:33:52.877: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 22:03:53.191: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 22:33:54.175: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 23:03:54.250: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-27 23:33:54.251: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 00:03:55.057: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 00:33:55.346: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 01:03:55.635: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 01:33:55.930: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 02:03:56.218: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 02:33:56.499: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 03:03:56.789: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 03:33:57.078: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 04:03:57.368: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 04:33:57.659: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 05:03:57.955: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 05:33:58.266: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 06:03:58.554: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 06:33:58.855: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 07:03:59.153: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 07:33:59.454: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 08:03:59.757: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 08:34:00.072: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 09:04:00.364: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 09:34:00.663: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 10:04:00.956: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 10:34:01.250: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 11:04:01.538: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 11:34:01.821: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 12:04:02.090: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 12:34:02.364: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 13:04:02.638: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 13:34:02.913: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 14:04:03.176: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 14:34:03.480: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 15:04:03.778: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 15:34:04.076: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 16:04:04.389: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 16:34:04.711: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 17:04:05.013: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 17:34:05.304: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 18:19:17.737: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 18:52:14.055: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 20:56:15.223: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-28 21:26:15.498: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 00:22:49.139: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 00:53:13.421: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 03:40:43.099: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 04:50:59.813: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 05:21:00.119: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 05:51:00.424: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 06:21:00.720: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 06:51:01.010: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 07:21:01.276: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 07:51:01.586: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 08:21:01.858: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 08:51:02.138: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 09:21:34.409: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 15:26:49.871: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 15:56:50.139: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 16:26:50.409: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 16:56:50.673: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 17:26:50.939: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 17:56:51.218: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 18:28:11.543: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-29 20:47:56.873: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-30 17:07:28.972: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 11:09:31.696: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 15:07:58.022: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 15:37:58.299: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 16:07:58.604: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 16:37:58.918: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 17:07:59.239: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-07-31 17:37:59.555: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 09:58:49.075: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 10:33:05.372: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 11:03:29.658: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 11:38:49.982: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 16:31:40.646: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 17:01:40.925: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 17:31:41.231: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 18:01:41.542: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 18:31:41.854: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 19:01:42.117: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 19:31:42.390: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 20:01:42.664: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 20:31:42.957: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 21:01:43.256: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 21:31:43.525: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 22:01:43.795: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 22:31:44.052: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 23:01:44.328: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-01 23:31:44.647: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 00:03:04.943: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 00:36:01.242: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 01:06:41.519: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 13:12:32.577: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 13:49:28.967: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 14:19:29.277: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 14:49:29.570: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 15:19:29.851: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 15:49:30.162: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 16:19:30.484: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 16:49:30.803: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 17:19:31.126: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 17:49:31.422: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 18:19:31.744: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 18:49:32.045: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 19:19:56.369: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 19:49:56.695: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 20:19:57.015: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 20:49:57.329: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 21:19:57.619: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 21:49:57.916: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 22:19:58.204: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-02 22:50:14.495: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 09:56:12.659: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 10:31:49.017: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 11:07:25.331: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 11:37:25.649: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 12:07:33.952: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 12:38:14.228: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 13:08:14.495: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 13:38:14.755: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 14:08:15.035: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 14:38:15.303: 
+[ctssd(5347)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-03 14:42:08.722: 
+[cssd(5095)]CRS-1612:Network communication with node traracdb2 (2) missing for 50% of timeout interval.  Removal of this node from cluster in 14.150 seconds
+2017-08-03 14:42:15.723: 
+[cssd(5095)]CRS-1611:Network communication with node traracdb2 (2) missing for 75% of timeout interval.  Removal of this node from cluster in 7.150 seconds
+2017-08-03 14:42:20.724: 
+[cssd(5095)]CRS-1610:Network communication with node traracdb2 (2) missing for 90% of timeout interval.  Removal of this node from cluster in 2.140 seconds
+2017-08-03 14:42:22.865: 
+[cssd(5095)]CRS-1607:Node traracdb2 is being evicted in cluster incarnation 395694498; details at (:CSSNM00007:) in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-03 14:42:25.369: 
+[cssd(5095)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-08-03 14:42:25.372: 
+[cssd(5095)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-08-03 14:42:25.379: 
+[ctssd(5347)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-08-03 14:42:26.359: 
+[crsd(5628)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-08-03 14:42:26.797: 
+[client(11425)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-08-03 14:42:43.259: 
+[crsd(5628)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-08-03 14:42:43.259: 
+[crsd(5628)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-08-03 14:42:43.259: 
+[crsd(5628)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-08-03 14:46:28.904: 
+[cssd(5095)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-08-03 14:47:00.190: 
+[crsd(5628)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-08-03 14:47:00.190: 
+[crsd(5628)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-08-03 14:47:00.190: 
+[crsd(5628)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-03 20:42:52.708: 
+[client(31942)]CRS-10051:CVU found following errors with Clusterware setup : PRVF-7573 : Sufficient swap size is not available on node "traracdb1" [Required = 16GB (1.6777216E7KB) ; Found = 16GB (1.6777212E7KB)]
+PRVF-7532 : Package "pdksh" is missing on node "traracdb1"
+PRVF-5410 : Check of common NTP Time Server failed
+PRVF-5416 : Query of NTP daemon failed on all nodes
+PRVG-1101 : SCAN name "traracdb-scan" failed to resolve
+PRVF-4657 : Name resolution setup check for "traracdb-scan" (IP address: 20.1.2.38) failed
+PRVF-4664 : Found inconsistent name resolution entries for SCAN name "traracdb-scan"
+
+2017-08-04 12:22:17.200: 
+[crsd(5628)]CRS-2765:Resource 'ora.net1.network' has failed on server 'traracdb1'.
+2017-08-04 12:22:17.200: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-08-04 12:22:18.211: 
+[crsd(5628)]CRS-2765:Resource 'ora.traracdb1.vip' has failed on server 'traracdb1'.
+2017-08-04 12:22:18.369: 
+[/app/11.2.0/grid/bin/oraagent.bin(5744)]CRS-5016:Process "/app/11.2.0/grid/bin/lsnrctl" spawned by agent "/app/11.2.0/grid/bin/oraagent.bin" for action "stop" failed: details at "(:CLSN00010:)" in "/app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_grid//oraagent_grid.log"
+2017-08-04 12:22:20.894: 
+[crsd(5628)]CRS-2765:Resource 'ora.net1.network' has failed on server 'traracdb2'.
+2017-08-04 12:22:20.894: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-08-04 12:22:21.309: 
+[crsd(5628)]CRS-2765:Resource 'ora.traracdb2.vip' has failed on server 'traracdb2'.
+2017-08-04 12:22:21.310: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.traracdb2.vip'.
+2017-08-04 12:22:21.779: 
+[/app/11.2.0/grid/bin/oraagent.bin(5744)]CRS-5016:Process "/app/11.2.0/grid/bin/lsnrctl" spawned by agent "/app/11.2.0/grid/bin/oraagent.bin" for action "check" failed: details at "(:CLSN00010:)" in "/app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_grid//oraagent_grid.log"
+2017-08-04 12:22:23.482: 
+[/app/11.2.0/grid/bin/oraagent.bin(5744)]CRS-5016:Process "/app/11.2.0/grid/bin/lsnrctl" spawned by agent "/app/11.2.0/grid/bin/oraagent.bin" for action "check" failed: details at "(:CLSN00010:)" in "/app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_grid//oraagent_grid.log"
+2017-08-04 12:22:23.679: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.traracdb2.vip'.
+2017-08-04 12:22:26.385: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-08-04 12:22:26.386: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.traracdb1.vip'.
+2017-08-04 12:22:26.387: 
+[crsd(5628)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-08-04 12:22:30.636: 
+[/app/11.2.0/grid/bin/orarootagent.bin(5748)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:542} in /app/11.2.0/grid/log/traracdb1/agent/crsd/orarootagent_root//orarootagent_root.log.
+2017-08-04 12:22:31.550: 
+[mdnsd(5013)]CRS-5602:mDNS service stopping by request.
+2017-08-04 12:22:31.550: 
+[ctssd(5347)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-08-04 12:22:39.762: 
+[/app/11.2.0/grid/bin/oraagent.bin(5002)]CRS-5019:All OCR locations are on ASM disk groups [OCR], and none of these disk groups are mounted. Details are at "(:CLSN00100:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log".
+2017-08-04 12:22:41.110: 
+[cssd(5095)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-08-04 12:22:41.212: 
+[ohasd(4878)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-08-04 12:22:43.448: 
+[gpnpd(5027)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+2017-08-04 12:27:20.635: 
+[ohasd(4818)]CRS-2112:The OLR service started on node traracdb1.
+2017-08-04 12:27:20.645: 
+[ohasd(4818)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-08-04 12:27:20.646: 
+[ohasd(4818)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-08-04 12:27:21.518: 
+[/app/11.2.0/grid/bin/oraagent.bin(4871)]CRS-5019:All OCR locations are on ASM disk groups [OCR], and none of these disk groups are mounted. Details are at "(:CLSN00100:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log".
+2017-08-04 12:27:24.025: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4875)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-08-04 12:27:28.913: 
+[gpnpd(5008)]CRS-2328:GPNPD started on node traracdb1. 
+2017-08-04 12:27:31.219: 
+[cssd(5081)]CRS-1713:CSSD daemon is started in clustered mode
+2017-08-04 12:27:33.075: 
+[ohasd(4818)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-04 12:27:52.952: 
+[cssd(5081)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-08-04 12:27:54.261: 
+[cssd(5081)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-04 12:27:54.284: 
+[cssd(5081)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-04 12:27:54.301: 
+[cssd(5081)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-04 12:27:57.454: 
+[cssd(5081)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-08-04 12:27:59.224: 
+[ctssd(5331)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-08-04 12:27:59.459: 
+[ctssd(5331)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb2.
+2017-08-04 12:27:59.459: 
+[ctssd(5331)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-08-04 12:28:01.217: 
+[ohasd(4818)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-04 12:28:13.479: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 12:28:21.880: 
+[crsd(5587)]CRS-1012:The OCR service started on node traracdb1.
+2017-08-04 12:28:21.888: 
+[evmd(5355)]CRS-1401:EVMD started on node traracdb1.
+2017-08-04 12:28:23.340: 
+[crsd(5587)]CRS-1201:CRSD started on node traracdb1.
+2017-08-04 12:58:13.808: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 13:28:14.092: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 13:58:14.392: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 14:28:14.694: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 14:58:14.993: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 15:28:15.284: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 15:58:15.579: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 16:28:15.872: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 16:58:16.174: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 17:28:16.468: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 17:58:16.762: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 18:28:17.052: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 18:58:17.337: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 19:28:17.650: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 19:58:17.956: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 20:28:18.265: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 20:58:18.580: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 21:28:18.897: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 21:58:19.201: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 22:28:19.479: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 22:58:19.757: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 23:28:20.034: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-04 23:58:20.330: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 00:28:20.626: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 00:58:20.909: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 01:28:21.172: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 01:58:21.454: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 02:28:21.721: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 02:58:22.012: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 03:28:22.279: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 03:58:22.557: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 04:28:22.834: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 04:58:23.108: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 05:28:23.379: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 05:58:23.648: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 06:28:23.918: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 06:58:24.183: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 07:28:24.448: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 07:58:24.720: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 08:28:24.991: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 08:58:25.257: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 09:28:25.519: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 09:58:25.786: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 10:28:26.056: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 10:58:26.321: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 11:28:26.591: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 11:58:26.859: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 12:28:27.142: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 12:58:27.411: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 13:28:27.681: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 16:01:57.047: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 16:31:57.303: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 17:01:57.561: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 17:31:57.822: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 18:01:58.093: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 19:03:58.653: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 21:27:03.976: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-05 22:12:32.382: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-06 01:16:10.042: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-06 10:01:42.790: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-06 10:31:43.064: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-07 09:03:47.329: 
+[ctssd(5331)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-08-07 14:23:44.046: 
+[/app/11.2.0/grid/bin/oraagent.bin(5698)]CRS-5818:Aborted command 'stop' for resource 'ora.DATA.dg'. Details at (:CRSAGF00113:) {1:862:143} in /app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_grid//oraagent_grid.log.
+2017-08-07 14:23:59.549: 
+[/app/11.2.0/grid/bin/orarootagent.bin(5702)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:226} in /app/11.2.0/grid/log/traracdb1/agent/crsd/orarootagent_root//orarootagent_root.log.
+2017-08-07 14:24:00.469: 
+[ctssd(5331)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-08-07 14:24:00.470: 
+[mdnsd(4997)]CRS-5602:mDNS service stopping by request.
+2017-08-07 14:24:08.867: 
+[/app/11.2.0/grid/bin/oraagent.bin(4986)]CRS-5019:All OCR locations are on ASM disk groups [OCR], and none of these disk groups are mounted. Details are at "(:CLSN00100:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log".
+2017-08-07 14:24:11.835: 
+[cssd(5081)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-08-07 14:24:11.933: 
+[cssd(5081)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-08-07 14:24:11.938: 
+[ohasd(4818)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-08-07 14:24:12.036: 
+[cssd(5081)]CRS-1660:The CSS daemon shutdown has completed
+2017-08-07 14:24:15.520: 
+[gpnpd(5008)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+2017-08-07 14:25:37.233: 
+[ohasd(2774)]CRS-2112:The OLR service started on node traracdb1.
+2017-08-07 14:25:37.238: 
+[ohasd(2774)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-08-07 14:25:37.238: 
+[ohasd(2774)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-08-07 14:25:37.403: 
+[/app/11.2.0/grid/bin/oraagent.bin(2846)]CRS-5019:All OCR locations are on ASM disk groups [OCR], and none of these disk groups are mounted. Details are at "(:CLSN00100:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log".
+2017-08-07 14:25:40.414: 
+[/app/11.2.0/grid/bin/orarootagent.bin(2850)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-08-07 14:25:44.764: 
+[gpnpd(2948)]CRS-2328:GPNPD started on node traracdb1. 
+2017-08-07 14:25:47.081: 
+[cssd(3028)]CRS-1713:CSSD daemon is started in clustered mode
+2017-08-07 14:25:48.937: 
+[ohasd(2774)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 14:26:06.618: 
+[cssd(3028)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-08-07 14:26:07.909: 
+[cssd(3028)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 14:26:07.947: 
+[cssd(3028)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 14:26:07.954: 
+[cssd(3028)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 14:26:17.068: 
+[cssd(3028)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-08-07 14:26:19.087: 
+[ctssd(3312)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-08-07 14:26:19.322: 
+[ctssd(3312)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-08-07 14:26:19.322: 
+[ctssd(3312)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-08-07 14:26:21.090: 
+[ohasd(2774)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 14:26:23.312: 
+[cssd(3028)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-08-07 14:26:41.396: 
+[crsd(3587)]CRS-1012:The OCR service started on node traracdb1.
+2017-08-07 14:26:42.123: 
+[evmd(3334)]CRS-1401:EVMD started on node traracdb1.
+2017-08-07 14:26:46.461: 
+[crsd(3587)]CRS-1201:CRSD started on node traracdb1.
+2017-08-07 14:26:51.848: 
+[crsd(3587)]CRS-2772:Server 'traracdb1' has been assigned to pool 'Generic'.
+2017-08-07 14:26:51.848: 
+[crsd(3587)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb'.
+2017-08-07 14:26:51.848: 
+[crsd(3587)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 14:26:52.048: 
+[client(3933)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-08-07 14:27:08.536: 
+[crsd(3587)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-08-07 14:27:08.537: 
+[crsd(3587)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-08-07 14:27:08.537: 
+[crsd(3587)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 14:42:36.149: 
+[crsd(3587)]CRS-2773:Server 'traracdb1' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-08-07 14:42:36.149: 
+[crsd(3587)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-08-07 14:42:43.857: 
+[crsd(3587)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 14:42:43.858: 
+[crsd(3587)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 16:58:17.528: 
+[cssd(3028)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-08-07 16:58:17.531: 
+[cssd(3028)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-08-07 16:58:17.531: 
+[crsd(3587)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-08-07 16:58:17.533: 
+[crsd(3587)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-08-07 16:58:17.533: 
+[crsd(3587)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-08-07 16:58:17.533: 
+[crsd(3587)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-08-07 17:00:31.260: 
+[/app/11.2.0/grid/bin/oraagent.bin(3704)]CRS-5818:Aborted command 'stop' for resource 'ora.DATA.dg'. Details at (:CRSAGF00113:) {1:35276:527} in /app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_grid//oraagent_grid.log.
+2017-08-07 17:00:45.263: 
+[crsd(3587)]CRS-2757:Command 'Stop' timed out waiting for response from the resource 'ora.DATA.dg'. Details at (:CRSPE00111:) {1:35276:527} in /app/11.2.0/grid/log/traracdb1/crsd/crsd.log.
+2017-08-07 17:00:46.190: 
+[/app/11.2.0/grid/bin/orarootagent.bin(3710)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:13} in /app/11.2.0/grid/log/traracdb1/agent/crsd/orarootagent_root//orarootagent_root.log.
+2017-08-07 17:00:47.109: 
+[ctssd(3312)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-08-07 17:00:47.109: 
+[mdnsd(2937)]CRS-5602:mDNS service stopping by request.
+2017-08-07 17:00:57.504: 
+[cssd(3028)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-08-07 17:00:57.607: 
+[ohasd(2774)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-08-07 17:00:57.704: 
+[cssd(3028)]CRS-1660:The CSS daemon shutdown has completed
+2017-08-07 17:00:59.849: 
+[gpnpd(2948)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+2017-08-07 17:04:01.659: 
+[ohasd(8738)]CRS-2112:The OLR service started on node traracdb1.
+2017-08-07 17:04:01.664: 
+[ohasd(8738)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-08-07 17:04:01.664: 
+[ohasd(8738)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-08-07 17:04:04.842: 
+[/app/11.2.0/grid/bin/orarootagent.bin(8883)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-08-07 17:04:09.183: 
+[gpnpd(8975)]CRS-2328:GPNPD started on node traracdb1. 
+2017-08-07 17:04:11.504: 
+[cssd(9048)]CRS-1713:CSSD daemon is started in clustered mode
+2017-08-07 17:04:13.354: 
+[ohasd(8738)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 17:04:31.047: 
+[cssd(9048)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-08-07 17:04:32.302: 
+[cssd(9048)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 17:04:32.307: 
+[cssd(9048)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 17:04:32.313: 
+[cssd(9048)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-08-07 17:04:41.427: 
+[cssd(9048)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-08-07 17:04:43.510: 
+[ctssd(9319)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-08-07 17:04:43.743: 
+[ctssd(9319)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-08-07 17:04:43.743: 
+[ctssd(9319)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-08-07 17:04:45.503: 
+[ohasd(8738)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-08-07 17:05:06.199: 
+[crsd(9611)]CRS-1012:The OCR service started on node traracdb1.
+2017-08-07 17:05:06.547: 
+[evmd(9350)]CRS-1401:EVMD started on node traracdb1.
+2017-08-07 17:05:07.893: 
+[crsd(9611)]CRS-1201:CRSD started on node traracdb1.
+2017-08-07 17:05:14.282: 
+[crsd(9611)]CRS-2772:Server 'traracdb1' has been assigned to pool 'Generic'.
+2017-08-07 17:05:14.282: 
+[crsd(9611)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb'.
+2017-08-07 17:05:14.282: 
+[crsd(9611)]CRS-2772:Server 'traracdb1' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 17:05:14.470: 
+[client(9941)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-08-07 17:06:26.858: 
+[cssd(9048)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-08-07 17:06:58.363: 
+[crsd(9611)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-08-07 17:06:58.363: 
+[crsd(9611)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-08-07 17:06:58.363: 
+[crsd(9611)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-08-07 23:05:42.239: 
+[client(1112)]CRS-10051:CVU found following errors with Clusterware setup : PRVF-7573 : Sufficient swap size is not available on node "traracdb1" [Required = 16GB (1.6777216E7KB) ; Found = 16GB (1.6777212E7KB)]
+PRVF-7532 : Package "pdksh" is missing on node "traracdb1"
+PRVF-5410 : Check of common NTP Time Server failed
+PRVF-5416 : Query of NTP daemon failed on all nodes
+PRVG-1101 : SCAN name "traracdb-scan" failed to resolve
+PRVF-4657 : Name resolution setup check for "traracdb-scan" (IP address: 20.1.2.38) failed
+PRVF-4664 : Found inconsistent name resolution entries for SCAN name "traracdb-scan"
+
+2017-09-20 11:43:26.540: 
+[cssd(9048)]CRS-1656:The CSS daemon is terminating due to a fatal error; Details at (:CSSSC00012:) in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log
+2017-09-20 11:43:26.540: 
+[gpnpd(8975)]CRS-2341:GPNPD on node traracdb1 shutting down on signal 15. 
+2017-09-20 11:48:29.524: 
+[ohasd(4693)]CRS-2112:The OLR service started on node traracdb1.
+2017-09-20 11:48:29.533: 
+[ohasd(4693)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-09-20 11:48:29.533: 
+[ohasd(4693)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-09-20 11:48:29.870: 
+[/app/11.2.0/grid/bin/oraagent.bin(4745)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 11:48:32.891: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4749)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-09-20 11:48:35.028: 
+[ohasd(4693)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-09-20 11:48:35.034: 
+[gpnpd(4841)]CRS-2328:GPNPD started on node traracdb1. 
+2017-09-20 11:48:37.337: 
+[cssd(4899)]CRS-1713:CSSD daemon is started in clustered mode
+2017-09-20 11:48:39.218: 
+[ohasd(4693)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-20 11:48:56.903: 
+[cssd(4899)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-09-20 11:48:58.175: 
+[cssd(4899)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-20 11:48:58.190: 
+[cssd(4899)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-20 11:48:58.211: 
+[cssd(4899)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-20 11:49:01.808: 
+[cssd(4899)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-09-20 11:49:03.376: 
+[ctssd(5145)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-09-20 11:49:03.611: 
+[ctssd(5145)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb2.
+2017-09-20 11:49:03.611: 
+[ctssd(5145)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-09-20 11:49:05.368: 
+[ohasd(4693)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-20 11:49:10.609: 
+[/app/11.2.0/grid/bin/oraagent.bin(4816)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 11:49:16.259: 
+[/app/11.2.0/grid/bin/oraagent.bin(4816)]CRS-5011:Check of resource "+ASM" failed: details at "(:CLSN00006:)" in "/app/11.2.0/grid/log/traracdb1/agent/ohasd/oraagent_grid//oraagent_grid.log"
+2017-09-20 11:49:17.632: 
+[ctssd(5145)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 11:49:34.530: 
+[crsd(5450)]CRS-1012:The OCR service started on node traracdb1.
+2017-09-20 11:49:34.535: 
+[evmd(5169)]CRS-1401:EVMD started on node traracdb1.
+2017-09-20 11:49:35.450: 
+[crsd(5450)]CRS-1201:CRSD started on node traracdb1.
+2017-09-20 11:49:37.082: 
+[/app/11.2.0/grid/bin/oraagent.bin(5615)]CRS-5011:Check of resource "sgetradb" failed: details at "(:CLSN00007:)" in "/app/11.2.0/grid/log/traracdb1/agent/crsd/oraagent_oracle//oraagent_oracle.log"
+2017-09-20 12:19:17.910: 
+[ctssd(5145)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 12:49:18.176: 
+[ctssd(5145)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 13:19:18.444: 
+[ctssd(5145)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 13:49:18.711: 
+[ctssd(5145)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-20 14:14:28.873: 
+[cssd(4899)]CRS-1612:Network communication with node traracdb2 (2) missing for 50% of timeout interval.  Removal of this node from cluster in 14.910 seconds
+2017-09-20 14:14:36.875: 
+[cssd(4899)]CRS-1611:Network communication with node traracdb2 (2) missing for 75% of timeout interval.  Removal of this node from cluster in 6.910 seconds
+2017-09-20 14:14:40.875: 
+[cssd(4899)]CRS-1610:Network communication with node traracdb2 (2) missing for 90% of timeout interval.  Removal of this node from cluster in 2.900 seconds
+2017-09-20 14:14:43.776: 
+[cssd(4899)]CRS-1632:Node traracdb2 is being removed from the cluster in cluster incarnation 397591483
+2017-09-20 14:14:43.780: 
+[cssd(4899)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-09-20 14:14:44.092: 
+[ctssd(5145)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-09-20 14:14:44.696: 
+[crsd(5450)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-09-20 14:14:45.012: 
+[client(29307)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-09-20 14:15:01.503: 
+[crsd(5450)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-09-20 14:15:01.503: 
+[crsd(5450)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-09-20 14:15:01.503: 
+[crsd(5450)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-09-20 14:19:40.253: 
+[cssd(4899)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-09-20 14:20:20.818: 
+[crsd(5450)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-09-20 14:20:20.818: 
+[crsd(5450)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-09-20 14:20:20.818: 
+[crsd(5450)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-09-21 09:30:56.047: 
+[crsd(5450)]CRS-2765:Resource 'ora.net1.network' has failed on server 'traracdb1'.
+2017-09-21 09:30:56.047: 
+[crsd(5450)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-09-21 09:31:01.142: 
+[crsd(5450)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-09-21 09:31:15.487: 
+[/app/11.2.0/grid/bin/orarootagent.bin(5610)]CRS-5822:Agent '/app/11.2.0/grid/bin/orarootagent_root' disconnected from server. Details at (:CRSAGF00117:) {0:3:16} in /app/11.2.0/grid/log/traracdb1/agent/crsd/orarootagent_root//orarootagent_root.log.
+2017-09-21 09:31:16.402: 
+[ctssd(5145)]CRS-2405:The Cluster Time Synchronization Service on host traracdb1 is shutdown by user
+2017-09-21 09:31:16.404: 
+[mdnsd(4827)]CRS-5602:mDNS service stopping by request.
+2017-09-21 09:31:25.296: 
+[cssd(4899)]CRS-1603:CSSD on node traracdb1 shutdown by user.
+2017-09-21 09:31:25.399: 
+[ohasd(4693)]CRS-2767:Resource state recovery not attempted for 'ora.cssdmonitor' as its target state is OFFLINE
+2017-09-21 09:31:25.497: 
+[cssd(4899)]CRS-1660:The CSS daemon shutdown has completed
+2017-09-21 09:31:27.642: 
+[gpnpd(4841)]CRS-2329:GPNPD on node traracdb1 shutdown. 
+2017-09-21 09:35:58.531: 
+[ohasd(4755)]CRS-2112:The OLR service started on node traracdb1.
+2017-09-21 09:35:58.539: 
+[ohasd(4755)]CRS-1301:Oracle High Availability Service started on node traracdb1.
+2017-09-21 09:35:58.539: 
+[ohasd(4755)]CRS-8017:location: /etc/oracle/lastgasp has 2 reboot advisory log files, 0 were announced and 0 errors occurred
+2017-09-21 09:36:01.861: 
+[/app/11.2.0/grid/bin/orarootagent.bin(4850)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-09-21 09:36:06.234: 
+[ohasd(4755)]CRS-2302:Cannot get GPnP profile. Error CLSGPNP_NO_DAEMON (GPNPD daemon is not running). 
+2017-09-21 09:36:06.241: 
+[gpnpd(4946)]CRS-2328:GPNPD started on node traracdb1. 
+2017-09-21 09:36:08.541: 
+[cssd(5009)]CRS-1713:CSSD daemon is started in clustered mode
+2017-09-21 09:36:10.424: 
+[ohasd(4755)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-21 09:36:28.116: 
+[cssd(5009)]CRS-1707:Lease acquisition for node traracdb1 number 1 completed
+2017-09-21 09:36:29.364: 
+[cssd(5009)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr3; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-21 09:36:29.370: 
+[cssd(5009)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr2; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-21 09:36:29.375: 
+[cssd(5009)]CRS-1605:CSSD voting file is online: /dev/mapper/ocr1; details in /app/11.2.0/grid/log/traracdb1/cssd/ocssd.log.
+2017-09-21 09:36:32.892: 
+[cssd(5009)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-09-21 09:36:34.575: 
+[ctssd(5261)]CRS-2403:The Cluster Time Synchronization Service on host traracdb1 is in observer mode.
+2017-09-21 09:36:34.810: 
+[ctssd(5261)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb2.
+2017-09-21 09:36:34.810: 
+[ctssd(5261)]CRS-2401:The Cluster Time Synchronization Service started on host traracdb1.
+2017-09-21 09:36:36.568: 
+[ohasd(4755)]CRS-2767:Resource state recovery not attempted for 'ora.diskmon' as its target state is OFFLINE
+2017-09-21 09:36:49.834: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 09:36:57.163: 
+[crsd(5525)]CRS-1012:The OCR service started on node traracdb1.
+2017-09-21 09:36:57.170: 
+[evmd(5284)]CRS-1401:EVMD started on node traracdb1.
+2017-09-21 09:36:59.099: 
+[crsd(5525)]CRS-1201:CRSD started on node traracdb1.
+2017-09-21 10:06:50.113: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 10:36:50.388: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 11:06:50.666: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 11:36:50.940: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 12:06:51.207: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 12:36:51.481: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 13:06:51.753: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 13:36:52.025: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 14:06:52.305: 
+[ctssd(5261)]CRS-2409:The clock on host traracdb1 is not synchronous with the mean cluster time. No action has been taken as the Cluster Time Synchronization Service is running in observer mode.
+2017-09-21 14:26:46.017: 
+[client(20622)]CRS-4743:File /app/11.2.0/grid/oc4j/j2ee/home/OC4J_DBWLM_config/system-jazn-data.xml was updated from OCR(Size: 13365(New), 13378(Old) bytes)
+2017-09-21 14:27:03.940: 
+[ctssd(5261)]CRS-2407:The new Cluster Time Synchronization Service reference node is host traracdb1.
+2017-09-21 14:27:14.014: 
+[cssd(5009)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-09-21 14:27:14.018: 
+[cssd(5009)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-09-21 14:27:14.019: 
+[crsd(5525)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-09-21 14:27:14.020: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-09-21 14:27:14.020: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-09-21 14:27:14.020: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-09-21 14:31:55.418: 
+[cssd(5009)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-09-21 14:32:26.867: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-09-21 14:32:26.867: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-09-21 14:32:26.867: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.
+2017-09-22 15:34:06.656: 
+[crsd(5525)]CRS-2765:Resource 'ora.net1.network' has failed on server 'traracdb2'.
+2017-09-22 15:34:06.656: 
+[crsd(5525)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-09-22 15:34:06.916: 
+[crsd(5525)]CRS-2765:Resource 'ora.traracdb2.vip' has failed on server 'traracdb2'.
+2017-09-22 15:34:16.021: 
+[crsd(5525)]CRS-2769:Unable to failover resource 'ora.net1.network'.
+2017-09-22 15:34:29.761: 
+[cssd(5009)]CRS-1625:Node traracdb2, number 2, was shut down
+2017-09-22 15:34:29.766: 
+[cssd(5009)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 .
+2017-09-22 15:34:29.767: 
+[crsd(5525)]CRS-5504:Node down event reported for node 'traracdb2'.
+2017-09-22 15:34:29.767: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'Generic'.
+2017-09-22 15:34:29.767: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb'.
+2017-09-22 15:34:29.767: 
+[crsd(5525)]CRS-2773:Server 'traracdb2' has been removed from pool 'ora.sgetradb_sgetra'.
+2017-09-22 15:39:17.321: 
+[cssd(5009)]CRS-1601:CSSD Reconfiguration complete. Active nodes are traracdb1 traracdb2 .
+2017-09-22 15:39:51.283: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'Generic'.
+2017-09-22 15:39:51.283: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb'.
+2017-09-22 15:39:51.283: 
+[crsd(5525)]CRS-2772:Server 'traracdb2' has been assigned to pool 'ora.sgetradb_sgetra'.

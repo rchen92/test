@@ -1,0 +1,226 @@
+3.18 主备库切换
+3.18.1.1 切换原理
+DataGuard物理standby管理_主备切换
+Dataguard的切换分为两种，switchover和failover。
+　　switchover一般用于数据库或硬件升级，这时只需要较短时间中断数据库访问，主备库的角色切换完成后，即可打开primary角色的备库来提供数据库访问。
+　　failover，主库已经无法使用，必须切换到备库，当备库failover切换为primary，则主库不再是dataguard的一部分，无法再转换为备库。
+　　如果是RAC的物理standby，则在执行切换时只能启动一个instance，切换完毕后再启动其他实例。
+3.18.1.2 操作步骤
+3.18.1.2.1.1	Switchover
+一定要按照先主库，后备库的顺序执行切换命令，否则会报错，如果强行切换就变成failover了。
+3.18.1.2.1.1.1	主库端：
+　　由于主库是处于open状态，有访问的，所以v$database视图中，switchover_status为sessions active。而由primary切换到standby需要数据库为open状态，因此，执行切换命令时，带上with session shutdown选项即可。
+　　执行完切换命令后，关闭数据库，重新启动数据库到mount状态等待日志传输，开启日志应用。
+　　查看alert.log可以看到主库做了哪些动作：主库断开所有session（未提交事务会回滚），切换日志并归档，传输日志到备库，给备库一个End-Of-REDO的信号，切换为standby，重新启动到mount。
+p
+SYS@dev01> select database_role,switchover_status from v$database; 
+DATABASE_ROLE   SWITCHOVER_STAT
+--------------- --------------- 
+PRIMARY         SESSIONS ACTIVE  alter database commit to switchover to physical standby with session shutdown; 
+                to standby 直接 
+		alter database commit to switchover to physical standby ;
+		select STATUS from v$instance;
+		shutdown immediate;
+                 startup mount;
+		 select database_role,switchover_status from v$database; 
+		 p ok
+		 g 
+		 select database_role,switchover_status from v$database; 
+		 alter database commit to switchover to primary
+ shutdown immediate;
+  startup mount;
+  ok
+
+
+SYS@dev01> alter database commit to switchover to physical standby with session shutdown; 
+Database altered. 
+SYS@dev01> shutdown immediate;
+ORA-01507: database not mounted 
+ORACLE instance shut down.
+SYS@dev01> startup mount;
+ORACLE instance started. 
+Total System Global Area  536870912 bytes
+Fixed Size                  2085288 bytes
+Variable Size             209718872 bytes
+Database Buffers          318767104 bytes
+Redo Buffers                6299648 bytes
+Database mounted.
+SYS@dev01> alter database recover managed standby database using current logfile disconnect from session; 
+Database altered. 
+SYS@dev01> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PHYSICAL STANDBY SESSIONS ACTIVE 
+SYS@dev01>
+3.18.1.2.1.1.2	备库端：
+　　确认是否可以切换为主库，如果switchover_status为recovery needed或switchover latent，需要apply完所有归档日志才能切换。如果是sessions active则带上with session shutdown选项。apply完所有日志后，即可切换为primary，然后打开数据库。
+　　查看alert.log可以看到备库做了哪些动作：接收主库日志，接收到主库End-Of-REDO的信号，apply完所有日志，清空online redo log以便打开数据库，切换为primary，打开数据库。
+SYS@dev01dg> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PHYSICAL STANDBY SWITCHOVER LATENT 
+SYS@dev01dg> alter database commit to switchover to primary with session shutdown;
+alter database commit to switchover to primary with session shutdown
+*
+ERROR at line 1:
+ORA-16139: media recovery required 
+SYS@dev01dg> alter database recover managed standby database disconnect from session; 
+Database altered. 
+SYS@dev01dg> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PHYSICAL STANDBY TO PRIMARY 
+SYS@dev01dg> alter database commit to switchover to primary with session shutdown; 
+Database altered. 
+SYS@dev01dg> alter database open; 
+Database altered. 
+SYS@dev01dg> select database_role,switchover_status,OPEN_MODE,PROTECTION_MODE from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PRIMARY          SESSIONS ACTIVE 
+SYS@dev01dg> 
+以上过过程中，由于主库断开所有session并归档，传输日志到备库，发给备库End-Of-REDO的信号，因此正常switchover时，是不会丢失数据的。
+　　切换完成后可以在主库归档，验证一下是否切换成功，备库是否能正常接收日志。
+
+alter database recover managed standby database cancel;
+alter database open;
+alter database recover managed standby database using current logfile disconnect from session; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.18.1.2.1.2	Failover
+　　当主库当掉，无法使用时，此时的切换即为failover，如果保护模式为最大性能模式，是可能丢失数据的。
+
+备库端：
+　　如果是最大保护和最大可用性模式，则可以直接在备库端执行failover切换。如果是最大性能模式，为了尽可能减少数据丢失，需要检查主库是否有日志没有传输到备库，手动传输备库进行注册和恢复。注意RAC环境下，归档日志是分线程的。
+SYS@dev01dg> select distinct thread#,max(sequence#) over(partition by thread#) a from v$archived_log; 
+   THREAD#          A
+---------- ----------
+         1        457 
+SYS@dev01dg> 
+[oracle@testdb dev01]$ scp * oracle@192.168.0.8:/u01/archive/dev01dg
+
+　　注册归档日志有如下两种方法，较为简单当然是用rman了，一次注册多个。
+RMAN> catalog start with '/u01/archive/dev01';
+SYS@dev01dg> alter database register logfile '/u01/archive/dev01dg/arch_e8fe6364_1_712757927_460.dbf'; 
+　　apply归档日志也有两种方法。 
+SYS@dev01dg> alter database recover managed standby database disconnect from session; 
+Database altered. 
+SYS@dev01dg> 
+SYS@dev01dg> recover standby database;
+ORA-00279: change 2863819 generated at 03/20/2010 21:58:17 needed for thread 1
+ORA-00289: suggestion : /u01/archive/dev01dg/arch_e8fe6364_1_712757927_461.dbf
+ORA-00280: change 2863819 for thread 1 is in sequence #461 
+Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
+CANCEL
+Media recovery cancelled.
+SYS@dev01dg> 
+
+　　当手动apply完所有日志后，就可以failover切换到primary了。但是要注意的时，由于备库没有收到主库End-Of-REDO的信号，所以直接转换会报错，要求介质恢复。此时需要提交命令告诉备库，日志恢复已经finish了，需要进行failover切换。注意switchover时千万不要带有finish选项，否则就会变成failover了。 
+SYS@dev01dg> alter database commit to switchover to primary with session shutdown;
+alter database commit to switchover to primary with session shutdown
+*
+ERROR at line 1:
+ORA-16139: media recovery required 
+SYS@dev01dg> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PHYSICAL STANDBY NOT ALLOWED 
+SYS@dev01dg> alter database recover managed standby database finish [force]; 
+Database altered. 
+SYS@dev01dg> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PHYSICAL STANDBY TO PRIMARY 
+SYS@dev01dg> alter database commit to switchover to primary with session shutdown; 
+Database altered. 
+SYS@dev01dg> alter database open; 
+Database altered. 
+SYS@dev01dg> select database_role,switchover_status from v$database; 
+DATABASE_ROLE    SWITCHOVER_STATUS
+---------------- --------------------
+PRIMARY          SESSIONS ACTIVE 
+SYS@dev01dg> 
+　　failover完成后，数据库其实是以resetlogs方式打开的，如果log_archive_format='arch_%d_%t_%r_%s.dbf'，可以看到归档日志的文件名会有新的resetlogs ID和sequence number，以此与原有的归档日志进行区分。
+
+他人的另外的方法
+1.查看数据库是主库还是备库 
+SELECT DATABASE_ROLE，SWITCHOVER_STATUS FROM V$DATABASE;
+PRIMARY    TO STANDBY
+表明是主库
+查看主库的状态：确认a是否可以做switch over
+?	不能切换的情况
+SQL>SELECT SWITCHOVER_STATUS FROM V$DATABASE; 
+SWITCHOVER_STATUS 
+------------------ 
+SESSIONS ACTIVE
+在这种情况下，说明还有活动session，需要先kill掉，只留下当前sys进程
+select sid,SERIAL# from v$session where sid>10; 
+SID SERIAL# 
+---------- ---------- 
+12 14 
+17 3 
+查出当前连接session 
+SQL> select distinct ss.sid from v$mystat ss; 
+杀掉其他session 
+SQL> alter system kill session '12,14'; 
+System altered
+
+?	可以切换的情况
+SQL> SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+SWITCHOVER_STATUS
+--------------------
+TO STANDBY
+
+2.将主库切换至备用模式
+SQL> alter database commit to switchover to physical standby with session shutdown;
+
+3.关闭、装载主数据库
+SQL> shutdown abort;
+SQL> startup mount;
+4.查看备库准备向主库模式切换
+SQL> SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+SWITCHOVER_STATUS
+-----------------
+TO PRIMARY
+NOT ALLOWED
+RECOVERY NEEDED
+alter database recover managed standby database using current logfile 
+  2   disconnect from session;
+SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+SESSIONS ACTIVE
+关闭toad回话：orcldg
+TO PRIMARY
+1 row selected
+注：如果是TO PRIMARY表示可以正常切换，不过还会遇到NOT ALLOWED和PENDING或者LATENT，实际操作下来如果备库的switchover_status为not allowed或者to primary都可以正常切换
+5.切换备库至主库模式
+SQL> alter database commit to switchover to primary with session shutdown;
+SQL> select status from v$instance;
+
+STATUS
+------------------------
+MOUNTED
+6.打开新的主数据库
+SQL> ALTER DATABASE OPEN;
+主备库切换后em的处理
+原来的主库没法启动em，一起就自动停止。
+原来的备库，如何启动em呢？

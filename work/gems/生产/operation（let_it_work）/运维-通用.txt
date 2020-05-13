@@ -1,0 +1,408 @@
+C:\app\chenr\product\11.2.0\client_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\UCRT\;C:\Program Files\Intel\UCRT\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Microsoft Windows Performance Toolkit\;D:\E\install\UltraEdit;C:\app\chenr\product\11.2.0\instantclient_11_2;D:\works\金交所\灾备项目\灾备应用\灾备日切\WinPython-64bit-2.7.13.1Zero\python-2.7.13.amd64;D:\works\金交所\灾备项目\灾备应用\灾备日切\WinPython-64bit-2.7.13.1Zero\python-2.7.13.amd64\Scripts
+
+
+C:\app\chenr\product\11.2.0\client_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\UCRT\;C:\Program Files\Intel\UCRT\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\works\金交所\灾备项目\灾备应用\灾备日切\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64;D:\works\金交所\灾备项目\灾备应用\灾备日切\WinPython-64bit-3.4.4.4Qt5\python-3.4.4.amd64\Scripts;C:\Program Files\Microsoft Windows Performance Toolkit\;D:\E\install\UltraEdit;C:\app\chenr\product\11.2.0\instantclient_11_2
+
+
+-------------------dsg手动重启，进行同步-----------------
+1 主被端stop
+	主端 ./stop_vagentd
+	备端 ./stop_vagentd
+
+	./check
+	./check
+2 主被端clean
+	主端 ./clean_vagentd
+	备端 ./clean_vagentd
+	
+3 主被端启动进程
+	主端 ./start_vagentd
+	备端 ./start_vagentd
+	
+	./check
+	./check
+4 主端发起全同步 先dict，后 vm
+	cd ../bin
+	./vman
+		@dict
+		@vm
+
+	备端查看同步情况
+	./mon
+
+
+----------------------------查询包含某字符串的文件-----------------------------
+grep 3000 bin/config/* | grep -v *.log		#查看bin/config目录下去除log日志文件后，所有包含3000的文件
+
+find ./| xargs grep -ri "dev" | grep -r --exclude-dir=logs --exclude-dir=log --exclude=nohup.out.1 '\<dev\>'	#精确查找包含dev的文件
+find ./| xargs grep -ri "dev" | grep -r --exclude-dir=logs --exclude-dir=*log* --exclude=nohup.out* --exclude=output* --exclude=.bash_history '\<dev\>' | grep -v /dev/null | grep dev
+
+------------------nc测试端口连通性-----------------
+被测试端
+nc -l port
+测试端
+nc -v ip port 
+
+
+--------------oracle数据主库自动导入暂停，归档日志空间沾满了，但是执行删除命令删除不掉或是只能删除一点---------------
+set linesize 180 pagesize 9999
+column spid_sid_s# format A18 heading 'SPID,SID,SERIAL#'  
+column operation format A20 word_wrap  
+column progress format A13  
+column total format A15  
+column eta format A8  
+column message format A60 word_wrap  
+column username format A10  
+select c.spid || ',' || a.sid || ',' || a.serial# as spid_sid_s#,  
+       a.opname as operation,  
+       a.totalwork || ' ' || a.units as total,  
+       round(a.sofar/a.totalwork*100) || '% in ' || a.elapsed_seconds || 's' as progress,  
+       decode(a.sofar, 0, 'N/A', round(a.elapsed_seconds * (a.totalwork - a.sofar) / a.sofar / 60, 1) || 'm') as ETA,  
+       a.message,  
+       a.username  
+  from v$session_longops a,  
+       v$session b,  
+       v$process c  
+where a.sid = b.sid  
+   and a.serial# = b.serial#  
+   and b.paddr = c.addr  
+   and a.sofar < a.totalwork;  
+查看alert日志位置
+show parameter background_dump_dest
+查看alert日志，发现是归档空间已满
+
+查看ASM磁盘使用情况
+select group_number,name,total_mb,free_mb from v$asm_diskgroup;
+
+先standby端（备端）删除归档日志，再主端删除归档日志
+rman target /
+crosscheck archivelog all; 		#列出所有归档日志
+delete archivelog all;
+
+##delete archivelog all completed before 'sysdate - 1';		#删除一天前归档日志
+##delete force noprompt archivelog all;	#强制删除所有归档日志
+
+[oracle@hisrac ~]$ rman target /
+RMAN> crosscheck archivelog all;
+RMAN> delete noprompt archivelog all;
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03009: failure of delete command on ORA_DISK_1 channel at 06/20/2018 14:43:18
+ORA-15028: ASM file '+ARCH/hisdb/archivelog/2018_06_20/thread_1_seq_20950.887.979297197' not dropped; currently being accessed
+
+SQL> select name,free_mb,total_mb from v$asm_diskgroup;
+
+[grid@hisracdb1 ~]$ asmcmd
+ASMCMD> lsof -G ARCH
+DB_Name   Instance_Name  Path                                                                    
++ASM      +ASM1          +arch/hisdb/archivelog/2018_06_20/thread_1_seq_20952.1678.979297213
+ASMCMD> cd arch/SGEHISDB/archivelog/2018_06_20
+ASMCMD> ls -l
+Type        Redund  Striped  Time             Sys  Name
+ARCHIVELOG  UNPROT  COARSE   JUN 20 15:00:00  Y    thread_1_seq_20953.1666.979297221
+ARCHIVELOG  UNPROT  COARSE   JUN 20 14:00:00  Y    thread_1_seq_20954.1432.979297229
+ARCHIVELOG  UNPROT  COARSE   JUN 20 14:00:00  Y    thread_1_seq_20955.1740.979297237
+ARCHIVELOG  UNPROT  COARSE   JUN 20 14:00:00  Y    thread_1_seq_20956.1718.979297245
+ASMCMD> rm thread_1_seq_20954.1432.979297229
+ASMCMD> ls -l
+Type        Redund  Striped  Time             Sys  Name
+ARCHIVELOG  UNPROT  COARSE   JUN 20 15:00:00  Y    thread_1_seq_20953.1666.979297221
+ARCHIVELOG  UNPROT  COARSE   JUN 20 14:00:00  Y    thread_1_seq_20955.1740.979297237
+ARCHIVELOG  UNPROT  COARSE   JUN 20 14:00:00  Y    thread_1_seq_20956.1718.979297245
+ASMCMD> rm thread_1_seq_20953.1666.979297221
+ORA-15032: not all alterations performed
+ORA-15028: ASM file '+arch/SHISDB/ARCHIVELOG/2018_06_20/thread_1_seq_20953.1666.979297221' not dropped; currently being accessed (DBD ERROR: OCIStmtExecute)
+ASMCMD> lsdg
+State    Type    Rebal  Sector  Block       AU  Total_MB  Free_MB  Req_mir_free_MB  Usable_file_MB  Offline_disks  Voting_files  Name
+MOUNTED  EXTERN  N         512   4096  1048576    307200    10514                0           10514              0             N  ARCH/
+MOUNTED  EXTERN  N         512   4096  1048576   2867200  1259097                0         1259097              0             N  DATA/
+MOUNTED  NORMAL  N         512   4096  1048576     15360    14434             5120            4657              0             Y  OCR/
+
+SQL> alter system set events '15028 trace name errorstack level 3';
+
+RMAN> delete archivelog low logseq 20953;
+RMAN> crosscheck archivelog all;
+RMAN> delete expired archivelog all;
+RMAN> delete archivelog low logseq 20953;
+RMAN> delete archivelog high logseq 20953;
+
+ASMCMD> pwd
++arch/HISDB/ARCHIVELOG/2018_06_20
+ASMCMD> ls -l
+ASMCMD-8002: entry 'ARCHIVELOG' does not exist in directory '+arch/SGEHISDB/'
+
+SQL> alter system archive log current;
+
+ASMCMD> exit
+[grid@hisracdb1 ~]$ asmcmd
+ASMCMD> cd arch/HISDB
+ASMCMD> lsof -G ARCH
+DB_Name   Instance_Name  Path                                                                   
+sgehisdb  sgehisdb1      +arch/HISDB/ARCHIVELOG/2018_06_20/thread_1_seq_21048.277.979313245  
+sgehisdb  sgehisdb1      +arch/hisdb/controlfile/current.256.949527439                      
+
+--------------oracle数据主库自动导入暂停，归档日志空间沾满了，但是执行删除命令删除不掉或是只能删除一点---------------
+由于dg备库服务器的归档日志一直都没有删除掉
+删除的时候报这个警告RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process
+先强制删除dg备库已经应用过的日志
+delete noprompt archivelog all completed before 'sysdate -3';变成
+delete noprompt force archivelog all completed before 'sysdate -3';
+再强制删除主库已经应用过的日志
+delete noprompt archivelog all completed before 'sysdate -3';变成
+delete noprompt force archivelog all completed before 'sysdate -3';
+
+普通删除，没删除掉，海量说这个是11g的一个bug，备库已经应用了归档日志，但是显示备库没有应用。强制删除后，现在问题解决了，后面删除应该没问题了
+
+
+
+------------------------连接数据库时报ORA-02391错误------------------------
+select *from DBA_PROFILES WHERE PROFILE='PROF_DSP_USER';
+alter profile PROF_DSP_USER SESSIONS_PER_USER 100;
+
+
+-------------------------查看oracle表空间使用情况--------------------
+SELECT SUM(bytes)/(1024 * 1024) AS free_space,tablespace_name FROM dba_free_space GROUP BY tablespace_name; 
+
+set line 200
+SELECT a.tablespace_name,total/(1024*1024*1024) "Total(G)", free/(1024*1024*1024) "Free(G)", (total-free)/(1024*1024*1024) "Used(G)", 
+round((total-free)/total , 4)*100 "Usage rate(%)" FROM (SELECT tablespace_name, SUM(bytes) free FROM dba_free_space GROUP BY tablespace_name) a, (SELECT tablespace_name, SUM(bytes) total FROM dba_data_files GROUP BY tablespace_name) b WHERE a.tablespace_name = b.tablespace_name;
+
+----------------------查看oracle表空间使用情况以及用户对应情况--------------------------
+set line 180
+select d.username,a.tablespace_name,a.bytes/1024/1024/1024 total,b.bytes/1024/1024/1024 used,c.bytes/1024/1024/1024 free,(b.bytes*100)/a.bytes "% USED",(c.bytes*100)/a.bytes "% FREE" from sys.sm$ts_avail a,sys.sm$ts_used b,sys.sm$ts_free c,dba_users d where a.tablespace_name = b.tablespace_name and a.tablespace_name = c.tablespace_name and d.default_tablespace=a.tablespace_name;
+
+-----------------------------查看用户是否有dba权限-------------------------
+select * from dba_role_privs where granted_role='DBA';
+
+----------------------查看表数据文件情况---------------------
+set line 200
+col file_name for a50
+col TABLESPACE_NAME for a20
+SELECT tablespace_name, file_id, file_name, round(bytes/(1024*1024), 0) total_space FROM dba_data_files ORDER BY tablespace_name;
+SELECT tablespace_name, file_id, file_name, round(bytes/(1024*1024), 0) total_space FROM dba_data_files ORDER BY FILE_NAME;
+
+-------------------------添加数据文件---------------------
+alter tablespace CLN_TBS  add datafile '+data' size 30g autoextend off;
+alter tablespace RM_TBS add datafile '/oradata/rmdg/RM_TBS04.dbf' size 30g autoextend off;
+
+------------------------数据文件、控制文件、归档日志文件、redo文件存放位置-------------------------
+col name for a50
+col member for a40
+select FILE#,TS#,NAME,STATUS,BYTES/1024/1024 MB from v$datafile  order by 1;
+select * from v$controlfile;
+select name from v$archived_log where name not null;	archive log list;
+select GROUP#,MEMBER,STATUS from v$logfile order by 1;
+
+
+------------------------远程连接oracle测试------------------------
+sqlplus cln/cln@192.168.1.18:1521/clndb
+sqlplus cln@192.168.1.18:1521
+
+
+-------------------------压缩文件tar---------------------
+tar -czvf ylink20180112.tar.gz . --exclude=*2017* --exclude=*.log* --exclude=*.tar.* --exclude=core.* --exclude=*.csv --exclude=*.tar.gz --exclude=*.log.wf --exclude=*.TXT --exclude=*.flg  --exclude=*.log.swp --exclude=*log.gz --exclude=*.md5*
+
+tar -czvf gems3duanwuafter.tar.gz . --exclude=*2017* --exclude=*2018* --exclude=*.log* --exclude=*.tar.* --exclude=core.* --exclude=*.csv --exclude=*.tar.gz --exclude=*.log.wf --exclude=*.TXT --exclude=*.flg  --exclude=*.log.swp --exclude=*log.gz --exclude=*.md5* --exclude=*.bak
+
+
+-----------------------------查询会话阻塞，表的锁------------------
+SELECT /*+ rule */ lpad(' ',decode(l.xidusn ,0,3,0))||l.oracle_username User_name,
+o.owner,o.object_name,o.object_type,s.sid,s.serial#
+FROM v$locked_object l,dba_objects o,v$session s
+WHERE l.object_id=o.object_id
+AND l.session_id=s.sid
+ORDER BY o.object_id,xidusn DESC;
+
+select SID,SERIAL#,SCHEMA#,BLOCKING_INSTANCE,BLOCKING_SESSION,EVENT,SQL_ID from v$session;
+
+select sid,serial#,blocking_session,event from v$session;
+
+column event format a30
+column sess format a20
+set linesize 270
+break on id1 skip 1
+select s.username,decode(request,0,'Holder:',' Waiter:') || s.inst_id || ':' || s.sid||','|| s.serial# sess,
+      id1, id2, lmode, request, l.type, ctime, s.sql_id, s.event,s.last_call_et
+  from gv$lock l, gv$session s
+  where (id1, id2, l.type) in
+    (select id1, id2, type from gv$lock where request>0
+    )
+   and l.sid=s.sid
+   and l.inst_id=s.inst_id
+  order by id1, ctime desc, request;
+
+alter system kill session '835,16731';	（holder的）
+alter system kill session '2971,1993';
+157,1623
+
+
+判断数据传输完成，在当前数据库的/backup/imp/目录下自动创建当前日期目录，然后将数据copy到新创建的目录，同时将上一日期的par、sql文件自动cat后修改日期到新的目录文件中，然后自动执行导入。
+sqlplus dsp_rpt/gems2dsp\!@sgedsp <<EOF >$log_name
+call ${proc_name}(${v_start_day},${v_end_day});
+
+exit;
+EOF
+
+
+---------------------hisrac asm重启实例------------------------
+show parameter db_name;
+show parameter instance_name;
+关库之前做一次
+oracle用户
+alter system checkpoint global;
+srvctl stop database -d db_name
+srvctl disable database -d db_name
+在grid用户下执行不了，切换到root用户
+cd /app/grid/11.2.0/bin
+cd /app/11.2.0/grid/bin
+./crsctl stop crs（两节点）
+./crsctl disable crs （两节点）
+
+开启操作步骤：
+在grid用户下执行不了，切换到root用户
+cd /app/grid/11.2.0/bin
+cd /app/11.2.0/grid/bin
+./crsctl enable crs
+./crsctl start crs
+srvctl enable database -d db_name
+srvctl start database -d db_name
+
+crsctl status resource -t
+
+
+
+--------------------------查看HIS赋权给DSP的权限-------------------------------
+select * from dba_tab_privs where grantee='DSP' and owner='HIS';
+
+select 'grant '|| privilege ||' on '||owner||'.'||table_name||' to dsp;' from dba_tab_privs where grantee='DSP' and owner='CLN' and TABLE_NAME like 'T_%';
+select 'grant '|| privilege ||' on '||owner||'.'||table_name||' to dsp;' from dba_tab_privs where grantee='DSP' and owner='HIS' and TABLE_NAME like 'T_%';
+select 'grant '|| privilege ||' on '||owner||'.'||table_name||' to dsp;' from dba_tab_privs where grantee='DSP' and owner='PAR' and TABLE_NAME like 'T_%';
+
+select 'grant '|| privilege ||' on '||owner||'.'||table_name||' to dsp;' from dba_tab_privs where grantee='DSP' and owner='PAR' and TABLE_NAME like 'T_%';
+
+select * from dba_tab_privs where TABLE_NAME like 'T_%';
+select * from dba_tab_privs where TABLE_NAME like 'BIN%';
+
+
+select count(*) from dba_tab_privs where TABLE_NAME like 'BIN%';
+
+select 'grant '|| privilege ||' on '||owner||'.'||table_name||' to dsp_user;' from dba_tab_privs where grantee='DSP' and owner='PAR' and table_name not like '%BIN$%';
+select  count(distinct *) from dba_tab_privs where grantee='DSP' and owner='PAR' and table_name not like '%BIN$%';
+select  distinct * from dba_tab_privs where grantee='DSP' and owner='PAR' and table_name not like '%BIN$%';
+
+
+select count(*) from (select distinct * from table);
+ distinct emp.sal,count(*)
+select  distinct GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE,GRANTABLE,HIERARCHY,count(*) from dba_tab_privs where grantee='DSP_USER' and owner='PAR' and table_name not like '%BIN$%' group by GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE,GRANTABLE,HIERARCHY;
+select  distinct GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE,GRANTABLE,HIERARCHY,count(*) from dba_tab_privs where owner='PAR_USER' and table_name like '%BIN$%' group by GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE,GRANTABLE,HIERARCHY;
+
+select * from dba_tab_privs where OWNER not like SYS;
+
+
+-------------------------备份恢复特点--------------------------
+一：RMAN是Oracle提供的一个数据库备份和恢复工具。
+	特点：
+	1）备份和恢复数据库、表空间、控制文件、数据文件和归档文件
+	2）校验备份数据集
+	3）通过备份检查损坏块
+	4）增量备份
+	5）脚本能力
+	6）备份和恢复获得更好的性能
+	7）结合OS一起实现自动备份
+	8）支持OPS
+
+Data Guard 优点
+
+灾难恢复和高可用性
+	Data Guard 提供了一个高效、全面的灾难恢复和高可用性解决方案。自动故障切换和易于管理的转换功能允许主数据库和备用数据库之间的快速角色转换，从而使主数据库因计划中和计划外的中断所导致的停机时间减到最少。
+完善的数据保护
+备用数据库还针对数据损坏和用户错误提供了有效防护。主数据库上的存储器级物理损坏不会传播到备用数据库上。同样，导致主数据库永久损坏的逻辑损坏或用户错误也能够得到解决。最后，重做数据在到达备用数据库并在以后应用到备用数据库时得到验证。
+有效利用系统资源
+物理备用数据库可用于备份和只读报表，这样既减少了主数据库的负载又节省了宝贵的 CPU 和 I/O 周期。物理备用数据库还可以在不牺牲数据保护的同时在物理备用数据库和开启读/写功能的数据库间轻松转换。逻辑备用数据库支持对同步的备用数据库进行读写访问，和/或向备用数据库添加本地表来实现更新，和/或创建额外索引来优化读取性能。
+数据保护中的灵活性平衡性能需求和可用性
+	Oracle Data Guard 提供最大程度的保护、最大的可用性和最佳性能模式来帮助企业平衡数据可用性和系统性能需求。
+防止通信失败
+	如果主数据库和一个或多个备用数据库失去网络连接，重做数据将不能从主数据库发送到这些失去连接的备用数据库。一旦连接重新建立起来，Data Guard 将自动检测丢失的重做数据，必要的存档日志将自动传输到备用数据库。备用数据库将与主数据库重新同步，无需管理员手动干预。
+简单的集中式管理
+	Data Guard Broker 实现了 Data Guard 配置中跨多个数据库的管理和监视任务的自动化。管理员可以借助 Oracle 企业管理器或 Broker 自己专用的命令行界面 (DGMGRL) 来利用这个集成管理框架。
+与 Oracle 数据库集成
+	Data Guard 是 Oracle 数据库（企业版）的一个集成功能，无需另外付费。
+
+Active Data Guard 优势
+提高生产数据库的性能：将不可预计的工作负载卸载到生产数据库的最新副本上。 
+简化操作：消除伴随传统复制解决方案的管理复杂性。 
+消除妥协：报表的副本为最新并始终在线 — 使用传统存储镜像技术是不可能实现的。 
+降低成本：Active Data Guard 物理备用数据库还提供灾难保护功能和高可用性，并可充当 QA 系统 — 无需额外的硬件或软件投资。 
+缩短备份时间：在物理备用数据库上使用 RMAN 块更改跟踪实现完全的增量备份，速度提高了 20 倍。
+
+
+----------------------创建脚本信息createsh.sh--------------------------- 
+#!/bin/bash
+touch  /root/$1
+chmod +x /root/$1
+#Cname=$(`w | grep w$ | awk -F ' ' '{print $3}'`)
+#echo $Cname
+echo "#!/bin/bash
+# ------------------------------------------
+# Filename:    $1(there auto change filename)
+# Revision:    1.0
+# Date:        $(date +%F)(auto change sysdate)
+# Author:      $(hostname)
+# Clientname:  $aa
+# ------------------------------------------" > /root/$1
+vim /root/$1
+
+-------------------------通过查询网卡及ip信息，添加路由-----------------
+#/bin/bash
+export Gw=`ip addr | grep 20.225. | awk -F' ' '{print $4}' | awk -F  '.'  '{print $1 "." $2 "." $3 "." "254"}'`
+export Ip=`ip addr | grep 20.225. | awk -F ' ' '{print $7}'`
+cd /etc/sysconfig/network-scripts/
+echo "20.30.2.0/24 via $Gw dev $Ip">> route-$Ip
+more route-$Ip
+
+
+------------------------dg备库在进行存储迁移后，不能同步，主库alter日志报如下错误-----------------------------
+FAL[server, ARC3]: FAL archive failed, see trace file.
+ARCH: FAL archive failed. Archiver continuing
+ORACLE Instance sgeclndb1 - Archival Error. Archiver continuing.
+trc文件报
+Error 270 creating standby archive log file at host 'testdg'
+解决方法：
+主库
+SQL> show parameter fal
+NAME				     TYPE	 VALUE
+------------------- ----------- -------------
+fal_client			     string
+fal_server			     string	 TESTDG
+SQL> show parameter service_name
+NAME				     TYPE	 VALUE
+-------------------- ----------- ------------
+service_names			 string	 test
+alter system set fal_server='sgeclndg' scope=both;
+#结果还是报错，后面检查发现是将之前的存储umount，迁移之后，mount新的存储后，文件夹的属主属组都变成了root，没有权限了。所以把属主属组修改之后，重启备库就好了
+
+
+-----------------oracle查看用户连接信息----------------------
+SELECT osuser, a.username,cpu_time/executions/1000000||'s', sql_fulltext,machine
+from v$session a, v$sqlarea b
+where a.sql_address =b.address order by cpu_time/executions desc;
+------------------oracle查看用户状态，是否锁定-----------------
+select username,account_status,lock_date from dba_users;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

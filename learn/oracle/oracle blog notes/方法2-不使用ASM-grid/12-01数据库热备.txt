@@ -1,0 +1,90 @@
+归档模式下，数据库的热备
+热备是控制scn在你备份的时候不变化，但行的记录可以变更
+	冻结块头
+	进行物理拷贝
+	让scn可以变化，解冻块头
+可以对数据库热备，可以对表空间热备，可以对控制文件热备
+
+alter database begin backup;
+	拷贝所有的datafile
+alter database end backup;
+
+alter tablespace <> begin backup;
+	拷贝<>表空间的数据文件
+
+#将数据库改为归档模式
+SQL> archive log list;
+Database log mode	       No Archive Mode
+Automatic archival	       Disabled
+Archive destination	       USE_DB_RECOVERY_FILE_DEST
+Oldest online log sequence     7
+Current log sequence	       9
+SQL> shutdown immediate
+SQL> startup mount;
+SQL> alter database archivelog;
+SQL> alter database open;
+SQL> archive log list;
+Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       USE_DB_RECOVERY_FILE_DEST
+Oldest online log sequence     7
+Next log sequence to archive   9
+Current log sequence	       9
+
+#对表空间进行热备份
+SQL> select tablespace_name from dba_data_files;
+TABLESPACE_NAME
+------------------------------
+USERS
+UNDOTBS1
+SYSAUX
+SYSTEM
+EXAMPLE
+SQL> select name from v$datafile;
+NAME
+--------------------------------------------------------------------------------
++DATA/orcl/datafile/system.256.924877991
++DATA/orcl/datafile/sysaux.257.924877991
++DATA/orcl/datafile/undotbs1.258.924877993
++DATA/orcl/datafile/users.259.924877995
++DATA/orcl/datafile/example.265.924878469
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+是否使用了实时应用
+s
+Select recovery_mode from v$archive_dest_status;
+
+Select dest_name,status,type,RECOVERY_MODE,database_mode,PROTECTION_MODE,DESTINATION,DB_UNIQUE_NAME,GAP_STATUS  from v$archive_dest_status;
+或
+select OPEN_MODE,DATABASE_ROLE, SWITCHOVER_STATUS from v$database;
+READ ONLY WITH APPLY	PHYSICAL STANDBY	NOT ALLOWED
+--第二条语句mount下，不会显示是否实时
+如果是READ ONLY，就是没开启实时应用日志。但最大保护下，主库也正常工作（只要mount备库即可）
+
+
+1 如何判断备机上哪些日志已经被应用到备库上? 
+   可以通过查询 v$archived_log的字段 applied 字段来判断，同时加上 REGISTRAR 和 name的限制条件， REGISTRAR='RFS' 表示 是 Remote File Server process 进程，别外加上 name isnot null 是因为，通过rman crosscheck 并删除 expired的 archivelog 后 name 字段会被置空，
+--sql 如下
+SELECT name, SEQUENCE#, FIRST_TIME, REGISTRAR, APPLIED, NEXT_TIME, status
+  FROM V$ARCHIVED_LOG
+ where applied = 'YES'
+   and REGISTRAR = 'RFS'
+   and name is not null
+ ORDER BY SEQUENCE#;
+ ***************************************************************************
+2 在备机删除已应用的archivelog
+[oracle@localhost orcl]$ pwd
+/oracle/oraclebak/orcl
+[oracle@localhost orcl]$ cat  clear_arch_orcl.sh 
+#!/bin/bash
+#Author  Miles tian
+#Date    2013-3-27
+export ORACLE_HOME=/oracle/product/11.2.0/db_1 
+export PATH=${ORACLE_HOME}/bin:${PATH}
+export ORACLE_SID=orcl
+export script_dir=/oracle/oraclebak/orcl
+DATE=`date +%Y%m%d`
+## Select the earliest archived log file that have been applied by standby database 
+sqlplus -s   "/as sysdba"<<EOF
+set echo off
+set head off
+set linesize 200
+set feedback off;
+spool ${script_dir}/archivelog_list.txt
+select 'delete noprompt archivelog sequence  '|| SEQUENCE# ||';' from v\$archived_log  where applied = 'YES'  and name is not null  and REGISTRAR = 'RFS'  order by SEQUENCE# desc,name;
+spool off;
+exit
+EOF
+rman target / nocatalog cmdfile=$script_dir/archivelog_list.txt log=$script_dir/archivelog_list.log append
+exit
+#end
+自动执行
+su – oracle
+crontab –e
+##clear archivelog that have been applied by standby database
+30 5 * * * /oracle/oraclebak/orcl/clear_arch_orcl.sh >> /oracle/oraclebak/orcl/log/clear.log 2>&1 
+检查自动执行情况（必须root用户）
+[root@localhost ~]#cat /var/log/cron
+看crontab日志，成功就表示备份正常，
+不成功表示异常，异常时要看rmanbaklevel1.log。
+
+主库删除
+rman自动备份后，自动删除
+
+如果备库shutdown，or nomount，日志是没法过去的。
+mount or open，开不开实时应用，都可以过去，也都可以删除。
+RMAN> delete archivelog sequence 812;
+
+released channel: ORA_DISK_1
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=815 device type=DISK
+RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process
+archived log file name=/oracle/fast_recovery_area/1_812_810128218.dbf thread=1 sequence=812
+ ***************************************************************************
+ 修改保护模式
+设置新的数据保护模式并重启数据库--primary 数据库操作 
+    SQL> 
+    alter database set standby database to maximize availability;
+    alter database set standby database to maximize PROTECTION; --mount，then crash    
+提示：maximize 后可跟{PROTECTION | AVAILABILITY | PERFORMANCE}，分别对应最大保护，最高可用性及最高性能。
+最大保护模式下，主备库的scn也不完全一致，why？如何保证数据完全一致呢？
+在更改保护模式时， 还要注意修改 log_archive_dest_n
+
+ 
+
+SQL> alter system set log_archive_dest_2='SERVICE=orcldg LGWR SYNC AFFIRM VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=orcldg';
+old
+log_archive_dest_2                   string
+SERVICE=orcldg ASYNC   VALID_F
+OR=(ONLINE_LOGFILES,PRIMARY_RO
+LE) DB_UNIQUE_NAME=orcldg
+alter system set log_archive_dest_2='SERVICE=orcldg LGWR SYNC AFFIRM VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=orcldg';
+select database_role,protection_mode,protection_level from v$database;
+
+当保护模式更改顺序：
+maximize protection --->  maximize availability ----> maximize performance

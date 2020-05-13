@@ -1,0 +1,20 @@
+s
+startup nomount
+p
+rman target / auxiliary sys/password@orcldg
+rman target sys/password@orcl auxiliary /
+duplicate target database for standby;
+duplicate target database for standby nofilenamecheck;
+
+
+rman target / auxiliary sys/iBoxPay_301B@oflbox01dg
+duplicate target database for standby;
+
+duplicate target database for standby nofilenamecheck;
+
+
+
+ORA-12528: TNS: 监听程序: 所有适用例程都无法建立新连接
+
+duplicate target database for standby from active database dorecover nofilenamecheck;
+duplicate target database for standby nofilenamecheck;

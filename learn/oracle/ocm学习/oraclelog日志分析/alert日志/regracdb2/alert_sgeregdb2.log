@@ -1,0 +1,1856 @@
+Sun Oct 01 00:37:07 2017
+Thread 2 advanced to log sequence 1557 (LGWR switch)
+  Current log# 5 seq# 1557 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1557 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 01 00:37:07 2017
+Archived Log entry 6222 added for thread 2 sequence 1556 ID 0xea0617ea dest 1:
+Sun Oct 01 00:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1557 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 01:37:05 2017
+Thread 2 advanced to log sequence 1558 (LGWR switch)
+  Current log# 6 seq# 1558 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1558 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 01 01:37:05 2017
+Archived Log entry 6224 added for thread 2 sequence 1557 ID 0xea0617ea dest 1:
+Sun Oct 01 01:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1558 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 02:37:06 2017
+Thread 2 advanced to log sequence 1559 (LGWR switch)
+  Current log# 8 seq# 1559 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1559 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 01 02:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1559 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 02:37:06 2017
+Archived Log entry 6231 added for thread 2 sequence 1558 ID 0xea0617ea dest 1:
+Sun Oct 01 03:37:06 2017
+Thread 2 advanced to log sequence 1560 (LGWR switch)
+  Current log# 10 seq# 1560 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1560 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 01 03:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1560 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 03:37:07 2017
+Archived Log entry 6235 added for thread 2 sequence 1559 ID 0xea0617ea dest 1:
+Sun Oct 01 04:37:07 2017
+Thread 2 advanced to log sequence 1561 (LGWR switch)
+  Current log# 3 seq# 1561 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1561 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 01 04:37:07 2017
+Archived Log entry 6238 added for thread 2 sequence 1560 ID 0xea0617ea dest 1:
+Sun Oct 01 04:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1561 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 05:37:08 2017
+Thread 2 advanced to log sequence 1562 (LGWR switch)
+  Current log# 5 seq# 1562 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1562 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 01 05:37:08 2017
+Archived Log entry 6242 added for thread 2 sequence 1561 ID 0xea0617ea dest 1:
+Sun Oct 01 05:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1562 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 06:37:06 2017
+Thread 2 advanced to log sequence 1563 (LGWR switch)
+  Current log# 6 seq# 1563 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1563 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 01 06:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1563 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 06:37:06 2017
+Archived Log entry 6247 added for thread 2 sequence 1562 ID 0xea0617ea dest 1:
+Sun Oct 01 07:37:06 2017
+Thread 2 advanced to log sequence 1564 (LGWR switch)
+  Current log# 8 seq# 1564 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1564 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 01 07:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1564 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 07:37:06 2017
+Archived Log entry 6251 added for thread 2 sequence 1563 ID 0xea0617ea dest 1:
+Sun Oct 01 08:37:07 2017
+Thread 2 advanced to log sequence 1565 (LGWR switch)
+  Current log# 10 seq# 1565 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1565 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 01 08:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1565 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 08:37:07 2017
+Archived Log entry 6255 added for thread 2 sequence 1564 ID 0xea0617ea dest 1:
+Sun Oct 01 09:37:07 2017
+Thread 2 advanced to log sequence 1566 (LGWR switch)
+  Current log# 3 seq# 1566 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1566 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 01 09:37:07 2017
+Archived Log entry 6258 added for thread 2 sequence 1565 ID 0xea0617ea dest 1:
+Sun Oct 01 09:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1566 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 10:37:05 2017
+Thread 2 advanced to log sequence 1567 (LGWR switch)
+  Current log# 5 seq# 1567 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1567 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 01 10:37:05 2017
+Archived Log entry 6260 added for thread 2 sequence 1566 ID 0xea0617ea dest 1:
+Sun Oct 01 10:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1567 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 11:37:06 2017
+Thread 2 advanced to log sequence 1568 (LGWR switch)
+  Current log# 6 seq# 1568 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1568 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 01 11:37:06 2017
+Archived Log entry 6265 added for thread 2 sequence 1567 ID 0xea0617ea dest 1:
+Sun Oct 01 11:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1568 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 12:37:07 2017
+Thread 2 advanced to log sequence 1569 (LGWR switch)
+  Current log# 8 seq# 1569 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1569 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 01 12:37:07 2017
+Archived Log entry 6269 added for thread 2 sequence 1568 ID 0xea0617ea dest 1:
+Sun Oct 01 12:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1569 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 13:37:07 2017
+Thread 2 advanced to log sequence 1570 (LGWR switch)
+  Current log# 10 seq# 1570 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1570 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 01 13:37:07 2017
+Archived Log entry 6274 added for thread 2 sequence 1569 ID 0xea0617ea dest 1:
+Sun Oct 01 13:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1570 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 14:37:05 2017
+Thread 2 advanced to log sequence 1571 (LGWR switch)
+  Current log# 3 seq# 1571 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1571 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 01 14:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1571 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 14:37:05 2017
+Archived Log entry 6279 added for thread 2 sequence 1570 ID 0xea0617ea dest 1:
+Sun Oct 01 15:37:06 2017
+Thread 2 advanced to log sequence 1572 (LGWR switch)
+  Current log# 5 seq# 1572 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1572 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 01 15:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1572 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 15:37:06 2017
+Archived Log entry 6283 added for thread 2 sequence 1571 ID 0xea0617ea dest 1:
+Sun Oct 01 16:37:07 2017
+Thread 2 advanced to log sequence 1573 (LGWR switch)
+  Current log# 6 seq# 1573 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1573 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 01 16:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1573 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 16:37:07 2017
+Archived Log entry 6287 added for thread 2 sequence 1572 ID 0xea0617ea dest 1:
+Sun Oct 01 17:37:07 2017
+Thread 2 advanced to log sequence 1574 (LGWR switch)
+  Current log# 8 seq# 1574 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1574 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 01 17:37:07 2017
+Archived Log entry 6290 added for thread 2 sequence 1573 ID 0xea0617ea dest 1:
+Sun Oct 01 17:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1574 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 18:37:07 2017
+Thread 2 advanced to log sequence 1575 (LGWR switch)
+  Current log# 10 seq# 1575 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1575 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 01 18:37:08 2017
+Archived Log entry 6294 added for thread 2 sequence 1574 ID 0xea0617ea dest 1:
+Sun Oct 01 18:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1575 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 19:37:06 2017
+Thread 2 advanced to log sequence 1576 (LGWR switch)
+  Current log# 3 seq# 1576 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1576 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 01 19:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1576 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 19:37:06 2017
+Archived Log entry 6299 added for thread 2 sequence 1575 ID 0xea0617ea dest 1:
+Sun Oct 01 20:37:06 2017
+Thread 2 advanced to log sequence 1577 (LGWR switch)
+  Current log# 5 seq# 1577 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1577 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 01 20:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1577 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 20:37:07 2017
+Archived Log entry 6303 added for thread 2 sequence 1576 ID 0xea0617ea dest 1:
+Sun Oct 01 21:37:07 2017
+Thread 2 advanced to log sequence 1578 (LGWR switch)
+  Current log# 6 seq# 1578 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1578 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 01 21:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1578 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 21:37:07 2017
+Archived Log entry 6307 added for thread 2 sequence 1577 ID 0xea0617ea dest 1:
+Sun Oct 01 22:37:07 2017
+Thread 2 advanced to log sequence 1579 (LGWR switch)
+  Current log# 8 seq# 1579 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1579 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 01 22:37:08 2017
+Archived Log entry 6310 added for thread 2 sequence 1578 ID 0xea0617ea dest 1:
+Sun Oct 01 22:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1579 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 23:37:06 2017
+Thread 2 advanced to log sequence 1580 (LGWR switch)
+  Current log# 10 seq# 1580 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1580 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 01 23:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1580 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 01 23:37:06 2017
+Archived Log entry 6315 added for thread 2 sequence 1579 ID 0xea0617ea dest 1:
+Mon Oct 02 00:37:06 2017
+Thread 2 advanced to log sequence 1581 (LGWR switch)
+  Current log# 3 seq# 1581 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1581 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 02 00:37:06 2017
+Archived Log entry 6316 added for thread 2 sequence 1580 ID 0xea0617ea dest 1:
+Mon Oct 02 00:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1581 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 01:37:07 2017
+Thread 2 advanced to log sequence 1582 (LGWR switch)
+  Current log# 5 seq# 1582 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1582 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 02 01:37:07 2017
+Archived Log entry 6322 added for thread 2 sequence 1581 ID 0xea0617ea dest 1:
+Mon Oct 02 01:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1582 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 02:37:07 2017
+Thread 2 advanced to log sequence 1583 (LGWR switch)
+  Current log# 6 seq# 1583 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1583 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 02 02:37:07 2017
+Archived Log entry 6326 added for thread 2 sequence 1582 ID 0xea0617ea dest 1:
+Mon Oct 02 02:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1583 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 03:37:05 2017
+Thread 2 advanced to log sequence 1584 (LGWR switch)
+  Current log# 8 seq# 1584 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1584 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 02 03:37:05 2017
+Archived Log entry 6328 added for thread 2 sequence 1583 ID 0xea0617ea dest 1:
+Mon Oct 02 03:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1584 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 04:37:06 2017
+Thread 2 advanced to log sequence 1585 (LGWR switch)
+  Current log# 10 seq# 1585 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1585 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 02 04:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1585 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 04:37:06 2017
+Archived Log entry 6335 added for thread 2 sequence 1584 ID 0xea0617ea dest 1:
+Mon Oct 02 05:37:06 2017
+Thread 2 advanced to log sequence 1586 (LGWR switch)
+  Current log# 3 seq# 1586 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1586 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 02 05:37:07 2017
+Archived Log entry 6336 added for thread 2 sequence 1585 ID 0xea0617ea dest 1:
+Mon Oct 02 05:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1586 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 06:37:07 2017
+Thread 2 advanced to log sequence 1587 (LGWR switch)
+  Current log# 5 seq# 1587 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1587 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 02 06:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1587 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 06:37:07 2017
+Archived Log entry 6343 added for thread 2 sequence 1586 ID 0xea0617ea dest 1:
+Mon Oct 02 07:37:07 2017
+Thread 2 advanced to log sequence 1588 (LGWR switch)
+  Current log# 6 seq# 1588 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1588 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 02 07:37:07 2017
+Archived Log entry 6346 added for thread 2 sequence 1587 ID 0xea0617ea dest 1:
+Mon Oct 02 07:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1588 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 08:37:05 2017
+Thread 2 advanced to log sequence 1589 (LGWR switch)
+  Current log# 8 seq# 1589 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1589 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 02 08:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1589 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 08:37:06 2017
+Archived Log entry 6351 added for thread 2 sequence 1588 ID 0xea0617ea dest 1:
+Mon Oct 02 09:37:06 2017
+Thread 2 advanced to log sequence 1590 (LGWR switch)
+  Current log# 10 seq# 1590 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1590 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 02 09:37:06 2017
+Archived Log entry 6355 added for thread 2 sequence 1589 ID 0xea0617ea dest 1:
+Mon Oct 02 09:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1590 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 10:37:07 2017
+Thread 2 advanced to log sequence 1591 (LGWR switch)
+  Current log# 3 seq# 1591 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1591 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 02 10:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1591 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 10:37:07 2017
+Archived Log entry 6359 added for thread 2 sequence 1590 ID 0xea0617ea dest 1:
+Mon Oct 02 11:37:07 2017
+Thread 2 advanced to log sequence 1592 (LGWR switch)
+  Current log# 5 seq# 1592 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1592 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 02 11:37:07 2017
+Archived Log entry 6362 added for thread 2 sequence 1591 ID 0xea0617ea dest 1:
+Mon Oct 02 11:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1592 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 12:37:05 2017
+Thread 2 advanced to log sequence 1593 (LGWR switch)
+  Current log# 6 seq# 1593 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1593 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 02 12:37:05 2017
+Archived Log entry 6364 added for thread 2 sequence 1592 ID 0xea0617ea dest 1:
+Mon Oct 02 12:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1593 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 13:37:06 2017
+Thread 2 advanced to log sequence 1594 (LGWR switch)
+  Current log# 8 seq# 1594 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1594 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 02 13:37:06 2017
+Archived Log entry 6368 added for thread 2 sequence 1593 ID 0xea0617ea dest 1:
+Mon Oct 02 13:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1594 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 14:37:06 2017
+Thread 2 advanced to log sequence 1595 (LGWR switch)
+  Current log# 10 seq# 1595 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1595 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 02 14:37:06 2017
+Archived Log entry 6372 added for thread 2 sequence 1594 ID 0xea0617ea dest 1:
+Mon Oct 02 14:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1595 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 15:37:07 2017
+Thread 2 advanced to log sequence 1596 (LGWR switch)
+  Current log# 3 seq# 1596 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1596 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 02 15:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1596 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 15:37:07 2017
+Archived Log entry 6379 added for thread 2 sequence 1595 ID 0xea0617ea dest 1:
+Mon Oct 02 16:37:07 2017
+Thread 2 advanced to log sequence 1597 (LGWR switch)
+  Current log# 5 seq# 1597 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1597 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 02 16:37:07 2017
+Archived Log entry 6382 added for thread 2 sequence 1596 ID 0xea0617ea dest 1:
+Mon Oct 02 16:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1597 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 17:37:06 2017
+Thread 2 advanced to log sequence 1598 (LGWR switch)
+  Current log# 6 seq# 1598 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1598 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 02 17:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1598 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 17:37:06 2017
+Archived Log entry 6387 added for thread 2 sequence 1597 ID 0xea0617ea dest 1:
+Mon Oct 02 18:37:06 2017
+Thread 2 advanced to log sequence 1599 (LGWR switch)
+  Current log# 8 seq# 1599 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1599 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 02 18:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1599 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 18:37:07 2017
+Archived Log entry 6391 added for thread 2 sequence 1598 ID 0xea0617ea dest 1:
+Mon Oct 02 19:37:07 2017
+Thread 2 advanced to log sequence 1600 (LGWR switch)
+  Current log# 10 seq# 1600 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1600 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 02 19:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1600 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 19:37:07 2017
+Archived Log entry 6395 added for thread 2 sequence 1599 ID 0xea0617ea dest 1:
+Mon Oct 02 20:37:07 2017
+Thread 2 advanced to log sequence 1601 (LGWR switch)
+  Current log# 3 seq# 1601 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1601 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 02 20:37:07 2017
+Archived Log entry 6398 added for thread 2 sequence 1600 ID 0xea0617ea dest 1:
+Mon Oct 02 20:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1601 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 21:37:05 2017
+Thread 2 advanced to log sequence 1602 (LGWR switch)
+  Current log# 5 seq# 1602 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1602 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 02 21:37:05 2017
+Archived Log entry 6400 added for thread 2 sequence 1601 ID 0xea0617ea dest 1:
+Mon Oct 02 21:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1602 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 22:37:06 2017
+Thread 2 advanced to log sequence 1603 (LGWR switch)
+  Current log# 6 seq# 1603 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1603 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 02 22:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1603 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 22:37:06 2017
+Archived Log entry 6407 added for thread 2 sequence 1602 ID 0xea0617ea dest 1:
+Mon Oct 02 23:37:06 2017
+Thread 2 advanced to log sequence 1604 (LGWR switch)
+  Current log# 8 seq# 1604 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1604 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 02 23:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1604 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 02 23:37:07 2017
+Archived Log entry 6411 added for thread 2 sequence 1603 ID 0xea0617ea dest 1:
+Tue Oct 03 00:37:07 2017
+Thread 2 advanced to log sequence 1605 (LGWR switch)
+  Current log# 10 seq# 1605 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1605 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 03 00:37:07 2017
+Archived Log entry 6412 added for thread 2 sequence 1604 ID 0xea0617ea dest 1:
+Tue Oct 03 00:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1605 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 01:37:07 2017
+Thread 2 advanced to log sequence 1606 (LGWR switch)
+  Current log# 3 seq# 1606 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1606 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 03 01:37:07 2017
+Archived Log entry 6418 added for thread 2 sequence 1605 ID 0xea0617ea dest 1:
+Tue Oct 03 01:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1606 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 02:37:06 2017
+Thread 2 advanced to log sequence 1607 (LGWR switch)
+  Current log# 5 seq# 1607 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1607 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 03 02:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1607 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 02:37:06 2017
+Archived Log entry 6423 added for thread 2 sequence 1606 ID 0xea0617ea dest 1:
+Tue Oct 03 03:37:06 2017
+Thread 2 advanced to log sequence 1608 (LGWR switch)
+  Current log# 6 seq# 1608 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1608 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 03 03:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1608 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 03:37:06 2017
+Archived Log entry 6427 added for thread 2 sequence 1607 ID 0xea0617ea dest 1:
+Tue Oct 03 04:37:07 2017
+Thread 2 advanced to log sequence 1609 (LGWR switch)
+  Current log# 8 seq# 1609 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1609 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 03 04:37:07 2017
+Archived Log entry 6428 added for thread 2 sequence 1608 ID 0xea0617ea dest 1:
+Tue Oct 03 04:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1609 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 05:37:07 2017
+Thread 2 advanced to log sequence 1610 (LGWR switch)
+  Current log# 10 seq# 1610 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1610 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 03 05:37:08 2017
+Archived Log entry 6434 added for thread 2 sequence 1609 ID 0xea0617ea dest 1:
+Tue Oct 03 05:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1610 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 06:37:05 2017
+Thread 2 advanced to log sequence 1611 (LGWR switch)
+  Current log# 3 seq# 1611 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1611 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 03 06:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1611 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 06:37:05 2017
+Archived Log entry 6439 added for thread 2 sequence 1610 ID 0xea0617ea dest 1:
+Tue Oct 03 07:37:06 2017
+Thread 2 advanced to log sequence 1612 (LGWR switch)
+  Current log# 5 seq# 1612 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1612 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 03 07:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1612 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 07:37:06 2017
+Archived Log entry 6443 added for thread 2 sequence 1611 ID 0xea0617ea dest 1:
+Tue Oct 03 08:37:07 2017
+Thread 2 advanced to log sequence 1613 (LGWR switch)
+  Current log# 6 seq# 1613 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1613 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 03 08:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1613 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 08:37:07 2017
+Archived Log entry 6447 added for thread 2 sequence 1612 ID 0xea0617ea dest 1:
+Tue Oct 03 09:37:07 2017
+Thread 2 advanced to log sequence 1614 (LGWR switch)
+  Current log# 8 seq# 1614 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1614 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 03 09:37:07 2017
+Archived Log entry 6450 added for thread 2 sequence 1613 ID 0xea0617ea dest 1:
+Tue Oct 03 09:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1614 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 10:37:05 2017
+Thread 2 advanced to log sequence 1615 (LGWR switch)
+  Current log# 10 seq# 1615 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1615 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 03 10:37:05 2017
+Archived Log entry 6452 added for thread 2 sequence 1614 ID 0xea0617ea dest 1:
+Tue Oct 03 10:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1615 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 11:37:06 2017
+Thread 2 advanced to log sequence 1616 (LGWR switch)
+  Current log# 3 seq# 1616 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1616 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 03 11:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1616 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 11:37:06 2017
+Archived Log entry 6459 added for thread 2 sequence 1615 ID 0xea0617ea dest 1:
+Tue Oct 03 12:37:06 2017
+Thread 2 advanced to log sequence 1617 (LGWR switch)
+  Current log# 5 seq# 1617 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1617 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 03 12:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1617 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 12:37:07 2017
+Archived Log entry 6463 added for thread 2 sequence 1616 ID 0xea0617ea dest 1:
+Tue Oct 03 13:37:07 2017
+Thread 2 advanced to log sequence 1618 (LGWR switch)
+  Current log# 6 seq# 1618 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1618 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 03 13:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1618 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 13:37:07 2017
+Archived Log entry 6467 added for thread 2 sequence 1617 ID 0xea0617ea dest 1:
+Tue Oct 03 14:37:07 2017
+Thread 2 advanced to log sequence 1619 (LGWR switch)
+  Current log# 8 seq# 1619 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1619 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 03 14:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1619 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 14:37:07 2017
+Archived Log entry 6471 added for thread 2 sequence 1618 ID 0xea0617ea dest 1:
+Tue Oct 03 15:37:05 2017
+Thread 2 advanced to log sequence 1620 (LGWR switch)
+  Current log# 10 seq# 1620 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1620 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 03 15:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1620 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 15:37:06 2017
+Archived Log entry 6475 added for thread 2 sequence 1619 ID 0xea0617ea dest 1:
+Tue Oct 03 16:37:06 2017
+Thread 2 advanced to log sequence 1621 (LGWR switch)
+  Current log# 3 seq# 1621 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1621 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 03 16:37:06 2017
+Archived Log entry 6476 added for thread 2 sequence 1620 ID 0xea0617ea dest 1:
+Tue Oct 03 16:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1621 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 17:37:07 2017
+Thread 2 advanced to log sequence 1622 (LGWR switch)
+  Current log# 5 seq# 1622 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1622 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 03 17:37:07 2017
+Archived Log entry 6482 added for thread 2 sequence 1621 ID 0xea0617ea dest 1:
+Tue Oct 03 17:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1622 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 18:37:07 2017
+Thread 2 advanced to log sequence 1623 (LGWR switch)
+  Current log# 6 seq# 1623 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1623 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 03 18:37:07 2017
+Archived Log entry 6486 added for thread 2 sequence 1622 ID 0xea0617ea dest 1:
+Tue Oct 03 18:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1623 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 19:37:05 2017
+Thread 2 advanced to log sequence 1624 (LGWR switch)
+  Current log# 8 seq# 1624 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1624 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 03 19:37:05 2017
+Archived Log entry 6488 added for thread 2 sequence 1623 ID 0xea0617ea dest 1:
+Tue Oct 03 19:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1624 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 20:37:06 2017
+Thread 2 advanced to log sequence 1625 (LGWR switch)
+  Current log# 10 seq# 1625 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1625 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 03 20:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1625 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 20:37:06 2017
+Archived Log entry 6495 added for thread 2 sequence 1624 ID 0xea0617ea dest 1:
+Tue Oct 03 21:37:06 2017
+Thread 2 advanced to log sequence 1626 (LGWR switch)
+  Current log# 3 seq# 1626 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1626 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 03 21:37:06 2017
+Archived Log entry 6496 added for thread 2 sequence 1625 ID 0xea0617ea dest 1:
+Tue Oct 03 21:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1626 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 22:37:07 2017
+Thread 2 advanced to log sequence 1627 (LGWR switch)
+  Current log# 5 seq# 1627 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1627 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 03 22:37:07 2017
+Archived Log entry 6500 added for thread 2 sequence 1626 ID 0xea0617ea dest 1:
+Tue Oct 03 22:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1627 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 03 23:37:07 2017
+Thread 2 advanced to log sequence 1628 (LGWR switch)
+  Current log# 6 seq# 1628 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1628 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 03 23:37:08 2017
+Archived Log entry 6507 added for thread 2 sequence 1627 ID 0xea0617ea dest 1:
+Tue Oct 03 23:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1628 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 00:37:06 2017
+Thread 2 advanced to log sequence 1629 (LGWR switch)
+  Current log# 8 seq# 1629 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1629 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Wed Oct 04 00:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1629 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 00:37:06 2017
+Archived Log entry 6511 added for thread 2 sequence 1628 ID 0xea0617ea dest 1:
+Wed Oct 04 01:37:06 2017
+Thread 2 advanced to log sequence 1630 (LGWR switch)
+  Current log# 10 seq# 1630 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1630 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Wed Oct 04 01:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1630 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 01:37:07 2017
+Archived Log entry 6515 added for thread 2 sequence 1629 ID 0xea0617ea dest 1:
+Wed Oct 04 02:37:07 2017
+Thread 2 advanced to log sequence 1631 (LGWR switch)
+  Current log# 3 seq# 1631 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1631 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Wed Oct 04 02:37:07 2017
+Archived Log entry 6517 added for thread 2 sequence 1630 ID 0xea0617ea dest 1:
+Wed Oct 04 02:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1631 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 03:37:07 2017
+Thread 2 advanced to log sequence 1632 (LGWR switch)
+  Current log# 5 seq# 1632 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1632 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Wed Oct 04 03:37:07 2017
+Archived Log entry 6522 added for thread 2 sequence 1631 ID 0xea0617ea dest 1:
+Wed Oct 04 03:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1632 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 04:37:05 2017
+Thread 2 advanced to log sequence 1633 (LGWR switch)
+  Current log# 6 seq# 1633 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1633 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Wed Oct 04 04:37:05 2017
+Archived Log entry 6524 added for thread 2 sequence 1632 ID 0xea0617ea dest 1:
+Wed Oct 04 04:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1633 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 05:37:06 2017
+Thread 2 advanced to log sequence 1634 (LGWR switch)
+  Current log# 8 seq# 1634 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1634 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Wed Oct 04 05:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1634 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 05:37:06 2017
+Archived Log entry 6531 added for thread 2 sequence 1633 ID 0xea0617ea dest 1:
+Wed Oct 04 06:37:07 2017
+Thread 2 advanced to log sequence 1635 (LGWR switch)
+  Current log# 10 seq# 1635 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1635 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Wed Oct 04 06:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1635 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 06:37:07 2017
+Archived Log entry 6535 added for thread 2 sequence 1634 ID 0xea0617ea dest 1:
+Wed Oct 04 07:37:08 2017
+Thread 2 advanced to log sequence 1636 (LGWR switch)
+  Current log# 3 seq# 1636 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1636 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Wed Oct 04 07:37:08 2017
+Archived Log entry 6538 added for thread 2 sequence 1635 ID 0xea0617ea dest 1:
+Wed Oct 04 07:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1636 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 08:37:05 2017
+Thread 2 advanced to log sequence 1637 (LGWR switch)
+  Current log# 5 seq# 1637 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1637 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Wed Oct 04 08:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1637 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 08:37:06 2017
+Archived Log entry 6543 added for thread 2 sequence 1636 ID 0xea0617ea dest 1:
+Wed Oct 04 09:37:06 2017
+Thread 2 advanced to log sequence 1638 (LGWR switch)
+  Current log# 6 seq# 1638 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1638 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Wed Oct 04 09:37:06 2017
+Archived Log entry 6545 added for thread 2 sequence 1637 ID 0xea0617ea dest 1:
+Wed Oct 04 09:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1638 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 10:37:06 2017
+Thread 2 advanced to log sequence 1639 (LGWR switch)
+  Current log# 8 seq# 1639 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1639 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Wed Oct 04 10:37:06 2017
+Archived Log entry 6548 added for thread 2 sequence 1638 ID 0xea0617ea dest 1:
+Wed Oct 04 10:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1639 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 11:37:07 2017
+Thread 2 advanced to log sequence 1640 (LGWR switch)
+  Current log# 10 seq# 1640 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1640 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Wed Oct 04 11:37:07 2017
+Archived Log entry 6552 added for thread 2 sequence 1639 ID 0xea0617ea dest 1:
+Wed Oct 04 11:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1640 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 12:37:07 2017
+Thread 2 advanced to log sequence 1641 (LGWR switch)
+  Current log# 3 seq# 1641 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1641 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Wed Oct 04 12:37:07 2017
+Archived Log entry 6558 added for thread 2 sequence 1640 ID 0xea0617ea dest 1:
+Wed Oct 04 12:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1641 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 13:37:05 2017
+Thread 2 advanced to log sequence 1642 (LGWR switch)
+  Current log# 5 seq# 1642 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1642 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Wed Oct 04 13:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1642 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 13:37:05 2017
+Archived Log entry 6563 added for thread 2 sequence 1641 ID 0xea0617ea dest 1:
+Wed Oct 04 14:37:06 2017
+Thread 2 advanced to log sequence 1643 (LGWR switch)
+  Current log# 6 seq# 1643 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1643 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Wed Oct 04 14:37:06 2017
+Archived Log entry 6566 added for thread 2 sequence 1642 ID 0xea0617ea dest 1:
+Wed Oct 04 14:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1643 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 15:37:07 2017
+Thread 2 advanced to log sequence 1644 (LGWR switch)
+  Current log# 8 seq# 1644 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1644 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Wed Oct 04 15:37:07 2017
+Archived Log entry 6568 added for thread 2 sequence 1643 ID 0xea0617ea dest 1:
+Wed Oct 04 15:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1644 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 16:37:07 2017
+Thread 2 advanced to log sequence 1645 (LGWR switch)
+  Current log# 10 seq# 1645 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1645 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Wed Oct 04 16:37:07 2017
+Archived Log entry 6574 added for thread 2 sequence 1644 ID 0xea0617ea dest 1:
+Wed Oct 04 16:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1645 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 17:37:05 2017
+Thread 2 advanced to log sequence 1646 (LGWR switch)
+  Current log# 3 seq# 1646 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1646 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Wed Oct 04 17:37:05 2017
+Archived Log entry 6576 added for thread 2 sequence 1645 ID 0xea0617ea dest 1:
+Wed Oct 04 17:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1646 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 18:37:06 2017
+Thread 2 advanced to log sequence 1647 (LGWR switch)
+  Current log# 5 seq# 1647 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1647 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Wed Oct 04 18:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1647 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 18:37:06 2017
+Archived Log entry 6583 added for thread 2 sequence 1646 ID 0xea0617ea dest 1:
+Wed Oct 04 19:37:07 2017
+Thread 2 advanced to log sequence 1648 (LGWR switch)
+  Current log# 6 seq# 1648 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1648 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Wed Oct 04 19:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1648 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 19:37:07 2017
+Archived Log entry 6587 added for thread 2 sequence 1647 ID 0xea0617ea dest 1:
+Wed Oct 04 20:37:07 2017
+Thread 2 advanced to log sequence 1649 (LGWR switch)
+  Current log# 8 seq# 1649 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1649 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Wed Oct 04 20:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1649 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 20:37:07 2017
+Archived Log entry 6591 added for thread 2 sequence 1648 ID 0xea0617ea dest 1:
+Wed Oct 04 21:37:07 2017
+Thread 2 advanced to log sequence 1650 (LGWR switch)
+  Current log# 10 seq# 1650 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1650 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Wed Oct 04 21:37:08 2017
+Archived Log entry 6594 added for thread 2 sequence 1649 ID 0xea0617ea dest 1:
+Wed Oct 04 21:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1650 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 22:37:05 2017
+Thread 2 advanced to log sequence 1651 (LGWR switch)
+  Current log# 3 seq# 1651 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1651 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Wed Oct 04 22:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1651 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 22:37:06 2017
+Archived Log entry 6599 added for thread 2 sequence 1650 ID 0xea0617ea dest 1:
+Wed Oct 04 23:37:06 2017
+Thread 2 advanced to log sequence 1652 (LGWR switch)
+  Current log# 5 seq# 1652 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1652 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Wed Oct 04 23:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1652 for destination LOG_ARCHIVE_DEST_2
+Wed Oct 04 23:37:06 2017
+Archived Log entry 6603 added for thread 2 sequence 1651 ID 0xea0617ea dest 1:
+Thu Oct 05 00:37:07 2017
+Thread 2 advanced to log sequence 1653 (LGWR switch)
+  Current log# 6 seq# 1653 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1653 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Thu Oct 05 00:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1653 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 00:37:07 2017
+Archived Log entry 6607 added for thread 2 sequence 1652 ID 0xea0617ea dest 1:
+Thu Oct 05 01:37:07 2017
+Thread 2 advanced to log sequence 1654 (LGWR switch)
+  Current log# 8 seq# 1654 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1654 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Thu Oct 05 01:37:07 2017
+Archived Log entry 6610 added for thread 2 sequence 1653 ID 0xea0617ea dest 1:
+Thu Oct 05 01:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1654 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 02:37:05 2017
+Thread 2 advanced to log sequence 1655 (LGWR switch)
+  Current log# 10 seq# 1655 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1655 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Thu Oct 05 02:37:05 2017
+Archived Log entry 6612 added for thread 2 sequence 1654 ID 0xea0617ea dest 1:
+Thu Oct 05 02:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1655 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 03:37:06 2017
+Thread 2 advanced to log sequence 1656 (LGWR switch)
+  Current log# 3 seq# 1656 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1656 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Thu Oct 05 03:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1656 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 03:37:06 2017
+Archived Log entry 6619 added for thread 2 sequence 1655 ID 0xea0617ea dest 1:
+Thu Oct 05 04:37:06 2017
+Thread 2 advanced to log sequence 1657 (LGWR switch)
+  Current log# 5 seq# 1657 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1657 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Thu Oct 05 04:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1657 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 04:37:07 2017
+Archived Log entry 6623 added for thread 2 sequence 1656 ID 0xea0617ea dest 1:
+Thu Oct 05 05:37:07 2017
+Thread 2 advanced to log sequence 1658 (LGWR switch)
+  Current log# 6 seq# 1658 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1658 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Thu Oct 05 05:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1658 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 05:37:07 2017
+Archived Log entry 6627 added for thread 2 sequence 1657 ID 0xea0617ea dest 1:
+Thu Oct 05 06:37:08 2017
+Thread 2 advanced to log sequence 1659 (LGWR switch)
+  Current log# 8 seq# 1659 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1659 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Thu Oct 05 06:37:08 2017
+Archived Log entry 6630 added for thread 2 sequence 1658 ID 0xea0617ea dest 1:
+Thu Oct 05 06:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1659 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 07:37:06 2017
+Thread 2 advanced to log sequence 1660 (LGWR switch)
+  Current log# 10 seq# 1660 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1660 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Thu Oct 05 07:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1660 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 07:37:06 2017
+Archived Log entry 6635 added for thread 2 sequence 1659 ID 0xea0617ea dest 1:
+Thu Oct 05 08:37:06 2017
+Thread 2 advanced to log sequence 1661 (LGWR switch)
+  Current log# 3 seq# 1661 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1661 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Thu Oct 05 08:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1661 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 08:37:06 2017
+Archived Log entry 6639 added for thread 2 sequence 1660 ID 0xea0617ea dest 1:
+Thu Oct 05 09:37:07 2017
+Thread 2 advanced to log sequence 1662 (LGWR switch)
+  Current log# 5 seq# 1662 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1662 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Thu Oct 05 09:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1662 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 09:37:07 2017
+Archived Log entry 6643 added for thread 2 sequence 1661 ID 0xea0617ea dest 1:
+Thu Oct 05 10:37:08 2017
+Thread 2 advanced to log sequence 1663 (LGWR switch)
+  Current log# 6 seq# 1663 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1663 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Thu Oct 05 10:37:08 2017
+Archived Log entry 6646 added for thread 2 sequence 1662 ID 0xea0617ea dest 1:
+Thu Oct 05 10:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1663 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 11:37:05 2017
+Thread 2 advanced to log sequence 1664 (LGWR switch)
+  Current log# 8 seq# 1664 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1664 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Thu Oct 05 11:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1664 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 11:37:05 2017
+Archived Log entry 6651 added for thread 2 sequence 1663 ID 0xea0617ea dest 1:
+Thu Oct 05 12:37:06 2017
+Thread 2 advanced to log sequence 1665 (LGWR switch)
+  Current log# 10 seq# 1665 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1665 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Thu Oct 05 12:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1665 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 12:37:06 2017
+Archived Log entry 6655 added for thread 2 sequence 1664 ID 0xea0617ea dest 1:
+Thu Oct 05 13:37:07 2017
+Thread 2 advanced to log sequence 1666 (LGWR switch)
+  Current log# 3 seq# 1666 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1666 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Thu Oct 05 13:37:07 2017
+Archived Log entry 6656 added for thread 2 sequence 1665 ID 0xea0617ea dest 1:
+Thu Oct 05 13:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1666 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 14:37:07 2017
+Thread 2 advanced to log sequence 1667 (LGWR switch)
+  Current log# 5 seq# 1667 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1667 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Thu Oct 05 14:37:07 2017
+Archived Log entry 6662 added for thread 2 sequence 1666 ID 0xea0617ea dest 1:
+Thu Oct 05 14:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1667 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 15:37:05 2017
+Thread 2 advanced to log sequence 1668 (LGWR switch)
+  Current log# 6 seq# 1668 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1668 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Thu Oct 05 15:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1668 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 15:37:05 2017
+Archived Log entry 6667 added for thread 2 sequence 1667 ID 0xea0617ea dest 1:
+Thu Oct 05 16:37:06 2017
+Thread 2 advanced to log sequence 1669 (LGWR switch)
+  Current log# 8 seq# 1669 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1669 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Thu Oct 05 16:37:06 2017
+Archived Log entry 6668 added for thread 2 sequence 1668 ID 0xea0617ea dest 1:
+Thu Oct 05 16:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1669 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 17:37:07 2017
+Thread 2 advanced to log sequence 1670 (LGWR switch)
+  Current log# 10 seq# 1670 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1670 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Thu Oct 05 17:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1670 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 17:37:07 2017
+Archived Log entry 6675 added for thread 2 sequence 1669 ID 0xea0617ea dest 1:
+Thu Oct 05 18:37:07 2017
+Thread 2 advanced to log sequence 1671 (LGWR switch)
+  Current log# 3 seq# 1671 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1671 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Thu Oct 05 18:37:07 2017
+Archived Log entry 6678 added for thread 2 sequence 1670 ID 0xea0617ea dest 1:
+Thu Oct 05 18:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1671 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 19:37:07 2017
+Thread 2 advanced to log sequence 1672 (LGWR switch)
+  Current log# 5 seq# 1672 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1672 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Thu Oct 05 19:37:08 2017
+Archived Log entry 6682 added for thread 2 sequence 1671 ID 0xea0617ea dest 1:
+Thu Oct 05 19:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1672 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 20:37:06 2017
+Thread 2 advanced to log sequence 1673 (LGWR switch)
+  Current log# 6 seq# 1673 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1673 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Thu Oct 05 20:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1673 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 20:37:06 2017
+Archived Log entry 6687 added for thread 2 sequence 1672 ID 0xea0617ea dest 1:
+Thu Oct 05 21:37:06 2017
+Thread 2 advanced to log sequence 1674 (LGWR switch)
+  Current log# 8 seq# 1674 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1674 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Thu Oct 05 21:37:06 2017
+Archived Log entry 6688 added for thread 2 sequence 1673 ID 0xea0617ea dest 1:
+Thu Oct 05 21:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1674 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 22:37:07 2017
+Thread 2 advanced to log sequence 1675 (LGWR switch)
+  Current log# 10 seq# 1675 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1675 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Thu Oct 05 22:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1675 for destination LOG_ARCHIVE_DEST_2
+Thu Oct 05 22:37:07 2017
+Archived Log entry 6695 added for thread 2 sequence 1674 ID 0xea0617ea dest 1:
+Thu Oct 05 23:37:07 2017
+Thread 2 advanced to log sequence 1676 (LGWR switch)
+  Current log# 3 seq# 1676 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1676 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Thu Oct 05 23:37:07 2017
+Archived Log entry 6696 added for thread 2 sequence 1675 ID 0xea0617ea dest 1:
+Thu Oct 05 23:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1676 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 00:37:07 2017
+Thread 2 advanced to log sequence 1677 (LGWR switch)
+  Current log# 5 seq# 1677 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1677 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Fri Oct 06 00:37:07 2017
+Archived Log entry 6702 added for thread 2 sequence 1676 ID 0xea0617ea dest 1:
+Fri Oct 06 00:37:08 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1677 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 01:37:05 2017
+Thread 2 advanced to log sequence 1678 (LGWR switch)
+  Current log# 6 seq# 1678 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1678 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Fri Oct 06 01:37:06 2017
+Archived Log entry 6706 added for thread 2 sequence 1677 ID 0xea0617ea dest 1:
+Fri Oct 06 01:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1678 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 02:37:06 2017
+Thread 2 advanced to log sequence 1679 (LGWR switch)
+  Current log# 8 seq# 1679 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1679 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Fri Oct 06 02:37:06 2017
+Archived Log entry 6709 added for thread 2 sequence 1678 ID 0xea0617ea dest 1:
+Fri Oct 06 02:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1679 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 03:37:07 2017
+Thread 2 advanced to log sequence 1680 (LGWR switch)
+  Current log# 10 seq# 1680 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1680 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Fri Oct 06 03:37:07 2017
+Archived Log entry 6712 added for thread 2 sequence 1679 ID 0xea0617ea dest 1:
+Fri Oct 06 03:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1680 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 04:37:07 2017
+Thread 2 advanced to log sequence 1681 (LGWR switch)
+  Current log# 3 seq# 1681 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1681 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Fri Oct 06 04:37:07 2017
+Archived Log entry 6718 added for thread 2 sequence 1680 ID 0xea0617ea dest 1:
+Fri Oct 06 04:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1681 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 05:37:05 2017
+Thread 2 advanced to log sequence 1682 (LGWR switch)
+  Current log# 5 seq# 1682 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1682 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Fri Oct 06 05:37:05 2017
+Archived Log entry 6720 added for thread 2 sequence 1681 ID 0xea0617ea dest 1:
+Fri Oct 06 05:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1682 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 06:37:06 2017
+Thread 2 advanced to log sequence 1683 (LGWR switch)
+  Current log# 6 seq# 1683 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1683 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Fri Oct 06 06:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1683 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 06:37:06 2017
+Archived Log entry 6727 added for thread 2 sequence 1682 ID 0xea0617ea dest 1:
+Fri Oct 06 07:37:06 2017
+Thread 2 advanced to log sequence 1684 (LGWR switch)
+  Current log# 8 seq# 1684 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1684 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Fri Oct 06 07:37:06 2017
+Archived Log entry 6728 added for thread 2 sequence 1683 ID 0xea0617ea dest 1:
+Fri Oct 06 07:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1684 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 08:37:07 2017
+Thread 2 advanced to log sequence 1685 (LGWR switch)
+  Current log# 10 seq# 1685 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1685 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Fri Oct 06 08:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1685 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 08:37:07 2017
+Archived Log entry 6735 added for thread 2 sequence 1684 ID 0xea0617ea dest 1:
+Fri Oct 06 09:37:07 2017
+Thread 2 advanced to log sequence 1686 (LGWR switch)
+  Current log# 3 seq# 1686 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1686 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Fri Oct 06 09:37:07 2017
+Archived Log entry 6738 added for thread 2 sequence 1685 ID 0xea0617ea dest 1:
+Fri Oct 06 09:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1686 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 10:37:05 2017
+Thread 2 advanced to log sequence 1687 (LGWR switch)
+  Current log# 5 seq# 1687 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1687 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Fri Oct 06 10:37:05 2017
+Archived Log entry 6740 added for thread 2 sequence 1686 ID 0xea0617ea dest 1:
+Fri Oct 06 10:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1687 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 11:37:06 2017
+Thread 2 advanced to log sequence 1688 (LGWR switch)
+  Current log# 6 seq# 1688 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1688 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Fri Oct 06 11:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1688 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 11:37:06 2017
+Archived Log entry 6747 added for thread 2 sequence 1687 ID 0xea0617ea dest 1:
+Fri Oct 06 12:37:07 2017
+Thread 2 advanced to log sequence 1689 (LGWR switch)
+  Current log# 8 seq# 1689 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1689 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Fri Oct 06 12:37:07 2017
+Archived Log entry 6748 added for thread 2 sequence 1688 ID 0xea0617ea dest 1:
+Fri Oct 06 12:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1689 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 13:37:07 2017
+Thread 2 advanced to log sequence 1690 (LGWR switch)
+  Current log# 10 seq# 1690 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1690 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Fri Oct 06 13:37:07 2017
+Archived Log entry 6754 added for thread 2 sequence 1689 ID 0xea0617ea dest 1:
+Fri Oct 06 13:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1690 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 14:37:07 2017
+Thread 2 advanced to log sequence 1691 (LGWR switch)
+  Current log# 3 seq# 1691 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1691 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Fri Oct 06 14:37:07 2017
+Archived Log entry 6758 added for thread 2 sequence 1690 ID 0xea0617ea dest 1:
+Fri Oct 06 14:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1691 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 15:37:05 2017
+Thread 2 advanced to log sequence 1692 (LGWR switch)
+  Current log# 5 seq# 1692 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1692 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Fri Oct 06 15:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1692 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 15:37:06 2017
+Archived Log entry 6763 added for thread 2 sequence 1691 ID 0xea0617ea dest 1:
+Fri Oct 06 16:37:06 2017
+Thread 2 advanced to log sequence 1693 (LGWR switch)
+  Current log# 6 seq# 1693 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1693 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Fri Oct 06 16:37:06 2017
+Archived Log entry 6764 added for thread 2 sequence 1692 ID 0xea0617ea dest 1:
+Fri Oct 06 16:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1693 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 17:37:07 2017
+Thread 2 advanced to log sequence 1694 (LGWR switch)
+  Current log# 8 seq# 1694 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1694 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Fri Oct 06 17:37:07 2017
+Archived Log entry 6768 added for thread 2 sequence 1693 ID 0xea0617ea dest 1:
+Fri Oct 06 17:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1694 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 18:37:07 2017
+Thread 2 advanced to log sequence 1695 (LGWR switch)
+  Current log# 10 seq# 1695 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1695 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Fri Oct 06 18:37:07 2017
+Archived Log entry 6774 added for thread 2 sequence 1694 ID 0xea0617ea dest 1:
+Fri Oct 06 18:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1695 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 19:37:05 2017
+Thread 2 advanced to log sequence 1696 (LGWR switch)
+  Current log# 3 seq# 1696 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1696 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Fri Oct 06 19:37:05 2017
+Archived Log entry 6776 added for thread 2 sequence 1695 ID 0xea0617ea dest 1:
+Fri Oct 06 19:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1696 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 20:37:06 2017
+Thread 2 advanced to log sequence 1697 (LGWR switch)
+  Current log# 5 seq# 1697 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1697 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Fri Oct 06 20:37:06 2017
+Archived Log entry 6780 added for thread 2 sequence 1696 ID 0xea0617ea dest 1:
+Fri Oct 06 20:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1697 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 21:37:06 2017
+Thread 2 advanced to log sequence 1698 (LGWR switch)
+  Current log# 6 seq# 1698 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1698 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Fri Oct 06 21:37:06 2017
+Archived Log entry 6785 added for thread 2 sequence 1697 ID 0xea0617ea dest 1:
+Fri Oct 06 21:37:06 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1698 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 22:37:07 2017
+Thread 2 advanced to log sequence 1699 (LGWR switch)
+  Current log# 8 seq# 1699 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1699 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Fri Oct 06 22:37:07 2017
+Archived Log entry 6790 added for thread 2 sequence 1698 ID 0xea0617ea dest 1:
+Fri Oct 06 22:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1699 for destination LOG_ARCHIVE_DEST_2
+Fri Oct 06 23:37:07 2017
+Thread 2 advanced to log sequence 1700 (LGWR switch)
+  Current log# 10 seq# 1700 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1700 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Fri Oct 06 23:37:07 2017
+Archived Log entry 6794 added for thread 2 sequence 1699 ID 0xea0617ea dest 1:
+Fri Oct 06 23:37:07 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1700 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 00:37:05 2017
+Thread 2 advanced to log sequence 1701 (LGWR switch)
+  Current log# 3 seq# 1701 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1701 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sat Oct 07 00:37:05 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1701 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 00:37:05 2017
+Archived Log entry 6799 added for thread 2 sequence 1700 ID 0xea0617ea dest 1:
+Sat Oct 07 01:36:48 2017
+Thread 2 advanced to log sequence 1702 (LGWR switch)
+  Current log# 5 seq# 1702 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1702 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sat Oct 07 01:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1702 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 01:36:48 2017
+Archived Log entry 6803 added for thread 2 sequence 1701 ID 0xea0617ea dest 1:
+Sat Oct 07 02:36:49 2017
+Thread 2 advanced to log sequence 1703 (LGWR switch)
+  Current log# 6 seq# 1703 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1703 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sat Oct 07 02:36:49 2017
+Archived Log entry 6804 added for thread 2 sequence 1702 ID 0xea0617ea dest 1:
+Sat Oct 07 02:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1703 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 03:36:49 2017
+Thread 2 advanced to log sequence 1704 (LGWR switch)
+  Current log# 8 seq# 1704 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1704 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sat Oct 07 03:36:49 2017
+Archived Log entry 6811 added for thread 2 sequence 1703 ID 0xea0617ea dest 1:
+Sat Oct 07 03:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1704 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 04:36:47 2017
+Thread 2 advanced to log sequence 1705 (LGWR switch)
+  Current log# 10 seq# 1705 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1705 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sat Oct 07 04:36:47 2017
+Archived Log entry 6812 added for thread 2 sequence 1704 ID 0xea0617ea dest 1:
+Sat Oct 07 04:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1705 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 05:36:48 2017
+Thread 2 advanced to log sequence 1706 (LGWR switch)
+  Current log# 3 seq# 1706 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1706 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sat Oct 07 05:36:48 2017
+Archived Log entry 6816 added for thread 2 sequence 1705 ID 0xea0617ea dest 1:
+Sat Oct 07 05:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1706 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 06:36:49 2017
+Thread 2 advanced to log sequence 1707 (LGWR switch)
+  Current log# 5 seq# 1707 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1707 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sat Oct 07 06:36:49 2017
+Archived Log entry 6820 added for thread 2 sequence 1706 ID 0xea0617ea dest 1:
+Sat Oct 07 06:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1707 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 07:36:49 2017
+Thread 2 advanced to log sequence 1708 (LGWR switch)
+  Current log# 6 seq# 1708 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1708 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sat Oct 07 07:36:49 2017
+Archived Log entry 6826 added for thread 2 sequence 1707 ID 0xea0617ea dest 1:
+Sat Oct 07 07:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1708 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 08:36:47 2017
+Thread 2 advanced to log sequence 1709 (LGWR switch)
+  Current log# 8 seq# 1709 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1709 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sat Oct 07 08:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1709 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 08:36:48 2017
+Archived Log entry 6831 added for thread 2 sequence 1708 ID 0xea0617ea dest 1:
+Sat Oct 07 09:36:48 2017
+Thread 2 advanced to log sequence 1710 (LGWR switch)
+  Current log# 10 seq# 1710 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1710 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sat Oct 07 09:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1710 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 09:36:48 2017
+Archived Log entry 6835 added for thread 2 sequence 1709 ID 0xea0617ea dest 1:
+Sat Oct 07 10:36:49 2017
+Thread 2 advanced to log sequence 1711 (LGWR switch)
+  Current log# 3 seq# 1711 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1711 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sat Oct 07 10:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1711 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 10:36:49 2017
+Archived Log entry 6839 added for thread 2 sequence 1710 ID 0xea0617ea dest 1:
+Sat Oct 07 11:36:49 2017
+Thread 2 advanced to log sequence 1712 (LGWR switch)
+  Current log# 5 seq# 1712 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1712 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sat Oct 07 11:36:49 2017
+Archived Log entry 6842 added for thread 2 sequence 1711 ID 0xea0617ea dest 1:
+Sat Oct 07 11:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1712 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 12:36:47 2017
+Thread 2 advanced to log sequence 1713 (LGWR switch)
+  Current log# 6 seq# 1713 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1713 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sat Oct 07 12:36:47 2017
+Archived Log entry 6845 added for thread 2 sequence 1712 ID 0xea0617ea dest 1:
+Sat Oct 07 12:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1713 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 13:36:48 2017
+Thread 2 advanced to log sequence 1714 (LGWR switch)
+  Current log# 8 seq# 1714 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1714 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sat Oct 07 13:36:48 2017
+Archived Log entry 6848 added for thread 2 sequence 1713 ID 0xea0617ea dest 1:
+Sat Oct 07 13:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1714 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 14:36:49 2017
+Thread 2 advanced to log sequence 1715 (LGWR switch)
+  Current log# 10 seq# 1715 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1715 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sat Oct 07 14:36:49 2017
+Archived Log entry 6852 added for thread 2 sequence 1714 ID 0xea0617ea dest 1:
+Sat Oct 07 14:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1715 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 15:36:49 2017
+Thread 2 advanced to log sequence 1716 (LGWR switch)
+  Current log# 3 seq# 1716 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1716 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sat Oct 07 15:36:49 2017
+Archived Log entry 6858 added for thread 2 sequence 1715 ID 0xea0617ea dest 1:
+Sat Oct 07 15:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1716 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 16:36:50 2017
+Thread 2 advanced to log sequence 1717 (LGWR switch)
+  Current log# 5 seq# 1717 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1717 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sat Oct 07 16:36:50 2017
+Archived Log entry 6862 added for thread 2 sequence 1716 ID 0xea0617ea dest 1:
+Sat Oct 07 16:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1717 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 17:36:48 2017
+Thread 2 advanced to log sequence 1718 (LGWR switch)
+  Current log# 6 seq# 1718 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1718 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sat Oct 07 17:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1718 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 17:36:48 2017
+Archived Log entry 6867 added for thread 2 sequence 1717 ID 0xea0617ea dest 1:
+Sat Oct 07 18:36:49 2017
+Thread 2 advanced to log sequence 1719 (LGWR switch)
+  Current log# 8 seq# 1719 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1719 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sat Oct 07 18:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1719 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 18:36:49 2017
+Archived Log entry 6871 added for thread 2 sequence 1718 ID 0xea0617ea dest 1:
+Sat Oct 07 19:36:49 2017
+Thread 2 advanced to log sequence 1720 (LGWR switch)
+  Current log# 10 seq# 1720 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1720 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sat Oct 07 19:36:49 2017
+Archived Log entry 6874 added for thread 2 sequence 1719 ID 0xea0617ea dest 1:
+Sat Oct 07 19:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1720 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 20:36:49 2017
+Thread 2 advanced to log sequence 1721 (LGWR switch)
+  Current log# 3 seq# 1721 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1721 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sat Oct 07 20:36:50 2017
+Archived Log entry 6878 added for thread 2 sequence 1720 ID 0xea0617ea dest 1:
+Sat Oct 07 20:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1721 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 21:36:48 2017
+Thread 2 advanced to log sequence 1722 (LGWR switch)
+  Current log# 5 seq# 1722 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1722 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sat Oct 07 21:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1722 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 21:36:48 2017
+Archived Log entry 6883 added for thread 2 sequence 1721 ID 0xea0617ea dest 1:
+Sat Oct 07 22:36:48 2017
+Thread 2 advanced to log sequence 1723 (LGWR switch)
+  Current log# 6 seq# 1723 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1723 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sat Oct 07 22:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1723 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 22:36:49 2017
+Archived Log entry 6887 added for thread 2 sequence 1722 ID 0xea0617ea dest 1:
+Sat Oct 07 23:36:49 2017
+Thread 2 advanced to log sequence 1724 (LGWR switch)
+  Current log# 8 seq# 1724 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1724 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sat Oct 07 23:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1724 for destination LOG_ARCHIVE_DEST_2
+Sat Oct 07 23:36:49 2017
+Archived Log entry 6891 added for thread 2 sequence 1723 ID 0xea0617ea dest 1:
+Sun Oct 08 00:36:50 2017
+Thread 2 advanced to log sequence 1725 (LGWR switch)
+  Current log# 10 seq# 1725 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1725 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 08 00:36:50 2017
+Archived Log entry 6894 added for thread 2 sequence 1724 ID 0xea0617ea dest 1:
+Sun Oct 08 00:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1725 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 01:36:48 2017
+Thread 2 advanced to log sequence 1726 (LGWR switch)
+  Current log# 3 seq# 1726 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1726 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 08 01:36:48 2017
+Archived Log entry 6899 added for thread 2 sequence 1725 ID 0xea0617ea dest 1:
+Sun Oct 08 01:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1726 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 02:36:48 2017
+Thread 2 advanced to log sequence 1727 (LGWR switch)
+  Current log# 5 seq# 1727 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1727 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 08 02:36:48 2017
+Archived Log entry 6900 added for thread 2 sequence 1726 ID 0xea0617ea dest 1:
+Sun Oct 08 02:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1727 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 03:36:49 2017
+Thread 2 advanced to log sequence 1728 (LGWR switch)
+  Current log# 6 seq# 1728 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1728 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 08 03:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1728 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 03:36:49 2017
+Archived Log entry 6907 added for thread 2 sequence 1727 ID 0xea0617ea dest 1:
+Sun Oct 08 04:36:49 2017
+Thread 2 advanced to log sequence 1729 (LGWR switch)
+  Current log# 8 seq# 1729 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1729 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 08 04:36:49 2017
+Archived Log entry 6910 added for thread 2 sequence 1728 ID 0xea0617ea dest 1:
+Sun Oct 08 04:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1729 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 05:36:47 2017
+Thread 2 advanced to log sequence 1730 (LGWR switch)
+  Current log# 10 seq# 1730 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1730 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 08 05:36:47 2017
+Archived Log entry 6912 added for thread 2 sequence 1729 ID 0xea0617ea dest 1:
+Sun Oct 08 05:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1730 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 06:36:48 2017
+Thread 2 advanced to log sequence 1731 (LGWR switch)
+  Current log# 3 seq# 1731 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1731 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 08 06:36:48 2017
+Archived Log entry 6917 added for thread 2 sequence 1730 ID 0xea0617ea dest 1:
+Sun Oct 08 06:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1731 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 07:36:48 2017
+Thread 2 advanced to log sequence 1732 (LGWR switch)
+  Current log# 5 seq# 1732 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1732 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 08 07:36:48 2017
+Archived Log entry 6920 added for thread 2 sequence 1731 ID 0xea0617ea dest 1:
+Sun Oct 08 07:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1732 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 08:36:49 2017
+Thread 2 advanced to log sequence 1733 (LGWR switch)
+  Current log# 6 seq# 1733 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1733 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 08 08:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1733 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 08:36:49 2017
+Archived Log entry 6927 added for thread 2 sequence 1732 ID 0xea0617ea dest 1:
+Sun Oct 08 09:36:49 2017
+Thread 2 advanced to log sequence 1734 (LGWR switch)
+  Current log# 8 seq# 1734 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1734 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 08 09:36:49 2017
+Archived Log entry 6930 added for thread 2 sequence 1733 ID 0xea0617ea dest 1:
+Sun Oct 08 09:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1734 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 10:36:47 2017
+Thread 2 advanced to log sequence 1735 (LGWR switch)
+  Current log# 10 seq# 1735 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1735 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 08 10:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1735 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 10:36:47 2017
+Archived Log entry 6935 added for thread 2 sequence 1734 ID 0xea0617ea dest 1:
+Sun Oct 08 11:36:48 2017
+Thread 2 advanced to log sequence 1736 (LGWR switch)
+  Current log# 3 seq# 1736 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1736 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 08 11:36:48 2017
+Archived Log entry 6936 added for thread 2 sequence 1735 ID 0xea0617ea dest 1:
+Sun Oct 08 11:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1736 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 12:36:49 2017
+Thread 2 advanced to log sequence 1737 (LGWR switch)
+  Current log# 5 seq# 1737 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1737 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 08 12:36:49 2017
+Archived Log entry 6942 added for thread 2 sequence 1736 ID 0xea0617ea dest 1:
+Sun Oct 08 12:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1737 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 13:36:49 2017
+Thread 2 advanced to log sequence 1738 (LGWR switch)
+  Current log# 6 seq# 1738 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1738 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 08 13:36:49 2017
+Archived Log entry 6946 added for thread 2 sequence 1737 ID 0xea0617ea dest 1:
+Sun Oct 08 13:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1738 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 14:36:47 2017
+Thread 2 advanced to log sequence 1739 (LGWR switch)
+  Current log# 8 seq# 1739 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1739 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 08 14:36:47 2017
+Archived Log entry 6948 added for thread 2 sequence 1738 ID 0xea0617ea dest 1:
+Sun Oct 08 14:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1739 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 15:36:48 2017
+Thread 2 advanced to log sequence 1740 (LGWR switch)
+  Current log# 10 seq# 1740 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1740 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 08 15:36:48 2017
+Archived Log entry 6952 added for thread 2 sequence 1739 ID 0xea0617ea dest 1:
+Sun Oct 08 15:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1740 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 16:36:49 2017
+Thread 2 advanced to log sequence 1741 (LGWR switch)
+  Current log# 3 seq# 1741 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1741 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 08 16:36:49 2017
+Archived Log entry 6957 added for thread 2 sequence 1740 ID 0xea0617ea dest 1:
+Sun Oct 08 16:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1741 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 17:36:49 2017
+Thread 2 advanced to log sequence 1742 (LGWR switch)
+  Current log# 5 seq# 1742 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1742 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 08 17:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1742 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 17:36:49 2017
+Archived Log entry 6963 added for thread 2 sequence 1741 ID 0xea0617ea dest 1:
+Sun Oct 08 18:36:49 2017
+Thread 2 advanced to log sequence 1743 (LGWR switch)
+  Current log# 6 seq# 1743 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1743 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 08 18:36:49 2017
+Archived Log entry 6966 added for thread 2 sequence 1742 ID 0xea0617ea dest 1:
+Sun Oct 08 18:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1743 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 19:36:48 2017
+Thread 2 advanced to log sequence 1744 (LGWR switch)
+  Current log# 8 seq# 1744 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1744 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Sun Oct 08 19:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1744 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 19:36:48 2017
+Archived Log entry 6971 added for thread 2 sequence 1743 ID 0xea0617ea dest 1:
+Sun Oct 08 20:36:48 2017
+Thread 2 advanced to log sequence 1745 (LGWR switch)
+  Current log# 10 seq# 1745 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1745 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Sun Oct 08 20:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1745 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 20:36:49 2017
+Archived Log entry 6975 added for thread 2 sequence 1744 ID 0xea0617ea dest 1:
+Sun Oct 08 21:36:49 2017
+Thread 2 advanced to log sequence 1746 (LGWR switch)
+  Current log# 3 seq# 1746 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1746 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Sun Oct 08 21:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1746 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 21:36:49 2017
+Archived Log entry 6979 added for thread 2 sequence 1745 ID 0xea0617ea dest 1:
+Sun Oct 08 22:36:50 2017
+Thread 2 advanced to log sequence 1747 (LGWR switch)
+  Current log# 5 seq# 1747 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1747 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Sun Oct 08 22:36:50 2017
+Archived Log entry 6982 added for thread 2 sequence 1746 ID 0xea0617ea dest 1:
+Sun Oct 08 22:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1747 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 23:36:48 2017
+Thread 2 advanced to log sequence 1748 (LGWR switch)
+  Current log# 6 seq# 1748 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1748 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Sun Oct 08 23:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1748 for destination LOG_ARCHIVE_DEST_2
+Sun Oct 08 23:36:48 2017
+Archived Log entry 6987 added for thread 2 sequence 1747 ID 0xea0617ea dest 1:
+Mon Oct 09 00:36:48 2017
+Thread 2 advanced to log sequence 1749 (LGWR switch)
+  Current log# 8 seq# 1749 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1749 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 09 00:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1749 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 00:36:49 2017
+Archived Log entry 6991 added for thread 2 sequence 1748 ID 0xea0617ea dest 1:
+Mon Oct 09 01:36:49 2017
+Thread 2 advanced to log sequence 1750 (LGWR switch)
+  Current log# 10 seq# 1750 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1750 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 09 01:36:49 2017
+Archived Log entry 6994 added for thread 2 sequence 1749 ID 0xea0617ea dest 1:
+Mon Oct 09 01:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1750 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 02:36:49 2017
+Thread 2 advanced to log sequence 1751 (LGWR switch)
+  Current log# 3 seq# 1751 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1751 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 09 02:36:49 2017
+Archived Log entry 6998 added for thread 2 sequence 1750 ID 0xea0617ea dest 1:
+Mon Oct 09 02:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1751 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 03:36:48 2017
+Thread 2 advanced to log sequence 1752 (LGWR switch)
+  Current log# 5 seq# 1752 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1752 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 09 03:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1752 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 03:36:48 2017
+Archived Log entry 7003 added for thread 2 sequence 1751 ID 0xea0617ea dest 1:
+Mon Oct 09 04:36:48 2017
+Thread 2 advanced to log sequence 1753 (LGWR switch)
+  Current log# 6 seq# 1753 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1753 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 09 04:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1753 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 04:36:48 2017
+Archived Log entry 7007 added for thread 2 sequence 1752 ID 0xea0617ea dest 1:
+Mon Oct 09 05:36:49 2017
+Thread 2 advanced to log sequence 1754 (LGWR switch)
+  Current log# 8 seq# 1754 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1754 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 09 05:36:49 2017
+Archived Log entry 7008 added for thread 2 sequence 1753 ID 0xea0617ea dest 1:
+Mon Oct 09 05:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1754 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 06:36:49 2017
+Thread 2 advanced to log sequence 1755 (LGWR switch)
+  Current log# 10 seq# 1755 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1755 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 09 06:36:49 2017
+Archived Log entry 7014 added for thread 2 sequence 1754 ID 0xea0617ea dest 1:
+Mon Oct 09 06:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1755 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 07:36:47 2017
+Thread 2 advanced to log sequence 1756 (LGWR switch)
+  Current log# 3 seq# 1756 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1756 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 09 07:36:47 2017
+Archived Log entry 7016 added for thread 2 sequence 1755 ID 0xea0617ea dest 1:
+Mon Oct 09 07:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1756 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 08:36:48 2017
+Thread 2 advanced to log sequence 1757 (LGWR switch)
+  Current log# 5 seq# 1757 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1757 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 09 08:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1757 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 08:36:48 2017
+Archived Log entry 7023 added for thread 2 sequence 1756 ID 0xea0617ea dest 1:
+Mon Oct 09 09:36:48 2017
+Thread 2 advanced to log sequence 1758 (LGWR switch)
+  Current log# 6 seq# 1758 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1758 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 09 09:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1758 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 09:36:49 2017
+Archived Log entry 7027 added for thread 2 sequence 1757 ID 0xea0617ea dest 1:
+Mon Oct 09 10:36:49 2017
+Thread 2 advanced to log sequence 1759 (LGWR switch)
+  Current log# 8 seq# 1759 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1759 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 09 10:36:49 2017
+Archived Log entry 7030 added for thread 2 sequence 1758 ID 0xea0617ea dest 1:
+Mon Oct 09 10:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1759 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 11:36:47 2017
+Thread 2 advanced to log sequence 1760 (LGWR switch)
+  Current log# 10 seq# 1760 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1760 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 09 11:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1760 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 11:36:47 2017
+Archived Log entry 7035 added for thread 2 sequence 1759 ID 0xea0617ea dest 1:
+Mon Oct 09 12:36:48 2017
+Thread 2 advanced to log sequence 1761 (LGWR switch)
+  Current log# 3 seq# 1761 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1761 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 09 12:36:48 2017
+Archived Log entry 7036 added for thread 2 sequence 1760 ID 0xea0617ea dest 1:
+Mon Oct 09 12:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1761 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 13:36:49 2017
+Thread 2 advanced to log sequence 1762 (LGWR switch)
+  Current log# 5 seq# 1762 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1762 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 09 13:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1762 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 13:36:49 2017
+Archived Log entry 7043 added for thread 2 sequence 1761 ID 0xea0617ea dest 1:
+Mon Oct 09 14:36:49 2017
+Thread 2 advanced to log sequence 1763 (LGWR switch)
+  Current log# 6 seq# 1763 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1763 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 09 14:36:49 2017
+Archived Log entry 7046 added for thread 2 sequence 1762 ID 0xea0617ea dest 1:
+Mon Oct 09 14:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1763 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 15:36:47 2017
+Thread 2 advanced to log sequence 1764 (LGWR switch)
+  Current log# 8 seq# 1764 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1764 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 09 15:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1764 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 15:36:47 2017
+Archived Log entry 7051 added for thread 2 sequence 1763 ID 0xea0617ea dest 1:
+Mon Oct 09 16:36:48 2017
+Thread 2 advanced to log sequence 1765 (LGWR switch)
+  Current log# 10 seq# 1765 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1765 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 09 16:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1765 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 16:36:48 2017
+Archived Log entry 7055 added for thread 2 sequence 1764 ID 0xea0617ea dest 1:
+Mon Oct 09 17:36:49 2017
+Thread 2 advanced to log sequence 1766 (LGWR switch)
+  Current log# 3 seq# 1766 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1766 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 09 17:36:49 2017
+Archived Log entry 7056 added for thread 2 sequence 1765 ID 0xea0617ea dest 1:
+Mon Oct 09 17:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1766 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 18:36:49 2017
+Thread 2 advanced to log sequence 1767 (LGWR switch)
+  Current log# 5 seq# 1767 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1767 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 09 18:36:49 2017
+Archived Log entry 7062 added for thread 2 sequence 1766 ID 0xea0617ea dest 1:
+Mon Oct 09 18:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1767 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 19:36:49 2017
+Thread 2 advanced to log sequence 1768 (LGWR switch)
+  Current log# 6 seq# 1768 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1768 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Mon Oct 09 19:36:50 2017
+Archived Log entry 7066 added for thread 2 sequence 1767 ID 0xea0617ea dest 1:
+Mon Oct 09 19:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1768 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 20:36:48 2017
+Thread 2 advanced to log sequence 1769 (LGWR switch)
+  Current log# 8 seq# 1769 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1769 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Mon Oct 09 20:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1769 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 20:36:48 2017
+Archived Log entry 7071 added for thread 2 sequence 1768 ID 0xea0617ea dest 1:
+Mon Oct 09 21:36:48 2017
+Thread 2 advanced to log sequence 1770 (LGWR switch)
+  Current log# 10 seq# 1770 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1770 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Mon Oct 09 21:36:49 2017
+Archived Log entry 7073 added for thread 2 sequence 1769 ID 0xea0617ea dest 1:
+Mon Oct 09 21:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1770 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 22:36:49 2017
+Thread 2 advanced to log sequence 1771 (LGWR switch)
+  Current log# 3 seq# 1771 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1771 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Mon Oct 09 22:36:49 2017
+Archived Log entry 7077 added for thread 2 sequence 1770 ID 0xea0617ea dest 1:
+Mon Oct 09 22:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1771 for destination LOG_ARCHIVE_DEST_2
+Mon Oct 09 23:36:49 2017
+Thread 2 advanced to log sequence 1772 (LGWR switch)
+  Current log# 5 seq# 1772 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1772 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Mon Oct 09 23:36:50 2017
+Archived Log entry 7082 added for thread 2 sequence 1771 ID 0xea0617ea dest 1:
+Mon Oct 09 23:36:50 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1772 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 00:36:48 2017
+Thread 2 advanced to log sequence 1773 (LGWR switch)
+  Current log# 6 seq# 1773 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1773 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 10 00:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1773 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 00:36:48 2017
+Archived Log entry 7087 added for thread 2 sequence 1772 ID 0xea0617ea dest 1:
+Tue Oct 10 01:36:48 2017
+Thread 2 advanced to log sequence 1774 (LGWR switch)
+  Current log# 8 seq# 1774 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1774 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 10 01:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1774 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 01:36:48 2017
+Archived Log entry 7091 added for thread 2 sequence 1773 ID 0xea0617ea dest 1:
+Tue Oct 10 02:36:49 2017
+Thread 2 advanced to log sequence 1775 (LGWR switch)
+  Current log# 10 seq# 1775 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1775 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 10 02:36:49 2017
+Archived Log entry 7092 added for thread 2 sequence 1774 ID 0xea0617ea dest 1:
+Tue Oct 10 02:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1775 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 03:36:49 2017
+Thread 2 advanced to log sequence 1776 (LGWR switch)
+  Current log# 3 seq# 1776 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1776 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 10 03:36:49 2017
+Archived Log entry 7098 added for thread 2 sequence 1775 ID 0xea0617ea dest 1:
+Tue Oct 10 03:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1776 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 04:36:47 2017
+Thread 2 advanced to log sequence 1777 (LGWR switch)
+  Current log# 5 seq# 1777 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1777 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 10 04:36:47 2017
+Archived Log entry 7100 added for thread 2 sequence 1776 ID 0xea0617ea dest 1:
+Tue Oct 10 04:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1777 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 05:36:48 2017
+Thread 2 advanced to log sequence 1778 (LGWR switch)
+  Current log# 6 seq# 1778 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1778 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 10 05:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1778 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 05:36:48 2017
+Archived Log entry 7107 added for thread 2 sequence 1777 ID 0xea0617ea dest 1:
+Tue Oct 10 06:36:48 2017
+Thread 2 advanced to log sequence 1779 (LGWR switch)
+  Current log# 8 seq# 1779 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1779 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 10 06:36:48 2017
+Archived Log entry 7108 added for thread 2 sequence 1778 ID 0xea0617ea dest 1:
+Tue Oct 10 06:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1779 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 07:36:49 2017
+Thread 2 advanced to log sequence 1780 (LGWR switch)
+  Current log# 10 seq# 1780 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1780 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 10 07:36:49 2017
+Archived Log entry 7115 added for thread 2 sequence 1779 ID 0xea0617ea dest 1:
+Tue Oct 10 07:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1780 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 08:36:49 2017
+Thread 2 advanced to log sequence 1781 (LGWR switch)
+  Current log# 3 seq# 1781 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1781 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 10 08:36:49 2017
+Archived Log entry 7118 added for thread 2 sequence 1780 ID 0xea0617ea dest 1:
+Tue Oct 10 08:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1781 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 09:36:47 2017
+Thread 2 advanced to log sequence 1782 (LGWR switch)
+  Current log# 5 seq# 1782 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1782 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 10 09:36:47 2017
+Archived Log entry 7120 added for thread 2 sequence 1781 ID 0xea0617ea dest 1:
+Tue Oct 10 09:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1782 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 10:36:48 2017
+Thread 2 advanced to log sequence 1783 (LGWR switch)
+  Current log# 6 seq# 1783 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1783 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 10 10:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1783 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 10:36:48 2017
+Archived Log entry 7127 added for thread 2 sequence 1782 ID 0xea0617ea dest 1:
+Tue Oct 10 11:36:49 2017
+Thread 2 advanced to log sequence 1784 (LGWR switch)
+  Current log# 8 seq# 1784 mem# 0: +DATA/sgeregdb/onlinelog/group_8.257.951068785
+  Current log# 8 seq# 1784 mem# 1: +ARCH/sgeregdb/onlinelog/group_8.291.951068787
+Tue Oct 10 11:36:49 2017
+Archived Log entry 7128 added for thread 2 sequence 1783 ID 0xea0617ea dest 1:
+Tue Oct 10 11:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1784 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 12:36:49 2017
+Thread 2 advanced to log sequence 1785 (LGWR switch)
+  Current log# 10 seq# 1785 mem# 0: +DATA/sgeregdb/onlinelog/group_10.279.951068789
+  Current log# 10 seq# 1785 mem# 1: +ARCH/sgeregdb/onlinelog/group_10.299.951068791
+Tue Oct 10 12:36:49 2017
+Archived Log entry 7134 added for thread 2 sequence 1784 ID 0xea0617ea dest 1:
+Tue Oct 10 12:36:49 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1785 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 13:36:47 2017
+Thread 2 advanced to log sequence 1786 (LGWR switch)
+  Current log# 3 seq# 1786 mem# 0: +DATA/sgeregdb/onlinelog/group_3.283.951068661
+  Current log# 3 seq# 1786 mem# 1: +ARCH/sgeregdb/onlinelog/group_3.274.951068661
+Tue Oct 10 13:36:47 2017
+Archived Log entry 7136 added for thread 2 sequence 1785 ID 0xea0617ea dest 1:
+Tue Oct 10 13:36:47 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1786 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 14:36:48 2017
+Thread 2 advanced to log sequence 1787 (LGWR switch)
+  Current log# 5 seq# 1787 mem# 0: +DATA/sgeregdb/onlinelog/group_5.281.951068663
+  Current log# 5 seq# 1787 mem# 1: +ARCH/sgeregdb/onlinelog/group_5.282.951068665
+Tue Oct 10 14:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1787 for destination LOG_ARCHIVE_DEST_2
+Tue Oct 10 14:36:48 2017
+Archived Log entry 7143 added for thread 2 sequence 1786 ID 0xea0617ea dest 1:
+Tue Oct 10 15:36:48 2017
+Thread 2 advanced to log sequence 1788 (LGWR switch)
+  Current log# 6 seq# 1788 mem# 0: +DATA/sgeregdb/onlinelog/group_6.273.951068781
+  Current log# 6 seq# 1788 mem# 1: +ARCH/sgeregdb/onlinelog/group_6.328.951068781
+Tue Oct 10 15:36:48 2017
+Archived Log entry 7145 added for thread 2 sequence 1787 ID 0xea0617ea dest 1:
+Tue Oct 10 15:36:48 2017
+LNS: Standby redo logfile selected for thread 2 sequence 1788 for destination LOG_ARCHIVE_DEST_2

@@ -1,0 +1,450 @@
+#例子：求所有员工的姓名，部门名字。如果一个人不属于任何部门，则部门名字为空。如果一个部门没有任何员工，员工的姓名为空。
+#先创建一个测试行
+	SQL> INSERT INTO e (empno,ename,sal) values(2,'xiao',15000);
+	SQL> SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3  WHERE e.deptno=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	SMITH	   RESEARCH
+	......
+	MILLER	   ACCOUNTING
+	15 rows selected.
+	SQL> ed
+	Wrote file afiedt.buf
+	  1  SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3* WHERE e.deptno=d.deptno(+)
+	SQL> /
+	ENAME	   DNAME
+	---------- --------------
+	MILLER	   ACCOUNTING
+	Xiaohong   ACCOUNTING
+	......
+	ALLEN	   SALES
+	xiao				#员工姓名
+	SQL> ed
+	Wrote file afiedt.buf
+	  1  SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3* WHERE e.deptno(+)=d.deptno
+	SQL> /
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	......
+	MILLER	   ACCOUNTING
+			   OPERATIONS		#部门
+	SQL> ed
+	Wrote file afiedt.buf
+	  1  SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3* WHERE e.deptno(+)=d.deptno(+)		#如何实现全外连接
+	SQL> /
+	WHERE e.deptno(+)=d.deptno(+)
+					 *
+	ERROR at line 3:
+	ORA-01468: a predicate may reference only one outer-joined table
+--------------------------------
+#例子：求哪个部门没有员工，显示部门的名字
+	SQL> SELECT dname
+	  2  FROM dept
+	  3  WHERE deptno not in (SELECT deptno FROM emp WHERE deptno is not null);
+	DNAME
+	--------------
+	OPERATIONS
+	SQL> SELECT dname,deptno
+	  2  FROM dept
+	  3  WHERE deptno not in (SELECT deptno FROM emp WHERE deptno is not null);
+	DNAME			   DEPTNO
+	-------------- ----------
+	OPERATIONS			   40
+
+---------------------------------------
+#集合运算
+#UNION/UNION ALL
+#INTERSECT
+#MINUS
+--------------------
+#创建两个测试用表
+	SQL> CREATE table t1020 AS SELECT empno,ename,sal,deptno FROM emp WHERE deptno IN (10,20);
+	SQL> CREATE table t2030 AS SELECT empno,ename,sal,deptno FROM emp WHERE deptno IN (20,30);
+	SQL> SELECT * FROM t1020;
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+			99 Xiaohong	    5000	 10
+		  7369 SMITH	     800	 20
+	......
+		  7902 FORD 	    3000	 20
+		  7934 MILLER	    1300	 10
+	9 rows selected.
+	SQL> SELECT * FROM t2030;
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7369 SMITH	     800	 20
+		  7499 ALLEN	    1600	 30
+	......
+		  7900 JAMES	     950	 30
+		  7902 FORD 	    3000	 20
+	11 rows selected.
+	SQL> SELECT * FROM t1020
+	  2  UNION			#两个表不同的保留，相同的合并。取并集
+	  3  SELECT * FROM t2030;
+
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+			99 Xiaohong	    5000	 10
+		  7369 SMITH	     800	 20
+		  7499 ALLEN	    1600	 30
+	......
+		  7902 FORD 	    3000	 20
+		  7934 MILLER	    1300	 10
+	15 rows selected.
+	SQL> SELECT * FROM t1020
+	  2  UNION ALL			#把两个表的数据合在一起，其他的什么都不管
+	  3  SELECT * FROM t2030;
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		99 Xiaohong	    5000	 10
+		  7369 SMITH	     800	 20
+		  7566 JONES	    2975	 20
+	......
+		  7369 SMITH	     800	 20
+		  7499 ALLEN	    1600	 30
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7521 WARD 	    1250	 30
+		  7566 JONES	    2975	 20
+	......
+		  7900 JAMES	     950	 30
+		  7902 FORD 	    3000	 20
+	20 rows selected.
+---------------------------
+#UNION
+#作用：合并查询结果，自动消除重复行
+#重复数据被删除，默认按照第一个查询的第一字段升序排列
+------------------------
+#UNION ALL
+#作用：合并，但是不消除重复，不排序
+-----------------------------------
+#案例扩展：求先显示20号部门员工，在显示10号部门员工，再显示30号部门员工
+	SQL> SELECT empno,ename,sal,deptno,decode(deptno,20,1,10,2,30,3)
+	  2  FROM emp
+	  3  ORDER BY 5;  
+		 EMPNO ENAME	     SAL     DEPTNO DECODE(DEPTNO,20,1,10,2,30,3)
+	---------- ---------- ---------- ---------- -----------------------------
+		  7369 SMITH	     800	 20				1
+		  7902 FORD 	    3000	 20				1
+		  7876 ADAMS	    1100	 20				1
+		  7788 SCOTT	    3000	 20				1
+		  7566 JONES	    2975	 20				1
+		  7839 KING 	    5000	 10				2
+		  7934 MILLER	    1300	 10				2
+			99 Xiaohong	    5000	 10				2
+		  7782 CLARK	    2450	 10				2
+		  7499 ALLEN	    1600	 30				3
+		  7844 TURNER	    1500	 30				3
+		  7900 JAMES	     950	 30				3
+		  7521 WARD 	    1250	 30				3
+		  7698 BLAKE	    2850	 30				3
+		  7654 MARTIN	    1250	 30				3
+	15 rows selected.
+	SQL> SELECT empno,ename,sal,deptno
+	  2  FROM (SELECT empno,ename,sal,deptno,decode(deptno,20,1,10,2,30,3)         
+	  3  	   FROM emp
+	  4  	   ORDER BY 5);
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7369 SMITH	     800	 20
+		  7902 FORD 	    3000	 20
+		  7876 ADAMS	    1100	 20
+		  7788 SCOTT	    3000	 20
+		  7566 JONES	    2975	 20
+		  7839 KING 	    5000	 10
+		  7934 MILLER	    1300	 10
+			99 Xiaohong	    5000	 10
+		  7782 CLARK	    2450	 10
+		  7499 ALLEN	    1600	 30
+		  7844 TURNER	    1500	 30
+		  7900 JAMES	     950	 30
+		  7521 WARD 	    1250	 30
+		  7698 BLAKE	    2850	 30
+		  7654 MARTIN	    1250	 30
+	15 rows selected.
+	SQL> SELECT empno,ename,sal,deptno
+	  2  FROM emp
+	  3  WHERE deptno=20
+	  4  UNION ALL
+	  5  SELECT empno,ename,sal,deptno
+	  6  FROM emp
+	  7  WHERE deptno=10
+	  8  UNION ALL
+	  9  SELECT empno,ename,sal,deptno
+	 10  FROM emp
+	 11  WHERE deptno=30;
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7369 SMITH	     800	 20
+		  7566 JONES	    2975	 20
+		  7788 SCOTT	    3000	 20
+		  7876 ADAMS	    1100	 20
+		  7902 FORD 	    3000	 20
+			99 Xiaohong	    5000	 10
+		  7782 CLARK	    2450	 10
+		  7839 KING 	    5000	 10
+		  7934 MILLER	    1300	 10
+		  7499 ALLEN	    1600	 30
+		  7521 WARD 	    1250	 30
+		  7654 MARTIN	    1250	 30
+		  7698 BLAKE	    2850	 30
+		  7844 TURNER	    1500	 30
+		  7900 JAMES	     950	 30
+	15 rows selected.
+----------------------------
+#INTERSECT
+#作用；交集，公共部门，按照第一个查询的第一个列升序
+----------------------------
+	SQL> SELECT * FROM t1020
+	  2  INTERSECT
+	  3  SELECT * FROM t2030;
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7369 SMITH	     800	 20
+		  7566 JONES	    2975	 20
+		  7788 SCOTT	    3000	 20
+		  7876 ADAMS	    1100	 20
+		  7902 FORD 	    3000	 20
+---------------------------
+#MINUS	
+#作用：前一张表减后一张表，只减后一张表有前一张表的数据，前一张表没有的数据不管
+-------------------------
+	SQL> SELECT * FROM t1020
+	  2  MINUS
+	  3  SELECT * FROM t2030;		#只有10号部门的
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+			99 Xiaohong	    5000	 10
+		  7782 CLARK	    2450	 10
+		  7839 KING 	    5000	 10
+		  7934 MILLER	    1300	 10
+	SQL> SELECT * FROM t2030
+	  2  MINUS
+	  3  SELECT * FROM t1020;		#只有30号部门的
+		 EMPNO ENAME	     SAL     DEPTNO
+	---------- ---------- ---------- ----------
+		  7499 ALLEN	    1600	 30
+		  7521 WARD 	    1250	 30
+		  7654 MARTIN	    1250	 30
+		  7698 BLAKE	    2850	 30
+		  7844 TURNER	    1500	 30
+		  7900 JAMES	     950	 30
+--------------------------------
+#集合运算使用注意事项：
+	1、查询结果显示字段名第一个查询语句
+	2、除了UNION ALL之外，默认是按照第一个查询的第一个列升序
+	3、查询的字段必须按照个数匹配，并且数据类型必须相同
+	4、集合运算，只能出现一个ORDER BY，而且只能在最后一个查询语句，ORDER BY 后面的字段名 为第一个查询的字段名
+--------------------------
+#删除一些东西，然后再增加一些东西
+	SQL> ALTER TABLE t1020 DROP COLUMN empno;
+	SQL> ALTER TABLE t2030 DROP COLUMN ename;
+	SQL> ALTER TABLE t2030 ADD hiredate date;
+	SQL> DESC t1020;
+	 Name				Null?	Type
+	 ----------------- -------- -----------
+	 ENAME						VARCHAR2(10)
+	 SAL						NUMBER(7,2)
+	 DEPTNO 					NUMBER(2)
+	SQL> DESC t2030;
+	 Name				Null?	Type
+	 ----------------- -------- ------------
+	 EMPNO						NUMBER(4)
+	 SAL						NUMBER(7,2)
+	 DEPTNO 					NUMBER(2)
+	 HIREDATE					DATE
+	SQL> SELECT * FROM t1020
+	  2  MINUS
+	  3  SELECT * FROM t2030;
+	SELECT * FROM t1020
+	*
+	ERROR at line 1:
+	ORA-01789: query block has incorrect number of result columns
+------------------------------
+#如果个数或者数据类型不匹配
+#解决方法：
+	如果是字符串  ---> to_char(null) 或者具体的值比如 a
+	如果是数字  ---> to_number(null) 或者具体的值比如 0
+	如果是日期  ---> to_date(null) 或者具体的值比如 to_date('1981-1-1','yyyy-mm-dd');
+--------------------------
+#那怎么解决这个问题：没有字符串加字符串，没有number类型加number类型就可以了
+	SQL> SELECT to_number(null) empno,ename,sal,deptno,to_date(null) hiredate
+	  2  FROM t1020
+	  3  MINUS
+	  4  SELECT empno,to_char(null) ename,sal,deptno,hiredate
+	  5  FROM t2030；
+		 EMPNO ENAME			 SAL     DEPTNO HIREDATE
+	---------- ---------- ---------- ---------- ---------
+			   ADAMS			1100		 20
+			   CLARK			2450		 10
+			   FORD 			3000		 20
+			   JONES			2975		 20
+			   KING 			5000		 10
+			   MILLER			1300		 10
+			   SCOTT			3000		 20
+			   SMITH			 800		 20
+			   Xiaohong			5000		 10
+	SQL> SELECT 0 empno,ename,sal,deptno,to_date(null) hiredate		#但是新手一般看不懂，所以会用上面的方法
+	  2  FROM t1020
+	  3  MINUS
+	  4  SELECT empno,'wuciren',sal,deptno,hiredate
+	  5  FROM t2030;
+		 EMPNO ENAME			 SAL     DEPTNO HIREDATE
+	---------- ---------- ---------- ---------- ---------
+			 0 ADAMS			1100		 20
+			 0 CLARK			2450		 10
+			 0 FORD 			3000		 20
+			 0 JONES			2975		 20
+			 0 KING 			5000		 10
+			 0 MILLER			1300		 10
+			 0 SCOTT			3000		 20
+			 0 SMITH			 800		 20
+			 0 Xiaohong			5000		 10
+--------------------------------
+#解决全外连接
+	SQL> ed
+	Wrote file afiedt.buf
+	  1  SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3* WHERE e.deptno(+)=d.deptno(+)
+	SQL> /
+	WHERE e.deptno(+)=d.deptno(+)
+					 *
+	ERROR at line 3:
+	ORA-01468: a predicate may reference only one outer-joined table
+	SQL> SELECT e.ename,d.dname
+	  2  FROM e,d
+	  3  WHERE e.deptno=d.deptno(+)
+	  4  UNION
+	  5  SELECT e.ename,d.dname
+	  6  FROM e,d
+	  7  WHERE e.deptno(+)=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	ADAMS	   RESEARCH
+	......
+	WARD	   SALES
+	Xiaohong   ACCOUNTING
+	xiao
+			   OPERATIONS
+	17 rows selected.
+-----------------------------
+#解决工资顺序
+#前三工资最高的三个人，后面的人顺序不允许变（腾讯DBA月薪18500的面试题）
+#预备知识：oracle中没有top n（sql-server里面非常喜欢用top n，但甲骨文里面不推荐这个）。我们在oracle里面更多的用一个伪列rownum记录行号，你的顺序，这个是无穷大的值，只能用 < <=
+	SQL> SELECT empno,ename,sal
+	  2  FROM e  
+	  3  ORDER BY sal desc;
+		 EMPNO ENAME	     SAL
+	---------- ---------- ----------
+			 2 xiao 	   15000
+			99 Xiaohong	    5000
+		  7839 KING 	    5000
+		  7788 SCOTT	    3000
+	......
+		  7654 MARTIN	    1250
+		  7876 ADAMS	    1100
+		  7900 JAMES	     950
+		  7369 SMITH	     800
+	SQL> SELECT * FROM (SELECT empno,ename,sal
+	  2  		    FROM e
+	  3  		    ORDER BY sal DESC)
+	  4  WHERE rownum<=3;
+		 EMPNO ENAME	     SAL
+	---------- ---------- ----------
+			 2 xiao 	   15000
+			99 Xiaohong	    5000
+		  7839 KING 	    5000
+	#方法一：
+	SQL> SELECT * FROM (SELECT empno,ename,sal
+	  2  			FROM e
+	  3  			ORDER BY sal DESC)
+	  4  WHERE rownum<=3
+	  5  UNION ALL
+	  6  SELECT empno,ename,sal
+	  7  FROM e
+	  8  WHERE ename NOT IN (SELECT ename FROM (SELECT empno,ename,sal
+	  9  										FROM e
+	 10  										ORDER BY sal DESC)
+	 11  					WHERE rownum<=3)
+		 EMPNO ENAME	     SAL
+	---------- ---------- ----------
+			 2 xiao 	   15000
+			99 Xiaohong	    5000
+		  7839 KING 	    5000
+		  7369 SMITH	     800
+		  7499 ALLEN	    1600
+		  7521 WARD 	    1250
+	......
+		  7876 ADAMS	    1100
+		  7900 JAMES	     950
+		  7902 FORD 	    3000
+		  7934 MILLER	    1300
+	#方法二：使用子查询		（腾讯给的答案）
+	SQL> SELECT rownum id1,empno,ename,sal FROM e;		#先
+		   ID1		EMPNO ENAME				SAL
+	---------- ---------- ---------- ----------
+			 1		   99 Xiaohong	       5000
+			 2		 7369 SMITH				800
+	......
+			14		 7902 FORD			   3000
+			15		 7934 MILLER	       1300
+			16			2 xiao			  15000
+	16 rows selected.
+	SQL> SELECT rownum id1,empno,ename,sal FROM e ORDER BY sal DESC;		#然后
+		   ID1		EMPNO ENAME				SAL
+	---------- ---------- ---------- ----------
+			16			2 xiao			  15000
+			 1		   99 Xiaohong	       5000
+	......
+			12		 7876 ADAMS			   1100
+			13		 7900 JAMES				950
+			 2		 7369 SMITH				800
+	16 rows selected.
+	SQL> SELECT rownum id2,b.* FROM (SELECT rownum id1,empno,ename FROM e ORDER BY sal DESC) b;		#再然后
+		   ID2		  ID1	   EMPNO ENAME
+	---------- ---------- ---------- ----------
+			 1			1	      99 Xiaohong
+			 2		   10	    7839 KING
+			 3		   14	    7902 FORD
+	......
+			14		   13	    7900 JAMES
+			15			2	    7369 SMITH
+	16 rows selected.
+	#id1记录原来的顺序，id2记录降序后的顺序
+	SQL> SELECT * FROM (SELECT rownum id2,b.* FROM (SELECT rownum id1,empno,ename,sal FROM e ORDER BY sal DESC) b)		#最后做这个
+	  2  ORDER BY (case when id2>3 then id1 else 0 end);
+		   ID2		  ID1	   EMPNO ENAME			   SAL
+	---------- ---------- ---------- ---------- ----------
+			 1		   16	       2 xiao			 15000
+			 2			1	      99 Xiaohong		  5000
+			 3		   10	    7839 KING			  5000
+			16			2	    7369 SMITH			   800
+			 9			3	    7499 ALLEN			  1600
+	......
+			15		   13	    7900 JAMES			   950
+			 5		   14	    7902 FORD			  3000
+			11		   15	    7934 MILLER 		  1300
+	16 rows selected.
+	#解释：id2大于3，就按照id1排序，否则就不排序
+
+
+
+OK，SELECT语句终于差不多了，接下来我们来看表
+
+
+
+
+
+
+

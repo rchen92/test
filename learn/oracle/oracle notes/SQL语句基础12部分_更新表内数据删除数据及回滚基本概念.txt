@@ -1,0 +1,287 @@
+#向表插入数据 更新 删除数据
+	创建一个和emp一样的表（只有空表，没有约束）
+	SQL> CREATE TABLE e AS SELECT * FROM emp;
+-----------------------
+#插入数据
+	INSERT INTO 表名 (字段名,...)
+	VALUES(值)
+
+	SQL> INSERT INTO e(empno,ename,job,mgr,hiredate,sal,comm,deptno)
+	  2  values (1,'tom','sales',2,to_date('1981-1-1','yyyy-mm-dd'),1000,100,10);
+	SQL> SELECT * FROM e WHERE ename='tom';
+		 EMPNO ENAME      JOB	       MGR     HIREDATE			SAL       COMM    DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+			1 tom	      sales		 2		   01-JAN-81	   1000        100		10
+	如果只知道员工的编号，姓名
+	INSERT INTO e (empno,ename)
+	values(2,'mary')
+	没有字段，默认是空
+	SQL> INSERT INTO e(empno,ename) VALUES(2,'mary');
+	1 row created.
+	SQL> SELECT * FROM e WHERE ename='mary';
+		 EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM    DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------	
+			 2 mary
+------------------------------
+#扩展；数据库开发程序怎么做，接下来看
+	SQL> INSERT INTO e (empno,ename,job,mgr,hiredate,sal,comm,deptno)
+	  2  values (&no,'&name','&job',&mgr,to_date('&date','yyyy-mm-dd'),&sal,&com,&deptno);
+	Enter value for no: 3
+	Enter value for name: mary3
+	Enter value for job: sale5
+	Enter value for mgr: 3
+	Enter value for date: 1988-7-8
+	Enter value for sal: 3001
+	Enter value for com: 100
+	Enter value for deptno: 10
+	old   2: values (&no,'&name','&job',&mgr,to_date('&date','yyyy-mm-dd'),&sal,&com,&deptno)
+	new   2: values (3,'mary3','sale5',3,to_date('1988-7-8','yyyy-mm-dd'),3001,100,10)
+	1 row created.
+	#也就完成了
+	SQL> SELECT * FROM e WHERE ename='mary3';
+		 EMPNO ENAME      JOB			   MGR HIREDATE			SAL       COMM    DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+			 3 mary3      sale5				 3 08-JUL-88	   3001        100		   10
+-----------------------------
+#极端例子：只知道员工的编号，姓名
+	INSERT INTO e (empno,ename,job,mgr,hiredate,sal,comm,deptno)
+	values(5,'tom5',null,null,null,null,null,null)
+---------------------------
+#插入数据还可以用子查询，就用子查询的插入表
+	INSERT INTO 表名
+	SELECT 语句
+
+	把emp表汇总的工资加1000插入e
+	INSERT INTO e
+	SELECT empno,ename,job,mgr,hiredate,sal+1000,comm,deptno
+	FROM emp;
+--------------------------
+#更新数据
+#语法：
+	UPDATE table
+	SET COLUMN=value [,COLUMN=value,...]
+	[WHERE condition];
+	#注意：一定要加条件，否则会更新所有的记录
+	
+	#把e表中的20号部门的员工工资加1000，奖金加10
+	SQL> SELECT * FROM emp 
+	  2  WHERE deptno=20;
+		 EMPNO ENAME      JOB			   MGR HIREDATE			SAL       COMM    DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800			20
+		  7566 JONES      MANAGER	      7839 02-APR-81	   2975			20
+		  7788 SCOTT      ANALYST	      7566 19-APR-87	   3000			20
+		  7876 ADAMS      CLERK			  7788 23-MAY-87	   1100			20
+		  7902 FORD       ANALYST	      7566 03-DEC-81	   3000			20
+	SQL> UPDATE e
+	  2  SET sal=sal+1000,comm=nvl(comm,0)+10
+	  3  WHERE deptno=20;
+	SQL> SELECT * FROM e
+	  2  WHERE deptno=20;
+		 EMPNO ENAME      JOB			   MGR HIREDATE			SAL       COMM     DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+		  7369 SMITH      CLERK			  7902 17-DEC-80	   1800 		10		   20
+		  7566 JONES      MANAGER	      7839 02-APR-81	   3975 		10		   20
+		  7788 SCOTT      ANALYST	      7566 19-APR-87	   4000 		10		   20
+		  7876 ADAMS      CLERK			  7788 23-MAY-87	   2100 		10		   20
+		  7902 FORD       ANALYST	      7566 03-DEC-81	   4000 		10		   20
+	#把销售部门的人的工资加1000
+	SQL> UPDATE e
+	  2  SET sal=sal+1000
+	  3  WHERE deptno=(SELECT deptno FROM dept WHERE dname='SALES');
+	6 rows updated.
+------------------------------
+#删除数据
+#delete
+#truncate
+-------------------
+#delete from
+	SQL> SELECT ename FROM e WHERE ename='SCOTT';
+	ENAME
+	----------
+	SCOTT
+	SQL> DELETE FROM e WHERE ename='SCOTT';
+	1 row deleted.
+	SQL> SELECT ename FROM e	#现在e表没有SCOTT这个用户了
+	  2  WHERE ename='SCOTT';
+	no rows selected
+	SQL> SELECT ename FROM e;
+
+	ENAME
+	----------
+	Xiaohong
+	SMITH
+	ALLEN
+	......
+	JAMES
+	FORD
+	MILLER
+	14 rows selected.
+	#但是在另一个链接上还是有的，再打开一个窗口
+	[oracle@oracle-server ~]$ sqlplus scott/oracle
+	SQL> SELECT ename from e;
+	ENAME
+	----------
+	Xiaohong
+	SMITH
+	ALLEN
+	......
+	SCOTT		#有SCOTT这个用户
+	......
+	15 rows selected.
+	#因为在前一个窗口还没有执行COMMIT命令，执行之后就会没有了
+	SQL> COMMIT^C
+	#现在还可以回滚回去
+	SQL> ROLLBACK;
+	Rollback complete.
+	SQL> SELECT ename FROM e;
+	ENAME
+	----------
+	Xiaohong
+	SMITH
+	ALLEN
+	......
+	CLARK
+	SCOTT		#又回来了
+	KING
+	......
+	15 rows selected.
+	SQL> DELETE FROM e WHERE ename='SCOTT';
+	1 row deleted.
+	SQL> SELECT * FROM e WHERE ename='SCOTT';
+	no rows selected
+	SQL> COMMIT;		#执行了commit命令后，回滚就没有用了
+	Commit complete.
+	SQL> ROLLBACK;
+	Rollback complete.
+	SQL> SELECT * FROM e WHERE ename='SCOTT';	
+	no rows selected
+------------------------
+#truncate table
+	SQL> truncate table e;
+	Table truncated.
+	SQL> SELECT * FROM e;
+	no rows selected
+	SQL> ROLLBACK;		#回退
+	Rollback complete.
+	SQL> SELECT * FROM e;
+	no rows selected
+	#注意：使用truncate之后是不可以回滚的。相当于DELETE 之后又执行了commit命令。
+
+	SQL> DROP TABLE e purge;
+	Table dropped.
+	SQL> CREATE TABLE e AS SELECT * FROM emp;
+	Table created.
+	SQL> SELECT * FROM e;
+		 EMPNO ENAME      JOB			   MGR HIREDATE			SAL       COMM     DEPTNO
+	---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+			99 Xiaohong										   5000 				   10
+		  7369 SMITH      CLERK			  7902 17-DEC-80	    800 				   20
+		  7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300		   30
+		  7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500		   30
+		  7566 JONES      MANAGER	      7839 02-APR-81	   2975 				   20
+		  7654 MARTIN     SALESMAN	      7698 28-SEP-81	   1250       1400		   30
+		  7698 BLAKE      MANAGER	      7839 01-MAY-81	   2850 				   30
+		  7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 				   10
+		  7788 SCOTT      ANALYST	      7566 19-APR-87	   3000 				   20
+		  7839 KING       PRESIDENT 		   17-NOV-81	   5000 				   10
+		  7844 TURNER     SALESMAN	      7698 08-SEP-81	   1500 		 0		   30
+		  7876 ADAMS      CLERK			  7788 23-MAY-87	   1100 				   20
+		  7900 JAMES      CLERK			  7698 03-DEC-81	    950 				   30
+		  7902 FORD       ANALYST	      7566 03-DEC-81	   3000 				   20
+		  7934 MILLER     CLERK			  7782 23-JAN-82	   1300 				   10
+	15 rows selected.
+--------------------------------
+比较truncate和delete的区别
+	1、delete将在回滚段中产生回滚信息，truncate不产生，因此无论表中的记录多少，truncate执行都很快
+	2、truncate是DDL，执行隐含的commit，truncate不能回滚。任何没有提交的DML改变也将会和truncate一起提交
+	3、truncate重置表及其索引高水位标志。全表扫描和索引快速全扫描读高水位标志下的所有数据块，因此在delete后全扫描性能没有提高，但truncate后将会变快
+	4、truncate 不触发 delete 触发器
+	5、没有对象权限允许一个用户truncate另外一个用户的表。这样做需要DROP ANY TABLE系统权限
+	6、当一个表被truncate，表及其索引的存储将被重置回初始大小。而delete不收缩表及其索引的大小
+	7、当父表有一个可用的引用完整性约束时不能被truncate，必须先disable引用父表的外键约束，在truncate
+
+	关键点：
+	delete ---> dml 语句 ---> 产生undo信息 ---> 回滚
+	truncate ---> ddl 语句 ---> 不产生undo信息 ---> 不能回滚
+	truncate 重置表及其索引高水位标志， 回收空间 效率高
+	delete 不回收空间，效率低，但是安全
+
+delete t1：dml语言、可以回退、手工提交、写大量日志、写大量回退、占用大量内存、不释放空间、不挪动高水位、可以闪回到历史
+truncate table t1：ddl语言、不可以回退、自动提交、写很少日志、写很少回退、占用很少内存、释放空间、挪动高水位、不能闪回到历史、保留最小的初始范围
+drop table t1 purge：ddl语言、不可以回退、自动提交、写很少日志、写很少回退、占用很少内存、释放空间、挪动高水位、不能闪回到历史、彻底的删除
+
+----------------------------------
+#显示控制事务
+#事务执行前会默认设置一个还原点，当你执行rollback的时候就把表还原到默认的还原点
+	SQL> COMMIT;	#结束以前的所有事务
+	SQL> SELECT ename,sal FROM e;		#默认的还原点（最开始数据）
+	ENAME		  SAL
+	---------- ----------
+	Xiaohong	 5000
+	SMITH		  800
+	ALLEN		 2600
+	......
+	FORD		 3000
+	MILLER		 1300
+	14 rows selected.
+	SQL> DELETE FROM e WHERE ename='Xiaohong';
+	SQL> SAVEPOINT a;		#创建还原点a
+	Savepoint created.
+	SQL> DELETE FROM e WHERE ename='SMITH';
+	SQL> SAVEPOINT b;		#创建还原点b
+	Savepoint created.
+	SQL> DELETE FROM e;
+	12 rows deleted.
+	SQL> SELECT * FROM e;	#最后删除所有数据，现在什么都没有了
+	no rows selected
+
+	SQL> ROLLBACK TO SAVEPOINT a;	#闪回到a保存点，下面的还原点被清除
+	Rollback complete.
+	SQL> SELECT ename,sal FROM e;	#数据回来了，有SMITH，没有Xiaohong
+	ENAME		  SAL
+	---------- ----------
+	SMITH		  800
+	ALLEN		 2600
+	WARD		 2250
+	JONES		 2975
+	MARTIN		 2250
+	BLAKE		 3850
+	CLARK		 2450
+	KING		 5000
+	TURNER		 2500
+	ADAMS		 1100
+	JAMES		 1950
+	FORD		 3000
+	MILLER		 1300
+	13 rows selected.
+	SQL> ROLLBACK TO SAVEPOINT b;	#闪回到b保存点失败了，因为b在a之后创建的，闪回到a点后，b点就没有了。
+	ROLLBACK TO SAVEPOINT b
+	*
+	ERROR at line 1:
+	ORA-01086: savepoint 'B' never established in this session or is invalid
+	SQL> ROLLBACK;			#还原所有的数据，清除所有还原点
+	Rollback complete.
+	SQL> SELECT ename FROM e;		#现在Xiaohong，SMITH都在
+	ENAME
+	----------
+	Xiaohong
+	SMITH
+	ALLEN
+	......
+	FORD
+	MILLER
+	14 rows selected.
+	SQL> ROLLBACK TO SAVEPOINT a;		#还原到a，发现不行了，系统找不到叫A的还原点
+	ROLLBACK TO SAVEPOINT a
+	*
+	ERROR at line 1:
+	ORA-01086: savepoint 'A' never established in this session or is invalid
+
+
+
+
+
+
+
+

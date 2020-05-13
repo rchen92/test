@@ -1,0 +1,221 @@
+实施透明数据加密（TDE）
+对加密列使用TDE
+描述数据泵（DP）加密
+确定Recovery Manager（RMAN）加密备份的组件
+定义虚拟专用数据库（VPD）的基本概念
+应用列级VPD策略
+
+
+
+----Oracle透明数据加密（TDE）：概览
+	安全信息的需要
+	敏感信息的自动加密
+		内嵌于Oracle数据库中
+		无需更改应用程序逻辑
+		加密数据和索引值
+	使用加密密钥
+		整个数据库的主密钥
+		存储在Oracle Wallet中
+			列和索引----->通过加密/解密----->Wallet
+
+----实施透明数据加密
+1.创建Wallet：自动创建或使用Oracle Wallet Manager创建，然后编辑sqlnet.ora定义wallet存放的目录
+	ENCRYPTION_WALLET_LOCATION=
+		(SOURCE=
+			(METHOD=FILE)
+			(METHOD_DATA=
+			(DIRECTORY=/u01/app/oracle/porduct/11.2.0/dbhome_1/wallet)))
+2.在实例中设置主密钥
+	ALTER SYSTEM SET ENCRYPTION KEY IDENTIFIED BY <password>;
+3.在实例（将来）中打开Wallet
+	ALTER SYSTEM SET ENCRYPTION WALLET OPEN IDENTIFIED BY <password>;
+4.创建包含加密列的表
+	CREATE TABLE emp1 (
+		first_name VARCHAR2(128),
+		last_name VARCHAR2(128),
+		empID NUMBER ENCRYPT NO SALT,
+		salary NUMBER(6) ENCRYPT USING '3DES168',
+		comm NUMBER(6) ENCRYPT
+	);
+
+----现有表和TDE
+添加加密列
+ALTER TABLE emp ADD (ssn VARCHAR2(11) ENCRYPT);
+加密未加密列
+ALTER TABLE emp MODIFY (first_name ENCRYPT);
+禁用列加密
+ALTER TABLE emp MODIFY (first_name DECRYPT);
+添加或删除salt
+ALTER TABLE emp MODIFY (first_name ENCRYPT [NO] SALT);
+更改密钥和加密算法
+ALTER TABLE emp REKEY USING '3DES168';
+
+----透明数据加密：注意事项
+	不能加密SYS所拥有的表
+	不支持LONG和LOB数据类型
+	支持的加密算法有
+		3DES168
+		AES128
+		AES192
+		AES256
+	必须使用NO SALT加密索引列
+	TDE使用索引执行等式搜索
+	必须先解密加密数据，然后再执行表达式求值
+	最佳方案提示：备份Wallet
+
+----Wallet对用户和口令的支持
+Wallet现在可以持有多个证书
+	用户名和口令可以存储在Wallet中，而不必通过命令行提供
+批处理作业处理
+	操作系统上列出进程时防止公开用户名和口令
+使用一下方法设置
+	sqlnet.ora中的WALLET_LOCATION
+	mkstore使用程序
+		connect /@db_connect_string
+
+----数据泵和透明数据加密
+在导出和导入期间，使用您自己提供的列密钥
+	ENCRYPTION_PASSWORD = <password>
+对外部表也是如此
+	CREATE TABLE emp_ext (
+		first_name, last_name, empID, salary ENCRYPT IDENTIFIED BY "xIcf3T9u")
+	ORGANIZATION EXTERNAL
+		(TYPE ORACLE_DATAPUMP
+		 DEFAULT DIRECTORY "D_DIR"
+		 LOCATION('emp_ext.dat'))
+	REJECT LIMIT UNLIMITED
+	as select * from employees;
+
+----RMAN加密备份：概览
+备份有以下三种加密模式
+	透明模式
+		需要Oracle Wallet
+		最适合在同一位置执行的日常备份和还原操作
+		是默认加密模式
+	口令模式
+		需要提供口令
+		最适合在远程位置还原的备份
+	双重模式
+		可以使用Oracle Wallet或口令
+		最适合在本地和远程还原的备份
+
+	透明模式设置
+		1.创建Wallet：自动创建或使用Oracle Wallet Manager创建
+		2.在实例中打开Wallet
+			ALTER SYSTEM SET ENCRYPTION WALLET OPEN IDENTIFIED BY <password>;
+		3.在实例中设置主密钥
+			ALTER SYSTEM SET ENCRYPTION KEY IDENTIFIED BY <password>;
+		4.将RMAN配置为使用透明加密
+			CONFIGURE ENCRYPTION FOR DATABASE ON
+		5.备份或恢复命令不会发生更改
+		6.可以暂时覆盖永久配置
+			SET ENCRYPTION OFF
+	口令模式设置
+		1.将RMAN回话设置为使用口令加密
+		2.备份命令不会发生更改
+		3.将RMAN回话设置为解密用口令加密的备份
+			SET DECRYPTION IDENTIFIED BY password1 {, password2 , ... , passwordn}
+		4.恢复命令不会发生更改
+	双重模式设置
+		1.创建Wallet：自动创建或使用Oracle Wallet Manager创建
+		2.在实例中打开Wallet
+			ALTER SYSTEM SET ENCRYPTION WALLET OPEN IDENTIFIED BY <password>;
+		3.将RMAN回话设置为使用双模式加密
+			SET ENCRYPTION ON IDENTIFIED BY password
+		4.备份命令不会发生更改
+		5.如果需要，请将RMAN会话设置为使用口令解密备份
+			SET DECRYPTION IDENTIFIED BY password1 {, password2 , ... , passwordn}
+		6.恢复命令不会发生更改
+
+----RMAN加密备份：注意事项
+不能加密映像副本备份
+COMPATIBLE必须至少设置为11.2.0
+V$RMAN_ENCRYPTION_ALGORITHMS包含可能的假面算法列表
+	CONFIGURE ENCRYPTION ALGORITHM 'algorithmname'
+	SET ENCRYPTION ALGORITHM 'algorithmname'
+备份假面只适用于Oracle Database企业版
+每个新的加密备份使用一个新加密密钥
+可以通过使用多个通道提高磁盘性能
+可以随时更改主密钥，而不会影响以透明方式加密的备份
+
+----数据私密性的需要
+示例：
+	雇员：保护薪金与佣金百分比（在本课的后面部分使用）
+	联机银行业务：保护账户访问
+	Web商店：提供个人购物篮
+	Web主机：只允许各顾客查看其自己的数据
+	用于Oracle Sales Online.com和Oracle Portal
+
+术语定义和用法
+细粒度访问控制（FGAC）：使用函数
+应用程序上下文：保留用户身份并用作应用程序属性和值的安全数据高速缓存
+应用程序属性：有详细访问策略使用
+
+虚拟专用数据库：概览
+虚拟专用数据库（VPD）包括：
+	详细访问控制（FGAC）
+	安全应用程序上下文
+VPD使用策略向SQL语句添加保护敏感数据的条件
+VPD提供航迹访问控制
+应用程序属性在应用程序上下文中定义，由详细访问策略使用
+
+虚拟专业数据库：功能
+列级VPD根据访问的安全列实施行级访问控制
+通过定制，可以定义静态和非静态策略
+使用共享策略，可以将一个策略与多个对象相关联
+策略类型可以为INDEX
+策略谓词文本字符串的大小可以为32K
+
+列级VPD：示例
+并不总是重写语句
+考虑使用策略来保护EMPLOYEES表的SALARY和COMMISSION_PCT列。江西访问控制（FGAC）
+	对于此查询，其并不需要：
+		SQL> SELECT last_name FROM employees;
+	对于以下这些查询，则是强制的：
+		SQL> SELECT last_name,salary FROM employees;
+		SQL> SELECT * FROM employees;
+
+创建列级策略
+1.授予权限
+2.创建函数
+3.将策略应用于对象
+	BEGIN
+		dbms_rls.add_policy(object_schema => 'hr',
+			object_name => 'employees',
+			policy_name => 'hr_policy',
+			function_schema => 'hr',
+			policy_function => 'hrsec',
+			statement_types => 'select,insert',
+			sec_relevant_cols => 'salary,commission_pct');
+	END;
+	/
+
+
+
+----实施透明数据加密
+[oracle@orcl ~]$ vim $ORACLE_HOME/network/admin/sqlnet.ora
+[oracle@orcl ~]$ vim $ORACLE_HOME/network/admin/sqlnet.ora
+encryption_wallet_location
+   =(source
+       =(method=file)
+        (method_data=/u01/app/oracle/product/11.2.0/dbhome_1/wallet)
+[oracle@orcl ~]$ mkdir /u01/app/oracle/product/11.2.0/dbhome_1/wallet/
+[oracle@orcl ~]$ sqlplus / as sysdba
+SQL> alter system set encryption key identified by oracle123;
+SQL> conn scott/oracle
+SQL> create table empe(firstname varchar2(100),lastname varchar2(100),empid number encrypt no salt,sal number(7,2) encrypt using '3des168',comm number(7,2) encrypt);
+SQL> conn / as sysdba
+SQL> insert into scott.empe select first_name,last_name,employee_id,salary,commission_pct from hr.employees;
+SQL> commit;
+SQL> conn scott/oracle
+[oracle@orcl ~]$ sqlplus / as sysdba		#新开一个窗口
+SQL> execute dbms_logmnr.add_logfile('/u01/app/oracle/oradata/orcl/redo01.log',dbms_logmnr.new);
+PL/SQL procedure successfully completed.
+SQL> execute dbms_logmnr.add_logfile('/u01/app/oracle/oradata/orcl/redo02.log',dbms_logmnr.addfile);
+SQL> execute dbms_logmnr.add_logfile('/u01/app/oracle/oradata/orcl/redo03.log',dbms_logmnr.addfile);
+SQL> execute dbms_logmnr.start_logmnr(options=>dbms_logmnr.dict_from_online_catalog+dbms_logmnr.committed_data_only);
+
+
+
+
+

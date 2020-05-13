@@ -1,0 +1,221 @@
+--oracle内存管理的变化
+8i,9i                       10g  ASMM              11g AMM 
+db_cache_size(sga)          sga_target             memory_target
+shared_pool_size(sga)       pga_aggregate_target   memory_max_target 
+java_pool_size(sga)         sga_max_size
+large_pool_size(sga)
+log_buffer(sga)
+pga_aggregate_target
+
+ASMM :Automatic Shared Memory Management
+AMM :Automatic Memory Management
+
+--参数修改
+alter system set memory_max_target   =1500m scope=spfile;
+alter system set memory_target   =1200m scope=both;
+alter system set shared_pool_size=6400m scope=both sid='shibxpr1';--必须登入节点1
+alter system set shared_pool_size=5888m scope=both sid='shibxpr2';--必须登入节点2
+
+
+alter session set current_schema=scott;
+set time on
+--产生表和索引
+drop table scott.big_table purge;
+create table scott.big_table nologging tablespace users
+as
+select rownum id, sysdate sysdate1,a.*
+  from all_objects a
+ where 1=0;
+alter table scott.big_table nologging;
+CREATE UNIQUE INDEX SCOTT.I_BIG_TABLE_ID ON SCOTT.BIG_TABLE
+(ID)
+NOLOGGING
+NOPARALLEL;
+
+ALTER TABLE SCOTT.BIG_TABLE
+  ADD CONSTRAINT I_BIG_TABLE_ID
+  PRIMARY KEY (ID);
+--创建序列
+drop SEQUENCE Seq_big_table;
+CREATE SEQUENCE Seq_big_table
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+CACHE 20
+NOCYCLE 
+ORDER ;
+select Seq_big_table.nextval from dual; 
+select Seq_big_table.currval from dual;
+set pagesize 1000;    set linesize 2000;    SET TRIMSPOOL on  
+--redo大小  
+column redo_size new_val redo_size_begin
+select s.name, m.value redo_size from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+--插入数据
+--oracle 11g 
+--oracle10g少后两个字段
+declare
+    l_cnt number;
+    l_rows number := 5000000;
+begin
+    insert /* append */
+    into scott.big_table
+    select Seq_big_table.nextval,sysdate, a.*
+      from all_objects a
+     where OBJECT_TYPE<>'SEQUENCE' and rownum <= l_rows;
+
+    l_cnt := sql%rowcount;
+
+    commit;
+
+    while (l_cnt < l_rows)
+    loop
+        insert /* APPEND */ into scott.big_table
+        select Seq_big_table.nextval,sysdate,
+               OWNER, OBJECT_NAME, SUBOBJECT_NAME,
+               OBJECT_ID, DATA_OBJECT_ID,
+               OBJECT_TYPE, CREATED, LAST_DDL_TIME,
+               TIMESTAMP, STATUS, TEMPORARY,
+               GENERATED, SECONDARY,namespace,edition_name
+          from scott.big_table
+         where rownum <= l_rows-l_cnt;
+        l_cnt := l_cnt + sql%rowcount;
+        commit;
+    end loop;
+end;
+/
+
+
+--测量redo大小
+--redo大小,拿当前值和开始值比较
+    select s.name, m.value ,to_char(m.value-&redo_size_begin,'999,999,999,999') redo_size_diff from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+select count(1) from SCOTT.BIG_TABLE;
+
+
+
+set timing on 
+alter session set current_schema=scott;
+set time on
+--产生表和索引
+drop table scott.big_table purge;
+create table scott.big_table nologging tablespace users
+as
+select rownum id, sysdate sysdate1,a.*
+  from all_objects a
+ where 1=0;
+alter table scott.big_table nologging;
+CREATE UNIQUE INDEX SCOTT.I_BIG_TABLE_ID ON SCOTT.BIG_TABLE
+(ID)
+NOLOGGING
+NOPARALLEL;
+
+ALTER TABLE SCOTT.BIG_TABLE
+  ADD CONSTRAINT I_BIG_TABLE_ID
+  PRIMARY KEY (ID);
+--创建序列
+drop SEQUENCE Seq_big_table;
+CREATE SEQUENCE Seq_big_table
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+CACHE 20
+NOCYCLE 
+ORDER ;
+select Seq_big_table.nextval from dual; 
+select Seq_big_table.currval from dual;
+set pagesize 1000;    set linesize 2000;    SET TRIMSPOOL on  
+--redo大小  
+column redo_size new_val redo_size_begin
+select s.name, m.value redo_size from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+--插入数据
+--oracle 11g 
+--oracle10g少后两个字段
+declare
+    l_cnt number;
+    l_rows number := 5000000;
+begin
+    insert /*+ append */
+    into scott.big_table
+    select Seq_big_table.nextval,sysdate, a.*
+      from all_objects a
+     where OBJECT_TYPE<>'SEQUENCE' and rownum <= l_rows;
+
+    l_cnt := sql%rowcount;
+
+    commit;
+
+    while (l_cnt < l_rows)
+    loop
+        insert /*+ APPEND */ into scott.big_table
+        select Seq_big_table.nextval,sysdate,
+               OWNER, OBJECT_NAME, SUBOBJECT_NAME,
+               OBJECT_ID, DATA_OBJECT_ID,
+               OBJECT_TYPE, CREATED, LAST_DDL_TIME,
+               TIMESTAMP, STATUS, TEMPORARY,
+               GENERATED, SECONDARY,namespace,edition_name
+          from scott.big_table
+         where rownum <= l_rows-l_cnt;
+        l_cnt := l_cnt + sql%rowcount;
+        commit;
+    end loop;
+end;
+/
+
+
+--测量redo大小
+--redo大小,拿当前值和开始值比较
+    select s.name, m.value ,to_char(m.value-&redo_size_begin,'999,999,999,999') redo_size_diff from v$mystat m, v$statname s where s.statistic# = m.statistic# and s.name='redo size';
+select count(1) from SCOTT.BIG_TABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

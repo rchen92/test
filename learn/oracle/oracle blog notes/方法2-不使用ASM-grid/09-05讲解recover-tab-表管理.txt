@@ -1,0 +1,95 @@
+#对象表
+#嵌套表
+
+
+
+#对象表
+实现这样一个需求，一个表下面有名字ename，包含了名字name和性别sex两个列，这样这两个列就需要放在一种特殊的对象里面去。
+#首先创建一个type的变量，这个type下面有两个列
+SQL> create type enamet as object(name varchar2(20),sex varchar2(10));
+  2  /
+#然后在建一个表来调用这个type
+SQL> create table empty(empno number,ename enamet,job varchar2(20));
+SQL> insert into empty values('100',enamet('a','man'),'jingli');
+SQL> select * from empty;
+     EMPNO ENAME(NAME, SEX)	JOB
+---------- -------------------- --------------------
+       100 ENAMET('a', 'man')	jingli
+SQL> desc empty;
+ Name								   Null?    Type
+ ----------------------------------------------------------------- -------- --------------------------------------------
+ EMPNO									    NUMBER
+ ENAME									    ENAMET
+ JOB									    VARCHAR2(20)
+#对象表在查找的时候可以这样查找
+SQL> select e.empno,e.ename.name,e.ename.sex,e.job from empty e;		#必须要设置表的别名
+     EMPNO ENAME.NAME		ENAME.SEX  JOB
+---------- -------------------- ---------- --------------------
+       100 a			man	   jingli
+SQL> select e.empno,e.ename.name,e.ename.sex,e.job from empty e where e.ename.sex='man';
+     EMPNO ENAME.NAME		ENAME.SEX  JOB
+---------- -------------------- ---------- --------------------
+       100 a			man	   jingli
+
+
+#嵌套表
+emp和dept表，在查询的时候能不能不要这么复杂，不要where条件语句
+SQL> select ename,dname from emp,dept where emp.deptno=dept.deptno;
+ENAME		     DNAME
+-------------------- --------------
+CLARK		     ACCOUNTING
+KING		     ACCOUNTING
+MILLER		     ACCOUNTING
+...
+MARTIN		     SALES
+14 rows selected.
+#先创建一个type的变量对象   type变量  对象的type
+SQL> desc emp
+ Name								   Null?    Type
+ ----------------------------------------------------------------- -------- --------------------------------------------
+ EMPNO								   NOT NULL NUMBER(4)
+ ENAME									    VARCHAR2(10)
+ JOB									    VARCHAR2(9)
+ MGR									    NUMBER(4)
+ HIREDATE								    DATE
+ SAL									    NUMBER(7,2)
+ COMM									    NUMBER(7,2)
+ DEPTNO 								    NUMBER(2)
+SQL> create or replace type emp_ty as object(empno number(4),ename varchar2(20),job varchar2(9),mgr number(4),hiredate date,sal number(7,2),comm number(7,2));
+  2  /
+Type created.
+#再来创建一个type的表		type的对象
+SQL> create or replace type emptab_ty as table of emp_ty;
+  2  /
+Type created.
+#创建表
+SQL> create table empdept(deptno number(2),dname varchar2(20),loc varchar2(14),empt emptab_ty) nested table empt store as empts;
+SQL> insert into empdept select dept.*,cast(multiset(select empno,ename,job,mgr,hiredate,sal,comm from emp where deptno=dept.deptno) as emptab_ty) from dept;
+4 rows created.
+SQL> select ename,dname from emp,dept where emp.deptno=dept.deptno;
+SQL> select t.ename,dname from empdept,table(empdept.empt) t;
+ENAME		     DNAME
+-------------------- --------------------
+CLARK		     ACCOUNTING
+KING		     ACCOUNTING
+MILLER		     ACCOUNTING
+...
+BLAKE		     SALES
+TURNER		     SALES
+JAMES		     SALES
+14 rows selected.
+
+
+IOT（索引组织表 Index Organized Table IOT）
+将索引跟表的数据放在同一个段里面
+
+
+
+
+
+
+
+
+
+
+

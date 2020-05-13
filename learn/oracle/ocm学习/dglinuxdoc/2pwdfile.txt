@@ -1,0 +1,4 @@
+
+ls $ORACLE_HOME/dbs/orapw*
+/u01/app/oracle/product/11.2.0/db_1/dbs/orapworcl
+scp  /u01/app/oracle/product/11.2.0/db_1/dbs/orapworcl  oracle@192.168.139.134:/u01/app/oracle/product/11.2.0/db_1/dbs/orapworcl 

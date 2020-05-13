@@ -1,0 +1,368 @@
+#删除列
+	ALTER TABLE 表 DROP 列名
+-------------------------------
+	SQL> CONN scott/oracle;
+	SQL> DESC all_objects;
+	 Name					   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 OWNER					   NOT NULL VARCHAR2(30)
+	 OBJECT_NAME				   NOT NULL VARCHAR2(30)
+	 SUBOBJECT_NAME 				    VARCHAR2(30)
+	 OBJECT_ID				   NOT NULL NUMBER
+	 DATA_OBJECT_ID 				    NUMBER
+	 OBJECT_TYPE					    VARCHAR2(19)
+	 CREATED				   NOT NULL DATE
+	 LAST_DDL_TIME				   NOT NULL DATE
+	 TIMESTAMP					    VARCHAR2(19)
+	 STATUS 					    VARCHAR2(7)
+	 TEMPORARY					    VARCHAR2(1)
+	 GENERATED					    VARCHAR2(1)
+	 SECONDARY					    VARCHAR2(1)
+	 NAMESPACE				   NOT NULL NUMBER
+	 EDITION_NAME					    VARCHAR2(30)
+	SQL> SET timing ON
+	SQL> SELECT OBJECT_NAME FROM all_objects;
+	OBJECT_NAME
+	------------------------------
+	......
+	S2
+	S1
+	XS
+	IX_NAME1
+	DEPT
+	55645 rows selected.
+	Elapsed: 00:00:10.08		#花了10s，还是用了很长时间，这个记录应该是个大表
+	#来看一下在工作中能不能这样，以上面的来创建表
+	SQL> CREATE TABLE big AS SELECT * FROM all_objects;
+	Table created.
+	Elapsed: 00:00:13.64		#用了13s来创建一个表
+	SQL> INSERT INTO big SELECT * FROM big;		#再来一遍
+	55646 rows created.
+	Elapsed: 00:00:10.31
+	SQL> COMMIT;
+	SQL> SELECT COUNT(*) FROM big;
+	  COUNT(*)
+	----------
+		111292
+	Elapsed: 00:00:00.01
+	#现在来删除OBJECT_NAME这个列（字段），因为这个最大嘛
+	SQL> ALTER TABLE big DROP COLUMN object_name;		#有些服务器或者电脑会卡住
+	Table altered.
+	Elapsed: 00:00:12.63		
+	#用了12s来删除，如果在生产中（尤其是金融环境中）12s卡住不动，这时的库从外面来看这个表是挂了的。这个时候根本就写不进任何东西
+	#所以这就是oracle的强大之处，可以设定为延迟删除
+	#先把表删除，然后重新建
+	SQL> DROP TABLE big purge;
+	Table dropped.
+	Elapsed: 00:00:03.73
+	SQL> CREATE TABLE big AS SELECT * FROM all_objects;
+	Table created.
+	Elapsed: 00:00:03.86
+	SQL> INSERT INTO big SELECT * FROM big;
+	55646 rows created.
+	Elapsed: 00:00:04.14
+	SQL> COMMIT;
+	Commit complete.
+	Elapsed: 00:00:00.01
+	SQL> SELECT COUNT(*) FROM big;
+	  COUNT(*)
+	----------
+		111292
+	Elapsed: 00:00:00.03
+
+	#先用SET UNUSED option标记列为删除的，但实际不操作数据，然后等不忙的时候再执行DROP UNUSED COLUMNS option把那些标记为已经删除的列的数据清除（oracle特有属性）
+	#方法1：一个设置多个列无效
+		ALTER TABLE 表名
+		SET UNUSED 表名,表名...;
+	#方法2：一个设置多个列无效
+
+
+	SQL> ALTER TABLE big 
+	  2  SET UNUSED COLUMN object_name;
+	Table altered.
+	Elapsed: 00:00:00.06		#现在居然这么快
+	SQL> DESC big;			#object_name已经没有了
+	 Name					   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 OWNER					   NOT NULL VARCHAR2(30)
+	 SUBOBJECT_NAME 				    VARCHAR2(30)
+	 OBJECT_ID				   NOT NULL NUMBER
+	 DATA_OBJECT_ID 				    NUMBER
+	 OBJECT_TYPE					    VARCHAR2(19)
+	 CREATED				   NOT NULL DATE
+	 LAST_DDL_TIME				   NOT NULL DATE
+	 TIMESTAMP					    VARCHAR2(19)
+	 STATUS 					    VARCHAR2(7)
+	 TEMPORARY					    VARCHAR2(1)
+	 GENERATED					    VARCHAR2(1)
+	 SECONDARY					    VARCHAR2(1)
+	 NAMESPACE				   NOT NULL NUMBER
+	 EDITION_NAME					    VARCHAR2(30)
+	SQL> ALTER TABLE big ADD object_name varchar2(20);		#增加一个列名和原来一样
+	Table altered.
+	Elapsed: 00:00:00.08
+	SQL> DESC big;
+	 Name					   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 OWNER					   NOT NULL VARCHAR2(30)
+	 SUBOBJECT_NAME 				    VARCHAR2(30)
+	 OBJECT_ID				   NOT NULL NUMBER
+	 DATA_OBJECT_ID 				    NUMBER
+	 OBJECT_TYPE					    VARCHAR2(19)
+	 CREATED				   NOT NULL DATE
+	 LAST_DDL_TIME				   NOT NULL DATE
+	 TIMESTAMP					    VARCHAR2(19)
+	 STATUS 					    VARCHAR2(7)
+	 TEMPORARY					    VARCHAR2(1)
+	 GENERATED					    VARCHAR2(1)
+	 SECONDARY					    VARCHAR2(1)
+	 NAMESPACE				   NOT NULL NUMBER
+	 EDITION_NAME					    VARCHAR2(30)
+	 OBJECT_NAME					    VARCHAR2(20)
+	#现在写进去了，在最后一行，但是里面肯定是没有数据的。但是我之前的十几万条记录去哪了？其实数据还在。在库空闲的时候再删除
+	#oracle里面是只支持行存储数据，不支持行列混存。
+	#接下来清除数据
+	SQL> ALTER TABLE big DROP UNUSED COLUMNS;		#在空闲时删除就不会影响生产环境了
+	Table altered.
+	Elapsed: 00:00:07.17
+
+------------------------------
+#约束
+	立即约束
+	非延迟约束
+#添加约束
+	ALTER TABLE 表名 ADD CONSTRAINT 约束名 约束类型
+#约束在正常情况下都是立即约束
+
+	SQL> CREATE TABLE xs(id number,age number constraint ck_age check(age>=18));
+	SQL> col constraint_name for a15
+	SQL> col table_name for a10
+	SQL> col search_condition for a20
+	SQL> DESC user_constraints;
+	 Name					   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 OWNER						    VARCHAR2(30)
+	 CONSTRAINT_NAME			   NOT NULL VARCHAR2(30)
+	 CONSTRAINT_TYPE				    VARCHAR2(1)
+	 TABLE_NAME				   NOT NULL VARCHAR2(30)
+	 SEARCH_CONDITION				    LONG
+	 R_OWNER					    VARCHAR2(30)
+	 R_CONSTRAINT_NAME				    VARCHAR2(30)
+	 DELETE_RULE					    VARCHAR2(9)
+	 STATUS 					    VARCHAR2(8)
+	 DEFERRABLE					    VARCHAR2(14)
+	 DEFERRED					    VARCHAR2(9)
+	 VALIDATED					    VARCHAR2(13)
+	 GENERATED					    VARCHAR2(14)
+	 BAD						    VARCHAR2(3)
+	 RELY						    VARCHAR2(4)
+	 LAST_CHANGE					    DATE
+	 INDEX_OWNER					    VARCHAR2(30)
+	 INDEX_NAME					    VARCHAR2(30)
+	 INVALID					    VARCHAR2(7)
+	 VIEW_RELATED					    VARCHAR2(14)
+	SQL> SELECT constraint_name,constraint_type,table_name,search_condition,deferrable,deferred
+	  2  FROM user_constraints
+	  3  WHERE table_name='XS';
+	CONSTRAINT_NAME C TABLE_NAME SEARCH_CONDITION	  DEFERRABLE	 DEFERRED
+	--------------- - ---------- -------------------- -------------- ---------
+	CK_AGE			C XS	     age>=18			  NOT DEFERRABLE IMMEDIATE
+																	  #立即执行约束
+	SQL> INSERT INTO xs values(1,17);		#在插入语句的时候就立即执行了
+	INSERT INTO xs values(1,17)
+	*
+	ERROR at line 1:
+	ORA-02290: check constraint (SCOTT.CK_AGE) violated
+	#但是有时候不希望立即执行，希望延迟执行
+	SQL> COMMIT;		#在执行此命令的时候执行
+	#可以修改几个参数，先删除约束再创建
+	SQL> ALTER TABLE xs DROP CONSTRAINT ck_age;
+	SQL> ALTER TABLE xs ADD CONSTRAINT ck_age check(age>=18) DEFERRABLE INITIALLY DEFERRED;
+	SQL> SELECT constraint_name,constraint_type,table_name,search_condition,deferrable,deferred
+	  2  FROM user_constraints
+	  3  WHERE table_name='XS';
+	CONSTRAINT_NAME C TABLE_NAME SEARCH_CONDITION	  DEFERRABLE	 DEFERRED
+	--------------- - ---------- -------------------- -------------- ---------
+	CK_AGE			C XS	     age>=18			  DEFERRABLE	 DEFERRED
+	SQL> INSERT INTO xs values(1,17);		#插入进去了
+	1 row created.
+	SQL> SELECT * FROM xs;		#也能查看
+		ID	  AGE
+	---------- ----------
+		 1	   17
+	SQL> COMMIT;		#但是在提交的时候报错
+	COMMIT
+	*
+	ERROR at line 1:
+	ORA-02091: transaction rolled back		#自己做回滚操作
+	ORA-02290: check constraint (SCOTT.CK_AGE) violated
+	#有时候在做测试之前，并不喜欢把表约束这里做成immediate，而是喜欢做成延迟约束deferred
+
+	#怎么看约束是延迟的呢
+	记住:	DEFERRABLE	   DEFERRED
+			-------------- ---------
+			DEFERRABLE	   DEFERRED
+-----------------------------
+#在导入数据的时候一般建议禁用约束
+	ALTER TABLE 表名 DISABLE CONSTRAINT 约束名
+#最后再启用约束
+	ALTER TABLE 表名 ENABLE CONSTRAINT 约束名
+
+------------------------------------
+#索引
+	自动：当你建立主键和唯一约束，会建立同名的索引
+	手工：自己定义的索引
+--------------------------------
+#案例：索引：关键字+ROWID ---> 占空间，先通过索引扫描找rowid，再通过rowid找数据
+	SQL> DROP TABLE xs purge;
+	Table dropped.
+	SQL> CREATE TABLE xs(id number constraint pk_id primary key,name char(10));
+	Table created.
+	SQL> DESC user_tables;	#这是所有的表有关的索引
+	 Name					   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 TABLE_NAME				   NOT NULL VARCHAR2(30)
+	 TABLESPACE_NAME				    VARCHAR2(30)
+	 CLUSTER_NAME					    VARCHAR2(30)
+	 IOT_NAME					    VARCHAR2(30)
+	 STATUS 					    VARCHAR2(8)
+	SQL> SELECT table_name,tablespace_name
+	  2  FROM user_tables
+	  3  WHERE table_name='XS';
+	TABLE_NAME TABLESPACE_NAME
+	---------- ------------------------------
+	XS		   USERS		#这样我们就知道我们的表存在哪了
+	#建立一个和主键同名的索引	---> 索引：pk_id	默认索引和主键同名
+	SQL> SELECT index_name,table_name,tablespace_name
+	  2  FROM user_indexes
+	  3  WHERE index_name='PK_ID';
+	INDEX_NAME		       TABLE_NAME TABLESPACE_NAME
+	---------------------- ---------- ------------------------------
+	PK_ID			       XS		  USERS			#这样不仅找到了表，还找到了索引
+	#只要建立主键，那么索引自动生成
+#假设oracle数据库中我可以有一个表空间example存储索引数据，一个表空间users存储数据，这就相当于我有两块硬盘一块存索引，一块存数据。扩展：实际工作的时候我们也的确可以这样做两块硬盘一块存数据，一块存索引，这样假设索引硬盘坏了不会影响我们的数据。
+-------------------------------
+#具体做法：在建立对象可以使用tablespace 表空间名 来指定其存储在哪个表空间
+#例如：
+	SQL> DROP TABLE xs purge;
+	Table dropped.
+	SQL> CREATE TABLE xs(id number constraint pk_id primary key,name char(10)) TABLESPACE users;
+	Table created.
+	SQL> CREATE INDEX ix_name ON xs(name) TABLESAPCE example;
+	CREATE INDEX ix_name ON xs(name) TABLESAPCE example
+									 *
+	ERROR at line 1:
+	ORA-02158: invalid CREATE INDEX option
+	#这样写索引和数据就分开了，但是你的主键自动建立索引，无法指定存储空间
+	#把上面的语句改一下，加个using index，当我们建立主键的时候不要系统自己创建索引，而是用我们给定的索引（没有指的时候索引和表在一起，指定了之后就分开了）
+	SQL> CREATE TABLE xs(id number constraint pk_id PRIMARY KEY
+	  2					USING INDEX(CREATE INDEX ix_name ON xs(id) TABLESPACE example),
+	  3					name char(10)) TABLESPACE users;
+	Table created.
+	SQL> SELECT table_name,tablespace_name
+	  2  FROM user_tables
+	  3  WHERE table_name='XS';
+	TABLE_NAME TABLESPACE_NAME			#表在users里面
+	---------- ---------------
+	XS		   USERS
+	SQL> SELECT index_name,table_name,tablespace_name
+	  2  FROM user_indexes
+	  3  WHERE index_name='IX_NAME';
+	INDEX_NAME   TABLE_NAME TABLESPACE_NAME		#索引在example里面。现在表和索引就分开了（大企业都是这么做的）
+	------------ ---------- ---------------
+	IX_NAME      XS 		EXAMPLE
+
+---------------------------------
+#临时表
+	SESSION 会话级
+	TRANSACTION 事务级
+#原理很简单，我们搞懂京东淘宝上买东西的那个购物车合并你所有买的东西就行，所有购物网站都会使用临时表
+#SESSION级的临时表数据在整个SESSION都存在，直到此次SESSION结束。而TRANSACTION级的临时表数据在TRANSCTION结束后消失，即COMMIT/ROLLBACK或者结束SESSION都会清除transaction临时表数据
+#两种临时表的语法
+	CREATE GLOBAL TEMPORARY TABLE 临时表名 ON COMMIT PRESERVE|DELETE ROWS
+		使用PRESERVE时就是SESSION级的临时表（会话）
+		使用DELETE 就是TRANSACTION级的临时表（事务）
+-----------------------------
+#例1：SESSION级临时表
+	#建立临时表
+	SQL> CREATE GLOBAL TEMPORARY TABLE temp_tbl(col_a varchar2(30)) ON COMMIT PRESERVE ROWS;
+	Table created.
+	SQL> SELECT table_name,tablespace_name
+	  2  FROM user_tables
+	  3  WHERE table_name=upper('temp_tbl');
+	TABLE_NAME TABLESPACE_NAME
+	---------- ---------------
+	TEMP_TBL					#有表名，没有表空间。那能写数据吗？来试一下
+	SQL> INSERT INTO temp_tbl values('hong');		#没有表空间，能写数据
+	1 row created.
+	SQL> COMMIT;
+	Commit complete.
+	SQL> SELECT * FROM temp_tbl;
+	COL_A
+	------------------------------
+	hong
+	#退出后再进
+	SQL> exit
+	[oracle@oracle-server ~]$ sqlplus / as sysdba
+	SQL> conn scott/oracle
+	Connected.
+	SQL> SELECT * FROM temp_tbl;
+	no rows selected
+	#现在没有数据了，会话级的临时表存在于内存中的。将会话退出之后重新再进，我的scott进程不是原来的进程，已经换了进程，那么原来的临时表里面的数据就没有了。会话级的临时表是跟账号的进程绑定在一起的，当这个账号的进程退出后再重新进，这个时候已经没有数据了
+-----------------------------
+#例2：TRANSACTION级临时表
+	#建立临时表
+	SQL> CREATE GLOBAL TEMPORARY TABLE temp2(col_a VARCHAR2(30)) ON COMMIT DELETE ROWS;
+	SQL> SELECT table_name,tablespace_name
+	  2  FROM user_tables
+	  3  WHERE table_name='TEMP2';
+	TABLE_NAME		       TABLESPACE_NAME
+	------------------------------ ------------------------------
+	TEMP2					#有表名，也没有表空间
+	SQL> INSERT INTO temp2 values('test tran_tab');
+	SQL> SELECT * FROM temp2;
+	COL_A
+	------------------------------
+	test tran_tab		#现在有数据
+	SQL> COMMIT;
+	SQL> SELECT * FROM temp2;
+	no rows selected
+	#数据没有了。很简单，因为购物车的东西都已经提交购买了，那这个临时表就不需要存在了
+	#同样如果不提交COMMIT而直接结束SESSION，重新登录记录也不存在
+---------------------------------
+	#如果你要删除这样的表，方法有两个：一个是退出这个SESSION然后再登录，然后再执行DROP TABLE命令; 二是在当前SESSION中先进行truncate，及模拟退出SESSION的时候oracle得操作（截断数据），再执行DROP TABLE即可。这是官方推荐的，不过有点麻烦哈，还是直接DROP TABLE 表名。
+	#所有临时数据将存放在当前用户的临时表空间下（每一个用户创建的时候可以执行表空间）
+#创建临时表的时候也可以指定某个临时表空间
+-------------------------------
+#共享临时表结构+数据 时相互透明
+	SQL> INSERT INTO temp2 values('hong');
+	SQL> SELECT * FROM temp2;
+	COL_A
+	------------------------------
+	hong					#scott看到的是hong
+	SQL> conn / as sysdba			#这会儿管理员也向表里面插入数据
+	SQL> INSERT INTO scott.temp2 values('i am sys');
+	SQL> SELECT * FROM scott.temp2;
+	COL_A
+	------------------------------
+	i am sys				#管理员看到的是i am sys
+	#这就说明我们不同的用户
+	SQL> conn scott/oracle		#换到scott用户
+	Connected.
+	SQL> SELECT * FROM temp2;		#现在没有数据了
+	no rows selected
+	SQL> INSERT INTO temp2 values('fang');		#插入数据
+	SQL> SELECT * FROM temp2;
+	COL_A
+	------------------------------
+	fang
+	#这就说明我们不同的用户可以使用同一个临时表，这样我们就不用重复的建表。（扩展：这其实解决了我们程序员平时难以解决的问题，就是表里面的东西什么时候删，不要小看这点，生产环境中这点非常重要。）
+
+
+
+
+
+
+
+
+

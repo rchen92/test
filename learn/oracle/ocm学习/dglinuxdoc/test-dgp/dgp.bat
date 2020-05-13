@@ -1,0 +1,1 @@
+sqlplus @dgp.sql

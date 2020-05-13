@@ -1,0 +1,81 @@
+冷备：数据库在关闭的状态下完成物理系统拷贝的过程
+冷备更适合于非归档模式下
+	首先在运行的库中得到数据库运行的所有的物理文件
+	然后在计划内关闭数据库
+	再执行拷贝物理文件到备份路径或者设备
+	备份完成后，立即启动数据库
+
+[oracle@oracle ~]$ sqlplus / as sysdba
+SQL> show user;
+USER is "SYS"
+SQL> select name from v$database;		#库名
+NAME
+---------
+ORCL
+SQL> select instance_name from v$instance;		#实例名
+INSTANCE_NAME
+----------------
+orcl
+#查询当前库中有多少个物理文件
+SQL> select name from v$datafile;		#查询数据文件
+NAME
+--------------------------------------------------------------------------------
++DATA/orcl/datafile/system.256.924877991
++DATA/orcl/datafile/sysaux.257.924877991
++DATA/orcl/datafile/undotbs1.258.924877993
++DATA/orcl/datafile/users.259.924877995
++DATA/orcl/datafile/example.265.924878469
+SQL> select name from v$tempfile;		#临时表空间文件
+NAME
+--------------------------------------------------------------------------------
++DATA/orcl/tempfile/temp.264.924878453
+SQL> select member from v$logfile;			#日志文件
+MEMBER
+--------------------------------------------------------------------------------
++DATA/orcl/onlinelog/group_3.263.924878419
++FRA/orcl/onlinelog/group_3.259.924878433
++DATA/orcl/onlinelog/group_2.262.924878399
++FRA/orcl/onlinelog/group_2.258.924878411
++DATA/orcl/onlinelog/group_1.261.924878377
++FRA/orcl/onlinelog/group_1.257.924878389
+SQL> select name from v$controlfile;		#控制文件
+NAME
+--------------------------------------------------------------------------------
++DATA/orcl/controlfile/current.260.924878363
++FRA/orcl/controlfile/current.256.924878369
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

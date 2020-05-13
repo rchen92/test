@@ -1,0 +1,69 @@
+验证同步情况
+在主库切换日志 
+--p
+CREATE TABLESPACE testdg DATAFILE 
+  '+data' SIZE 10m AUTOEXTEND ON NEXT 1280K MAXSIZE UNLIMITED
+LOGGING
+ONLINE
+EXTENT MANAGEMENT LOCAL AUTOALLOCATE
+BLOCKSIZE 8K
+SEGMENT SPACE MANAGEMENT AUTO
+FLASHBACK ON;
+
+SQL> alter system switch logfile;
+SQL> select sequence# from v$archived_log;
+alter system switch logfile;
+select sequence# from v$archived_log;
+
+在备库进行验证：
+SQL> select sequence#,applied from v$archived_log;
+ SEQUENCE# APP
+---------- ---
+…
+        13 YES
+         4 NO
+        14 YES
+        15 YES
+        16 YES
+        18 NO
+        16 YES
+        17 YES
+        18 YES
+        19 YES
+同步成功。 至此Oracle 的Data Guard 环境已经搭建完成。
+
+
+--p
+CREATE DATABASE LINK dgs
+ CONNECT TO system
+ IDENTIFIED BY password
+ USING '(DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=192.168.56.15)
+      (PORT=1521)
+    )
+    (CONNECT_DATA=
+      (SERVICE_NAME=orcldg)
+    )
+  )';
+ 
+select   current_scn from v$database
+union all
+select   current_scn from v$database@dgs;
+
+CREATE TABLESPACE dat_txy DATAFILE 
+  '/data/oradata/o11gr2/dat_txy01.dbf ' SIZE 10m AUTOEXTEND ON NEXT 1280K MAXSIZE UNLIMITED
+LOGGING
+ONLINE
+EXTENT MANAGEMENT LOCAL AUTOALLOCATE
+BLOCKSIZE 8K
+SEGMENT SPACE MANAGEMENT AUTO
+FLASHBACK ON;
+
+--drop tablespace dat_txy including contents and datafiles;
+
+create user txy identified by txy default tablespace dat_txy;
+grant connect,resource to txy;
+alter user txy quota unlimited on dat_txy;
+

@@ -1,0 +1,189 @@
+##建立视图
+##修改视图
+##创建复杂的视图
+##在视图上进行DML操作
+##使用WITH CHECK OPTION子句
+##使用WITH READ ONLY子句
+##删除视图
+##现在视图里面有个rownum伪列
+
+
+
+
+视图：就是对象的查询语句的别名
+视图是基于其他表或视图创建的逻辑表
+视图不包含自己的数据，它基于的表称为基表
+视图的作用：
+	限制对数据的访问
+	提供数据的独立性
+	复杂查询简单化
+	相同的数据展现不同的视图
+视图的类型
+	功能							简单的视图		复杂的视图
+	表的数量						1个				1个或多个
+	是否包含函数					不包含			包含
+	是否包含分组数据				不包含			包含
+	是否可以通过视图执行DML语句		可以			通常不行
+
+#建立视图：
+	CREATE VIEW 使用子查询
+	CREATE [OR REPLACE] [FORCE|NOFORCE] VIEW viewname [(alias[, alias] ...)] AS subquery [WITH CHECK OPTION [CONSTRAINT constraint]] [WITH READ ONLY [CONSTRAINT constraint]];
+	可以使用复杂的子查询
+	子查询不能使用order by
+SQL> CREATE VIEW empvu80
+  2  AS SELECT employee_id,last_name,salary
+  3     FROM employees
+  4     WHERE department_id=80;
+SQL> DESC empvu80
+SQL> CREATE VIEW salvu50
+  2  AS SELECT employee_id ID_NUMBER,last_name NAME,salary*12 ANN_SALARY
+  3     FROM employees
+  4 	WHERE department_id=50;
+SQL> SELECT * FROM salvu50;
+SQL> SELECT * FROM user_views;
+
+#修改视图
+	使用CREATE OR REPLACE修改视图
+SQL> CREATE OR REPLACE VIEW empvu80(id_number,name,sal,department_id)
+  2  AS SELECT employee_id,first_name || ' ' || last_name,salary,department_id
+  3 	FROM employees
+  4 	WHERE department_id=80;
+   #上例中，使用了别名，别名的顺序与子查询中列的顺序一致
+
+#创建复杂的视图
+SQL> CREATE VIEW dept_sum_vu(name,minsal,maxsal,avgsal)
+  2  AS SELECT d.department_name,MIN(e.salary),MAX(e.salary),AVG(e.salary)
+  3 	FROM employees e,departments d
+  4 	WHERE e.department_id=d.department_id
+  5 	GROUP BY d.department_name;
+
+#在视图上进行DML操作
+可以对简单视图作DML操作
+	如果视图包含以下之一，就不能删除（delete）行：
+		分组函数
+		GROUP BY子句
+		DISTINCT关键字
+		伪列ROWNUM关键字
+	如果视图包含以下之一，就不能修改（update）行：
+		分组函数
+		GROUP BY子句
+		DISTINCT关键字
+		伪列ROWNUM关键字
+		表达式定义的列
+	如果视图包含以下之一，就不能添加（insert）行：
+		分组函数
+		GROUP BY子句
+		DISTINCT关键字
+		伪列ROWNUM关键字
+		表达式定义的列
+		视图中没有选取基表中的NOT NULL列
+
+#使用WITH CHECK OPTION子句
+使用WITH CHECK OPTION子句，可以确保视图中不会包含子查询范围以外的记录
+SQL> CREATE OR REPLACE VIEW empvu20
+  2  AS SELECT *
+  3 	FROM employees
+  4 	WHERE department_id=20
+  5 	WITH CHECK OPTION CONSTRAINT empvu20 ck;
+#上例中，视图子查询的范围是部门编号为20的记录。如果尝试向视图中添加部门编号不是20的记录，或修改现有记录的部门编号，就会报错
+
+#使用WITH READ ONLY子句
+使用WITH READ ONLY子句，可以确保视图中无法进行DML操作，只要在视图上执行DML操作，就会返回出错信息
+SQL> CREATE OR REPLACE VIEW empvu10(employee_number,employee_name,job_title)
+  2  AS SELECT employee_id,last_name,job_id
+  3		FORM employees
+  4		WHERE department_id=10
+  5		WITH READ ONLY;
+
+#删除视图
+	DROP VIEW viewname;
+SQL> DROP VIEW empvu80;
+
+
+SQL> conn / as sysdba
+SQL> GRANT CREATE VIEW TO scott;
+SQL> conn scott/scott
+SQL> SELECT * FROM emp WHERE deptno=10;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	       17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK			  7782 23-JAN-82	   1300 		   10
+SQL> CREATE VIEW empvu10 AS SELECT * FROM emp WHERE deptno=10;
+SQL> SELECT * FROM empvu10;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	       17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK			  7782 23-JAN-82	   1300 		   10
+SQL> UPDATE empvu10 SET sal=sal+1 WHERE sal=1300;		#更改视图里面的数据
+SQL> SELECT * FROM empvu10; 
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+SQL> SELECT * FROM emp WHERE deptno=10;								#会发现原表的数据也会更改
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+
+SQL> CREATE OR REPLACE VIEW empvu10 AS SELECT rownum r,e.* FROM emp e WHERE deptno=10;		#现在视图里面有个rownum伪列
+SQL> SELECT * FROM empvu10;
+	 R	EMPNO ENAME	 JOB		  MGR HIREDATE	       SAL	 COMM	  DEPTNO
+---------- ---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+	 1	 7782 CLARK	 MANAGER	 7839 09-JUN-81       2450		      10
+	 2	 7839 KING	 PRESIDENT	      17-NOV-81       5000		      10
+	 3	 7934 MILLER	 CLERK		 7782 23-JAN-82       1301		      10
+SQL> UPDATE empvu10 SET sal=sal+1 WHERE sal=1301;		#现在就不让修改了
+UPDATE empvu10 SET sal=sal+1 WHERE sal=1301
+       *
+ERROR at line 1:
+ORA-01732: data manipulation operation not legal on this view
+
+
+SQL> CREATE OR REPLACE VIEW empvu10 AS SELECT e.* FROM emp e WHERE deptno=10;
+SQL> UPDATE empvu10 SET deptno=20 WHERE sal=1301;
+SQL> SELECT * FROM empvu10;				#现在就查不到刚刚修改的数据了
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+#如何保证其中的数据不能被修改部门编号为10
+SQL> UPDATE emp SET deptno=10 WHERE sal=1301;
+SQL> CREATE OR REPLACE VIEW empvu10 AS SELECT * FROM emp WHERE deptno=10 WITH CHECK OPTION CONSTRAINT vu10;
+SQL> UPDATE empvu10 SET deptno=20 WHERE sal=1301;
+UPDATE empvu10 SET deptno=20 WHERE sal=1301
+       *
+ERROR at line 1:
+ORA-01402: view WITH CHECK OPTION where-clause violation
+
+
+SQL> CREATE FORCE VIEW vu AS SELECT * FROM aaaaa;			#强制创建一个视图
+Warning: View created with compilation errors.
+SQL> CREATE TABLE aaaaa AS SELECT * FROM dept;			#然后再创建表
+SQL> SELECT object_name,status FROM user_objects WHERE object_type='VIEW';
+OBJECT_NAME	STATUS
+--------------- -------
+EMPVU10 	VALID
+VU			INVALID			#现在vu视图是INVALID的状态
+SQL> SELECT * FROM vu;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> SELECT object_name,status FROM user_objects WHERE object_type='VIEW';		#但是只要查询一下，vu视图的状态就变为VALID
+OBJECT_NAME	STATUS
+--------------- -------
+EMPVU10 	VALID
+VU			VALID
+
+
+
+
+
+

@@ -1,0 +1,1063 @@
+
+select count(1) from  CASHBOX.AREA@dgp                                          
+ union all                                                                      
+select count(1) from  CASHBOX.AREA@dgs;                                         
+                                                                                
+select count(1) from  CASHBOX.DEVICE_AUTH@dgp                                   
+ union all                                                                      
+select count(1) from  CASHBOX.DEVICE_AUTH@dgs;                                  
+                                                                                
+select count(1) from  CASHBOX.THIRDPARTY_TERNIMAL@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX.THIRDPARTY_TERNIMAL@dgs;                          
+                                                                                
+select count(1) from  CASHBOX.MERCHNAT_TYPE@dgp                                 
+
+ union all                                                                      
+select count(1) from  CASHBOX.MERCHNAT_TYPE@dgs;                                
+                                                                                
+select count(1) from  CASHBOX.MERCHANT_GROUP@dgp                                
+ union all                                                                      
+select count(1) from  CASHBOX.MERCHANT_GROUP@dgs;                               
+                                                                                
+select count(1) from  CASHBOX.BANK_INSTITUTION@dgp                              
+ union all                                                                      
+select count(1) from  CASHBOX.BANK_INSTITUTION@dgs;                             
+                                                                                
+select count(1) from  CASHBOX.SERVICE_TYPE@dgp                                  
+ union all                                                                      
+
+select count(1) from  CASHBOX.SERVICE_TYPE@dgs;                                 
+                                                                                
+select count(1) from  CASHBOX.DEDUCTION_RATE@dgp                                
+ union all                                                                      
+select count(1) from  CASHBOX.DEDUCTION_RATE@dgs;                               
+                                                                                
+select count(1) from  CASHBOX.MERCHANT_TEMP@dgp                                 
+ union all                                                                      
+select count(1) from  CASHBOX.MERCHANT_TEMP@dgs;                                
+                                                                                
+select count(1) from  CASHBOX.MERCHANT_CLEAR@dgp                                
+ union all                                                                      
+select count(1) from  CASHBOX.MERCHANT_CLEAR@dgs;                               
+
+                                                                                
+select count(1) from  CASHBOX.OPEN_AUDIT@dgp                                    
+ union all                                                                      
+select count(1) from  CASHBOX.OPEN_AUDIT@dgs;                                   
+                                                                                
+select count(1) from  CASHBOX.CARD_BIN@dgp                                      
+ union all                                                                      
+select count(1) from  CASHBOX.CARD_BIN@dgs;                                     
+                                                                                
+select count(1) from  CASHBOX.CARD_INFO@dgp                                     
+ union all                                                                      
+select count(1) from  CASHBOX.CARD_INFO@dgs;                                    
+                                                                                
+
+select count(1) from  CASHBOX.SYS_CONFIG@dgp                                    
+ union all                                                                      
+select count(1) from  CASHBOX.SYS_CONFIG@dgs;                                   
+                                                                                
+select count(1) from  CASHBOX.ACCESS_USER@dgp                                   
+ union all                                                                      
+select count(1) from  CASHBOX.ACCESS_USER@dgs;                                  
+                                                                                
+select count(1) from  CASHBOX.TRADE_WATER@dgp                                   
+ union all                                                                      
+select count(1) from  CASHBOX.TRADE_WATER@dgs;                                  
+                                                                                
+select count(1) from  CASHBOX.GOODS@dgp                                         
+
+ union all                                                                      
+select count(1) from  CASHBOX.GOODS@dgs;                                        
+                                                                                
+select count(1) from  CASHBOX.ORDER_DETAIL@dgp                                  
+ union all                                                                      
+select count(1) from  CASHBOX.ORDER_DETAIL@dgs;                                 
+                                                                                
+select count(1) from  CASHBOX.MERCHANT_EXT@dgp                                  
+ union all                                                                      
+select count(1) from  CASHBOX.MERCHANT_EXT@dgs;                                 
+                                                                                
+select count(1) from  CASHBOX.LOGIN_LOG@dgp                                     
+ union all                                                                      
+
+select count(1) from  CASHBOX.LOGIN_LOG@dgs;                                    
+                                                                                
+select count(1) from  CASHBOX.LOGIN_AUTH@dgp                                    
+ union all                                                                      
+select count(1) from  CASHBOX.LOGIN_AUTH@dgs;                                   
+                                                                                
+select count(1) from  CASHBOX.DEVICE_BIND_HISTORY@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX.DEVICE_BIND_HISTORY@dgs;                          
+                                                                                
+select count(1) from  CASHBOX.DEVICE_BIND@dgp                                   
+ union all                                                                      
+select count(1) from  CASHBOX.DEVICE_BIND@dgs;                                  
+
+                                                                                
+select count(1) from  CASHBOX.CLIENT_VERSION@dgp                                
+ union all                                                                      
+select count(1) from  CASHBOX.CLIENT_VERSION@dgs;                               
+                                                                                
+select count(1) from  CASHBOX.CASHBOX_ORDER_BAK@dgp                             
+ union all                                                                      
+select count(1) from  CASHBOX.CASHBOX_ORDER_BAK@dgs;                            
+                                                                                
+select count(1) from  CASHBOX.SMS_VERIFY_CODE@dgp                               
+ union all                                                                      
+select count(1) from  CASHBOX.SMS_VERIFY_CODE@dgs;                              
+                                                                                
+
+select count(1) from  CASHBOX.ADVICE@dgp                                        
+ union all                                                                      
+select count(1) from  CASHBOX.ADVICE@dgs;                                       
+                                                                                
+select count(1) from  CASHBOX.CASHBOX_ORDER@dgp                                 
+ union all                                                                      
+select count(1) from  CASHBOX.CASHBOX_ORDER@dgs;                                
+                                                                                
+select count(1) from  CASHBOX_REPORT.TEST2@dgp                                  
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.TEST2@dgs;                                 
+                                                                                
+select count(1) from  CASHBOX_REPORT.TEST1@dgp                                  
+
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.TEST1@dgs;                                 
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_WEEKSTATS@dgp                         
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_WEEKSTATS@dgs;                        
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_LASTMONTH@dgp                         
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_LASTMONTH@dgs;                        
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_5THWEEK@dgp                           
+ union all                                                                      
+
+select count(1) from  CASHBOX_REPORT.KEEN_5THWEEK@dgs;                          
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_4THWEEK@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_4THWEEK@dgs;                          
+                                                                                
+select count(1) from  CASHBOX_REPORT.WEEKLY_REVENUE@dgp                         
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.WEEKLY_REVENUE@dgs;                        
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_2NDWEEK@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_2NDWEEK@dgs;                          
+
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_1STWEEK@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_1STWEEK@dgs;                          
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_MONTHSTATS@dgp                        
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_MONTHSTATS@dgs;                       
+                                                                                
+select count(1) from  CASHBOX_REPORT.DAILY_REVENUE@dgp                          
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.DAILY_REVENUE@dgs;                         
+                                                                                
+
+select count(1) from  CASHBOX_REPORT.WEEK_STATS@dgp                             
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.WEEK_STATS@dgs;                            
+                                                                                
+select count(1) from  CASHBOX_REPORT.KEEN_3RDWEEK@dgp                           
+ union all                                                                      
+select count(1) from  CASHBOX_REPORT.KEEN_3RDWEEK@dgs;                          
+                                                                                
+select count(1) from  CHINAUMS_SH.TBBLACKLIST@dgp                               
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBBLACKLIST@dgs;                              
+                                                                                
+select count(1) from  CHINAUMS_SH.GAME_ORDER@dgp                                
+
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.GAME_ORDER@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.ADVERTISEMENT@dgp                             
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.ADVERTISEMENT@dgs;                            
+                                                                                
+select count(1) from  CHINAUMS_SH.IBOX@dgp                                      
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.IBOX@dgs;                                     
+                                                                                
+select count(1) from  CHINAUMS_SH.SMS@dgp                                       
+ union all                                                                      
+
+select count(1) from  CHINAUMS_SH.SMS@dgs;                                      
+                                                                                
+select count(1) from  CHINAUMS_SH.CARD_BIN_LIMIT@dgp                            
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CARD_BIN_LIMIT@dgs;                           
+                                                                                
+select count(1) from  CHINAUMS_SH.BLACK_LIST@dgp                                
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.BLACK_LIST@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.SCHEMES@dgp                                   
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.SCHEMES@dgs;                                  
+
+                                                                                
+select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT_1014@dgp                   
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT_1014@dgs;                  
+                                                                                
+select count(1) from  CHINAUMS_SH.SYS_EXPORT_SCHEMA_01@dgp                      
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.SYS_EXPORT_SCHEMA_01@dgs;                     
+                                                                                
+select count(1) from  CHINAUMS_SH.HT_BASE_ORDER@dgp                             
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.HT_BASE_ORDER@dgs;                            
+                                                                                
+
+select count(1) from  CHINAUMS_SH.CARD_BIN@dgp                                  
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CARD_BIN@dgs;                                 
+                                                                                
+select count(1) from  CHINAUMS_SH.AREA@dgp                                      
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.AREA@dgs;                                     
+                                                                                
+select count(1) from  CHINAUMS_SH.BASE_ORDER@dgp                                
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.BASE_ORDER@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.CARD_BIND@dgp                                 
+
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CARD_BIND@dgs;                                
+                                                                                
+select count(1) from  CHINAUMS_SH.CARD_HISTORY@dgp                              
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CARD_HISTORY@dgs;                             
+                                                                                
+select count(1) from  CHINAUMS_SH.CLIENT_VERSION@dgp                            
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CLIENT_VERSION@dgs;                           
+                                                                                
+select count(1) from  CHINAUMS_SH.COOPERATE_MERBER@dgp                          
+ union all                                                                      
+
+select count(1) from  CHINAUMS_SH.COOPERATE_MERBER@dgs;                         
+                                                                                
+select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT@dgp                        
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.COOPERATE_MERCHANT@dgs;                       
+                                                                                
+select count(1) from  CHINAUMS_SH.COOPERATION_ORDER@dgp                         
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.COOPERATION_ORDER@dgs;                        
+                                                                                
+select count(1) from  CHINAUMS_SH.CREDIT_ORDER@dgp                              
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.CREDIT_ORDER@dgs;                             
+
+                                                                                
+select count(1) from  CHINAUMS_SH.ERROR_CODE@dgp                                
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.ERROR_CODE@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.ERROR_CODE_BAK@dgp                            
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.ERROR_CODE_BAK@dgs;                           
+                                                                                
+select count(1) from  CHINAUMS_SH.IBOX_BIND@dgp                                 
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.IBOX_BIND@dgs;                                
+                                                                                
+
+select count(1) from  CHINAUMS_SH.IBOX_BIND_HISTORY@dgp                         
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.IBOX_BIND_HISTORY@dgs;                        
+                                                                                
+select count(1) from  CHINAUMS_SH.MEMBER@dgp                                    
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MEMBER@dgs;                                   
+                                                                                
+select count(1) from  CHINAUMS_SH.MEMBER_BIND@dgp                               
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MEMBER_BIND@dgs;                              
+                                                                                
+select count(1) from  CHINAUMS_SH.MEMBER_MERCHANT@dgp                           
+
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MEMBER_MERCHANT@dgs;                          
+                                                                                
+select count(1) from  CHINAUMS_SH.MEMBER_MO@dgp                                 
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MEMBER_MO@dgs;                                
+                                                                                
+select count(1) from  CHINAUMS_SH.MEMBER_OPERATE_RECORD@dgp                     
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MEMBER_OPERATE_RECORD@dgs;                    
+                                                                                
+select count(1) from  CHINAUMS_SH.MERCHANT_ORDER@dgp                            
+ union all                                                                      
+
+select count(1) from  CHINAUMS_SH.MERCHANT_ORDER@dgs;                           
+                                                                                
+select count(1) from  CHINAUMS_SH.MOBILE_ORDER@dgp                              
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.MOBILE_ORDER@dgs;                             
+                                                                                
+select count(1) from  CHINAUMS_SH.NOTIFICATIONS@dgp                             
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.NOTIFICATIONS@dgs;                            
+                                                                                
+select count(1) from  CHINAUMS_SH.NOTIFY@dgp                                    
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.NOTIFY@dgs;                                   
+
+                                                                                
+select count(1) from  CHINAUMS_SH.PRODUCT@dgp                                   
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.PRODUCT@dgs;                                  
+                                                                                
+select count(1) from  CHINAUMS_SH.PUNCH_CARD_RECORD@dgp                         
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.PUNCH_CARD_RECORD@dgs;                        
+                                                                                
+select count(1) from  CHINAUMS_SH.QQ_ORDER@dgp                                  
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.QQ_ORDER@dgs;                                 
+                                                                                
+
+select count(1) from  CHINAUMS_SH.QRCODE@dgp                                    
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.QRCODE@dgs;                                   
+                                                                                
+select count(1) from  CHINAUMS_SH.RCO@dgp                                       
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.RCO@dgs;                                      
+                                                                                
+select count(1) from  CHINAUMS_SH.RECEIVER@dgp                                  
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.RECEIVER@dgs;                                 
+                                                                                
+select count(1) from  CHINAUMS_SH.SUGGEST@dgp                                   
+
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.SUGGEST@dgs;                                  
+                                                                                
+select count(1) from  CHINAUMS_SH.TBRECORD@dgp                                  
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBRECORD@dgs;                                 
+                                                                                
+select count(1) from  CHINAUMS_SH.TBRESOURCE@dgp                                
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBRESOURCE@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.TBROLE@dgp                                    
+ union all                                                                      
+
+select count(1) from  CHINAUMS_SH.TBROLE@dgs;                                   
+                                                                                
+select count(1) from  CHINAUMS_SH.TBROLE_RESOURCE@dgp                           
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBROLE_RESOURCE@dgs;                          
+                                                                                
+select count(1) from  CHINAUMS_SH.TBUSER@dgp                                    
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBUSER@dgs;                                   
+                                                                                
+select count(1) from  CHINAUMS_SH.TBUSER_ROLE@dgp                               
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TBUSER_ROLE@dgs;                              
+
+                                                                                
+select count(1) from  CHINAUMS_SH.TOKEN@dgp                                     
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TOKEN@dgs;                                    
+                                                                                
+select count(1) from  CHINAUMS_SH.TRADE_STAT@dgp                                
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TRADE_STAT@dgs;                               
+                                                                                
+select count(1) from  CHINAUMS_SH.TRADE_WATER@dgp                               
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TRADE_WATER@dgs;                              
+                                                                                
+
+select count(1) from  CHINAUMS_SH.TRANSFER_ORDER@dgp                            
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.TRANSFER_ORDER@dgs;                           
+                                                                                
+select count(1) from  CHINAUMS_SH.WASTB@dgp                                     
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.WASTB@dgs;                                    
+                                                                                
+select count(1) from  CHINAUMS_SH.WEG_ORDER@dgp                                 
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.WEG_ORDER@dgs;                                
+                                                                                
+select count(1) from  CHINAUMS_SH.WORKKEY@dgp                                   
+
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.WORKKEY@dgs;                                  
+                                                                                
+select count(1) from  CHINAUMS_SH.SALE_RCO@dgp                                  
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.SALE_RCO@dgs;                                 
+                                                                                
+select count(1) from  CHINAUMS_SH.SALE_TRADE_STAT@dgp                           
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.SALE_TRADE_STAT@dgs;                          
+                                                                                
+select count(1) from  CHINAUMS_SH.TRANSFERS@dgp                                 
+ union all                                                                      
+
+select count(1) from  CHINAUMS_SH.TRANSFERS@dgs;                                
+                                                                                
+select count(1) from  CHINAUMS_SH.BANK@dgp                                      
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.BANK@dgs;                                     
+                                                                                
+select count(1) from  CHINAUMS_SH.ALIPAY_ORDER@dgp                              
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.ALIPAY_ORDER@dgs;                             
+                                                                                
+select count(1) from  CHINAUMS_SH.RECHARGE_WASTB@dgp                            
+ union all                                                                      
+select count(1) from  CHINAUMS_SH.RECHARGE_WASTB@dgs;                           
+
+                                                                                
+select count(1) from  CHINAUMS_SH_READ.RCO_FOR_MCHT@dgp                         
+ union all                                                                      
+select count(1) from  CHINAUMS_SH_READ.RCO_FOR_MCHT@dgs;                        
+                                                                                
+select count(1) from  IBOXCLEAR.UNIONDICT@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.UNIONDICT@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.ROLE@dgp                                        
+ union all                                                                      
+select count(1) from  IBOXCLEAR.ROLE@dgs;                                       
+                                                                                
+
+select count(1) from  IBOXCLEAR.ACCNTSETTLE@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXCLEAR.ACCNTSETTLE@dgs;                                
+                                                                                
+select count(1) from  IBOXCLEAR.ACCOUNTS@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.ACCOUNTS@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.AWARD@dgp                                       
+ union all                                                                      
+select count(1) from  IBOXCLEAR.AWARD@dgs;                                      
+                                                                                
+select count(1) from  IBOXCLEAR.BALANCE@dgp                                     
+
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BALANCE@dgs;                                    
+                                                                                
+select count(1) from  IBOXCLEAR.BANKAREA@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BANKAREA@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.BANKCODE@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BANKCODE@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.BSGROUPS@dgp                                    
+ union all                                                                      
+
+select count(1) from  IBOXCLEAR.BSGROUPS@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.BSSUBJCT@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BSSUBJCT@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.BSTEAM@dgp                                      
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BSTEAM@dgs;                                     
+                                                                                
+select count(1) from  IBOXCLEAR.CARDBIN@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXCLEAR.CARDBIN@dgs;                                    
+
+                                                                                
+select count(1) from  IBOXCLEAR.CFGPARAMS@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.CFGPARAMS@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.CLRTRANSDETAILSETTLE@dgp                        
+ union all                                                                      
+select count(1) from  IBOXCLEAR.CLRTRANSDETAILSETTLE@dgs;                       
+                                                                                
+select count(1) from  IBOXCLEAR.GAINALLOT@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.GAINALLOT@dgs;                                  
+                                                                                
+
+select count(1) from  IBOXCLEAR.HISRCDLIST@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXCLEAR.HISRCDLIST@dgs;                                 
+                                                                                
+select count(1) from  IBOXCLEAR.IMPORTFILES@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXCLEAR.IMPORTFILES@dgs;                                
+                                                                                
+select count(1) from  IBOXCLEAR.ISSBASE@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXCLEAR.ISSBASE@dgs;                                    
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_ACCOUNTS@dgp                               
+
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_ACCOUNTS@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_BSTEAM@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_BSTEAM@dgs;                                
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_MCHT_TRN_RULE@dgp                          
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_MCHT_TRN_RULE@dgs;                         
+                                                                                
+select count(1) from  IBOXCLEAR.MCHSETTLE@dgp                                   
+ union all                                                                      
+
+select count(1) from  IBOXCLEAR.MCHSETTLE@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.MCHT_TM_RULE_DTL@dgp                            
+ union all                                                                      
+select count(1) from  IBOXCLEAR.MCHT_TM_RULE_DTL@dgs;                           
+                                                                                
+select count(1) from  IBOXCLEAR.MCHT_TRN_RULE@dgp                               
+ union all                                                                      
+select count(1) from  IBOXCLEAR.MCHT_TRN_RULE@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.MERCHANT@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.MERCHANT@dgs;                                   
+
+                                                                                
+select count(1) from  IBOXCLEAR.MOVEHIST@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.MOVEHIST@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.OPENACCNTBANK@dgp                               
+ union all                                                                      
+select count(1) from  IBOXCLEAR.OPENACCNTBANK@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.RULES@dgp                                       
+ union all                                                                      
+select count(1) from  IBOXCLEAR.RULES@dgs;                                      
+                                                                                
+
+select count(1) from  IBOXCLEAR.SCHEMES@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXCLEAR.SCHEMES@dgs;                                    
+                                                                                
+select count(1) from  IBOXCLEAR.SINGLEPAY@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.SINGLEPAY@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.TEAMSETTLE@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TEAMSETTLE@dgs;                                 
+                                                                                
+select count(1) from  IBOXCLEAR.TERMINAL@dgp                                    
+
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TERMINAL@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.TRANSDETAILSETTLE@dgp                           
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TRANSDETAILSETTLE@dgs;                          
+                                                                                
+select count(1) from  IBOXCLEAR.TRANSDEF@dgp                                    
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TRANSDEF@dgs;                                   
+                                                                                
+select count(1) from  IBOXCLEAR.USERS@dgp                                       
+ union all                                                                      
+
+select count(1) from  IBOXCLEAR.USERS@dgs;                                      
+                                                                                
+select count(1) from  IBOXCLEAR.TRADEWASTE@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TRADEWASTE@dgs;                                 
+                                                                                
+select count(1) from  IBOXCLEAR.UNIONDICT_OLD@dgp                               
+ union all                                                                      
+select count(1) from  IBOXCLEAR.UNIONDICT_OLD@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_SCHEMES@dgp                                
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_SCHEMES@dgs;                               
+
+                                                                                
+select count(1) from  IBOXCLEAR.DETAILQRY@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.DETAILQRY@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_BSGROUPS@dgp                               
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_BSGROUPS@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.SYSLOGS@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXCLEAR.SYSLOGS@dgs;                                    
+                                                                                
+
+select count(1) from  IBOXCLEAR.TRANSLOGSFILES@dgp                              
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TRANSLOGSFILES@dgs;                             
+                                                                                
+select count(1) from  IBOXCLEAR.TRANSLOGSDETAIL@dgp                             
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TRANSLOGSDETAIL@dgs;                            
+                                                                                
+select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_01@dgp                        
+ union all                                                                      
+select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_01@dgs;                       
+                                                                                
+select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_02@dgp                        
+
+ union all                                                                      
+select count(1) from  IBOXCLEAR.SYS_EXPORT_SCHEMA_02@dgs;                       
+                                                                                
+select count(1) from  IBOXCLEAR.BROKERS@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BROKERS@dgs;                                    
+                                                                                
+select count(1) from  IBOXCLEAR.BKSCHEMES@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BKSCHEMES@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.BKRULES@dgp                                     
+ union all                                                                      
+
+select count(1) from  IBOXCLEAR.BKRULES@dgs;                                    
+                                                                                
+select count(1) from  IBOXCLEAR.BROKERSETTLE@dgp                                
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BROKERSETTLE@dgs;                               
+                                                                                
+select count(1) from  IBOXCLEAR.UNIONDICT_BAK@dgp                               
+ union all                                                                      
+select count(1) from  IBOXCLEAR.UNIONDICT_BAK@dgs;                              
+                                                                                
+select count(1) from  IBOXCLEAR.BRKACCOUNTS@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXCLEAR.BRKACCOUNTS@dgs;                                
+
+                                                                                
+select count(1) from  IBOXCLEAR.LOGS_BRKACCOUNTS@dgp                            
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOGS_BRKACCOUNTS@dgs;                           
+                                                                                
+select count(1) from  IBOXCLEAR.TMP_REFNO@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TMP_REFNO@dgs;                                  
+                                                                                
+select count(1) from  IBOXCLEAR.LOG_BROKERS@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXCLEAR.LOG_BROKERS@dgs;                                
+                                                                                
+
+select count(1) from  IBOXCLEAR.CHANNLSETTLE@dgp                                
+ union all                                                                      
+select count(1) from  IBOXCLEAR.CHANNLSETTLE@dgs;                               
+                                                                                
+select count(1) from  IBOXCLEAR.CARDNO_ERR@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXCLEAR.CARDNO_ERR@dgs;                                 
+                                                                                
+select count(1) from  IBOXCLEAR.TOAD_PLAN_TABLE@dgp                             
+ union all                                                                      
+select count(1) from  IBOXCLEAR.TOAD_PLAN_TABLE@dgs;                            
+                                                                                
+select count(1) from  IBOXCLEAR.NETUNIONDICT@dgp                                
+
+ union all                                                                      
+select count(1) from  IBOXCLEAR.NETUNIONDICT@dgs;                               
+                                                                                
+select count(1) from  IBOXPAYGW.IBOX@dgp                                        
+ union all                                                                      
+select count(1) from  IBOXPAYGW.IBOX@dgs;                                       
+                                                                                
+select count(1) from  IBOXPAYGW.PARAMETERS@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXPAYGW.PARAMETERS@dgs;                                 
+                                                                                
+select count(1) from  IBOXPAYGW.ROLES@dgp                                       
+ union all                                                                      
+
+select count(1) from  IBOXPAYGW.ROLES@dgs;                                      
+                                                                                
+select count(1) from  IBOXPAYGW.TERMINAL_MAP@dgp                                
+ union all                                                                      
+select count(1) from  IBOXPAYGW.TERMINAL_MAP@dgs;                               
+                                                                                
+select count(1) from  IBOXPAYGW.TERMINALS@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXPAYGW.TERMINALS@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYGW.USERS@dgp                                       
+ union all                                                                      
+select count(1) from  IBOXPAYGW.USERS@dgs;                                      
+
+                                                                                
+select count(1) from  IBOXPAYGW.MERCHANTS@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXPAYGW.MERCHANTS@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYGW.TRADEWASTE_BAK@dgp                              
+ union all                                                                      
+select count(1) from  IBOXPAYGW.TRADEWASTE_BAK@dgs;                             
+                                                                                
+select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_01@dgp                        
+ union all                                                                      
+select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_01@dgs;                       
+                                                                                
+
+select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_02@dgp                        
+ union all                                                                      
+select count(1) from  IBOXPAYGW.SYS_EXPORT_SCHEMA_02@dgs;                       
+                                                                                
+select count(1) from  IBOXPAYGW.TRADEWASTE@dgp                                  
+ union all                                                                      
+select count(1) from  IBOXPAYGW.TRADEWASTE@dgs;                                 
+                                                                                
+select count(1) from  IBOXPAYGW.TRADEWASTE_BAK2@dgp                             
+ union all                                                                      
+select count(1) from  IBOXPAYGW.TRADEWASTE_BAK2@dgs;                            
+                                                                                
+select count(1) from  IBOXPAYGW_AIA.ROLES@dgp                                   
+
+ union all                                                                      
+select count(1) from  IBOXPAYGW_AIA.ROLES@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYGW_AIA.USERS@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXPAYGW_AIA.USERS@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYGW_AIA.TRADEWASTE@dgp                              
+ union all                                                                      
+select count(1) from  IBOXPAYGW_AIA.TRADEWASTE@dgs;                             
+                                                                                
+select count(1) from  IBOXPAYGW_AIA.TERMINALS@dgp                               
+ union all                                                                      
+
+select count(1) from  IBOXPAYGW_AIA.TERMINALS@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYGW_CNTVPAY.USERS@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYGW_CNTVPAY.USERS@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYGW_CNTVPAY.TERMINALS@dgp                           
+ union all                                                                      
+select count(1) from  IBOXPAYGW_CNTVPAY.TERMINALS@dgs;                          
+                                                                                
+select count(1) from  IBOXPAYGW_CNTVPAY.TRADEWASTE@dgp                          
+ union all                                                                      
+select count(1) from  IBOXPAYGW_CNTVPAY.TRADEWASTE@dgs;                         
+
+                                                                                
+select count(1) from  IBOXPAYGW_CNTVPAY.ROLES@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYGW_CNTVPAY.ROLES@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYGW_UNIBANK.ROLES@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYGW_UNIBANK.ROLES@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYGW_UNIBANK.TRADEWASTE@dgp                          
+ union all                                                                      
+select count(1) from  IBOXPAYGW_UNIBANK.TRADEWASTE@dgs;                         
+                                                                                
+
+select count(1) from  IBOXPAYGW_UNIBANK.USERS@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYGW_UNIBANK.USERS@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYGW_UNIBANK.TERMINALS@dgp                           
+ union all                                                                      
+select count(1) from  IBOXPAYGW_UNIBANK.TERMINALS@dgs;                          
+                                                                                
+select count(1) from  IBOXPAYGW_YEEPAY.USERS@dgp                                
+ union all                                                                      
+select count(1) from  IBOXPAYGW_YEEPAY.USERS@dgs;                               
+                                                                                
+select count(1) from  IBOXPAYGW_YEEPAY.TERMINALS@dgp                            
+
+ union all                                                                      
+select count(1) from  IBOXPAYGW_YEEPAY.TERMINALS@dgs;                           
+                                                                                
+select count(1) from  IBOXPAYGW_YEEPAY.TRADEWASTE@dgp                           
+ union all                                                                      
+select count(1) from  IBOXPAYGW_YEEPAY.TRADEWASTE@dgs;                          
+                                                                                
+select count(1) from  IBOXPAYGW_YEEPAY.ROLES@dgp                                
+ union all                                                                      
+select count(1) from  IBOXPAYGW_YEEPAY.ROLES@dgs;                               
+                                                                                
+select count(1) from  IBOXPAYRT.TB_AMOUNT@dgp                                   
+ union all                                                                      
+
+select count(1) from  IBOXPAYRT.TB_AMOUNT@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYRT.TB_AMOUNTRULE_REF_ROUTER@dgp                    
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_AMOUNTRULE_REF_ROUTER@dgs;                   
+                                                                                
+select count(1) from  IBOXPAYRT.TB_ROUTER_TERMINAL@dgp                          
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_ROUTER_TERMINAL@dgs;                         
+                                                                                
+select count(1) from  IBOXPAYRT.OPT_LOG@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXPAYRT.OPT_LOG@dgs;                                    
+
+                                                                                
+select count(1) from  IBOXPAYRT.TB_USER@dgp                                     
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_USER@dgs;                                    
+                                                                                
+select count(1) from  IBOXPAYRT.TB_ROUTER_APP@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_ROUTER_APP@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYRT.TB_ROUTER_RULE@dgp                              
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_ROUTER_RULE@dgs;                             
+                                                                                
+
+select count(1) from  IBOXPAYRT.TB_ROUTER_RECORD@dgp                            
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_ROUTER_RECORD@dgs;                           
+                                                                                
+select count(1) from  IBOXPAYRT.TB_ROUTER@dgp                                   
+ union all                                                                      
+select count(1) from  IBOXPAYRT.TB_ROUTER@dgs;                                  
+                                                                                
+select count(1) from  IBOXPAYSMS.ADMIN_USER@dgp                                 
+ union all                                                                      
+select count(1) from  IBOXPAYSMS.ADMIN_USER@dgs;                                
+                                                                                
+select count(1) from  IBOXPAYSMS.KLTX_UC@dgp                                    
+
+ union all                                                                      
+select count(1) from  IBOXPAYSMS.KLTX_UC@dgs;                                   
+                                                                                
+select count(1) from  IBOXPAYSMS.SMS_CONTENT@dgp                                
+ union all                                                                      
+select count(1) from  IBOXPAYSMS.SMS_CONTENT@dgs;                               
+                                                                                
+select count(1) from  IBOXPAYSMS.SENDSMS_USER@dgp                               
+ union all                                                                      
+select count(1) from  IBOXPAYSMS.SENDSMS_USER@dgs;                              
+                                                                                
+select count(1) from  IBOXPAYSMS.RET_MSG@dgp                                    
+ union all                                                                      
+
+select count(1) from  IBOXPAYSMS.RET_MSG@dgs;                                   
+                                                                                
+select count(1) from  IBXPYC.PYCREDIT_PERSON@dgp                                
+ union all                                                                      
+select count(1) from  IBXPYC.PYCREDIT_PERSON@dgs;                               
+                                                                                
+select count(1) from  IBXPYC.PYCREDIT_COMPANY@dgp                               
+ union all                                                                      
+select count(1) from  IBXPYC.PYCREDIT_COMPANY@dgs;                              
+                                                                                
+select count(1) from  IBXRISK.TBL_TXN_INFO_HIS@dgp                              
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_TXN_INFO_HIS@dgs;                             
+
+                                                                                
+select count(1) from  IBXRISK.TBL_TXN_INFO@dgp                                  
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_TXN_INFO@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_SYS_PARAM@dgp                                 
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_SYS_PARAM@dgs;                                
+                                                                                
+select count(1) from  IBXRISK.TBL_ROLE_FUNC_MAP@dgp                             
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_ROLE_FUNC_MAP@dgs;                            
+                                                                                
+
+select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL@dgp                           
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL@dgs;                          
+                                                                                
+select count(1) from  IBXRISK.TBL_RISK_INF@dgp                                  
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_RISK_INF@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_OPR_INFO@dgp                                  
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_OPR_INFO@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_ROLE_INF@dgp                                  
+
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_ROLE_INF@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_FUNC_INF@dgp                                  
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_FUNC_INF@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_EXAMPLE_MNT@dgp                               
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_EXAMPLE_MNT@dgs;                              
+                                                                                
+select count(1) from  IBXRISK.TBL_CTL_MCHT_INF@dgp                              
+ union all                                                                      
+
+select count(1) from  IBXRISK.TBL_CTL_MCHT_INF@dgs;                             
+                                                                                
+select count(1) from  IBXRISK.TBL_CTL_CARD_INF@dgp                              
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_CTL_CARD_INF@dgs;                             
+                                                                                
+select count(1) from  IBXRISK.TBL_BATCH_MON@dgp                                 
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_BATCH_MON@dgs;                                
+                                                                                
+select count(1) from  IBXRISK.SYS_CONFIG@dgp                                    
+ union all                                                                      
+select count(1) from  IBXRISK.SYS_CONFIG@dgs;                                   
+
+                                                                                
+select count(1) from  IBXRISK.OPT_LOG@dgp                                       
+ union all                                                                      
+select count(1) from  IBXRISK.OPT_LOG@dgs;                                      
+                                                                                
+select count(1) from  IBXRISK.TBL_RISK_MON@dgp                                  
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_RISK_MON@dgs;                                 
+                                                                                
+select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL_0913@dgp                      
+ union all                                                                      
+select count(1) from  IBXRISK.TBL_SINGLE_MCHT_CTL_0913@dgs;                     
+                                                                                
+
+select count(1) from  IBXRISK.MMS_PROXY@dgp                                     
+ union all                                                                      
+select count(1) from  IBXRISK.MMS_PROXY@dgs;                                    
+                                                                                
+select count(1) from  IBXRISK.MMS_MENUS@dgp                                     
+ union all                                                                      
+select count(1) from  IBXRISK.MMS_MENUS@dgs;                                    
+                                                                                
+select count(1) from  IBXRISK.MMS_RESOURCES@dgp                                 
+ union all                                                                      
+select count(1) from  IBXRISK.MMS_RESOURCES@dgs;                                
+                                                                                
+select count(1) from  IBXRISK.MMS_ROLE@dgp                                      
+
+ union all                                                                      
+select count(1) from  IBXRISK.MMS_ROLE@dgs;                                     
+                                                                                
+select count(1) from  IBXRISK.MMS_SYSTEMUSER@dgp                                
+ union all                                                                      
+select count(1) from  IBXRISK.MMS_SYSTEMUSER@dgs;                               
+                                                                                
+select count(1) from  IBXSMS.TB_BASE_SMS@dgp                                    
+ union all                                                                      
+select count(1) from  IBXSMS.TB_BASE_SMS@dgs;                                   
+                                                                                
+select count(1) from  IBXSMS.TB_SMS_USER@dgp                                    
+ union all                                                                      
+
+select count(1) from  IBXSMS.TB_SMS_USER@dgs;                                   
+                                                                                
+select count(1) from  IBXSMS.TB_SMS_ROUTER@dgp                                  
+ union all                                                                      
+select count(1) from  IBXSMS.TB_SMS_ROUTER@dgs;                                 
+                                                                                
+select count(1) from  MERCHANT.OPT_LOG@dgp                                      
+ union all                                                                      
+select count(1) from  MERCHANT.OPT_LOG@dgs;                                     
+                                                                                
+select count(1) from  MERCHANT.MMS_THRIDPART_HISTROY@dgp                        
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_THRIDPART_HISTROY@dgs;                       
+
+                                                                                
+select count(1) from  MERCHANT.MMS_PROXY@dgp                                    
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_PROXY@dgs;                                   
+                                                                                
+select count(1) from  MERCHANT.MMS_RESOURCES@dgp                                
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_RESOURCES@dgs;                               
+                                                                                
+select count(1) from  MERCHANT.MMS_ROLE@dgp                                     
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_ROLE@dgs;                                    
+                                                                                
+
+select count(1) from  MERCHANT.MMS_SYSTEMUSER@dgp                               
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_SYSTEMUSER@dgs;                              
+                                                                                
+select count(1) from  MERCHANT.MMS_ROLE_20130823@dgp                            
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_ROLE_20130823@dgs;                           
+                                                                                
+select count(1) from  MERCHANT.COOPERATE_MERCHANT_20130905@dgp                  
+ union all                                                                      
+select count(1) from  MERCHANT.COOPERATE_MERCHANT_20130905@dgs;                 
+                                                                                
+select count(1) from  MERCHANT.MERCHANT_TRANSFER@dgp                            
+
+ union all                                                                      
+select count(1) from  MERCHANT.MERCHANT_TRANSFER@dgs;                           
+                                                                                
+select count(1) from  MERCHANT.DIRTY_FIELD@dgp                                  
+ union all                                                                      
+select count(1) from  MERCHANT.DIRTY_FIELD@dgs;                                 
+                                                                                
+select count(1) from  MERCHANT.MERCHANT_TRANSFER_BAK@dgp                        
+ union all                                                                      
+select count(1) from  MERCHANT.MERCHANT_TRANSFER_BAK@dgs;                       
+                                                                                
+select count(1) from  MERCHANT.MERCHANT_LOWRATE@dgp                             
+ union all                                                                      
+
+select count(1) from  MERCHANT.MERCHANT_LOWRATE@dgs;                            
+                                                                                
+select count(1) from  MERCHANT.AUDIT_LOG@dgp                                    
+ union all                                                                      
+select count(1) from  MERCHANT.AUDIT_LOG@dgs;                                   
+                                                                                
+select count(1) from  MERCHANT.MMS_NOTICE@dgp                                   
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_NOTICE@dgs;                                  
+                                                                                
+select count(1) from  MERCHANT.MMS_NOTICE_USER@dgp                              
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_NOTICE_USER@dgs;                             
+
+                                                                                
+select count(1) from  MERCHANT.MMS_MENUS@dgp                                    
+ union all                                                                      
+select count(1) from  MERCHANT.MMS_MENUS@dgs;                                   
+                                                                                
+select count(1) from  TXY.BIG_TABLE@dgp                                         
+ union all                                                                      
+select count(1) from  TXY.BIG_TABLE@dgs;                                        
+                                                                                
+
+ÒÑÑ¡Ôñ246ÐÐ¡£
+

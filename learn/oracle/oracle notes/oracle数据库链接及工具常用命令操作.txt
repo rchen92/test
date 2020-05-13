@@ -1,0 +1,625 @@
+[oracle@oracle-server ~]$ ps -elf | grep ora_ | grep orcl
+0 S oracle    6900     1  0  80   0 - 186363 poll_s 09:23 ?       00:00:00 ora_pmon_orcl
+0 S oracle    6902     1  0  58   - - 185801 hrtime 09:23 ?       00:00:08 ora_vktm_orcl
+0 S oracle    6906     1  0  80   0 - 186124 semtim 09:23 ?       00:00:00 ora_gen0_orcl
+0 S oracle    6908     1  0  80   0 - 185801 semtim 09:23 ?       00:00:00 ora_diag_orcl
+0 S oracle    6910     1  0  80   0 - 186708 semtim 09:23 ?       00:00:00 ora_dbrm_orcl
+0 S oracle    6912     1  0  80   0 - 186318 semtim 09:23 ?       00:00:00 ora_psp0_orcl
+0 S oracle    6914     1  0  80   0 - 185929 semtim 09:23 ?       00:00:02 ora_dia0_orcl
+0 S oracle    6916     1  0  80   0 - 185801 semtim 09:23 ?       00:00:00 ora_mman_orcl
+0 S oracle    6918     1  0  80   0 - 188599 semtim 09:23 ?       00:00:01 ora_dbw0_orcl
+0 S oracle    6920     1  0  80   0 - 192234 semtim 09:23 ?       00:00:01 ora_lgwr_orcl
+0 S oracle    6922     1  0  80   0 - 187098 semtim 09:23 ?       00:00:01 ora_ckpt_orcl
+0 S oracle    6924     1  0  80   0 - 187997 semtim 09:23 ?       00:00:01 ora_smon_orcl
+0 S oracle    6926     1  0  80   0 - 186961 semtim 09:23 ?       00:00:00 ora_reco_orcl
+0 S oracle    6928     1  0  80   0 - 186456 semtim 09:23 ?       00:00:00 ora_rbal_orcl
+0 S oracle    6930     1  0  80   0 - 186253 pipe_w 09:23 ?       00:00:00 ora_asmb_orcl
+0 S oracle    6932     1  0  80   0 - 187917 semtim 09:23 ?       00:00:02 ora_mmon_orcl
+0 S oracle    6936     1  0  80   0 - 186186 semtim 09:23 ?       00:00:01 ora_mmnl_orcl
+0 S oracle    6938     1  0  80   0 - 187742 semtim 09:23 ?       00:00:00 ora_mark_orcl
+0 S oracle    6942     1  0  80   0 - 186276 poll_s 09:23 ?       00:00:00 ora_d000_orcl
+0 S oracle    6946     1  0  80   0 - 186067 poll_s 09:23 ?       00:00:00 ora_s000_orcl
+0 S oracle    7006     1  0  80   0 - 185929 semtim 09:23 ?       00:00:00 ora_qmnc_orcl
+0 S oracle    7071     1  0  80   0 - 187499 semtim 09:24 ?       00:00:01 ora_cjq0_orcl
+0 S oracle    7073     1  0  80   0 - 186971 semtim 09:24 ?       00:00:00 ora_q000_orcl
+0 S oracle    7075     1  0  80   0 - 188217 semtim 09:24 ?       00:00:00 ora_q001_orcl
+0 S oracle    7167     1  0  80   0 - 185932 semtim 09:25 ?       00:00:00 ora_smco_orcl
+0 S oracle   17308     1  0  80   0 - 186711 semtim 09:51 ?       00:00:00 ora_w000_orcl
+0 S oracle   19237     1  1  80   0 - 187359 semtim 10:12 ?       00:00:00 ora_j000_orcl
+0 S oracle   19239     1  0  80   0 - 185800 semtim 10:12 ?       00:00:00 ora_j001_orcl
+
+[grid@oracle-server ~]$ crs_stat -t -v		#在生产环境下，一定要先在grid下查看是否都是ONLINE状态，然后再连数据库
+Name           Type           R/RA   F/FT   Target    State     Host        
+----------------------------------------------------------------------
+ora.DATA.dg    ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.FRA.dg     ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora....ER.lsnr ora....er.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.asm        ora.asm.type   0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.cssd       ora.cssd.type  0/5    0/5    ONLINE    ONLINE    orac...rver 
+ora.diskmon    ora....on.type 0/10   0/5    ONLINE    ONLINE    orac...rver 
+ora.orcl.db    ora....se.type 0/2    0/1    ONLINE    ONLINE    orac...rver 
+
+-------------------------------------
+#登录数据库，检查数据库的状态
+#怎么登录？
+#1、本地登录：用的就是ipc进程间通讯协议，和网络没有关系。先登陆数据库所在的操作系统，然后再连接数据库
+#2、远程登录：通过tcp/ip协议（先配置网络）
+#3、管理员登录：sys、system
+#4、普通用户登录：scott、hr、oe等
+
+#管理员的本地登录：必须先制定你要登录那个数据库 ——>ORACLE_SID，export ORACLE_SID=orcl ——>表示我要连接orcl数据库，export ORACLE_SID=ocp ——>表示我要连接ocp数据库
+
+[oracle@oracle-server ~]$ sqlplus sys/oracle		#登录时输入错误
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Mar 14 10:24:37 2016
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+ERROR:
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER	#oracle所有的报错都是以ORA开头，ORA-xxxxx
+Enter user-name:		#这个错误直接按三次回车，然后重新登录就可以了
+[oracle@oracle-server ~]$ sqlplus / as sysdba
+SQL> show user
+USER is "SYS"
+#扩展：在oracle数据库中不存在忘记密码登录不了数据库，你只要输入dba组的账户登录数据库服务器，就一定登录数据库
+
+----------------------------------------------
+#普通用户本地登录
+#注意：默认普通用户都是被锁定的，必须先解锁
+alter user 账户名 account unlock;
+	#例如：
+	alter user scott account unlock
+#给用户设置密码
+alter user scott identified by 新密码;
+	#例如：
+	alter user scott identified by oracle;
+	SQL> conn scott/oracle
+	#这个时候我们可以登录scott用户，如果不能登录scott，第一判断scott是否启用，第二是否有权限登录数据库
+	SQL> show user
+	USER is ""
+	SQL> startup
+	ORACLE instance started
+
+
+---------------------------------------------
+SQL> show user
+USER is "SYS"
+SQL> conn scott/oracle		#之前安装时解锁了
+Connected.
+SQL> show user
+USER is "SCOTT"
+SQL> conn hr/hr			#没有解锁账号
+ERROR:
+ORA-28000: the account is locked
+Warning: You are no longer connected to ORACLE.
+SQL> conn hr/oracle
+ERROR:
+ORA-28000: the account is locked
+
+SQL> conn sys/oracle
+ERROR:
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+SQL> conn sys/sys
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+SQL> conn / as sysdba
+Connected.
+SQL> show user
+USER is "SYS"
+
+-------------------------------
+#解锁账号
+SQL> conn hr/hr			
+ERROR:
+ORA-28000: the account is locked
+SQL> alter user hr account unlock;
+SP2-0640：Not connected
+SQL> show user
+USER is ""		#这是一个黑洞账号。刚刚是SYS管理员账号，要进到hr账号里面，结果没有进去（在window来讲，是退回管理员），这里没有退出，进入到一个黑洞里面了，这会儿要重新连。
+SQL> conn / as sysdba
+Connected.
+SQL> show user
+USER is "SYS"
+SQL> alter user hr account unlock;		#解锁完成
+User altered.
+
+-----------------------------------
+#授予密码
+SQL> alter user hr identified by hr;		#授予密码为hr
+User altered.
+SQL> conn hr/hr
+Connected.
+SQL> show user
+USER is "HR"
+SQL> exit
+
+[oracle@oracle-server ~]$ sqlplus scott/oracle		#通过普通账号进去
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Mar 14 11:09:09 2016
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+SQL> show user
+USER is "SCOTT"
+SQL> conn / as sysdba
+Connected.
+SQL> show user
+USER is "SYS"
+SQL> select status from v$instance;
+STATUS
+------------
+OPEN
+
+
+------------------------------------
+#如果不小心执行了shutdown命令，必然会卡主
+SQL> shutdown
+
+
+SQL> shutdown   
+
+
+
+#再连接一个终端进去
+[root@oracle-server ~]# su - oracle
+[oracle@oracle-server ~]$ ls
+oradiag_oracle
+[oracle@oracle-server ~]$ pwd
+/home/oracle
+[oracle@oracle-server ~]$ sqlplus / as sysdba
+SQL> select * from scott.emp;
+select * from scott.emp
+*
+ERROR at line 1:			#会报错
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+SQL> select status from v$instance;
+select status from v$instance
+*
+ERROR at line 1:			#还是报错
+ORA-01012: not logged on
+Process ID: 0
+Session ID: 0 Serial number: 0
+
+#在前一个终端上
+^CORA-01013: user requested cancel of current operation
+SQL> startup
+ORA-01081: cannot start already-running ORACLE - shut it down first		#开始也不行
+#到后面一个
+SQL> exit
+Disconnected
+[oracle@oracle-server ~]$ ps -elf | grep ora_ | grep orcl
+0 S oracle    2778     1  0  80   0 - 185801 semtim 14:27 ?       00:00:00 ora_smco_orcl
+0 S oracle    6900     1  0  80   0 - 186363 poll_s 09:23 ?       00:00:04 ora_pmon_orcl
+0 S oracle    6902     1  0  58   - - 185801 hrtime 09:23 ?       00:01:01 ora_vktm_orcl
+0 S oracle    6906     1  0  80   0 - 186124 semtim 09:23 ?       00:00:00 ora_gen0_orcl
+0 S oracle    6908     1  0  80   0 - 185801 semtim 09:23 ?       00:00:00 ora_diag_orcl
+0 S oracle    6910     1  0  80   0 - 186708 semtim 09:23 ?       00:00:00 ora_dbrm_orcl
+0 S oracle    6912     1  0  80   0 - 186318 semtim 09:23 ?       00:00:01 ora_psp0_orcl
+0 S oracle    6914     1  0  80   0 - 185929 semtim 09:23 ?       00:00:13 ora_dia0_orcl
+0 S oracle    6916     1  0  80   0 - 185801 semtim 09:23 ?       00:00:01 ora_mman_orcl
+0 S oracle    6918     1  0  80   0 - 188599 semtim 09:23 ?       00:00:03 ora_dbw0_orcl	#找到这一个
+0 S oracle    6920     1  0  80   0 - 192234 semtim 09:23 ?       00:00:04 ora_lgwr_orcl
+0 S oracle    6922     1  0  80   0 - 187098 semtim 09:23 ?       00:00:08 ora_ckpt_orcl
+0 S oracle    6924     1  0  80   0 - 187997 semtim 09:23 ?       00:00:03 ora_smon_orcl
+0 S oracle    6926     1  0  80   0 - 186961 semtim 09:23 ?       00:00:00 ora_reco_orcl
+0 S oracle    6928     1  0  80   0 - 186456 semtim 09:23 ?       00:00:00 ora_rbal_orcl
+0 S oracle    6930     1  0  80   0 - 186253 pipe_w 09:23 ?       00:00:00 ora_asmb_orcl
+0 S oracle    6938     1  0  80   0 - 187742 semtim 09:23 ?       00:00:00 ora_mark_orcl
+0 S oracle    6942     1  0  80   0 - 186276 poll_s 09:23 ?       00:00:00 ora_d000_orcl
+0 S oracle    6946     1  0  80   0 - 186067 poll_s 09:23 ?       00:00:00 ora_s000_orcl
+[oracle@oracle-server ~]$ kill -9 6918
+[oracle@oracle-server ~]$ ps -elf | grep ora_ | grep orcl		#再来看一下，什么都没有了
+
+#在grid上查看状态
+[grid@oracle-server ~]$ crs_stat -t -v
+Name           Type           R/RA   F/FT   Target    State     Host        
+----------------------------------------------------------------------
+ora.DATA.dg    ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.FRA.dg     ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora....ER.lsnr ora....er.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.asm        ora.asm.type   0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.cssd       ora.cssd.type  0/5    0/5    ONLINE    ONLINE    orac...rver 
+ora.diskmon    ora....on.type 0/10   0/5    ONLINE    ONLINE    orac...rver 
+ora.orcl.db    ora....se.type 1/2    0/1    ONLINE    OFFLINE			#这个现在的当前状态是OFFLINE
+#等一会儿再来查看状态
+[grid@oracle-server ~]$ crs_stat -t -v
+Name           Type           R/RA   F/FT   Target    State     Host        
+----------------------------------------------------------------------
+ora.DATA.dg    ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.FRA.dg     ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora....ER.lsnr ora....er.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.asm        ora.asm.type   0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.cssd       ora.cssd.type  0/5    0/5    ONLINE    ONLINE    orac...rver 
+ora.diskmon    ora....on.type 0/10   0/5    ONLINE    ONLINE    orac...rver 
+ora.orcl.db    ora....se.type 2/2    0/1    ONLINE    ONLINE    orac...rver	
+						#又变成了ONLINE，因为目标状态（Target）是ONLINE，所以会自动启动
+
+#到oracle查看
+[oracle@oracle-server ~]$ sqlplus / as sysdba		#可以进去
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Mar 14 14:28:20 2016
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+SQL> select status from v$instance;		#可以查询
+STATUS
+------------
+OPEN
+
+[oracle@oracle-server ~]$ ps -elf | grep ora_ | grep orcl		#进程又都起来了
+0 S oracle    3713     1  0  80   0 - 186363 poll_s 14:37 ?       00:00:00 ora_pmon_orcl
+0 S oracle    3715     1  0  58   - - 185801 hrtime 14:37 ?       00:00:00 ora_vktm_orcl
+0 S oracle    3719     1  0  80   0 - 186124 semtim 14:37 ?       00:00:00 ora_gen0_orcl
+0 S oracle    3721     1  0  80   0 - 185801 semtim 14:37 ?       00:00:00 ora_diag_orcl
+0 S oracle    3723     1  0  80   0 - 186708 semtim 14:37 ?       00:00:00 ora_dbrm_orcl
+0 S oracle    3725     1  0  80   0 - 186318 semtim 14:37 ?       00:00:00 ora_psp0_orcl
+0 S oracle    3727     1  0  80   0 - 185929 semtim 14:37 ?       00:00:00 ora_dia0_orcl
+0 S oracle    3729     1  0  80   0 - 185801 semtim 14:37 ?       00:00:00 ora_mman_orcl
+0 S oracle    3731     1  0  80   0 - 188599 semtim 14:37 ?       00:00:00 ora_dbw0_orcl
+0 S oracle    3733     1  0  80   0 - 192234 semtim 14:37 ?       00:00:00 ora_lgwr_orcl
+0 S oracle    3735     1  0  80   0 - 186837 semtim 14:37 ?       00:00:00 ora_ckpt_orcl
+0 S oracle    3737     1  0  80   0 - 186715 semtim 14:37 ?       00:00:00 ora_smon_orcl
+0 S oracle    3739     1  0  80   0 - 186704 semtim 14:37 ?       00:00:00 ora_reco_orcl
+0 S oracle    3741     1  0  80   0 - 186458 semtim 14:37 ?       00:00:00 ora_rbal_orcl
+0 S oracle    3743     1  0  80   0 - 186253 pipe_w 14:37 ?       00:00:00 ora_asmb_orcl
+0 S oracle    3745     1  0  80   0 - 187918 semtim 14:37 ?       00:00:00 ora_mmon_orcl
+0 S oracle    3749     1  0  80   0 - 185801 semtim 14:37 ?       00:00:00 ora_mmnl_orcl
+0 S oracle    3751     1  0  80   0 - 187743 semtim 14:37 ?       00:00:00 ora_mark_orcl
+0 S oracle    3753     1  0  80   0 - 186276 poll_s 14:37 ?       00:00:00 ora_d000_orcl
+0 S oracle    3757     1  0  80   0 - 186067 poll_s 14:37 ?       00:00:00 ora_s000_orcl
+0 S oracle    3798     1  0  80   0 - 186150 semtim 14:37 ?       00:00:00 ora_o000_orcl
+0 S oracle    3907     1  0  80   0 - 185929 semtim 14:37 ?       00:00:00 ora_qmnc_orcl
+0 S oracle    3948     1  0  80   0 - 186971 semtim 14:38 ?       00:00:00 ora_q000_orcl
+0 S oracle    3950     1  0  80   0 - 188039 semtim 14:38 ?       00:00:00 ora_q001_orcl
+0 S oracle    3966     1  0  80   0 - 187482 semtim 14:38 ?       00:00:00 ora_cjq0_orcl
+0 S oracle    4146     1  0  80   0 - 186196 semtim 14:40 ?       00:00:00 ora_j000_orcl
+0 S oracle    4148     1  0  80   0 - 185800 semtim 14:40 ?       00:00:00 ora_j001_orcl
+
+---------------------------------------
+#接下来熟悉SQLPLUS这个工具
+SQL> help index
+Enter Help [topic] for help.
+ @             COPY         PAUSE                    SHUTDOWN
+ @@            DEFINE       PRINT                    SPOOL
+ /             DEL          PROMPT                   SQLPLUS
+ ACCEPT        DESCRIBE     QUIT                     START
+ APPEND        DISCONNECT   RECOVER                  STARTUP
+ ARCHIVE LOG   EDIT         REMARK                   STORE
+ ATTRIBUTE     EXECUTE      REPFOOTER                TIMING
+ BREAK         EXIT         REPHEADER                TTITLE
+ BTITLE        GET          RESERVED WORDS (SQL)     UNDEFINE
+ CHANGE        HELP         RESERVED WORDS (PL/SQL)  VARIABLE
+ CLEAR         HOST         RUN                      WHENEVER OSERROR
+ COLUMN        INPUT        SAVE                     WHENEVER SQLERROR
+ COMPUTE       LIST         SET                      XQUERY
+ CONNECT       PASSWORD     SHOW
+#基础命令： @、/、CONNECT、DEFINE、EXIT、HOST、LIST、QUIT、SAVE、SHOW、SHUTDOWN、SPOOL、START、STARTUP
+
+#怎么输入sql语句（sql语句自身不区分大小写）
+#;（分号）表示结束，回车执行
+----------------------
+#例如：
+	SQL> select * from scott.dept;
+	    DEPTNO DNAME	  LOC
+	---------- -------------- -------------
+		10 ACCOUNTING	  NEW YORK
+		20 RESEARCH	  DALLAS
+		30 SALES	  CHICAGO
+		40 OPERATIONS	  BOSTON
+
+SQL> show user
+USER is "SYS"
+SQL> conn scott/oracle		#以后最好都是在普通用户下执行命令，SYS管理员用户出错后很麻烦
+Connected.
+SQL> show user
+USER is "SCOTT"
+SQL> select * from emp;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800
+	20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300
+	30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500
+	30
+      7788 SCOTT      ANALYST	      7566 19-APR-87	   3000
+	20
+......
+SQL> list		#查看刚才的命令
+  1* select * from emp
+SQL> l			#使用l也可以
+  1* select * from emp
+SQL> /			#/为使用刚才的命令
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800
+	20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300
+	30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500
+	30
+      7788 SCOTT      ANALYST	      7566 19-APR-87	   3000
+	20
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> l
+  1* select * from dept			#这次显示的命令不一样了，把之前的给覆盖了
+SQL> /
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+
+--------------------------
+#修改
+EDIT
+#两种方法
+#方法1：临时指定，  define _editor=vi（这种方法是最好的，因为第二种方法不是所有的设备都能让你去修改环境变量的）
+#方法2：cd /home/oracle
+	vim .bash_profile
+	export EDITOR=vi	#加入这一行
+	source .bash_profile
+
+SQL> /			#/为使用刚才的命令
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800
+	20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300
+	30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500
+	30
+      7788 SCOTT      ANALYST	      7566 19-APR-87	   3000
+	20
+SQL> define _editor=vi
+SQL> ed
+select * from emp
+where ename='SCOTT'	#添加这一行，wq保存退出
+/
+SQL> l
+  1  select * from emp
+  2* where ename='SCOTT'
+SQL> /
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7788 SCOTT      ANALYST	      7566 19-APR-87	   3000
+	20
+
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+
+SQL> ed
+select * from dept		#还可以继续编辑
+/
+SQL> exit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+[oracle@oracle-server ~]$ sqlplus / as sysdba
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> ed					#这次就不能编辑了，需要重新临时指定
+Wrote file afiedt.buf
+21
+
+?
+q
+
+  1* select * from dept
+SQL> define _editor=vi
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from dept
+
+---------------------------------
+#保存sql buffer中的语句
+#SAVE	
+	SAV[E] [FILE] file_name[.ext] [CRE[ATE] | REP[LACE] | APP[END]]
+	save 文件名字(建议绝对路径) [cre[ate]]		默认是create
+	save 文件名字(建议绝对路径) [rep[lace]]		覆盖
+	save 文件名字(建议绝对路径) [app[end]]
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> save /u01/app/2016.3.14.sql
+Created file /u01/app/2016.3.14.sql
+SQL> exit
+[oracle@oracle-server ~]$ cd /u01/app/
+[oracle@oracle-server app]$ ls
+2016.3.14.sql  grid  oracle  oraInventory
+[oracle@oracle-server app]$ cat 2016.3.14.sql 
+select * from dept
+/
+
+#是否保存成功，到操作系统上看
+#HOST
+SQL> host			#在不退出数据库的情况下进入一个系统，而这个系统只不过是调入到数据库中来使用
+[oracle@oracle-server ~]$ cd /u01/app/
+[oracle@oracle-server app]$ ls
+2016.3.14.sql  grid  oracle  oraInventory
+[oracle@oracle-server app]$ vim 2016.3.14.sql 
+[oracle@oracle-server app]$ exit	#退出则回到数据库
+exit
+SQL> 
+
+------------------------------
+#clear		清屏
+	SQL> host clear
+#pwd		显示当前目录
+	SQL> host pwd
+#ls		列出目标信息
+	SQL> host ls /u01/app
+#cp		复制
+	SQL> host cp /u01/app/1.sql /tmp/2.sql
+#rm		删除
+	SQL> host rm -rf /tmp/2.sql
+#注意：host在SQLPLUS 命令
+#如果在linux平台，host等价于!，host clear 等于 !clear
+
+#exit、quit	退出sqlplus
+
+------------------------------------
+#在sqlplus调用运行/u01/app/1.sql脚本
+#@ 、start
+	 @ {url|file_name[.ext]} [arg ...]
+	 @ 脚本的名字
+	 start 脚本的名字
+SQL> @ /u01/app/2016.3.14.sql
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> start /u01/app/2016.3.14.sql
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+
+-----------------------------------
+#在sqlplus看脚本内容，编辑后再执行。
+#先把脚本调入sql buffer，然后edit编辑后执行
+#get
+SQL> get /u01/app/2016.3.14.sql
+  1* select * from dept
+SQL> define _editor=vi
+SQL> ed			#编辑命令
+select * from dept
+/
+
+--------------------------------
+#把屏幕所有输出保存为一个日志
+#spool
+	SQL> spool /u01/app/1.log append
+	输入很多操作
+	......
+	spool off	结束
+	结束后不用退出
+
+SQL> spool /u01/app/1.log append
+输入很多操作
+......
+SQL> spool off
+SQL> host
+[oracle@oracle-server ~]$ cd /u01/app/
+[oracle@oracle-server app]$ cat 1.log		#这里就看到了所有正确错误的命令全部都保存下来，生成了一个日志
+[oracle@oracle-server app]$ exit
+exit
+
+--------------------------------
+#在账户之间切换
+#CONNECT
+	conn[ect] 账户名/密码 as 角色
+SQL> show user
+USER is "SCOTT"
+SQL> conn system/oracle
+Connected.
+SQL> show user
+USER is "SYSTEM"
+SQL> conn / as sysdba
+Connected.
+SQL> show user
+USER is "SYS"
+SQL> conn scott/oracle
+Connected.
+SQL> show user
+USER is "SCOTT"
+
+#在sqlplus可以关闭和启动数据库
+SQL> shutdown immediate;
+SQL> startup;
+
+SQL> conn / as sysdba
+Connected.
+SQL> shutdown immediate;
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL> exit
+[oracle@oracle-server ~]$ sqlplus / as sysdba
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Mar 14 16:53:56 2016
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+Connected to an idle instance.		#状态是idle instance
+SQL> 
+#到grid上看
+[grid@oracle-server ~]$ crs_stat -t -v
+Name           Type           R/RA   F/FT   Target    State     Host        
+----------------------------------------------------------------------
+ora.DATA.dg    ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.FRA.dg     ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora....ER.lsnr ora....er.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.asm        ora.asm.type   0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.cssd       ora.cssd.type  0/5    0/5    ONLINE    ONLINE    orac...rver 
+ora.diskmon    ora....on.type 0/10   0/5    ONLINE    ONLINE    orac...rver 
+ora.orcl.db    ora....se.type 0/2    0/1    OFFLINE   OFFLINE			#目标状态和现在的状态都变成了OFFLINE
+#到oracle
+SQL> startup
+ORACLE instance started.
+
+Total System Global Area  534462464 bytes
+Fixed Size		    2215064 bytes
+Variable Size		  373293928 bytes
+Database Buffers	  155189248 bytes
+Redo Buffers		    3764224 bytes
+Database mounted.
+Database opened.
+#到grid上
+[grid@oracle-server ~]$ srvctl status database -d orcl
+Database is not running.
+[grid@oracle-server ~]$  
+[grid@oracle-server ~]$ crs_stat -t -v
+Name           Type           R/RA   F/FT   Target    State     Host        
+----------------------------------------------------------------------
+ora.DATA.dg    ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.FRA.dg     ora....up.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora....ER.lsnr ora....er.type 0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.asm        ora.asm.type   0/5    0/     ONLINE    ONLINE    orac...rver 
+ora.cssd       ora.cssd.type  0/5    0/5    ONLINE    ONLINE    orac...rver 
+ora.diskmon    ora....on.type 0/10   0/5    ONLINE    ONLINE    orac...rver 
+ora.orcl.db    ora....se.type 0/2    0/1    ONLINE    ONLINE    orac...rver
+
+
+
+
+
+
+
+
+
+

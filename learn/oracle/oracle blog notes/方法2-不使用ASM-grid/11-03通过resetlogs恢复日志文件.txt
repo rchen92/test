@@ -1,0 +1,76 @@
+日志文件丢失
+	通过resetlogs恢复（重建）日志文件
+
+SQL> shutdown immediate
+[oracle@orcl ~]$ rm /u01/app/oracle/oradata/orcl/redo0*
+SQL> startup
+...
+Database mounted.
+ORA-03113: end-of-file on communication channel
+Process ID: 4670
+Session ID: 1 Serial number: 5
+SQL> alter database  open resetlogs;
+alter database	open resetlogs
+*
+ERROR at line 1:
+ORA-01139: RESETLOGS option only valid after an incomplete database recovery
+SQL> recover database using backup controlfile;
+ORA-00279: change 1049372 generated at 12/22/2016 03:24:41 needed for thread 1
+ORA-00289: suggestion :
+/u01/app/oracle/fast_recovery_area/ORCL/archivelog/2016_12_22/o1_mf_1_8_%u_.arc
+ORA-00280: change 1049372 for thread 1 is in sequence #8
+Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
+回车键
+ORA-00308: cannot open archived log
+'/u01/app/oracle/fast_recovery_area/ORCL/archivelog/2016_12_22/o1_mf_1_8_%u_.arc
+'
+ORA-27037: unable to obtain file status
+Linux-x86_64 Error: 2: No such file or directory
+Additional information: 3
+SQL> alter database open resetlogs;
+alter database open resetlogs
+*
+ERROR at line 1:
+ORA-01113: file 1 needs media recovery
+ORA-01110: data file 1: '/u01/app/oracle/oradata/orcl/system01.dbf'
+SQL> alter system set "_allow_resetlogs_corruption"=true scope=spfile;
+SQL> startup force mount
+SQL> alter database open resetlogs;
+SQL> ho ls /u01/app/oracle/oradata/orcl/red*
+/u01/app/oracle/oradata/orcl/redo01.log  /u01/app/oracle/oradata/orcl/redo03.log
+/u01/app/oracle/oradata/orcl/redo02.log
+SQL> alter system reset "_allow_resetlogs_corruption" scope=spfile sid='*';
+SQL> shutdown immediate
+SQL> startup
+
+
+非归档模式下，日志文件丢失
+1.全备datafile controfile spfile|pfile
+2.想办法可以使用resetlogs让数据库open起来
+3.如果需要验证数据一致性，则使用隐藏参数_allow_resetlogs_corruption=true，
+4.数据库open过后，把_allow_resetlogs_corruption取消
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

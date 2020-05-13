@@ -1,0 +1,227 @@
+##开始导出
+##按表来导出
+##按用户来导出
+##全库导出
+
+
+
+expdb impdp 应用层工具
+
+SQL> show user
+USER is "SYS"
+#先创建一个导入导出目录
+SQL> CREATE DIRECTORY exp AS '/backup';
+#现在决定哪个用户要进行导入导出，然后进行授权
+SQL> GRANT READ,WRITE on DIRECTORY exp TO scott;
+
+#开始导出
+#按表来导出
+[oracle@oracle ~]$ expdp scott/scott dumpfile=exp:scott_tab1.dmp tables=emp,dept
+ORA-39002: invalid operation
+ORA-39070: Unable to open the log file.
+ORA-39145: directory object parameter must be specified and non-null
+#需要添加一个日志文件或者把dba的权限给scott用户
+[oracle@oracle ~]$ expdp scott/scott dumpfile=exp:scott_tab1.dmp tables=emp,dept logfile=exp:scott_tab1.log	
+	Starting "SCOTT"."SYS_EXPORT_TABLE_01":  scott/*** dumpfile=exp:scott_tab1.dmp tables=emp,dept logfile=exp:scott_tab1.log 
+	Estimate in progress using BLOCKS method...
+	Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+	Total estimation using BLOCKS method: 128 KB
+	Processing object type TABLE_EXPORT/TABLE/TABLE
+	Processing object type TABLE_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+	Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+	Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+	Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+	Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+	Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+	. . exported "SCOTT"."DEPT"                              5.937 KB       4 rows
+	. . exported "SCOTT"."EMP"                               8.570 KB      14 rows
+	Master table "SCOTT"."SYS_EXPORT_TABLE_01" successfully loaded/unloaded
+	******************************************************************************
+	Dump file set for SCOTT.SYS_EXPORT_TABLE_01 is:
+	  /backup/scott_tab1.dmp
+	Job "SCOTT"."SYS_EXPORT_TABLE_01" successfully completed at 11:03:03
+
+#按用户来导出
+[oracle@oracle ~]$ expdp scott/scott dumpfile=exp:scott_owner1.dmp schemas=scott logfile=exp:scott_owner1.log
+	Starting "SCOTT"."SYS_EXPORT_SCHEMA_01":  scott/******** dumpfile=exp:scott_owner1.dmp schemas=scott logfile=exp:scott_owner1.log 
+	Estimate in progress using BLOCKS method...
+	Processing object type SCHEMA_EXPORT/TABLE/TABLE_DATA
+	Total estimation using BLOCKS method: 1.5 MB
+	Processing object type SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
+	Processing object type SCHEMA_EXPORT/TYPE/TYPE_SPEC
+	Processing object type SCHEMA_EXPORT/TABLE/TABLE
+	......
+	Processing object type SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+	. . exported "SCOTT"."AAAAA"                             5.937 KB       4 rows
+	. . exported "SCOTT"."DEPT"                              5.937 KB       4 rows
+	......
+	Master table "SCOTT"."SYS_EXPORT_SCHEMA_01" successfully loaded/unloaded
+	******************************************************************************
+	Dump file set for SCOTT.SYS_EXPORT_SCHEMA_01 is:
+	  /backup/scott_owner1.dmp
+	Job "SCOTT"."SYS_EXPORT_SCHEMA_01" successfully completed at 11:09:30
+
+#全库导出
+[oracle@oracle ~]$ expdp \'sys/oracle as sysdba\' full=y dumpfile=exp:full1.dmp
+
+
+SQL> drop table emp purge;
+SQL> drop table dept purge;
+#恢复，导入
+[oracle@oracle ~]$ impdp scott/scott dumpfile=exp:scott_tab1.dmp logfile=exp:scott_tab1.out.log
+Master table "SCOTT"."SYS_IMPORT_FULL_01" successfully loaded/unloaded
+Starting "SCOTT"."SYS_IMPORT_FULL_01":  scott/******** dumpfile=exp:scott_tab1.dmp logfile=exp:scott_tab1.out.log 
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+. . imported "SCOTT"."DEPT"                              5.937 KB       4 rows
+. . imported "SCOTT"."EMP"                               8.570 KB      14 rows
+Processing object type TABLE_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Job "SCOTT"."SYS_IMPORT_FULL_01" successfully completed at 14:25:17
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+SQL> select * from emp;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300	   30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500	   30
+......
+      7900 JAMES      CLERK	      7698 03-DEC-81	    950 		   30
+      7902 FORD       ANALYST	      7566 03-DEC-81	   3000 		   20
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+14 rows selected.
+
+SQL> delete emp;
+SQL> commit;
+#现在只是表里面的数据删除了，表的结构还在，如何恢复
+[oracle@oracle ~]$ impdp scott/scott dumpfile=exp:scott_tab1.dmp tables=emp table_exists_action=append logfile=exp:scott_tab1.out1.log			#table_exists_action=append 将数据追加进去，存在的数据不会被覆盖
+Master table "SCOTT"."SYS_IMPORT_TABLE_01" successfully loaded/unloaded
+Starting "SCOTT"."SYS_IMPORT_TABLE_01":  scott/******** dumpfile=exp:scott_tab1.dmp tables=emp table_exists_action=append logfile=exp:scott_tab1.out1.log 
+Processing object type TABLE_EXPORT/TABLE/TABLE
+ORA-39152: Table "SCOTT"."EMP" exists. Data will be appended to existing table but all dependent metadata will be skipped due to table_exists_action of append
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+. . imported "SCOTT"."EMP"                               8.570 KB      14 rows
+Processing object type TABLE_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Job "SCOTT"."SYS_IMPORT_TABLE_01" completed with 1 error(s) at 14:34:20
+SQL> select * from emp;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300	   30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500	   30
+      7566 JONES      MANAGER	      7839 02-APR-81	   2975 		   20
+      7654 MARTIN     SALESMAN	      7698 28-SEP-81	   1250       1400	   30
+......
+      7902 FORD       ANALYST	      7566 03-DEC-81	   3000 		   20
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+14 rows selected.
+
+[oracle@oracle ~]$ impdp scott/scott dumpfile=exp:scott_tab1.dmp tables=emp table_exists_action=replace logfile=exp:scott_tab1.out1.log			#table_exists_action=replace	将数据替换进去，但是不会回收空间
+
+[oracle@oracle ~]$ impdp scott/scott dumpfile=exp:scott_tab1.dmp tables=emp table_exists_action=truncate logfile=exp:scott_tab1.out1.log			#table_exists_action=truncate	将表里面的数据删除，空间会释放，然后插入新的数据进去，如果需要多大的空间就重新申请
+
+
+SQL> drop table salgrade purge;
+[oracle@oracle ~]$ impdp scott/scott dumpfile=exp:scott_owner1.dmp tables=emp,dept,salgrade table_exists_action=skip logfile=exp:scott_own1.out1.log			#table_exists_action=skip	默认是skip，所以这个也可以不写
+Master table "SCOTT"."SYS_IMPORT_TABLE_01" successfully loaded/unloaded
+Starting "SCOTT"."SYS_IMPORT_TABLE_01":  scott/******** dumpfile=exp:scott_owner1.dmp tables=emp,dept,salgrade table_exists_action=skip logfile=exp:scott_own1.out1.log 
+Processing object type SCHEMA_EXPORT/TABLE/TABLE							#dept和emp表存在，所以跳过了
+ORA-39151: Table "SCOTT"."DEPT" exists. All dependent metadata and data will be skipped due to table_exists_action of skip
+ORA-39151: Table "SCOTT"."EMP" exists. All dependent metadata and data will be skipped due to table_exists_action of skip
+Processing object type SCHEMA_EXPORT/TABLE/TABLE_DATA
+. . imported "SCOTT"."SALGRADE"                          5.867 KB       5 rows
+Processing object type SCHEMA_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+Processing object type SCHEMA_EXPORT/TABLE/INDEX/INDEX
+Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type SCHEMA_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Job "SCOTT"."SYS_IMPORT_TABLE_01" completed with 2 error(s) at 14:48:31
+
+
+#
+[oracle@oracle ~]$ vim /backup/b1.txt
+userid=scott/scott
+dumpfile=exp:scott_tab1.dmp
+table_exists_action=truncate
+logfile=exp:scott_tab1.out2.log
+[oracle@oracle ~]$ impdp parfile=/backup/b1.txt 
+Master table "SCOTT"."SYS_IMPORT_FULL_01" successfully loaded/unloaded
+Starting "SCOTT"."SYS_IMPORT_FULL_01":  scott/******** parfile=/backup/b1.txt 
+Processing object type TABLE_EXPORT/TABLE/TABLE
+ORA-39120: Table "SCOTT"."DEPT" can't be truncated, data will be skipped. Failing error is:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys
+ORA-00955: name is already used by an existing object
+ORA-39153: Table "SCOTT"."EMP" exists and has been truncated. Data will be loaded but all dependent metadata will be skipped due to table_exists_action of truncate
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+. . imported "SCOTT"."EMP"                               8.570 KB      14 rows
+Processing object type TABLE_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Job "SCOTT"."SYS_IMPORT_FULL_01" completed with 2 error(s) at 14:55:51
+
+
+#是s1用户具有scott.emp，scott.dept
+SQL> conn / as sysdba
+SQL> create user s1 identified by s1;
+SQL> grant connect,resource to s1;
+[oracle@oracle58 ~]$ impdp system/oracle dumpfile=exp:scott_tab1.dmp remap_schema=scott:s1
+Master table "SYSTEM"."SYS_IMPORT_FULL_01" successfully loaded/unloaded
+Starting "SYSTEM"."SYS_IMPORT_FULL_01":  system/******** dumpfile=exp:scott_tab1.dmp remap_schema=scott:s1 
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+. . imported "S1"."DEPT"                                 5.937 KB       4 rows
+. . imported "S1"."EMP"                                  8.570 KB      14 rows
+Processing object type TABLE_EXPORT/TABLE/GRANT/OWNER_GRANT/OBJECT_GRANT
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Job "SYSTEM"."SYS_IMPORT_FULL_01" successfully completed at 15:01:35
+SQL> conn s1/s1
+Connected.
+SQL> select * from emp;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300	   30
+......
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+14 rows selected.
+SQL> select * from dept;
+    DEPTNO DNAME	  LOC
+---------- -------------- -------------
+	10 ACCOUNTING	  NEW YORK
+	20 RESEARCH	  DALLAS
+	30 SALES	  CHICAGO
+	40 OPERATIONS	  BOSTON
+
+
+
+
+
+
+
+
+
+
+

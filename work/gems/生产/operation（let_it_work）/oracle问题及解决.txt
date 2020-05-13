@@ -1,0 +1,70 @@
+-----------------------------------------------------------------------------------
+dg备库在进行存储迁移后，不能同步，主库alter日志报如下错误
+FAL[server, ARC3]: FAL archive failed, see trace file.
+ARCH: FAL archive failed. Archiver continuing
+ORACLE Instance sgeclndb1 - Archival Error. Archiver continuing.
+trc文件报
+Error 270 creating standby archive log file at host 'testdg'
+解决方法：
+主库
+SQL> show parameter fal
+NAME				     TYPE	 VALUE
+------------------- ----------- -------------
+fal_client			     string
+fal_server			     string	 TESTDG
+SQL> show parameter service_name
+NAME				     TYPE	 VALUE
+-------------------- ----------- ------------
+service_names			 string	 test
+alter system set fal_server='sgeclndg' scope=both;
+#结果还是报错，后面检查发现是将之前的存储umount，迁移之后，mount新的存储后，文件夹的属主属组都变成了root，没有权限了。所以把属主属组修改之后，重启备库就好了
+
+
+
+----------------------------------rac启动关闭----------------------------
+show parameter db_name;
+show parameter instance_name;
+关库之前做一次
+oracle用户
+alter system checkpoint global;
+srvctl stop database -d db_name
+srvctl disable database -d db_name
+在grid用户下执行不了，切换到root用户
+cd /app/grid/11.2.0/bin
+cd /app/11.2.0/grid/bin
+./crsctl stop crs（两节点）
+./crsctl disable crs （两节点）
+
+开启操作步骤：
+在grid用户下执行不了，切换到root用户
+cd /app/grid/11.2.0/bin
+cd /app/11.2.0/grid/bin
+./crsctl enable crs
+./crsctl start crs
+srvctl enable database -d db_name
+srvctl start database -d db_name
+
+crsctl status resource -t
+
+
+
+select 'grant select on '||table_name||' to RMC;' from user_tables where tablespace_name='RM_TBS';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

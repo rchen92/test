@@ -1,0 +1,124 @@
+##imp
+##命令行模式
+##参数模式
+
+
+imp
+[oracle@oracle backup]$ rm *
+[oracle@oracle backup]$ exp scott/scott file=scott.dmp
+#现在把emp和dept表删除
+[oracle@oracle58iso backup]$ sqlplus scott/scott
+SQL> drop table emp purge;
+Table dropped.
+SQL> drop table dept purge;
+Table dropped.
+SQL> purge recyclebin;
+Recyclebin purged.
+SQL> select * from tab;
+TNAME			       TABTYPE	CLUSTERID
+------------------------------ ------- ----------
+BONUS			       TABLE
+SALGRADE		       TABLE
+SQL> exit
+
+#命令行模式
+[oracle@oracle backup]$ imp scott/scott file=/backup/scott.dmp tables=emp,dept
+[oracle@oracle backup]$ sqlplus scott/scott
+SQL> select * from tab;
+TNAME			       TABTYPE	CLUSTERID
+------------------------------ ------- ----------
+BONUS			       TABLE
+DEPT			       TABLE
+EMP					   TABLE
+SALGRADE		       TABLE
+
+#参数模式
+
+[oracle@oracle backup]$ echo "drop table emp purge;" >> droptb.sql
+[oracle@oracle backup]$ echo "drop table dept purge;" >> droptb.sql
+[oracle@oracle backup]$ sqlplus scott/scott @ /backup/droptb.sql 
+Table dropped.
+Table dropped.
+SQL> exit
+[oracle@oracle backup]$ vim im.txt
+userid=scott/scott
+file=/backup/scott.dmp
+tables=emp,dept
+[oracle@oracle backup]$ imp parfile=im.txt 
+[oracle@oracle backup]$ sqlplus scott/scott
+SQL> select * from tab;
+TNAME			       TABTYPE	CLUSTERID
+------------------------------ ------- ----------
+BONUS			       TABLE
+DEPT			       TABLE
+EMP					   TABLE
+SALGRADE		       TABLE
+[oracle@oracle backup]$ echo "delete emp;" >> delete.sql		#删除emp的数据
+[oracle@oracle backup]$ sqlplus scott/scott @ delete.sql 
+14 rows deleted.
+SQL> commit;       
+Commit complete.
+SQL> select * from emp;
+no rows selected
+SQL> exit
+[oracle@oracle backup]$ imp scott/scott file=/backup/scott.dmp tables=emp
+[oracle@oracle backup]$ imp scott/scott file=/backup/scott.dmp tables=emp
+Export file created by EXPORT:V11.02.00 via conventional path
+import done in US7ASCII character set and AL16UTF16 NCHAR character set
+import server uses ZHS16GBK character set (possible charset conversion)
+. importing SCOTT's objects into SCOTT
+. importing SCOTT's objects into SCOTT
+IMP-00015: following statement failed because the object already exists:		#但是这里报错了，因为表空间已经存在了
+ "CREATE TABLE "EMP" ("EMPNO" NUMBER(4, 0), "ENAME" VARCHAR2(10), "JOB" VARCH"
+ "AR2(9), "MGR" NUMBER(4, 0), "HIREDATE" DATE, "SAL" NUMBER(7, 2), "COMM" NUM"
+ "BER(7, 2), "DEPTNO" NUMBER(2, 0))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRAN"
+ "S 255 STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 FREELISTS 1 FREELIST "
+ "GROUPS 1 BUFFER_POOL DEFAULT)                    LOGGING NOCOMPRESS"
+[oracle@oracle backup]$ sqlplus scott/scott
+SQL> select * from emp;
+no rows selected
+SQL> exit
+[oracle@oracle backup]$ imp scott/scott file=/backup/scott.dmp tables=emp ignore=y
+SQL> select * from emp;
+......
+14 rows selected.
+
+#如何将其他用户导出的数据导入回去（system将scott用户的数据导回去）
+[oracle@oracle backup]$ exp system/oracle file=/backup/owner.dmp owner=scott
+[oracle@oracle58iso backup]$ sqlplus scott/scott @ droptb.sql
+Table dropped.
+Table dropped.
+SQL> exit
+[oracle@oracle58iso backup]$ imp system/oracle fromuser=scott touser=scott file=/backup/owner.dmp tables=emp,dept
+[oracle@oracle58iso backup]$ sqlplus scott/scott
+SQL> select * from tab;
+TNAME			       TABTYPE	CLUSTERID
+------------------------------ ------- ----------
+BONUS			       TABLE
+DEPT			       TABLE
+EMP					   TABLE
+SALGRADE		       TABLE
+
+
+#使s1用户具有scott.emp，scott.dept表
+[oracle@oracle ~]$ sqlplus / as sysdba
+SQL> create user s1 identified by s1;
+User created.
+SQL> grant connect,resource to s1;
+[oracle@oracle ~]$ imp system/oracle fromuser=scott touser=s1 file=/backup/owner.dmp  tables=emp,dept
+[oracle@oracle ~]$ sqlplus s1/s1 
+SQL> select * from tab;
+TNAME			       TABTYPE	CLUSTERID
+------------------------------ ------- ----------
+DEPT			       TABLE
+EMP					   TABLE
+
+
+
+
+
+
+
+
+
+

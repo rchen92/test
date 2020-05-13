@@ -1,0 +1,956 @@
+##查看列上面有没有索引
+	##如何让索引仅仅只是一个范围扫描，不让其升序或者降序
+##索引的排序分三种：
+##组合索引
+##多个列如何建立组合索引
+##如何在创建索引时，让其没有用
+##让没有用的索引有效：重建
+##反向键索引
+##文本索引
+##函数索引
+	##使用函数索引时的条件
+##空值查询，如何优化
+##隐藏索引
+	##如何让隐藏索引有效
+	##让索引隐藏或者不隐藏
+##位图索引
+##位图联结索引
+##虚拟索引
+##对索引进行监控
+##修改索引的名字
+##分区表上的索引
+##先建成全局索引
+##创建本地索引
+
+
+
+
+索引
+索引类型：
+	B树索引，B树索引采用二进制树的形式，它是默认的索引类型
+	位图索引，在位图索引中，每个建立索引的独特值都有一个位图，每一位的位置表示一行，其中可能包含（也可能不包含）索引值。对于低基数列而言，这是最佳结构。
+		低基数列：表中的行在去除重复的行之后的行，远远小于总行数。比如性别的列，部门的列。这种就属于低基数的列
+
+位图索引不适合于联机事务处理，经常进行DML操作就不太适合了。但是在数据仓储里面，位图索引就是一种非常好的方案
+
+索引选项
+	唯一索引可确保每个索引值是唯一的
+	索引可以升序或降序或不排序存储其键值
+		默认是情况下不使用排序的语法就是升序的，如果要降序则需要加上desc，如果不排序则加上noshort
+	反向关键字索引以反向顺序存储其键值字节
+		比如原来存储的是00001，反过来存就是10000，你存的是00002，在存储时就是20000。这样可以用来减少热点块的现象，也可以优化like查询
+	组合索引是基于多列的索引
+	基于函数的索引是以函数返回值为基础的索引
+	压缩索引会删除重复的关键字值
+
+#查看列上面有没有索引
+SQL> desc user_ind_columns
+ Name						       Null?	Type
+ ----------------------------------------------------- -------- ------------------------------------
+ INDEX_NAME							VARCHAR2(30)
+ TABLE_NAME							VARCHAR2(30)
+ COLUMN_NAME							VARCHAR2(4000)
+ COLUMN_POSITION						NUMBER
+ COLUMN_LENGTH							NUMBER
+ CHAR_LENGTH							NUMBER
+ DESCEND							VARCHAR2(4)
+SQL> select index_name,column_name from user_ind_columns where table_name='EMP';
+INDEX_NAME		       COLUMN_NAME
+------------------------------ ------------------------------
+PK_EMP			       EMPNO
+
+SQL> set autot trace exp
+SQL> select * from emp where ename='KING';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 549418132
+-------------------------------------------------------------------------------------------
+| Id  | Operation					| Name		  | Rows  | Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|			  |	1	  |    38 |	    2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		  |	1     |    38 |	    2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN			| EMP_ENAME_I |	1     |		  |	    1   (0)| 00:00:01 |			#现在就是使用的索引来查找
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("ENAME"='KING')
+
+SQL> set autot off
+SQL> drop index emp_ename_i;			#把索引删掉
+SQL> set autot trace exp
+SQL> select * from emp where ename='KING';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation		  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |		 |     1 |    38 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     1 |    38 |     3   (0)| 00:00:01 |		#显示是全表扫描
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("ENAME"='KING')
+
+
+SQL> select * from emp where sal> 2600 order by sal desc;
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 150391907
+---------------------------------------------------------------------------
+| Id  | Operation	   | Name | Rows  | Bytes | Cost (%CPU)| Time	  |
+---------------------------------------------------------------------------
+|   0 | SELECT STATEMENT   |	  |	8 |   304 |		4  (25)| 00:00:01 |
+|   1 |  SORT ORDER BY	   |	  |	8 |   304 |		4  (25)| 00:00:01 |
+|*  2 |   TABLE ACCESS FULL| EMP  |	8 |   304 |		3   (0)| 00:00:01 |
+---------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - filter("SAL">2600)
+SQL> set autot off
+SQL> select * from emp where sal> 2600 order by sal desc;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+      7788 SCOTT      ANALYST	      7566 19-APR-87	   3000 		   20
+      7902 FORD       ANALYST	      7566 03-DEC-81	   3000 		   20
+      7566 JONES      MANAGER	      7839 02-APR-81	   2975 		   20
+      7698 BLAKE      MANAGER	      7839 01-MAY-81	   2850 		   30
+SQL> create index emp_sal_i on emp(sal asc);		#创建索引为升序
+SQL> set autot trace exp
+SQL> select * from emp where sal> 2600 order by sal asc; 
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 490730320
+-----------------------------------------------------------------------------------------
+| Id  | Operation					| Name		| Rows	| Bytes | Cost (%CPU)| Time	|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|			|     8 |   304 |     2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		|     8 |   304 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN			| EMP_SAL_I |     8 |		|     1   (0)| 00:00:01 |		#通过索引升序
+-----------------------------------------------------------------------------------------
+SQL> select * from emp where sal> 2600 order by sal desc;
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3581623745
+------------------------------------------------------------------------------------------
+| Id  | Operation					 | Name		 | Rows  | Bytes | Cost (%CPU)| Time	 |
+------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			 |			 |     8 |   304 |     2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID | EMP		 |     8 |   304 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN DESCENDING| EMP_SAL_I |     8 |		 |     1   (0)| 00:00:01 |		#通过索引降序
+------------------------------------------------------------------------------------------
+	#如何让索引仅仅只是一个范围扫描，不让其升序或者降序
+SQL> drop index emp_sal_i;
+SQL> create index emp_sal_i on emp(sal desc);
+SQL> select * from emp where sal>2600 order by sal desc;
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 490730320
+-----------------------------------------------------------------------------------------
+| Id  | Operation					| Name		| Rows	| Bytes | Cost (%CPU)| Time	|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|			|     8 |   304 |     2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		|     8 |   304 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN			| EMP_SAL_I |     1 |		|     1   (0)| 00:00:01 |		#现在就没有降序排序了
+-----------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access(SYS_OP_DESCEND("SAL")<HEXTORAW('3DE4FF') )
+       filter(SYS_OP_UNDESCEND(SYS_OP_DESCEND("SAL"))>2600)
+
+#还有一种是在建立索引的时候不管是升序还是降序，直接就使用不排序的索引，但是这种适用的是表里面的数据本身就是按照升序排列的
+SQL> create table emp1 as select * from emp order by empno;
+SQL> select empno from emp1;		#现在empno是按照升序排列的
+     EMPNO
+----------
+      7369
+      7499
+      7521
+      7566
+      7654
+      7698
+      7782
+      7788
+      7839
+      7844
+      7876
+      7900
+      7902
+      7934
+14 rows selected.
+SQL> create index emp1_empno_i on emp1(empno) nosort;
+SQL> create index emp1_ename_i on emp1(ename) nosort;		#在ename上创建不排序的索引就出错了，因为ename这一列的数据不是升序的
+create index emp1_ename_i on emp1(ename) nosort
+                             *
+ERROR at line 1:
+ORA-01409: NOSORT option may not be used; rows are not in ascending order
+
+
+#索引的排序分三种：
+	nosort不排序的索引：适合于列是按照升序排列的
+	sort：asc升序
+			order by 列名 [asc]
+		  desc降序
+			order by 列名 desc
+
+
+#组合索引
+SQL> set autotrace on
+SQL> select * from emp where deptno=20 and job='CLERK';
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation	  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |	 |     1 |    39 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     1 |    39 |     3   (0)| 00:00:01 |			#这次没有走索引，如何让其走索引呢？
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("JOB"='CLERK' AND "DEPTNO"=20)
+Statistics
+----------------------------------------------------------
+	  0  recursive calls
+	  0  db block gets
+	  8  consistent gets
+	  0  physical reads
+	  0  redo size
+       1107  bytes sent via SQL*Net to client
+	523  bytes received via SQL*Net from client
+	  2  SQL*Net roundtrips to/from client
+	  0  sorts (memory)
+	  0  sorts (disk)
+	  2  rows processed
+
+SQL> create index emp_deptno_job_i on emp(deptno,job);			#创建一个组合索引
+SQL> select * from emp where deptno=20 and job='CLERK';
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1342397128
+------------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	       | Rows  | Bytes | Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		       |     1 |    39 |     2	 (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	       |     1 |    39 |     2	 (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_DEPTNO_JOB_I |     1 |       |     1	 (0)| 00:00:01 |		#现在就走的组合索引
+------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("DEPTNO"=20 AND "JOB"='CLERK')
+Statistics
+----------------------------------------------------------
+	  1  recursive calls
+	  0  db block gets
+	  4  consistent gets
+	  0  physical reads
+	  0  redo size
+       1115  bytes sent via SQL*Net to client
+	523  bytes received via SQL*Net from client
+	  2  SQL*Net roundtrips to/from client
+	  0  sorts (memory)
+	  0  sorts (disk)
+	  2  rows processed
+
+SQL> drop index emp_deptno_job_i;					#不创建组合索引，创建两个单独的索引
+SQL> create index emp_deptno_i on emp(deptno);
+SQL> create index emp_job_i on emp(job);
+SQL> select * from emp where deptno=20 and job='CLERK';			#这次使用的索引是emp_job_i
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 2386020627
+-----------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	| Rows	| Bytes | Cost (%CPU)| Time	|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		|     1 |    39 |     2   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS BY INDEX ROWID| EMP	|     1 |    39 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_JOB_I |     3 |	|     1   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("DEPTNO"=20)
+   2 - access("JOB"='CLERK')
+SQL> select * from emp where job='CLERK' and deptno=20;			#还是emp_job_i索引，所以使用哪个索引跟where后面的前后顺序没有太多关系
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 2386020627
+-----------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	| Rows	| Bytes | Cost (%CPU)| Time	|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		|     1 |    39 |     2   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS BY INDEX ROWID| EMP	|     1 |    39 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_JOB_I |     3 |	|     1   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("DEPTNO"=20)
+   2 - access("JOB"='CLERK')
+SQL> create index emp_deptno_job_i on emp(deptno,job);			#在访问多个列的时候尽可能使用组合索引
+Index created.
+SQL> select * from emp where job='CLERK' and deptno=20;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1342397128
+------------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	       | Rows  | Bytes | Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		       |     1 |    39 |     2	 (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	       |     1 |    39 |     2	 (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_DEPTNO_JOB_I |     1 |       |     1	 (0)| 00:00:01 |
+------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("DEPTNO"=20 AND "JOB"='CLERK')
+
+#多个列如何建立组合索引
+把重复值比较少的放在前面。如果要把有空值的列建立组合索引，那么空值越多的列放在前面（单列的空值不建索引，空值不入索引）
+SQL> set autot off
+SQL> select count( distinct(deptno) ) from emp;
+COUNT(DISTINCT(DEPTNO))
+-----------------------
+		      3
+SQL> select count( distinct(job) ) from emp;
+COUNT(DISTINCT(JOB))
+--------------------
+		   5
+把deptno放在前面，job放在后面
+
+
+SQL> drop index emp_deptno_i;
+SQL> drop index emp_job_i;
+SQL> drop index emp_deptno_job_i;
+#如何在创建索引时，让其没有用
+SQL> create index emp_deptno_i on emp(deptno) unusable;
+SQL> select index_name,status from user_indexes;		#现在emp_deptno_i的状态时是不可用的
+INDEX_NAME		       STATUS
+------------------------------ --------
+...
+EMP_DEPTNO_I		       UNUSABLE
+...
+SQL> set autot on
+SQL> select * from emp where deptno=10;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation	  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |	 |     3 |   117 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     3 |   117 |     3   (0)| 00:00:01 |			#现在就不走索引了
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("DEPTNO"=10)
+#让没有用的索引有效：重建
+SQL> alter index emp_deptno_i rebuild;		#重建索引
+SQL> select * from emp where deptno=10;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3845781929
+--------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	   | Rows  | Bytes | Cost (%CPU)| Time	   |
+--------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		   |	 3 |   117 |	 2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	   |	 3 |   117 |	 2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_DEPTNO_I |	 3 |	   |	 1   (0)| 00:00:01 |			#现在就走索引了
+--------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("DEPTNO"=10)
+SQL> select index_name,status from user_indexes;		#现在emp_deptno_i的状态是可用的
+INDEX_NAME		       STATUS
+------------------------------ --------
+...
+EMP_DEPTNO_I		       VALID
+
+
+#反向键索引
+SQL> create index emp_ename_i on emp(ename);
+SQL> create index emp_ename_i_r on emp(reverse(ename));			#创建反向键索引
+SQL> select * from emp where ename like 'A%';				#查询A开头的姓名是普通的B树索引，索引的范围扫描
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+      7499 ALLEN      SALESMAN	      7698 20-FEB-81	   1600        300	   30
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 549418132
+-------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	  | Rows  | Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		  |	1 |    39 |	2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	  |	1 |    39 |	2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_ENAME_I |	1 |	  |	1   (0)| 00:00:01 |
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("ENAME" LIKE 'A%')
+       filter("ENAME" LIKE 'A%')
+SQL> select * from emp where ename like '%G';			#这个走的是索引的全扫描
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1237049707
+-------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	  | Rows  | Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		  |	1 |    39 |	2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	  |	1 |    39 |	2   (0)| 00:00:01 |
+|*  2 |   INDEX FULL SCAN	    | EMP_ENAME_I |	1 |	  |	1   (0)| 00:00:01 |
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - filter("ENAME" LIKE '%G' AND "ENAME" IS NOT NULL)
+SQL> select * from emp where reverse(ename) like 'G%';			#以G结尾的名字，走的是反向键索引，范围扫描
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 2402509802
+---------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	    | Rows  | Bytes | Cost (%CPU)| Time     |
+---------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		    |	  1 |	 45 |	  2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	    |	  1 |	 45 |	  2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_ENAME_I_R |	  1 |	    |	  1   (0)| 00:00:01 |
+---------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access(REVERSE("ENAME") LIKE 'G%')
+       filter(REVERSE("ENAME") LIKE 'G%')
+
+#文本索引
+SQL> select * from emp where ename like '%AR%';
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+      7654 MARTIN     SALESMAN	      7698 28-SEP-81	   1250       1400	   30
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500	   30
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1237049707
+-------------------------------------------------------------------------------------------
+| Id  | Operation						| Name		 |Rows| Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT				|			 |	1 |    39 |		2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID	| EMP		 |	1 |    39 |		2   (0)| 00:00:01 |
+|*  2 |   INDEX FULL SCAN				| EMP_ENAME_I|	1 |		  |		1   (0)| 00:00:01 |
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - filter("ENAME" LIKE '%AR%' AND "ENAME" IS NOT NULL)
+SQL> create index emp_ename_context_i on emp(ename) indextype is ctxsys.context;		#创建文本索引
+SQL> select * from emp where contains(ename,'%AR%')>0;			#现在走的是索引，开销为4，比之前的大是因为这张表太小了。
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7521 WARD       SALESMAN	      7698 22-FEB-81	   1250        500	   30
+      7654 MARTIN     SALESMAN	      7698 28-SEP-81	   1250       1400	   30
+      7782 CLARK      MANAGER	      7839 09-JUN-81	   2450 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1720468370
+---------------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name		  | Rows  | Bytes | Cost (%CPU)| Time	  |
+---------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |			  |	1 |    45 |	4   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		  |	1 |    45 |	4   (0)| 00:00:01 |
+|*  2 |   DOMAIN INDEX		    | EMP_ENAME_CONTEXT_I |	  |	  |	4   (0)| 00:00:01 |
+---------------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("CTXSYS"."CONTAINS"("ENAME",'%AR%')>0)
+
+
+#函数索引
+SQL> select * from emp where sal+nvl(comm,0)>3000;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation	  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |	 |     1 |    39 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     1 |    39 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("SAL"+NVL("COMM",0)>3000)
+SQL> create index emp_sal_nvl on emp(sal+nvl(comm,0));				#创建函数索引
+SQL> select * from emp where sal+nvl(comm,0)>3000;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT 	   17-NOV-81	   5000 		   10
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3807620672
+-------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	  | Rows  | Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		  |	1 |    45 |	2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	  |	1 |    45 |	2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_SAL_NVL |	1 |	  |	1   (0)| 00:00:01 |
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("SAL"+NVL("COMM",0)>3000)
+
+#使用函数索引时的条件
+SQL> conn / as sysdba
+Connected.
+SQL> show parameter que 
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+...
+query_rewrite_enabled		     string	 TRUE			#这个必须为true
+query_rewrite_integrity 	     string	 enforced		#这个可以是enforced，可以使truseted
+
+
+create or replace function gsal(vsal number)
+return number deterministic
+as
+begin
+if vsal<2000 then return 1;
+elsif vsal between 2000 and 3000 then return 2;
+else return 3;
+end if;
+end gsal;
+/
+
+create index emp_sal_f on emp(gsal(sal));
+select * from emp where gsal(sal)=3;
+
+
+
+#空值查询，如何优化
+SQL> select * from emp where comm is null;
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+...
+10 rows selected.
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation	  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |	 |    10 |   390 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |    10 |   390 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("COMM" IS NULL)
+SQL> select comm from emp where sys_op_map_nonnull(comm)=sys_op_map_nonnull(null);
+      COMM
+----------
+...
+10 rows selected.
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation	  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |	 |     4 |     8 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     4 |     8 |     3   (0)| 00:00:01 |			#这个没有使用索引
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter(SYS_OP_MAP_NONNULL("COMM")=HEXTORAW('FF') )
+
+SQL> create index emp_comm_i on emp(sys_op_map_nonnull(comm));			#创建索引
+SQL> select comm from emp where sys_op_map_nonnull(comm)=sys_op_map_nonnull(null);
+      COMM
+----------
+...
+10 rows selected.
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3025914221
+------------------------------------------------------------------------------------------
+| Id  | Operation		    | Name	 | Rows  | Bytes | Cost (%CPU)| Time	 |
+------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT	    |		 |     1 |    15 |     2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP	 |     1 |    15 |     2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN	    | EMP_COMM_I |     1 |	 |     1   (0)| 00:00:01 |				#现在就用到索引了
+------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access(SYS_OP_MAP_NONNULL("COMM")=HEXTORAW('FF') )
+
+
+#隐藏索引
+SQL> create index emp_ename_i on emp(ename) invisible;		#创建隐藏索引
+SQL> select index_name,visibility from user_indexes;
+INDEX_NAME		       VISIBILIT
+------------------------------ ---------
+...
+EMP_ENAME_I		       INVISIBLE
+SQL> set autot trace
+SQL> select * from emp where ename='KING';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation		   | Name | Rows | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT   |	  |    1 |    39 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL | EMP  |    1 |    39 |     3   (0)| 00:00:01 |		#没有走索引，因为索引是隐藏了
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("ENAME"='KING')
+#如何让隐藏索引有效
+SQL> conn / as sysdba			#先到sysdba用户下
+Connected.
+SQL> show parameter optim
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+...
+optimizer_secure_view_merging	     boolean	 TRUE
+optimizer_use_invisible_indexes      boolean	 FALSE			#这个参数为FALSE，将其改为TRUE
+optimizer_use_pending_statistics     boolean	 FALSE
+optimizer_use_sql_plan_baselines     boolean	 TRUE
+SQL> alter  session set optimizer_use_invisible_indexes=true;		#修改回话级参数
+Session altered.
+SQL> set autot trace 
+SQL> select * from scott.emp where ename='KING';			#现在就走索引了
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 549418132
+-------------------------------------------------------------------------------------------
+| Id  | Operation					| Name		 | Rows | Bytes |	Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|			 |	1	|    39 |		2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		 |	1	|    39 |		2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN			| EMP_ENAME_I|	1	|	    |		1   (0)| 00:00:01 |
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("ENAME"='KING')
+#让索引隐藏或者不隐藏
+SQL> alter index scott.emp_ename_i visible;			#让索引不隐藏
+SQL> alter index scott.emp_ename_i invisible;		#让索引隐藏
+#让索引变得可用或者不可用
+SQL> alter index scott.emp_ename_i unusable;		#让索引变得不可用
+SQL> alter index scott.emp_ename_i rebuild;			#让索引重新可用
+
+
+
+#位图索引
+SQL> conn scott/scott
+SQL> drop index emp_ename_i;
+SQL> create index emp_job_i on emp(job);
+SQL> set autot trace
+SQL> select * from emp where job='CLERK';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 644344476
+-------------------------------------------------------------------------------------------
+| Id  | Operation					| Name		  | Rows  | Bytes | Cost (%CPU)| Time	  |
+-------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|			  |	3	  |   117 |		2   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID| EMP		  |	3     |   117 |		2   (0)| 00:00:01 |
+|*  2 |   INDEX RANGE SCAN			| EMP_JOB_I   |	3	  |		  |		1   (0)| 00:00:01 |		#走的是索引，但不是位图索引
+-------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - access("JOB"='CLERK')
+SQL> drop index emp_job_i;
+SQL> create bitmap index emp_job_i on emp(job);
+SQL> exec dbms_stats.gather_table_stats('SCOTT','EMP');
+SQL> exec dbms_stats.gather_index_stats('SCOTT','EMP_JOB_I');
+SQL> set autot trace
+SQL> select job from emp where job='CLERK';			#只查job列的时候走的位图索引
+Execution Plan	
+----------------------------------------------------------
+Plan hash value: 3606498495
+------------------------------------------------------------------------------------------
+| Id  | Operation					 | Name		 | Rows  | Bytes | Cost (%CPU)| Time	 |
+------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			 |			 |     4 |    32 |     1   (0)| 00:00:01 |
+|   1 |  BITMAP CONVERSION TO ROWIDS |			 |     4 |    32 |     1   (0)| 00:00:01 |
+|*  2 |   BITMAP INDEX FAST FULL SCAN| EMP_JOB_I |		 |		 |			  | 		 |
+------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   2 - filter("JOB"='CLERK')
+SQL> select * from emp where job='CLERK';			#查多个列的时候没有走位图索引
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation		  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |		 |     4 |   156 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     4 |   156 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("JOB"='CLERK')
+SQL> select /*+ index(emp,emp_job_i) */ * from emp where job='CLERK';			#让其强制走位图索引，但是生产中不建议使用强制
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3256789423
+------------------------------------------------------------------------------------------
+| Id  | Operation					 | Name		 | Rows  | Bytes | Cost (%CPU)| Time	 |
+------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			 |			 |     4 |   156 |     5   (0)| 00:00:01 |
+|   1 |  TABLE ACCESS BY INDEX ROWID | EMP		 |     4 |   156 |     5   (0)| 00:00:01 |
+|   2 |   BITMAP CONVERSION TO ROWIDS|			 |		 |		 |			  | 		 |
+|*  3 |    BITMAP INDEX SINGLE VALUE | EMP_JOB_I |		 |		 |			  | 		 |
+------------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   3 - access("JOB"='CLERK')
+
+
+#位图联结索引
+SQL> select count(*) from emp e,dept d where e.deptno=d.deptno and d.dname='SALES';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1036783580
+-----------------------------------------------------------------------------------------
+| Id  | Operation					  | Name	| Rows	| Bytes | Cost (%CPU)| Time		|
+-----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			  | 		|     1 |    16 |     6  (17)| 00:00:01 |		#总共的开销为6
+|   1 |  SORT AGGREGATE 			  | 		|     1 |    16 |			 |			|
+|   2 |   MERGE JOIN				  | 		|     5 |    80 |     6  (17)| 00:00:01 |
+|*  3 |    TABLE ACCESS BY INDEX ROWID| DEPT	|     1 |    13 |     2   (0)| 00:00:01 |
+|   4 |     INDEX FULL SCAN			  | PK_DEPT |     4 |		|     1   (0)| 00:00:01 |
+|*  5 |    SORT JOIN				  | 		|    14 |    42 |     4  (25)| 00:00:01 |
+|   6 |     TABLE ACCESS FULL	      | EMP		|    14 |    42 |     3   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   3 - filter("D"."DNAME"='SALES')
+   5 - access("E"."DEPTNO"="D"."DEPTNO")
+       filter("E"."DEPTNO"="D"."DEPTNO")
+#创建实验表
+SQL> create table e as select * from emp;
+SQL> create table d as select * from dept;
+SQL> alter table d add constraint pk_depta primary key (deptno);
+SQL> create bitmap index e_i on e(d.dname) from e,d where e.deptno=d.deptno;
+SQL> set autot off
+SQL> select index_name,index_type from user_indexes;
+INDEX_NAME		       INDEX_TYPE
+------------------------------ ---------------------------
+PK_DEPTA		       NORMAL
+E_I			       BITMAP
+SQL> select count(*) from e,d where e.deptno=d.deptno and d.dname='SALES';
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 4129271442
+------------------------------------------------------------------------------------
+| Id  | Operation					| Name | Rows  | Bytes | Cost (%CPU)| Time	   |		
+------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT			|	   |	 1 |	13 |	 1   (0)| 00:00:01 |		#现在开销只为1
+|   1 |  SORT AGGREGATE 			|	   |	 1 |	13 |			|		   |
+|   2 |   BITMAP CONVERSION COUNT   |	   |	 5 |	65 |	 1   (0)| 00:00:01 |
+|*  3 |    BITMAP INDEX SINGLE VALUE| E_I  |	   |	   |			|		   |
+------------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   3 - access("E"."SYS_NC00009$"='SALES')
+
+
+#虚拟索引，也叫无段索引（没有段）（一般用不到）
+DBA在日常维护管理数据库进行低性能SQL分析时，有时候需要通过创建索引对SQL进行优化，但有些时候我们创建的索引是否能用到？这个只能创建以后才能看出效果，但是在实际工作中，特别是对大表创建索引对系统性能有很大影响，因此我们不得不避开业务高峰时段，但是有没有一种办法创建索引而不影响性能呢？有，虚拟索引。
+    虚拟索引不是物理存在的，它并不会创建实际的索引段，只是在数据字典中加了一个索引的记录，使得优化器能够意识到一个索引的存在，从而判断是否使用该索引作为访问路径。作用仅仅是为了DBA作SQL优化时使用，DBA跟据虚拟索引的优化效果决定是否创建物理索引。
+三、虚拟索引特点
+1.虚拟索引无法执行alter index选项
+SQL> alter index idx_wxw rebuild
+     ERROR at line 1:
+     ORA-08114: can not alter a fake index
+2. 使用回收站特性的时候，虚拟索引必须显式drop，才能创建同名的索引
+SQL> create index idx_wxw on test(name)
+     ERROR at line 1:
+     ORA-00955: name is already used by an existing object
+3. 不能创建和虚拟索引同名的实际索引
+4. 可以创建和虚拟索引包含相同列但不同名的实际索引
+5. 使用回收站特性的时候，虚拟索引必须显式drop，或者在drop table后purge table后，才能创建同名的索引
+6. 虚拟索引分析并且有效，但是数据字典里查不到结果，估计是oracle内部临时保存了分析结果
+SQL> create index emp_ename_i on emp(ename) nosegment;
+SQL> exec dbms_stats.gather_table_stats('SCOTT','EMP',cascade=>true);
+SQL> select ename from emp where ename='KING';			#现在是不走索引的，因为还要修改隐藏参数
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3956160932
+--------------------------------------------------------------------------
+| Id  | Operation		  | Name | Rows  | Bytes | Cost (%CPU)| Time	 |
+--------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |		 |     1 |     6 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| EMP  |     1 |     6 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter("ENAME"='KING')
+SQL> alter session set "_use_nosegment_indexes"=true;		#修改隐藏参数
+SQL> select ename from emp where ename='KING';				#现在就走索引了
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3946491680
+--------------------------------------------------------------------------------
+| Id  | Operation		 | Name        | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT |			   |     1 |     6 |     2	 (0)| 00:00:01 |
+|*  1 |  INDEX RANGE SCAN| EMP_ENAME_I |     1 |     6 |     2	 (0)| 00:00:01 |
+--------------------------------------------------------------------------------
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - access("ENAME"='KING')
+
+
+#对索引进行监控
+SQL> set autot off
+SQL> select index_name from user_indexes;
+SQL> alter index emp_job_i monitoring usage;		#对这条索引进行监控
+SQL> select * from emp where job='CLERK';
+     EMPNO ENAME      JOB	       MGR HIREDATE	    SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK	      7902 17-DEC-80	    800 		   20
+      7876 ADAMS      CLERK	      7788 23-MAY-87	   1100 		   20
+      7900 JAMES      CLERK	      7698 03-DEC-81	    950 		   30
+      7934 MILLER     CLERK	      7782 23-JAN-82	   1301 		   10
+SQL> select * from v$object_usage;			#但是没有使用索引
+INDEX_NAME				  TABLE_NAME	       MON USE START_MONITORING    END_MONITORING
+------------------------- -------------------- --- --- ------------------- -------------------
+EMP_JOB_I				  EMP				   YES NO  11/29/2016 16:04:09
+SQL> select job from emp where job='CLERK';
+JOB
+---------
+CLERK
+CLERK
+CLERK
+CLERK
+SQL> select * from v$object_usage;			#现在索引就使用了
+INDEX_NAME				  TABLE_NAME	       MON USE START_MONITORING    END_MONITORING
+------------------------- -------------------- --- --- ------------------- -------------------
+EMP_JOB_I				  EMP				   YES YES 11/29/2016 16:04:09
+SQL> alter index emp_job_i nomonitoring usage;					#取消对索引的监控
+
+
+#修改索引的名字
+SQL> alter index emp_job_i rename to emp_job_index;
+
+
+#分区表上的索引
+	全局索引：只有一个段
+	本地索引：有多少个分区，就有多少个段（也就是说在每一个分区上面都有一个同名的索引）
+		好处：如果动了分区的结构，如增加或者减少分区，这个时候如果使用的是全局索引，那么此时就会导致索引失效，索引就需要重建; 如果使用的是本地索引，那么只需要对增加或者减少的分区进行索引的重建就可以了，减少了维护索引的开销，提高使用的效率和性能。而且本地索引可以减少索引的热点块。 所以分区表一般使用本地索引。
+SQL> desc user_part_key_columns				
+ Name				  Null?    Type
+ -------------------- -------- -----------------
+ NAME						   VARCHAR2(30)
+ OBJECT_TYPE				   CHAR(5)
+ COLUMN_NAME				   VARCHAR2(4000)
+ COLUMN_POSITION			   NUMBER
+SQL> select name,column_name from user_part_key_columns;		#查看分区表对应在哪个列上
+NAME				 COLUMN_NAME
+-------------------- --------------------
+EMPHASH 			 ENAME
+EMPLIST 			 DEPTNO
+EMPRANGE			 HIREDATE
+EMPRL				 HIREDATE
+
+#先建成全局索引
+SQL> create index emplist_deptno_i on emplist(deptno) [global];
+SQL> select index_name,status from user_indexes where index_name='EMPLIST_DEPTNO_I';		#查看索引是否可用
+INDEX_NAME		  STATUS				#现在是有效的
+------------------------- --------
+EMPLIST_DEPTNO_I	  VALID
+SQL> select table_name,partition_name from user_tab_partitions where table_name='EMPLIST';
+TABLE_NAME	     PARTITION_NAME
+-------------------- ------------------------------
+EMPLIST 	     EMPLIST_P1
+EMPLIST 	     EMPLIST_P2
+EMPLIST 	     EMPLIST_P3
+EMPLIST 	     EMPLIST_P4
+SQL> alter table emplist drop partition emplist_p4;			#删除一个分区，然后来查看索引的状态
+SQL> select index_name,status from user_indexes where index_name='EMPLIST_DEPTNO_I';		#为什么索引的状态还是可用的呢？
+INDEX_NAME		  STATUS
+------------------------- --------
+EMPLIST_DEPTNO_I	  VALID
+SQL> alter table emplist add partition emplist_p4 values(40);		#添加一个分区，查看索引的状态
+SQL> select index_name,status from user_indexes where index_name='EMPLIST_DEPTNO_I';		#为什么索引的状态还是可用的呢？
+INDEX_NAME		  STATUS
+------------------------- --------
+EMPLIST_DEPTNO_I	  VALID
+SQL> truncate table emplist;			#清空表里面的数据
+SQL> insert into emplist select * from emp;			#重新插入数据
+SQL> commit;
+SQL> select index_name,status from user_indexes where index_name='EMPLIST_DEPTNO_I';		#为什么索引的状态还是可用的呢？
+INDEX_NAME		  STATUS
+------------------------- --------
+EMPLIST_DEPTNO_I	  VALID
+SQL> alter index emplist_deptno_i rebuild;		#这个状态应该是不可用的，所以需要重建索引
+
+#创建本地索引
+SQL> drop index emplist_deptno_i;
+SQL> create index emplist_deptno_i on emplist(deptno) local;
+SQL> set autot off
+SQL> select index_name,partition_name,status from user_ind_partitions where index_name='EMPLIST_DEPTNO_I';
+INDEX_NAME				  PARTITION_NAME		 STATUS
+------------------------- ------------------------------ --------
+EMPLIST_DEPTNO_I		  EMPLIST_P1			 USABLE
+EMPLIST_DEPTNO_I		  EMPLIST_P2			 USABLE
+EMPLIST_DEPTNO_I		  EMPLIST_P3			 USABLE
+EMPLIST_DEPTNO_I		  EMPLIST_P4			 USABLE
+SQL> alter table emplist add partition emplist_p5 values(50);
+SQL> select index_name,partition_name,status from user_ind_partitions where index_name='EMPLIST_DEPTNO_I';
+INDEX_NAME		  PARTITION_NAME		 STATUS
+------------------------- ------------------------------ --------
+EMPLIST_DEPTNO_I	  EMPLIST_P1			 USABLE
+EMPLIST_DEPTNO_I	  EMPLIST_P2			 USABLE
+EMPLIST_DEPTNO_I	  EMPLIST_P3			 USABLE
+EMPLIST_DEPTNO_I	  EMPLIST_P4			 USABLE
+EMPLIST_DEPTNO_I	  EMPLIST_P5			 USABLE
+SQL> alter index emplist_deptno_i rebuild partition emplist_p5;		#现在就只需要对emplist_p5进行重建
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+方法：手动删除文件
+删除 /etc/ora*
+删除 /usr/local/bin/oraenv
+删除 /usr/local/bin/dbhome
+删除 /usr/local/bin/coraenv
+删除 $ORACLE_BASE/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

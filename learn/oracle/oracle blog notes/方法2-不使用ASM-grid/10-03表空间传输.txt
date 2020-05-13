@@ -1,0 +1,70 @@
+表空间传输
+	比如说一个表很大，要将这个表同步到另外一台电脑上去。用户也很多，进行迁移也很困难
+orcl库和orcl1库，将orcl库中的tt表空间直接放到orcl1中，并且将其中的数据也放到orcl1中
+
+[oracle@oracle ~]$ echo $ORACLE_SID
+orcl
+[oracle@oracle ~]$ sqlplus / as sysdba
+SQL> create tablespace tt datafile '/u01/app/oracle/oradata/orcl/tt.dbf' size 10m;		#创建实验所用的表空间tt
+SQL> create user tt identified by tt default tablespace tt;			#创建用户tt，默认表空间为tt
+SQL> grant connect,resource to tt;						#授予权限
+SQL> create table  tt.e as select * from scott.emp;		#创建tt用户下的表
+SQL> alter tablespace tt read only;				#将tt表空间改为只读
+[oracle@oracle ~]$ exp \'sys/oracle as sysdba\' file=/backup/tt.dmp transport_tablespace=y tablespaces=tt
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+Export done in US7ASCII character set and AL16UTF16 NCHAR character set
+server uses AL32UTF8 character set (possible charset conversion)
+Note: table data (rows) will not be exported
+About to export transportable tablespace metadata...
+For tablespace TT ...
+. exporting cluster definitions
+. exporting table definitions
+. . exporting table                              E
+. exporting referential integrity constraints
+. exporting triggers
+. end transportable tablespace metadata export
+Export terminated successfully without warnings.
+[oracle@oracle ~]$ cp /u01/app/oracle/oradata/orcl/tt.dbf /u01/app/oracle/oradata/orcl1/
+SQL> alter tablespace tt read write;
+
+[oracle@oracle ~]$ export ORACLE_SID=orcl1
+[oracle@oracle ~]$ sqlplus / as sysdba		#需要先创建相同的用户，并且两个数据库的字符集要一样
+SQL> create user tt identified by tt;
+SQL> grant connect,resource to tt;
+SQL> exit
+[oracle@oracle ~]$ imp \'sys/oracle as sysdba\' file=/backup/tt.dmp transport_tablespace=y tablespaces=tt datafiles=/u01/app/oracle/oradata/orcl1/tt.dbf 
+Export file created by EXPORT:V11.02.00 via conventional path
+About to import transportable tablespace(s) metadata...
+import done in US7ASCII character set and AL16UTF16 NCHAR character set
+import server uses AL32UTF8 character set (possible charset conversion)
+. importing SYS's objects into SYS
+. importing SYS's objects into SYS
+. importing TT's objects into TT
+. . importing table                            "E"
+. importing SYS's objects into SYS
+Import terminated successfully without warnings.
+[oracle@oracle58 ~]$ sqlplus / as sysdba
+SQL> select tablespace_name from dba_data_files;		#现在就有tt表空间了
+TABLESPACE_NAME
+------------------------------
+USERS
+UNDOTBS1
+SYSAUX
+SYSTEM
+TT
+SQL> select username,default_tablespace from dba_users where username='TT';		#现在表空间是users
+USERNAME						DEFAULT_TABLESPACE
+------------------------------ ------------------------------
+TT								USERS		
+SQL> alter user tt default tablespace tt;			#默认表空间改为tt
+SQL> select table_name,tablespace_name from dba_tables where owner='TT';	#看到tt用户表存放在了tt表空间里面
+TABLE_NAME					   TABLESPACE_NAME
+------------------------------ ------------------------------
+E							   TT
+
+
+
+
+
+
+

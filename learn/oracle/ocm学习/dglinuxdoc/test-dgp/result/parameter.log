@@ -1,0 +1,1516 @@
+SQL> set head off
+SQL> SELECT UTL_INADDR.GET_HOST_ADDRESS,
+  2  SYS_CONTEXT('userenv', 'ip_address')
+  3  FROM DUAL;
+
+172.16.2.2                                                                      
+172.20.0.240                                                                    
+                                                                                
+
+SQL> SELECT NAME,VALUE FROM v$parameter ORDER BY NAME;
+
+O7_DICTIONARY_ACCESSIBILITY                                                     
+FALSE                                                                           
+                                                                                
+active_instance_count                                                           
+                                                                                
+                                                                                
+aq_tm_processes                                                                 
+0                                                                               
+                                                                                
+archive_lag_target                                                              
+0                                                                               
+                                                                                
+asm_diskgroups                                                                  
+
+                                                                                
+                                                                                
+asm_diskstring                                                                  
+                                                                                
+                                                                                
+asm_power_limit                                                                 
+1                                                                               
+                                                                                
+asm_preferred_read_failure_groups                                               
+                                                                                
+                                                                                
+audit_file_dest                                                                 
+/u01/oracle/admin/o11gr2/adump                                                  
+
+                                                                                
+audit_sys_operations                                                            
+FALSE                                                                           
+                                                                                
+audit_syslog_level                                                              
+                                                                                
+                                                                                
+audit_trail                                                                     
+DB                                                                              
+                                                                                
+background_core_dump                                                            
+partial                                                                         
+                                                                                
+
+background_dump_dest                                                            
+/u01/oracle/diag/rdbms/o11gr2/o11gr2/trace                                      
+                                                                                
+backup_tape_io_slaves                                                           
+FALSE                                                                           
+                                                                                
+bitmap_merge_area_size                                                          
+1048576                                                                         
+                                                                                
+blank_trimming                                                                  
+FALSE                                                                           
+                                                                                
+buffer_pool_keep                                                                
+
+                                                                                
+                                                                                
+buffer_pool_recycle                                                             
+                                                                                
+                                                                                
+cell_offload_compaction                                                         
+ADAPTIVE                                                                        
+                                                                                
+cell_offload_decryption                                                         
+TRUE                                                                            
+                                                                                
+cell_offload_parameters                                                         
+                                                                                
+
+                                                                                
+cell_offload_plan_display                                                       
+AUTO                                                                            
+                                                                                
+cell_offload_processing                                                         
+TRUE                                                                            
+                                                                                
+cell_partition_large_extents                                                    
+DEFAULT                                                                         
+                                                                                
+circuits                                                                        
+                                                                                
+                                                                                
+
+client_result_cache_lag                                                         
+3000                                                                            
+                                                                                
+client_result_cache_size                                                        
+0                                                                               
+                                                                                
+cluster_database                                                                
+FALSE                                                                           
+                                                                                
+cluster_database_instances                                                      
+1                                                                               
+                                                                                
+cluster_interconnects                                                           
+
+                                                                                
+                                                                                
+commit_logging                                                                  
+                                                                                
+                                                                                
+commit_point_strength                                                           
+1                                                                               
+                                                                                
+commit_wait                                                                     
+                                                                                
+                                                                                
+commit_write                                                                    
+                                                                                
+
+                                                                                
+compatible                                                                      
+11.2.0.0.0                                                                      
+                                                                                
+control_file_record_keep_time                                                   
+30                                                                              
+                                                                                
+control_files                                                                   
+/data/oradata/o11gr2/control01.ctl, /data/flash_recovery_area/o11gr2/control02.c
+tl                                                                              
+                                                                                
+control_management_pack_access                                                  
+DIAGNOSTIC+TUNING                                                               
+
+                                                                                
+core_dump_dest                                                                  
+/u01/oracle/diag/rdbms/o11gr2/o11gr2/cdump                                      
+                                                                                
+cpu_count                                                                       
+8                                                                               
+                                                                                
+create_bitmap_area_size                                                         
+8388608                                                                         
+                                                                                
+create_stored_outlines                                                          
+                                                                                
+                                                                                
+
+cursor_sharing                                                                  
+EXACT                                                                           
+                                                                                
+cursor_space_for_time                                                           
+FALSE                                                                           
+                                                                                
+db_16k_cache_size                                                               
+0                                                                               
+                                                                                
+db_2k_cache_size                                                                
+0                                                                               
+                                                                                
+db_32k_cache_size                                                               
+
+0                                                                               
+                                                                                
+db_4k_cache_size                                                                
+0                                                                               
+                                                                                
+db_8k_cache_size                                                                
+0                                                                               
+                                                                                
+db_block_buffers                                                                
+0                                                                               
+                                                                                
+db_block_checking                                                               
+FALSE                                                                           
+
+                                                                                
+db_block_checksum                                                               
+TYPICAL                                                                         
+                                                                                
+db_block_size                                                                   
+8192                                                                            
+                                                                                
+db_cache_advice                                                                 
+ON                                                                              
+                                                                                
+db_cache_size                                                                   
+0                                                                               
+                                                                                
+
+db_create_file_dest                                                             
+                                                                                
+                                                                                
+db_create_online_log_dest_1                                                     
+                                                                                
+                                                                                
+db_create_online_log_dest_2                                                     
+                                                                                
+                                                                                
+db_create_online_log_dest_3                                                     
+                                                                                
+                                                                                
+db_create_online_log_dest_4                                                     
+
+                                                                                
+                                                                                
+db_create_online_log_dest_5                                                     
+                                                                                
+                                                                                
+db_domain                                                                       
+                                                                                
+                                                                                
+db_file_multiblock_read_count                                                   
+70                                                                              
+                                                                                
+db_file_name_convert                                                            
+                                                                                
+
+                                                                                
+db_files                                                                        
+200                                                                             
+                                                                                
+db_flash_cache_file                                                             
+                                                                                
+                                                                                
+db_flash_cache_size                                                             
+0                                                                               
+                                                                                
+db_flashback_retention_target                                                   
+1440                                                                            
+                                                                                
+
+db_keep_cache_size                                                              
+0                                                                               
+                                                                                
+db_lost_write_protect                                                           
+NONE                                                                            
+                                                                                
+db_name                                                                         
+o11gr2                                                                          
+                                                                                
+db_recovery_file_dest                                                           
+/data/flash_recovery_area                                                       
+                                                                                
+db_recovery_file_dest_size                                                      
+
+21474836480                                                                     
+                                                                                
+db_recycle_cache_size                                                           
+0                                                                               
+                                                                                
+db_securefile                                                                   
+PERMITTED                                                                       
+                                                                                
+db_ultra_safe                                                                   
+OFF                                                                             
+                                                                                
+db_unique_name                                                                  
+o11gr2                                                                          
+
+                                                                                
+db_writer_processes                                                             
+1                                                                               
+                                                                                
+dbwr_io_slaves                                                                  
+0                                                                               
+                                                                                
+ddl_lock_timeout                                                                
+0                                                                               
+                                                                                
+deferred_segment_creation                                                       
+FALSE                                                                           
+                                                                                
+
+dg_broker_config_file1                                                          
+/u01/oracle/db/dbs/dr1o11gr2.dat                                                
+                                                                                
+dg_broker_config_file2                                                          
+/u01/oracle/db/dbs/dr2o11gr2.dat                                                
+                                                                                
+dg_broker_start                                                                 
+FALSE                                                                           
+                                                                                
+diagnostic_dest                                                                 
+/u01/oracle                                                                     
+                                                                                
+disk_asynch_io                                                                  
+
+TRUE                                                                            
+                                                                                
+dispatchers                                                                     
+(PROTOCOL=TCP) (SERVICE=o11gr2XDB)                                              
+                                                                                
+distributed_lock_timeout                                                        
+60                                                                              
+                                                                                
+dml_locks                                                                       
+6720                                                                            
+                                                                                
+dst_upgrade_insert_conv                                                         
+TRUE                                                                            
+
+                                                                                
+enable_ddl_logging                                                              
+FALSE                                                                           
+                                                                                
+event                                                                           
+                                                                                
+                                                                                
+fal_client                                                                      
+                                                                                
+                                                                                
+fal_server                                                                      
+                                                                                
+                                                                                
+
+fast_start_io_target                                                            
+0                                                                               
+                                                                                
+fast_start_mttr_target                                                          
+0                                                                               
+                                                                                
+fast_start_parallel_rollback                                                    
+LOW                                                                             
+                                                                                
+file_mapping                                                                    
+FALSE                                                                           
+                                                                                
+fileio_network_adapters                                                         
+
+                                                                                
+                                                                                
+filesystemio_options                                                            
+asynch                                                                          
+                                                                                
+fixed_date                                                                      
+                                                                                
+                                                                                
+gcs_server_processes                                                            
+0                                                                               
+                                                                                
+global_context_pool_size                                                        
+                                                                                
+
+                                                                                
+global_names                                                                    
+FALSE                                                                           
+                                                                                
+global_txn_processes                                                            
+1                                                                               
+                                                                                
+hash_area_size                                                                  
+131072                                                                          
+                                                                                
+hi_shared_memory_address                                                        
+0                                                                               
+                                                                                
+
+hs_autoregister                                                                 
+TRUE                                                                            
+                                                                                
+ifile                                                                           
+                                                                                
+                                                                                
+instance_groups                                                                 
+                                                                                
+                                                                                
+instance_name                                                                   
+o11gr2                                                                          
+                                                                                
+instance_number                                                                 
+
+0                                                                               
+                                                                                
+instance_type                                                                   
+RDBMS                                                                           
+                                                                                
+java_jit_enabled                                                                
+TRUE                                                                            
+                                                                                
+java_max_sessionspace_size                                                      
+0                                                                               
+                                                                                
+java_pool_size                                                                  
+0                                                                               
+
+                                                                                
+java_soft_sessionspace_limit                                                    
+0                                                                               
+                                                                                
+job_queue_processes                                                             
+1000                                                                            
+                                                                                
+large_pool_size                                                                 
+0                                                                               
+                                                                                
+ldap_directory_access                                                           
+NONE                                                                            
+                                                                                
+
+ldap_directory_sysauth                                                          
+no                                                                              
+                                                                                
+license_max_sessions                                                            
+0                                                                               
+                                                                                
+license_max_users                                                               
+0                                                                               
+                                                                                
+license_sessions_warning                                                        
+0                                                                               
+                                                                                
+listener_networks                                                               
+
+                                                                                
+                                                                                
+local_listener                                                                  
+                                                                                
+                                                                                
+lock_name_space                                                                 
+                                                                                
+                                                                                
+lock_sga                                                                        
+FALSE                                                                           
+                                                                                
+log_archive_config                                                              
+                                                                                
+
+                                                                                
+log_archive_dest                                                                
+                                                                                
+                                                                                
+log_archive_dest_1                                                              
+location=/archive                                                               
+                                                                                
+log_archive_dest_10                                                             
+location=use_db_recovery_file_dest                                              
+                                                                                
+log_archive_dest_11                                                             
+                                                                                
+                                                                                
+
+log_archive_dest_12                                                             
+                                                                                
+                                                                                
+log_archive_dest_13                                                             
+                                                                                
+                                                                                
+log_archive_dest_14                                                             
+                                                                                
+                                                                                
+log_archive_dest_15                                                             
+                                                                                
+                                                                                
+log_archive_dest_16                                                             
+
+                                                                                
+                                                                                
+log_archive_dest_17                                                             
+                                                                                
+                                                                                
+log_archive_dest_18                                                             
+                                                                                
+                                                                                
+log_archive_dest_19                                                             
+                                                                                
+                                                                                
+log_archive_dest_2                                                              
+                                                                                
+
+                                                                                
+log_archive_dest_20                                                             
+                                                                                
+                                                                                
+log_archive_dest_21                                                             
+                                                                                
+                                                                                
+log_archive_dest_22                                                             
+                                                                                
+                                                                                
+log_archive_dest_23                                                             
+                                                                                
+                                                                                
+
+log_archive_dest_24                                                             
+                                                                                
+                                                                                
+log_archive_dest_25                                                             
+                                                                                
+                                                                                
+log_archive_dest_26                                                             
+                                                                                
+                                                                                
+log_archive_dest_27                                                             
+                                                                                
+                                                                                
+log_archive_dest_28                                                             
+
+                                                                                
+                                                                                
+log_archive_dest_29                                                             
+                                                                                
+                                                                                
+log_archive_dest_3                                                              
+                                                                                
+                                                                                
+log_archive_dest_30                                                             
+                                                                                
+                                                                                
+log_archive_dest_31                                                             
+                                                                                
+
+                                                                                
+log_archive_dest_4                                                              
+                                                                                
+                                                                                
+log_archive_dest_5                                                              
+                                                                                
+                                                                                
+log_archive_dest_6                                                              
+                                                                                
+                                                                                
+log_archive_dest_7                                                              
+                                                                                
+                                                                                
+
+log_archive_dest_8                                                              
+                                                                                
+                                                                                
+log_archive_dest_9                                                              
+                                                                                
+                                                                                
+log_archive_dest_state_1                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_10                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_11                                                       
+
+enable                                                                          
+                                                                                
+log_archive_dest_state_12                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_13                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_14                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_15                                                       
+enable                                                                          
+
+                                                                                
+log_archive_dest_state_16                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_17                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_18                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_19                                                       
+enable                                                                          
+                                                                                
+
+log_archive_dest_state_2                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_20                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_21                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_22                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_23                                                       
+
+enable                                                                          
+                                                                                
+log_archive_dest_state_24                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_25                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_26                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_27                                                       
+enable                                                                          
+
+                                                                                
+log_archive_dest_state_28                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_29                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_3                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_30                                                       
+enable                                                                          
+                                                                                
+
+log_archive_dest_state_31                                                       
+enable                                                                          
+                                                                                
+log_archive_dest_state_4                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_5                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_6                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_7                                                        
+
+enable                                                                          
+                                                                                
+log_archive_dest_state_8                                                        
+enable                                                                          
+                                                                                
+log_archive_dest_state_9                                                        
+enable                                                                          
+                                                                                
+log_archive_duplex_dest                                                         
+                                                                                
+                                                                                
+log_archive_format                                                              
+%t_%s_%r.dbf                                                                    
+
+                                                                                
+log_archive_local_first                                                         
+TRUE                                                                            
+                                                                                
+log_archive_max_processes                                                       
+4                                                                               
+                                                                                
+log_archive_min_succeed_dest                                                    
+1                                                                               
+                                                                                
+log_archive_start                                                               
+FALSE                                                                           
+                                                                                
+
+log_archive_trace                                                               
+0                                                                               
+                                                                                
+log_buffer                                                                      
+11681792                                                                        
+                                                                                
+log_checkpoint_interval                                                         
+0                                                                               
+                                                                                
+log_checkpoint_timeout                                                          
+1800                                                                            
+                                                                                
+log_checkpoints_to_alert                                                        
+
+FALSE                                                                           
+                                                                                
+log_file_name_convert                                                           
+                                                                                
+                                                                                
+max_dispatchers                                                                 
+                                                                                
+                                                                                
+max_dump_file_size                                                              
+unlimited                                                                       
+                                                                                
+max_enabled_roles                                                               
+150                                                                             
+
+                                                                                
+max_shared_servers                                                              
+                                                                                
+                                                                                
+memory_max_target                                                               
+4294967296                                                                      
+                                                                                
+memory_target                                                                   
+4294967296                                                                      
+                                                                                
+nls_calendar                                                                    
+                                                                                
+                                                                                
+
+nls_comp                                                                        
+BINARY                                                                          
+                                                                                
+nls_currency                                                                    
+                                                                                
+                                                                                
+nls_date_format                                                                 
+                                                                                
+                                                                                
+nls_date_language                                                               
+                                                                                
+                                                                                
+nls_dual_currency                                                               
+
+                                                                                
+                                                                                
+nls_iso_currency                                                                
+                                                                                
+                                                                                
+nls_language                                                                    
+AMERICAN                                                                        
+                                                                                
+nls_length_semantics                                                            
+BYTE                                                                            
+                                                                                
+nls_nchar_conv_excp                                                             
+FALSE                                                                           
+
+                                                                                
+nls_numeric_characters                                                          
+                                                                                
+                                                                                
+nls_sort                                                                        
+                                                                                
+                                                                                
+nls_territory                                                                   
+CHINA                                                                           
+                                                                                
+nls_time_format                                                                 
+                                                                                
+                                                                                
+
+nls_time_tz_format                                                              
+                                                                                
+                                                                                
+nls_timestamp_format                                                            
+                                                                                
+                                                                                
+nls_timestamp_tz_format                                                         
+                                                                                
+                                                                                
+object_cache_max_size_percent                                                   
+10                                                                              
+                                                                                
+object_cache_optimal_size                                                       
+
+102400                                                                          
+                                                                                
+olap_page_pool_size                                                             
+0                                                                               
+                                                                                
+open_cursors                                                                    
+300                                                                             
+                                                                                
+open_links                                                                      
+4                                                                               
+                                                                                
+open_links_per_instance                                                         
+4                                                                               
+
+                                                                                
+optimizer_capture_sql_plan_baselines                                            
+FALSE                                                                           
+                                                                                
+optimizer_dynamic_sampling                                                      
+2                                                                               
+                                                                                
+optimizer_features_enable                                                       
+11.2.0.1                                                                        
+                                                                                
+optimizer_index_caching                                                         
+0                                                                               
+                                                                                
+
+optimizer_index_cost_adj                                                        
+100                                                                             
+                                                                                
+optimizer_mode                                                                  
+ALL_ROWS                                                                        
+                                                                                
+optimizer_secure_view_merging                                                   
+TRUE                                                                            
+                                                                                
+optimizer_use_invisible_indexes                                                 
+FALSE                                                                           
+                                                                                
+optimizer_use_pending_statistics                                                
+
+FALSE                                                                           
+                                                                                
+optimizer_use_sql_plan_baselines                                                
+TRUE                                                                            
+                                                                                
+os_authent_prefix                                                               
+ops$                                                                            
+                                                                                
+os_roles                                                                        
+FALSE                                                                           
+                                                                                
+parallel_adaptive_multi_user                                                    
+TRUE                                                                            
+
+                                                                                
+parallel_automatic_tuning                                                       
+FALSE                                                                           
+                                                                                
+parallel_degree_limit                                                           
+CPU                                                                             
+                                                                                
+parallel_degree_policy                                                          
+MANUAL                                                                          
+                                                                                
+parallel_execution_message_size                                                 
+16384                                                                           
+                                                                                
+
+parallel_force_local                                                            
+FALSE                                                                           
+                                                                                
+parallel_instance_group                                                         
+                                                                                
+                                                                                
+parallel_io_cap_enabled                                                         
+FALSE                                                                           
+                                                                                
+parallel_max_servers                                                            
+80                                                                              
+                                                                                
+parallel_min_percent                                                            
+
+0                                                                               
+                                                                                
+parallel_min_servers                                                            
+0                                                                               
+                                                                                
+parallel_min_time_threshold                                                     
+AUTO                                                                            
+                                                                                
+parallel_server                                                                 
+FALSE                                                                           
+                                                                                
+parallel_server_instances                                                       
+1                                                                               
+
+                                                                                
+parallel_servers_target                                                         
+32                                                                              
+                                                                                
+parallel_threads_per_cpu                                                        
+2                                                                               
+                                                                                
+permit_92_wrap_format                                                           
+TRUE                                                                            
+                                                                                
+pga_aggregate_target                                                            
+0                                                                               
+                                                                                
+
+plscope_settings                                                                
+IDENTIFIERS:NONE                                                                
+                                                                                
+plsql_ccflags                                                                   
+                                                                                
+                                                                                
+plsql_code_type                                                                 
+INTERPRETED                                                                     
+                                                                                
+plsql_debug                                                                     
+FALSE                                                                           
+                                                                                
+plsql_optimize_level                                                            
+
+2                                                                               
+                                                                                
+plsql_v2_compatibility                                                          
+FALSE                                                                           
+                                                                                
+plsql_warnings                                                                  
+DISABLE:ALL                                                                     
+                                                                                
+pre_page_sga                                                                    
+FALSE                                                                           
+                                                                                
+processes                                                                       
+1000                                                                            
+
+                                                                                
+query_rewrite_enabled                                                           
+TRUE                                                                            
+                                                                                
+query_rewrite_integrity                                                         
+enforced                                                                        
+                                                                                
+rdbms_server_dn                                                                 
+                                                                                
+                                                                                
+read_only_open_delayed                                                          
+FALSE                                                                           
+                                                                                
+
+recovery_parallelism                                                            
+0                                                                               
+                                                                                
+recyclebin                                                                      
+on                                                                              
+                                                                                
+redo_transport_user                                                             
+                                                                                
+                                                                                
+remote_dependencies_mode                                                        
+TIMESTAMP                                                                       
+                                                                                
+remote_listener                                                                 
+
+                                                                                
+                                                                                
+remote_login_passwordfile                                                       
+EXCLUSIVE                                                                       
+                                                                                
+remote_os_authent                                                               
+FALSE                                                                           
+                                                                                
+remote_os_roles                                                                 
+FALSE                                                                           
+                                                                                
+replication_dependency_tracking                                                 
+TRUE                                                                            
+
+                                                                                
+resource_limit                                                                  
+FALSE                                                                           
+                                                                                
+resource_manager_cpu_allocation                                                 
+8                                                                               
+                                                                                
+resource_manager_plan                                                           
+                                                                                
+                                                                                
+result_cache_max_result                                                         
+5                                                                               
+                                                                                
+
+result_cache_max_size                                                           
+10747904                                                                        
+                                                                                
+result_cache_mode                                                               
+MANUAL                                                                          
+                                                                                
+result_cache_remote_expiration                                                  
+0                                                                               
+                                                                                
+resumable_timeout                                                               
+0                                                                               
+                                                                                
+rollback_segments                                                               
+
+                                                                                
+                                                                                
+sec_case_sensitive_logon                                                        
+TRUE                                                                            
+                                                                                
+sec_max_failed_login_attempts                                                   
+10                                                                              
+                                                                                
+sec_protocol_error_further_action                                               
+CONTINUE                                                                        
+                                                                                
+sec_protocol_error_trace_action                                                 
+TRACE                                                                           
+
+                                                                                
+sec_return_server_release_banner                                                
+FALSE                                                                           
+                                                                                
+serial_reuse                                                                    
+disable                                                                         
+                                                                                
+service_names                                                                   
+o11gr2                                                                          
+                                                                                
+session_cached_cursors                                                          
+50                                                                              
+                                                                                
+
+session_max_open_files                                                          
+10                                                                              
+                                                                                
+sessions                                                                        
+1528                                                                            
+                                                                                
+sga_max_size                                                                    
+4294967296                                                                      
+                                                                                
+sga_target                                                                      
+0                                                                               
+                                                                                
+shadow_core_dump                                                                
+
+partial                                                                         
+                                                                                
+shared_memory_address                                                           
+0                                                                               
+                                                                                
+shared_pool_reserved_size                                                       
+88080384                                                                        
+                                                                                
+shared_pool_size                                                                
+0                                                                               
+                                                                                
+shared_server_sessions                                                          
+                                                                                
+
+                                                                                
+shared_servers                                                                  
+1                                                                               
+                                                                                
+skip_unusable_indexes                                                           
+TRUE                                                                            
+                                                                                
+smtp_out_server                                                                 
+                                                                                
+                                                                                
+sort_area_retained_size                                                         
+0                                                                               
+                                                                                
+
+sort_area_size                                                                  
+65536                                                                           
+                                                                                
+spfile                                                                          
+/u01/oracle/db/dbs/spfileo11gr2.ora                                             
+                                                                                
+sql92_security                                                                  
+FALSE                                                                           
+                                                                                
+sql_trace                                                                       
+FALSE                                                                           
+                                                                                
+sqltune_category                                                                
+
+DEFAULT                                                                         
+                                                                                
+standby_archive_dest                                                            
+?/dbs/arch                                                                      
+                                                                                
+standby_file_management                                                         
+MANUAL                                                                          
+                                                                                
+star_transformation_enabled                                                     
+FALSE                                                                           
+                                                                                
+statistics_level                                                                
+TYPICAL                                                                         
+
+                                                                                
+streams_pool_size                                                               
+0                                                                               
+                                                                                
+tape_asynch_io                                                                  
+TRUE                                                                            
+                                                                                
+thread                                                                          
+0                                                                               
+                                                                                
+timed_os_statistics                                                             
+0                                                                               
+                                                                                
+
+timed_statistics                                                                
+TRUE                                                                            
+                                                                                
+trace_enabled                                                                   
+TRUE                                                                            
+                                                                                
+tracefile_identifier                                                            
+                                                                                
+                                                                                
+transactions                                                                    
+1680                                                                            
+                                                                                
+transactions_per_rollback_segment                                               
+
+5                                                                               
+                                                                                
+undo_management                                                                 
+AUTO                                                                            
+                                                                                
+undo_retention                                                                  
+900                                                                             
+                                                                                
+undo_tablespace                                                                 
+UNDOTBS1                                                                        
+                                                                                
+use_indirect_data_buffers                                                       
+FALSE                                                                           
+
+                                                                                
+use_sigio                                                                       
+TRUE                                                                            
+                                                                                
+user_dump_dest                                                                  
+/u01/oracle/diag/rdbms/o11gr2/o11gr2/trace                                      
+                                                                                
+utl_file_dir                                                                    
+                                                                                
+                                                                                
+workarea_size_policy                                                            
+AUTO                                                                            
+                                                                                
+
+xml_db_events                                                                   
+enable                                                                          
+                                                                                
+
+已选择343行。
+
+SQL> SELECT 'alter system set '||NAME||'='||VALUE||' scope=spfile;' FROM v$parameter ORDER BY NAME;
+
+alter system set O7_DICTIONARY_ACCESSIBILITY=FALSE scope=spfile;                
+alter system set active_instance_count= scope=spfile;                           
+alter system set aq_tm_processes=0 scope=spfile;                                
+alter system set archive_lag_target=0 scope=spfile;                             
+alter system set asm_diskgroups= scope=spfile;                                  
+alter system set asm_diskstring= scope=spfile;                                  
+alter system set asm_power_limit=1 scope=spfile;                                
+alter system set asm_preferred_read_failure_groups= scope=spfile;               
+alter system set audit_file_dest=/u01/oracle/admin/o11gr2/adump scope=spfile;   
+alter system set audit_sys_operations=FALSE scope=spfile;                       
+alter system set audit_syslog_level= scope=spfile;                              
+alter system set audit_trail=DB scope=spfile;                                   
+alter system set background_core_dump=partial scope=spfile;                     
+
+alter system set background_dump_dest=/u01/oracle/diag/rdbms/o11gr2/o11gr2/trace
+ scope=spfile;                                                                  
+                                                                                
+alter system set backup_tape_io_slaves=FALSE scope=spfile;                      
+alter system set bitmap_merge_area_size=1048576 scope=spfile;                   
+alter system set blank_trimming=FALSE scope=spfile;                             
+alter system set buffer_pool_keep= scope=spfile;                                
+alter system set buffer_pool_recycle= scope=spfile;                             
+alter system set cell_offload_compaction=ADAPTIVE scope=spfile;                 
+alter system set cell_offload_decryption=TRUE scope=spfile;                     
+alter system set cell_offload_parameters= scope=spfile;                         
+alter system set cell_offload_plan_display=AUTO scope=spfile;                   
+alter system set cell_offload_processing=TRUE scope=spfile;                     
+
+alter system set cell_partition_large_extents=DEFAULT scope=spfile;             
+alter system set circuits= scope=spfile;                                        
+alter system set client_result_cache_lag=3000 scope=spfile;                     
+alter system set client_result_cache_size=0 scope=spfile;                       
+alter system set cluster_database=FALSE scope=spfile;                           
+alter system set cluster_database_instances=1 scope=spfile;                     
+alter system set cluster_interconnects= scope=spfile;                           
+alter system set commit_logging= scope=spfile;                                  
+alter system set commit_point_strength=1 scope=spfile;                          
+alter system set commit_wait= scope=spfile;                                     
+alter system set commit_write= scope=spfile;                                    
+alter system set compatible=11.2.0.0.0 scope=spfile;                            
+alter system set control_file_record_keep_time=30 scope=spfile;                 
+
+alter system set control_files=/data/oradata/o11gr2/control01.ctl, /data/flash_r
+ecovery_area/o11gr2/control02.ctl scope=spfile;                                 
+                                                                                
+alter system set control_management_pack_access=DIAGNOSTIC+TUNING scope=spfile; 
+alter system set core_dump_dest=/u01/oracle/diag/rdbms/o11gr2/o11gr2/cdump scope
+=spfile;                                                                        
+                                                                                
+alter system set cpu_count=8 scope=spfile;                                      
+alter system set create_bitmap_area_size=8388608 scope=spfile;                  
+alter system set create_stored_outlines= scope=spfile;                          
+alter system set cursor_sharing=EXACT scope=spfile;                             
+alter system set cursor_space_for_time=FALSE scope=spfile;                      
+alter system set db_16k_cache_size=0 scope=spfile;                              
+
+alter system set db_2k_cache_size=0 scope=spfile;                               
+alter system set db_32k_cache_size=0 scope=spfile;                              
+alter system set db_4k_cache_size=0 scope=spfile;                               
+alter system set db_8k_cache_size=0 scope=spfile;                               
+alter system set db_block_buffers=0 scope=spfile;                               
+alter system set db_block_checking=FALSE scope=spfile;                          
+alter system set db_block_checksum=TYPICAL scope=spfile;                        
+alter system set db_block_size=8192 scope=spfile;                               
+alter system set db_cache_advice=ON scope=spfile;                               
+alter system set db_cache_size=0 scope=spfile;                                  
+alter system set db_create_file_dest= scope=spfile;                             
+alter system set db_create_online_log_dest_1= scope=spfile;                     
+alter system set db_create_online_log_dest_2= scope=spfile;                     
+
+alter system set db_create_online_log_dest_3= scope=spfile;                     
+alter system set db_create_online_log_dest_4= scope=spfile;                     
+alter system set db_create_online_log_dest_5= scope=spfile;                     
+alter system set db_domain= scope=spfile;                                       
+alter system set db_file_multiblock_read_count=70 scope=spfile;                 
+alter system set db_file_name_convert= scope=spfile;                            
+alter system set db_files=200 scope=spfile;                                     
+alter system set db_flash_cache_file= scope=spfile;                             
+alter system set db_flash_cache_size=0 scope=spfile;                            
+alter system set db_flashback_retention_target=1440 scope=spfile;               
+alter system set db_keep_cache_size=0 scope=spfile;                             
+alter system set db_lost_write_protect=NONE scope=spfile;                       
+alter system set db_name=o11gr2 scope=spfile;                                   
+
+alter system set db_recovery_file_dest=/data/flash_recovery_area scope=spfile;  
+alter system set db_recovery_file_dest_size=21474836480 scope=spfile;           
+alter system set db_recycle_cache_size=0 scope=spfile;                          
+alter system set db_securefile=PERMITTED scope=spfile;                          
+alter system set db_ultra_safe=OFF scope=spfile;                                
+alter system set db_unique_name=o11gr2 scope=spfile;                            
+alter system set db_writer_processes=1 scope=spfile;                            
+alter system set dbwr_io_slaves=0 scope=spfile;                                 
+alter system set ddl_lock_timeout=0 scope=spfile;                               
+alter system set deferred_segment_creation=FALSE scope=spfile;                  
+alter system set dg_broker_config_file1=/u01/oracle/db/dbs/dr1o11gr2.dat scope=s
+pfile;                                                                          
+                                                                                
+
+alter system set dg_broker_config_file2=/u01/oracle/db/dbs/dr2o11gr2.dat scope=s
+pfile;                                                                          
+                                                                                
+alter system set dg_broker_start=FALSE scope=spfile;                            
+alter system set diagnostic_dest=/u01/oracle scope=spfile;                      
+alter system set disk_asynch_io=TRUE scope=spfile;                              
+alter system set dispatchers=(PROTOCOL=TCP) (SERVICE=o11gr2XDB) scope=spfile;   
+alter system set distributed_lock_timeout=60 scope=spfile;                      
+alter system set dml_locks=6720 scope=spfile;                                   
+alter system set dst_upgrade_insert_conv=TRUE scope=spfile;                     
+alter system set enable_ddl_logging=FALSE scope=spfile;                         
+alter system set event= scope=spfile;                                           
+alter system set fal_client= scope=spfile;                                      
+
+alter system set fal_server= scope=spfile;                                      
+alter system set fast_start_io_target=0 scope=spfile;                           
+alter system set fast_start_mttr_target=0 scope=spfile;                         
+alter system set fast_start_parallel_rollback=LOW scope=spfile;                 
+alter system set file_mapping=FALSE scope=spfile;                               
+alter system set fileio_network_adapters= scope=spfile;                         
+alter system set filesystemio_options=asynch scope=spfile;                      
+alter system set fixed_date= scope=spfile;                                      
+alter system set gcs_server_processes=0 scope=spfile;                           
+alter system set global_context_pool_size= scope=spfile;                        
+alter system set global_names=FALSE scope=spfile;                               
+alter system set global_txn_processes=1 scope=spfile;                           
+alter system set hash_area_size=131072 scope=spfile;                            
+
+alter system set hi_shared_memory_address=0 scope=spfile;                       
+alter system set hs_autoregister=TRUE scope=spfile;                             
+alter system set ifile= scope=spfile;                                           
+alter system set instance_groups= scope=spfile;                                 
+alter system set instance_name=o11gr2 scope=spfile;                             
+alter system set instance_number=0 scope=spfile;                                
+alter system set instance_type=RDBMS scope=spfile;                              
+alter system set java_jit_enabled=TRUE scope=spfile;                            
+alter system set java_max_sessionspace_size=0 scope=spfile;                     
+alter system set java_pool_size=0 scope=spfile;                                 
+alter system set java_soft_sessionspace_limit=0 scope=spfile;                   
+alter system set job_queue_processes=1000 scope=spfile;                         
+alter system set large_pool_size=0 scope=spfile;                                
+
+alter system set ldap_directory_access=NONE scope=spfile;                       
+alter system set ldap_directory_sysauth=no scope=spfile;                        
+alter system set license_max_sessions=0 scope=spfile;                           
+alter system set license_max_users=0 scope=spfile;                              
+alter system set license_sessions_warning=0 scope=spfile;                       
+alter system set listener_networks= scope=spfile;                               
+alter system set local_listener= scope=spfile;                                  
+alter system set lock_name_space= scope=spfile;                                 
+alter system set lock_sga=FALSE scope=spfile;                                   
+alter system set log_archive_config= scope=spfile;                              
+alter system set log_archive_dest= scope=spfile;                                
+alter system set log_archive_dest_1=location=/archive scope=spfile;             
+alter system set log_archive_dest_10=location=use_db_recovery_file_dest scope=sp
+
+file;                                                                           
+                                                                                
+alter system set log_archive_dest_11= scope=spfile;                             
+alter system set log_archive_dest_12= scope=spfile;                             
+alter system set log_archive_dest_13= scope=spfile;                             
+alter system set log_archive_dest_14= scope=spfile;                             
+alter system set log_archive_dest_15= scope=spfile;                             
+alter system set log_archive_dest_16= scope=spfile;                             
+alter system set log_archive_dest_17= scope=spfile;                             
+alter system set log_archive_dest_18= scope=spfile;                             
+alter system set log_archive_dest_19= scope=spfile;                             
+alter system set log_archive_dest_2= scope=spfile;                              
+alter system set log_archive_dest_20= scope=spfile;                             
+
+alter system set log_archive_dest_21= scope=spfile;                             
+alter system set log_archive_dest_22= scope=spfile;                             
+alter system set log_archive_dest_23= scope=spfile;                             
+alter system set log_archive_dest_24= scope=spfile;                             
+alter system set log_archive_dest_25= scope=spfile;                             
+alter system set log_archive_dest_26= scope=spfile;                             
+alter system set log_archive_dest_27= scope=spfile;                             
+alter system set log_archive_dest_28= scope=spfile;                             
+alter system set log_archive_dest_29= scope=spfile;                             
+alter system set log_archive_dest_3= scope=spfile;                              
+alter system set log_archive_dest_30= scope=spfile;                             
+alter system set log_archive_dest_31= scope=spfile;                             
+alter system set log_archive_dest_4= scope=spfile;                              
+
+alter system set log_archive_dest_5= scope=spfile;                              
+alter system set log_archive_dest_6= scope=spfile;                              
+alter system set log_archive_dest_7= scope=spfile;                              
+alter system set log_archive_dest_8= scope=spfile;                              
+alter system set log_archive_dest_9= scope=spfile;                              
+alter system set log_archive_dest_state_1=enable scope=spfile;                  
+alter system set log_archive_dest_state_10=enable scope=spfile;                 
+alter system set log_archive_dest_state_11=enable scope=spfile;                 
+alter system set log_archive_dest_state_12=enable scope=spfile;                 
+alter system set log_archive_dest_state_13=enable scope=spfile;                 
+alter system set log_archive_dest_state_14=enable scope=spfile;                 
+alter system set log_archive_dest_state_15=enable scope=spfile;                 
+alter system set log_archive_dest_state_16=enable scope=spfile;                 
+
+alter system set log_archive_dest_state_17=enable scope=spfile;                 
+alter system set log_archive_dest_state_18=enable scope=spfile;                 
+alter system set log_archive_dest_state_19=enable scope=spfile;                 
+alter system set log_archive_dest_state_2=enable scope=spfile;                  
+alter system set log_archive_dest_state_20=enable scope=spfile;                 
+alter system set log_archive_dest_state_21=enable scope=spfile;                 
+alter system set log_archive_dest_state_22=enable scope=spfile;                 
+alter system set log_archive_dest_state_23=enable scope=spfile;                 
+alter system set log_archive_dest_state_24=enable scope=spfile;                 
+alter system set log_archive_dest_state_25=enable scope=spfile;                 
+alter system set log_archive_dest_state_26=enable scope=spfile;                 
+alter system set log_archive_dest_state_27=enable scope=spfile;                 
+alter system set log_archive_dest_state_28=enable scope=spfile;                 
+
+alter system set log_archive_dest_state_29=enable scope=spfile;                 
+alter system set log_archive_dest_state_3=enable scope=spfile;                  
+alter system set log_archive_dest_state_30=enable scope=spfile;                 
+alter system set log_archive_dest_state_31=enable scope=spfile;                 
+alter system set log_archive_dest_state_4=enable scope=spfile;                  
+alter system set log_archive_dest_state_5=enable scope=spfile;                  
+alter system set log_archive_dest_state_6=enable scope=spfile;                  
+alter system set log_archive_dest_state_7=enable scope=spfile;                  
+alter system set log_archive_dest_state_8=enable scope=spfile;                  
+alter system set log_archive_dest_state_9=enable scope=spfile;                  
+alter system set log_archive_duplex_dest= scope=spfile;                         
+alter system set log_archive_format=%t_%s_%r.dbf scope=spfile;                  
+alter system set log_archive_local_first=TRUE scope=spfile;                     
+
+alter system set log_archive_max_processes=4 scope=spfile;                      
+alter system set log_archive_min_succeed_dest=1 scope=spfile;                   
+alter system set log_archive_start=FALSE scope=spfile;                          
+alter system set log_archive_trace=0 scope=spfile;                              
+alter system set log_buffer=11681792 scope=spfile;                              
+alter system set log_checkpoint_interval=0 scope=spfile;                        
+alter system set log_checkpoint_timeout=1800 scope=spfile;                      
+alter system set log_checkpoints_to_alert=FALSE scope=spfile;                   
+alter system set log_file_name_convert= scope=spfile;                           
+alter system set max_dispatchers= scope=spfile;                                 
+alter system set max_dump_file_size=unlimited scope=spfile;                     
+alter system set max_enabled_roles=150 scope=spfile;                            
+alter system set max_shared_servers= scope=spfile;                              
+
+alter system set memory_max_target=4294967296 scope=spfile;                     
+alter system set memory_target=4294967296 scope=spfile;                         
+alter system set nls_calendar= scope=spfile;                                    
+alter system set nls_comp=BINARY scope=spfile;                                  
+alter system set nls_currency= scope=spfile;                                    
+alter system set nls_date_format= scope=spfile;                                 
+alter system set nls_date_language= scope=spfile;                               
+alter system set nls_dual_currency= scope=spfile;                               
+alter system set nls_iso_currency= scope=spfile;                                
+alter system set nls_language=AMERICAN scope=spfile;                            
+alter system set nls_length_semantics=BYTE scope=spfile;                        
+alter system set nls_nchar_conv_excp=FALSE scope=spfile;                        
+alter system set nls_numeric_characters= scope=spfile;                          
+
+alter system set nls_sort= scope=spfile;                                        
+alter system set nls_territory=CHINA scope=spfile;                              
+alter system set nls_time_format= scope=spfile;                                 
+alter system set nls_time_tz_format= scope=spfile;                              
+alter system set nls_timestamp_format= scope=spfile;                            
+alter system set nls_timestamp_tz_format= scope=spfile;                         
+alter system set object_cache_max_size_percent=10 scope=spfile;                 
+alter system set object_cache_optimal_size=102400 scope=spfile;                 
+alter system set olap_page_pool_size=0 scope=spfile;                            
+alter system set open_cursors=300 scope=spfile;                                 
+alter system set open_links=4 scope=spfile;                                     
+alter system set open_links_per_instance=4 scope=spfile;                        
+alter system set optimizer_capture_sql_plan_baselines=FALSE scope=spfile;       
+
+alter system set optimizer_dynamic_sampling=2 scope=spfile;                     
+alter system set optimizer_features_enable=11.2.0.1 scope=spfile;               
+alter system set optimizer_index_caching=0 scope=spfile;                        
+alter system set optimizer_index_cost_adj=100 scope=spfile;                     
+alter system set optimizer_mode=ALL_ROWS scope=spfile;                          
+alter system set optimizer_secure_view_merging=TRUE scope=spfile;               
+alter system set optimizer_use_invisible_indexes=FALSE scope=spfile;            
+alter system set optimizer_use_pending_statistics=FALSE scope=spfile;           
+alter system set optimizer_use_sql_plan_baselines=TRUE scope=spfile;            
+alter system set os_authent_prefix=ops$ scope=spfile;                           
+alter system set os_roles=FALSE scope=spfile;                                   
+alter system set parallel_adaptive_multi_user=TRUE scope=spfile;                
+alter system set parallel_automatic_tuning=FALSE scope=spfile;                  
+
+alter system set parallel_degree_limit=CPU scope=spfile;                        
+alter system set parallel_degree_policy=MANUAL scope=spfile;                    
+alter system set parallel_execution_message_size=16384 scope=spfile;            
+alter system set parallel_force_local=FALSE scope=spfile;                       
+alter system set parallel_instance_group= scope=spfile;                         
+alter system set parallel_io_cap_enabled=FALSE scope=spfile;                    
+alter system set parallel_max_servers=80 scope=spfile;                          
+alter system set parallel_min_percent=0 scope=spfile;                           
+alter system set parallel_min_servers=0 scope=spfile;                           
+alter system set parallel_min_time_threshold=AUTO scope=spfile;                 
+alter system set parallel_server=FALSE scope=spfile;                            
+alter system set parallel_server_instances=1 scope=spfile;                      
+alter system set parallel_servers_target=32 scope=spfile;                       
+
+alter system set parallel_threads_per_cpu=2 scope=spfile;                       
+alter system set permit_92_wrap_format=TRUE scope=spfile;                       
+alter system set pga_aggregate_target=0 scope=spfile;                           
+alter system set plscope_settings=IDENTIFIERS:NONE scope=spfile;                
+alter system set plsql_ccflags= scope=spfile;                                   
+alter system set plsql_code_type=INTERPRETED scope=spfile;                      
+alter system set plsql_debug=FALSE scope=spfile;                                
+alter system set plsql_optimize_level=2 scope=spfile;                           
+alter system set plsql_v2_compatibility=FALSE scope=spfile;                     
+alter system set plsql_warnings=DISABLE:ALL scope=spfile;                       
+alter system set pre_page_sga=FALSE scope=spfile;                               
+alter system set processes=1000 scope=spfile;                                   
+alter system set query_rewrite_enabled=TRUE scope=spfile;                       
+
+alter system set query_rewrite_integrity=enforced scope=spfile;                 
+alter system set rdbms_server_dn= scope=spfile;                                 
+alter system set read_only_open_delayed=FALSE scope=spfile;                     
+alter system set recovery_parallelism=0 scope=spfile;                           
+alter system set recyclebin=on scope=spfile;                                    
+alter system set redo_transport_user= scope=spfile;                             
+alter system set remote_dependencies_mode=TIMESTAMP scope=spfile;               
+alter system set remote_listener= scope=spfile;                                 
+alter system set remote_login_passwordfile=EXCLUSIVE scope=spfile;              
+alter system set remote_os_authent=FALSE scope=spfile;                          
+alter system set remote_os_roles=FALSE scope=spfile;                            
+alter system set replication_dependency_tracking=TRUE scope=spfile;             
+alter system set resource_limit=FALSE scope=spfile;                             
+
+alter system set resource_manager_cpu_allocation=8 scope=spfile;                
+alter system set resource_manager_plan= scope=spfile;                           
+alter system set result_cache_max_result=5 scope=spfile;                        
+alter system set result_cache_max_size=10747904 scope=spfile;                   
+alter system set result_cache_mode=MANUAL scope=spfile;                         
+alter system set result_cache_remote_expiration=0 scope=spfile;                 
+alter system set resumable_timeout=0 scope=spfile;                              
+alter system set rollback_segments= scope=spfile;                               
+alter system set sec_case_sensitive_logon=TRUE scope=spfile;                    
+alter system set sec_max_failed_login_attempts=10 scope=spfile;                 
+alter system set sec_protocol_error_further_action=CONTINUE scope=spfile;       
+alter system set sec_protocol_error_trace_action=TRACE scope=spfile;            
+alter system set sec_return_server_release_banner=FALSE scope=spfile;           
+
+alter system set serial_reuse=disable scope=spfile;                             
+alter system set service_names=o11gr2 scope=spfile;                             
+alter system set session_cached_cursors=50 scope=spfile;                        
+alter system set session_max_open_files=10 scope=spfile;                        
+alter system set sessions=1528 scope=spfile;                                    
+alter system set sga_max_size=4294967296 scope=spfile;                          
+alter system set sga_target=0 scope=spfile;                                     
+alter system set shadow_core_dump=partial scope=spfile;                         
+alter system set shared_memory_address=0 scope=spfile;                          
+alter system set shared_pool_reserved_size=88080384 scope=spfile;               
+alter system set shared_pool_size=0 scope=spfile;                               
+alter system set shared_server_sessions= scope=spfile;                          
+alter system set shared_servers=1 scope=spfile;                                 
+
+alter system set skip_unusable_indexes=TRUE scope=spfile;                       
+alter system set smtp_out_server= scope=spfile;                                 
+alter system set sort_area_retained_size=0 scope=spfile;                        
+alter system set sort_area_size=65536 scope=spfile;                             
+alter system set spfile=/u01/oracle/db/dbs/spfileo11gr2.ora scope=spfile;       
+alter system set sql92_security=FALSE scope=spfile;                             
+alter system set sql_trace=FALSE scope=spfile;                                  
+alter system set sqltune_category=DEFAULT scope=spfile;                         
+alter system set standby_archive_dest=?/dbs/arch scope=spfile;                  
+alter system set standby_file_management=MANUAL scope=spfile;                   
+alter system set star_transformation_enabled=FALSE scope=spfile;                
+alter system set statistics_level=TYPICAL scope=spfile;                         
+alter system set streams_pool_size=0 scope=spfile;                              
+
+alter system set tape_asynch_io=TRUE scope=spfile;                              
+alter system set thread=0 scope=spfile;                                         
+alter system set timed_os_statistics=0 scope=spfile;                            
+alter system set timed_statistics=TRUE scope=spfile;                            
+alter system set trace_enabled=TRUE scope=spfile;                               
+alter system set tracefile_identifier= scope=spfile;                            
+alter system set transactions=1680 scope=spfile;                                
+alter system set transactions_per_rollback_segment=5 scope=spfile;              
+alter system set undo_management=AUTO scope=spfile;                             
+alter system set undo_retention=900 scope=spfile;                               
+alter system set undo_tablespace=UNDOTBS1 scope=spfile;                         
+alter system set use_indirect_data_buffers=FALSE scope=spfile;                  
+alter system set use_sigio=TRUE scope=spfile;                                   
+
+alter system set user_dump_dest=/u01/oracle/diag/rdbms/o11gr2/o11gr2/trace scope
+=spfile;                                                                        
+                                                                                
+alter system set utl_file_dir= scope=spfile;                                    
+alter system set workarea_size_policy=AUTO scope=spfile;                        
+alter system set xml_db_events=enable scope=spfile;                             
+
+已选择343行。
+
+SQL> --alter system set sga_max_size = 789651536 scope=spfile;
+SQL> --shutdown immediate
+SQL> --startup
+SQL> spool off

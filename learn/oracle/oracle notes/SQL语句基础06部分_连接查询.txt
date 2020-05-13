@@ -1,0 +1,675 @@
+求工资大于2000小于5000的员工编号，姓名，工作岗位，部门编号，最后结果按照部门编号排序（降序）
+	SQL> SELECT empno,ename,job,deptno
+	  2  FROM emp
+	  3  WHERE sal between 2000 and 5000
+	  4  ORDER BY deptno DESC;
+		 EMPNO ENAME      JOB			DEPTNO
+	---------- ---------- --------- ----------
+		  7698 BLAKE      MANAGER			30
+		  7566 JONES      MANAGER			20
+		  7788 SCOTT      ANALYST			20
+		  7902 FORD       ANALYST			20
+		  7839 KING       PRESIDENT 		10
+			99 Xiaohong						10
+		  7782 CLARK      MANAGER			10
+
+---------------------------------
+如果查询涉及多个表，就必须做表连接查询（最麻烦的来了）
+连接查询的类型
+Natural joins			自然连接
+Natural join clause		自然连接子句
+Using clause			使用条款
+On clause				条款
+Outer joins				外部连接
+Left outer join			左外连接
+Right outer join		右外连接
+Full outer join			全外连接
+Cross joins				交叉连接
+
+-----------------------------
+Natural join	自然连接
+join using		规定条件
+join on			内连接
+left join on	左外连接
+full join on	全外连接
+sql 99 标准和oracle 私有写法
+
+-----------------------------
+#Natural join	自然连接
+#语法：
+	SELECT table1.column,table2.column
+	FROM table1
+	NATURAL JOIN table2;
+#场景应用：两个表查询（三个及以上不行）
+#限制：两个表必须有且仅有一个相同的字段名，并且字段的数据类型相同，而且只支持等值比较
+------------------------------
+例子：求员工的编号，姓名，所在的部门名字
+	SQL> DESC emp;
+	 Name					   Null?    Type
+	 ------------------------- -------- ------------------
+	 EMPNO	编号			   NOT NULL NUMBER(4)
+	 ENAME	姓名						VARCHAR2(10)
+	 JOB								VARCHAR2(9)
+	 MGR								NUMBER(4)
+	 HIREDATE							DATE
+	 SAL								NUMBER(7,2)
+	 COMM								NUMBER(7,2)
+	 DEPTNO 							NUMBER(2)
+	SQL> DESC dept;
+	 Name					   Null?    Type
+	 ------------------------- -------- ------------------
+	 DEPTNO 				   NOT NULL NUMBER(2)
+	 DNAME	部门名字					VARCHAR2(14)
+	 LOC								VARCHAR2(13)
+
+	SQL> SELECT e.empno,e.ename,d.dname
+	  2  FROM emp e 
+	  3  NATURAL JOIN dept d;
+		 EMPNO ENAME      DNAME
+	---------- ---------- --------------
+			99 Xiaohong   ACCOUNTING
+		  7934 MILLER     ACCOUNTING
+		  7839 KING       ACCOUNTING
+		  7782 CLARK      ACCOUNTING
+		  7566 JONES      RESEARCH
+		  7369 SMITH      RESEARCH
+		  7902 FORD       RESEARCH
+		  7876 ADAMS      RESEARCH
+		  7788 SCOTT      RESEARCH
+		  7499 ALLEN      SALES
+		  7844 TURNER     SALES
+
+-----------------------------
+#join using		规定条件
+#语法：
+	SELECT table1.column,table2.column
+	FROM table1 JOIN table2
+	USING(column_name)
+#应用场景：两个表出现了多个字段相同，或者数据类型不相同，就用using制定连接条件
+#限制：只支持等值比较，还是两张表
+------------------------------
+	SQL> SELECT e.empno,e.ename,d.dname
+	  2  FROM emp e JOIN dept d
+	  3  USING (deptno);
+		 EMPNO ENAME      DNAME
+	---------- ---------- --------------
+			99 Xiaohong   ACCOUNTING
+		  7934 MILLER     ACCOUNTING
+		  7839 KING       ACCOUNTING
+		  7782 CLARK      ACCOUNTING
+		  7566 JONES      RESEARCH
+		  7369 SMITH      RESEARCH
+		  7902 FORD       RESEARCH
+		  7876 ADAMS      RESEARCH
+		  7788 SCOTT      RESEARCH
+		  7499 ALLEN      SALES
+		  7844 TURNER     SALES
+---------------------
+		SQL> ed
+		Wrote file afiedt.buf
+		  1  SELECT e.empno,e.ename,d.dname,e.deptno,d.deptno
+		  2  FROM emp e JOIN dept d
+		  3* USING (deptno)
+		SQL> /
+		SELECT e.empno,e.ename,d.dname,e.deptno,d.deptno
+												*
+		ERROR at line 1:
+		ORA-25154: column part of USING clause cannot have qualifier
+		SQL> ed
+		Wrote file afiedt.buf
+		  1  SELECT e.empno,e.ename,d.dname,deptno
+		  2  FROM emp e JOIN dept d
+		  3* USING(deptno)
+		SQL> /
+			 EMPNO ENAME      DNAME				DEPTNO
+		---------- ---------- -------------- ---------
+				99 Xiaohong   ACCOUNTING			10
+			  7934 MILLER     ACCOUNTING			10
+			  7839 KING       ACCOUNTING			10
+		SQL> ed
+		Wrote file afiedt.buf
+		  1  SELECT e.empno,e.ename,d.dname,deptno dep
+		  2  FROM emp e JOIN dept d
+		  3* USING(dep)
+		SQL> /
+		USING(dep)
+			  *
+		ERROR at line 3:
+		ORA-00904: "D"."DEP": invalid identifier
+		SQL> ed
+		Wrote file afiedt.buf
+		  1  SELECT e.empno,e.ename,d.dname,deptno dep
+		  2  FROM emp e JOIN dept d
+		  3* USING(deptno)
+		SQL> /
+			 EMPNO ENAME      DNAME				DEP
+		---------- ---------- -------------- ------
+				99 Xiaohong   ACCOUNTING	     10
+			  7934 MILLER     ACCOUNTING	     10
+			  7839 KING       ACCOUNTING	     10
+-----------------------------
+#例子：求部门号位20的员工的编号，姓名，工资，部门名字
+	SQL> SELECT e.empno,e.ename,e.sal,d.dname,deptno
+	  2  FROM emp e JOIN dept d
+	  3  USING(deptno)
+	  4  WHERE deptno=20
+		 EMPNO ENAME			 SAL DNAME				DEPTNO
+	  --------- ---------- --------- -------------- ----------
+		  7369 SMITH			 800 RESEARCH				20
+		  7566 JONES			2975 RESEARCH				20
+		  7788 SCOTT			3000 RESEARCH				20
+		  7876 ADAMS			1100 RESEARCH				20
+		  7902 FORD 			3000 RESEARCH				20
+
+--------------------------------
+#join on	内连接
+#语法：
+	SELECT table1.column,table2.column
+	FROM table1 JOIN table2
+	ON (table1.column_name=table2.column_name)
+#应用场景：支持多个表，而且支持不等值条件
+#限制：必须限定条件，而且结果必须满足条件，不满足条件则不显示
+--------------------------
+#例子：求员工的编号，姓名，工资，部门名字
+	SQL> SELECT e.empno,e.ename,e.sal,d.dname
+	  2  FROM emp e JOIN dept d
+	  3  ON e.deptno=d.deptno;
+		 EMPNO ENAME			 SAL DNAME
+	---------- ---------- ---------- --------------
+			99 Xiaohong			5000 ACCOUNTING
+		  7934 MILLER			1300 ACCOUNTING
+		  7839 KING 			5000 ACCOUNTING
+		  7782 CLARK			2450 ACCOUNTING
+		  7566 JONES			2975 RESEARCH
+		  7369 SMITH			 800 RESEARCH
+------------------------------
+#换到hr
+	SQL> conn hr/oracle
+	Connected.
+-------------------------
+#显示每个部门的编号，部门的名字，部门所在哪个城市
+	SQL> SELECT * FROM tab;
+	TNAME			       TABTYPE CLUSTERID
+	---------------------- ------- ----------
+	COUNTRIES		       TABLE
+	DEPARTMENTS		       TABLE
+	EMPLOYEES		       TABLE
+	EMP_DETAILS_VIEW	   VIEW
+	JOBS			       TABLE
+	JOB_HISTORY		       TABLE
+	LOCATIONS		       TABLE
+	REGIONS 		       TABLE
+	SQL> DESC departments;
+	 Name							Null?    Type
+	 ------------------------------ -------- ----------------------------
+	 DEPARTMENT_ID	部门id			NOT NULL NUMBER(4)
+	 DEPARTMENT_NAME	部门名字	NOT NULL VARCHAR2(30)
+	 MANAGER_ID								 NUMBER(6)
+	 LOCATION_ID	位置					 NUMBER(4)
+	SQL> DESC locations;
+	 Name							Null?    Type
+	 ------------------------------ -------- ----------------------------
+	 LOCATION_ID	位置			NOT NULL NUMBER(4)
+	 STREET_ADDRESS 						 VARCHAR2(40)
+	 POSTAL_CODE							 VARCHAR2(12)
+	 CITY		城市				NOT NULL VARCHAR2(30)
+	 STATE_PROVINCE 						 VARCHAR2(25)
+	 COUNTRY_ID								 CHAR(2)
+
+	SQL> SELECT d.department_id,d.department_name,l.city
+	  2  FROM departments d JOIN locations l
+	  3  ON d.location_id=l.location_id
+	DEPARTMENT_ID DEPARTMENT_NAME		    CITY
+	------------- ------------------------- -----------------------
+			   60 IT						Southlake
+			   50 Shipping					South San Francisco
+			   10 Administration		    Seattle
+			   30 Purchasing				Seattle
+			   90 Executive 				Seattle
+			  100 Finance					Seattle
+			  110 Accounting				Seattle
+			  120 Treasury					Seattle
+			  130 Corporate Tax				Seattle
+			   20 Marketing 				Toronto
+			   40 Human Resources		    London
+			   80 Sales						Oxford
+			   70 Public Relations		    Munich
+--------------------------
+总结：
+	SELECT 列出所有的字段
+	FROM 表1 JOIN 表2
+	ON 连接条件
+--------------------------------------------
+#扩展1：多个表连接
+	SELECT
+	FROM 表1 JOIN 表2 ON 连接条件
+	JOIN 表3 ON 连接条件
+	JOIN 表4 ON 连接条件
+------------------------------
+#在hr下，求员工的姓名，工资，部门编号，部门名字，部门所在城市，国家，区域
+	SQL> SELECT * FROM tab;
+	TNAME			       TABTYPE CLUSTERID
+	---------------------- ------- ----------
+	COUNTRIES		       TABLE
+	DEPARTMENTS		       TABLE
+	EMPLOYEES		       TABLE
+	EMP_DETAILS_VIEW	   VIEW
+	JOBS			       TABLE
+	JOB_HISTORY		       TABLE
+	LOCATIONS		       TABLE
+	REGIONS 		       TABLE
+	SQL> DESC employees;
+	 Name					   Null?    Type
+	 ------------------------- -------- ----------------------------
+	 EMPLOYEE_ID			   NOT NULL NUMBER(6)
+	 FIRST_NAME							VARCHAR2(20)
+	 LAST_NAME				   NOT NULL VARCHAR2(25)
+	 EMAIL					   NOT NULL VARCHAR2(25)
+	 PHONE_NUMBER					    VARCHAR2(20)
+	 HIRE_DATE				   NOT NULL DATE
+	 JOB_ID 				   NOT NULL VARCHAR2(10)
+	 SALARY 							NUMBER(8,2)
+	 COMMISSION_PCT 				    NUMBER(2,2)
+	 MANAGER_ID							NUMBER(6)
+	 DEPARTMENT_ID					    NUMBER(4)
+	SQL> DESC departments;
+	 Name							Null?    Type
+	 ------------------------------ -------- ----------------------------
+	 DEPARTMENT_ID	部门id			NOT NULL NUMBER(4)
+	 DEPARTMENT_NAME	部门名字	NOT NULL VARCHAR2(30)
+	 MANAGER_ID								 NUMBER(6)
+	 LOCATION_ID	位置					 NUMBER(4)
+	SQL> DESC locations;
+	 Name							Null?    Type
+	 ------------------------------ -------- ----------------------------
+	 LOCATION_ID	位置			NOT NULL NUMBER(4)
+	 STREET_ADDRESS 						 VARCHAR2(40)
+	 POSTAL_CODE							 VARCHAR2(12)
+	 CITY		城市				NOT NULL VARCHAR2(30)
+	 STATE_PROVINCE 						 VARCHAR2(25)
+	 COUNTRY_ID								 CHAR(2)
+	SQL> DESC countries;
+	 Name					   Null?    Type
+	 ------------------------- -------- ----------------------------
+	 COUNTRY_ID				   NOT NULL CHAR(2)
+	 COUNTRY_NAME					    VARCHAR2(40)
+	 REGION_ID							NUMBER
+	SQL> DESC regions;
+	 Name					   Null?    Type
+	 ------------------------- -------- ----------------------------
+	 REGION_ID				   NOT NULL NUMBER
+	 REGION_NAME					    VARCHAR2(25)
+
+	SQL> SELECT e.first_name||e.last_name,e.salary,e.department_id,d.department_name,l.city,c.country_name,r.region_name
+	  2  FROM employees e JOIN departments d ON e.department_id=d.department_id
+	  3  JOIN locations l ON d.location_id=l.location_id
+	  4  JOIN countries c ON l.country_id=c.country_id
+	  5  JOIN regions r ON c.region_id=r.region_id
+	E.FIRST_NAME||E.LAST_NAME SALARY DEPARTMENT_ID DEPARTMENT_NAME    CITY				   COUNTRY_NAME 			 REGION_NAME
+	------------------------- ------ ------------- ------------------ -------------------- ------------------------- -------------
+	DonaldOConnell				2600			50 Shipping			  South San Francisco  United States of America  Americas
+	DouglasGrant				2600			50 Shipping			  South San Francisco  United States of America  Americas
+	JenniferWhalen				4400			10 Administration     Seattle			   United States of America  Americas
+	MichaelHartstein	       13000			20 Marketing	      Toronto			   Canada					 Americas
+	PatFay						6000			20 Marketing	      Toronto			   Canada					 Americas
+	SusanMavris					6500			40 Human Resources    London			   United Kingdom			 Europe
+	HermannBaer				   10000			70 Public Relations   Munich			   Germany					 Europe
+	ShelleyHiggins		       12008	       110 Accounting	      Seattle			   United States of America  Americas
+	WilliamGietz				8300	       110 Accounting	      Seattle			   United States of America  Americas
+	StevenKing				   24000			90 Executive	      Seattle			   United States of America  Americas
+	NeenaKochhar		       17000			90 Executive	      Seattle			   United States of America  Americas
+	......
+	106 rows selected.
+---------------------------------------
+#扩展2：自我连接
+-----------------
+#例子：求员工的编号，姓名，工资，领导的编号，姓名，工资，部门号
+#换成scott
+	SQL> conn scott/oracle
+	Connected.
+#思路就是给表取多个表别名
+#假设我有2个表 e员工表，m领导表
+	SQL> SELECT e.empno,e.ename,e.sal,m.empno,m.ename,m.sal,m.deptno
+	  2  FROM emp e JOIN emp m 
+	  3  ON e.mgr=m.empno;
+		 EMPNO ENAME			 SAL      EMPNO ENAME			SAL     DEPTNO
+	---------- ---------- ---------- ---------- ---------- --------- ---------
+		  7902 FORD 			3000       7566 JONES			2975		20
+		  7788 SCOTT			3000       7566 JONES			2975		20
+		  7900 JAMES			 950       7698 BLAKE			2850		30
+		  7844 TURNER			1500       7698 BLAKE			2850		30
+		  7654 MARTIN			1250       7698 BLAKE			2850		30
+		  7521 WARD 			1250       7698 BLAKE			2850		30
+		  7499 ALLEN			1600       7698 BLAKE			2850		30
+		  7934 MILLER			1300       7782 CLARK			2450		10
+		  7876 ADAMS			1100       7788 SCOTT			3000		20
+		  7782 CLARK			2450       7839 KING			5000		10
+		  7698 BLAKE			2850       7839 KING			5000		10
+		  7566 JONES			2975       7839 KING			5000		10
+		  7369 SMITH			 800       7902 FORD			3000		20
+----------------------------
+#扩展3：不等值比较
+-------------------
+#例子；求员工的姓名，工资，工资等级
+	SQL> SELECT * FROM tab;
+	TNAME			       TABTYPE CLUSTERID
+	---------------------- ------- ----------
+	BONUS			       TABLE
+	DEPT			       TABLE
+	EMP					   TABLE
+	SALGRADE		       TABLE
+	XUESHENG		       TABLE
+	SQL> DESC salgrade;
+	 Name				Null?	Type
+	 ------------------ ------- -------------
+	 GRADE						NUMBER
+	 LOSAL						NUMBER
+	 HISAL						NUMBER
+	SQL> SELECT * FROM salgrade;
+		 GRADE	   LOSAL	   HISAL
+	---------- --------- -----------
+			 1		 700	    1200
+			 2		1201	    1400
+			 3		1401	    2000
+			 4		2001	    3000
+			 5		3001	    9999
+
+	SQL> SELECT e.ename,e.sal,s.grade
+	  2  FROM emp e JOIN salgrade s
+	  3  ON e.sal between s.losal and s.hisal;
+	ENAME			 SAL	   GRADE
+	---------- --------- -----------
+	SMITH			 800	       1
+	JAMES			 950	       1
+	ADAMS			1100	       1
+	WARD			1250	       2
+	MARTIN			1250	       2
+	MILLER			1300	       2
+	TURNER			1500	       3
+	ALLEN			1600	       3
+	CLARK			2450	       4
+	BLAKE			2850	       4
+	JONES			2975	       4
+	FORD			3000	       4
+	SCOTT			3000	       4
+	KING			5000	       5
+	Xiaohong		5000	       5
+
+--------------------------------
+#[扩展4：]外连接
+	表1 JOIN 表2
+		表1 就是左
+		表2 就是右
+#left join on	左外连接：先返回满足条件的，再返回左边不满足条件的
+#right join on	右外连接：先返回满足条件的，再返回右边不满足条件的
+#full join on	全外连接：先返回满足条件的，再返回左边和右边不满足条件的
+#语法：
+	SELECT table1.column,table2.column
+	FROM table1 LEFT|RIGHT|FULL OUTER JOIN table2
+	 ON (table1.column_name=table2.column_name)
+#应用场景：两个表连接，可以返回满足条件，也可以返回不满足条件的结果
+	SQL> SELECT e.empno,e.ename,d.dname
+	  2  FROM emp e LEFT JOIN dept d
+	  3  ON e.deptno=d.deptno;
+		 EMPNO ENAME      DNAME
+	---------- ---------- --------------
+		  7934 MILLER     ACCOUNTING
+		  7839 KING       ACCOUNTING
+		  7782 CLARK      ACCOUNTING
+			99 Xiaohong   ACCOUNTING
+	......
+		  7521 WARD       SALES
+		  7499 ALLEN      SALES
+	SQL> ed
+	Wrote file afiedt.buf
+	  1  SELECT e.empno,e.ename,d.dname
+	  2  FROM emp e FULL JOIN dept d
+	  3* ON e.deptno=d.deptno
+	SQL> /
+		 EMPNO ENAME      DNAME
+	---------- ---------- --------------
+			99 Xiaohong   ACCOUNTING
+		  7369 SMITH      RESEARCH
+		  7499 ALLEN      SALES
+	......
+		  7902 FORD       RESEARCH
+		  7934 MILLER     ACCOUNTING
+						  OPERATIONS
+--------------------------------------
+#先建立两个测试表：查询结果保存为一张表
+	SQL> CREATE table e as SELECT empno,ename,sal,deptno from emp;
+	Table created.
+	SQL> SELECT * FROM e;	#这张表只有数据，没有约束
+		 EMPNO ENAME			 SAL     DEPTNO
+	---------- ---------- ---------- ----------
+			99 Xiaohong			5000		 10
+		  7369 SMITH			 800		 20
+		  7499 ALLEN			1600		 30
+	......
+	SQL> CREATE table d as SELECT * FROM dept;
+	SQL> SELECT * FROM d;
+		DEPTNO DNAME		LOC
+	---------- ------------ -------------
+			10 ACCOUNTING	NEW YORK
+			20 RESEARCH		DALLAS
+			30 SALES		CHICAGO
+			40 OPERATIONS	BOSTON
+	SQL> INSERT INTO e(empno,ename,sal,deptno) values(1,'wuciren',1000,60);
+----------------------------
+#例子：求所有员工的姓名，所在部门的名字
+	SQL> SELECT e.ename,d.dname		#但是这个结果不对，少了一个wuciren
+	  2  FROM e JOIN d
+	  3  ON e.deptno=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	SMITH	   RESEARCH
+	......
+	FORD	   RESEARCH
+	MILLER	   ACCOUNTING
+	SQL> SELECT e.ename,d.dname		#现在才是对的
+	  2  FROM e LEFT JOIN d
+	  3  ON e.deptno=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	MILLER	   ACCOUNTING
+	KING	   ACCOUNTING
+	......
+	SMITH	   RESEARCH
+	JAMES	   SALES
+	......
+	WARD	   SALES
+	ALLEN	   SALES
+	wuciren
+------------------------------
+#例子：显示每个部门的名字，每个部门的总人数
+	SQL> SELECT d.dname,COUNT(*)		#少了一个部门的名字
+	  2  FROM d JOIN e
+	  3  ON d.deptno=e.deptno
+	  4  GROUP BY d.dname;
+	DNAME			 COUNT(*)
+	-------------- ----------
+	ACCOUNTING				4
+	RESEARCH				5
+	SALES					6
+	SQL>   SELECT d.dname,COUNT(*)
+	  2  FROM d LEFT JOIN e
+	  3  ON d.deptno=e.deptno
+	  4  GROUP BY d.dname
+	DNAME			 COUNT(*)
+	-------------- ----------
+	ACCOUNTING				4
+	OPERATIONS				1		 #这个也不对，是按照部门名字来计数的，所以显示为1，但这个部门里面实际是0人
+	RESEARCH				5
+	SALES					6
+	SQL> SELECT d.dname,COUNT(e.ename)		#现在才对
+	  2  FROM d LEFT JOIN e
+	  3  ON d.deptno=e.deptno
+	  4* GROUP BY d.dname
+	DNAME	       COUNT(E.ENAME)
+	-------------- --------------
+	ACCOUNTING					4
+	OPERATIONS					0
+	RESEARCH					5
+	SALES						6
+--------------------------------
+#例子：显示所有员工的姓名，部门编号，部门姓名。如果存在没有员工的部门，显示的时候 姓名为空。如果存在不属于任何部门的员工，部门名为空
+	SQL> SELECT e.ename,e.deptno,d.dname
+	  2  FROM e FULL JOIN d
+	  3  ON e.deptno=d.deptno;
+	ENAME	    DEPTNO DNAME
+	---------- ------- --------------
+	Xiaohong		10 ACCOUNTING
+	SMITH			20 RESEARCH
+	ALLEN			30 SALES
+	WARD			30 SALES
+	JONES			20 RESEARCH
+	MARTIN			30 SALES
+	BLAKE			30 SALES
+	CLARK			10 ACCOUNTING
+	SCOTT			20 RESEARCH
+	KING			10 ACCOUNTING
+	TURNER			30 SALES
+	ADAMS			20 RESEARCH
+	JAMES			30 SALES
+	FORD			20 RESEARCH
+	MILLER			10 ACCOUNTING
+	wuciren 		60
+					   OPERATIONS
+--------------------------
+#完善你的语句
+#例子：求员工的编号、姓名、工资，领导的编号、姓名、工资、部门号
+	SQL> SELECT e.empno,e.ename,e.sal,m.empno,m.ename,m.sal,m.deptno
+	  2  FROM emp e LEFT JOIN emp m
+	  3  ON e.mgr=m.empno;
+		 EMPNO ENAME			 SAL      EMPNO ENAME			 SAL    DEPTNO
+	---------- ---------- ---------- ---------- ---------- --------- ---------
+		  7902 FORD 			3000       7566 JONES			2975		20
+		  7788 SCOTT			3000       7566 JONES			2975		20
+		  7900 JAMES			 950       7698 BLAKE			2850		30
+		  7844 TURNER			1500       7698 BLAKE			2850		30
+		  7654 MARTIN			1250       7698 BLAKE			2850		30
+		  7521 WARD 			1250       7698 BLAKE			2850		30
+		  7499 ALLEN			1600       7698 BLAKE			2850		30
+		  7934 MILLER			1300       7782 CLARK			2450		10
+		  7876 ADAMS			1100       7788 SCOTT			3000		20
+		  7782 CLARK			2450       7839 KING			5000		10
+		  7698 BLAKE			2850       7839 KING			5000		10
+		  7566 JONES			2975       7839 KING			5000		10
+		  7369 SMITH			 800       7902 FORD			3000		20
+		  7839 KING 			5000
+			99 Xiaohong			5000
+
+------------------------------------
+#交叉连接	Cross joins
+#语法：
+	SELECT table1.column,table2.column
+	FROM table1
+	CROSS JOIN table2
+#应用场景：无条件连接
+#限制：不允许出现条件
+---------------------------
+#例子：
+	SQL> SELECT COUNT(*) FROM emp;
+	  COUNT(*)
+	----------
+			15
+	SQL> SELECT COUNT(*) FROM dept;
+	  COUNT(*)
+	----------
+			 4
+	SQL> SELECT COUNT(*)
+	  2  FROM emp CROSS JOIN dept;
+	  COUNT(*)
+	----------
+			60
+
+
+--------------------------sql 99 标准---------------------------
+------------------------------------
+oracle数据库 ---> 连接查询非标准写法	（以上就是我们的标准写法，接下来看oracle的非标准写法，真正体验到oracle强大的地方）
+#思想：
+	SELECT 字段
+	FROM 表
+	WHERE 条件
+
+-----------------
+#内连接
+	SELECT e.empno,e.ename,e.sal,d.dname
+	FROM emp e JOIN dept d
+	ON e.deptno=d.deptno;
+#等价非标准写法
+	SELECT e.empno,e.ename,e.sal,d.dname
+	FROM emp e , dept d
+	where e.deptno=d.deptno
+	and e.ename='SCOTT';
+----------------------
+	SQL> SELECT e.ename,d.dname
+	  2  FROM emp e JOIN dept d
+	  3  ON e.deptno=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	MILLER	   ACCOUNTING
+	......
+	BLAKE	   SALES
+	MARTIN	   SALES
+	SQL>   SELECT e.ename,d.dname
+	  2  FROM emp e , dept d
+	  3  WHERE e.deptno=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	MILLER	   ACCOUNTING
+	......
+	BLAKE	   SALES
+	MARTIN	   SALES
+
+---------------------
+#多表内连接
+SELECT e.first_name||e.last_name name,e.salary,e.department_id,d.department_name,l.city,c.country_name,r.region_name
+FROM employees e,departments d,locations l,countries c,regions r
+WHERE e.department_id=d.department_id
+	and d.location_id=l.location_id
+	and l.country_id=c.country_id
+	and c.region_id=r.region_id;
+
+----------------------
+#外连接
+#左外连接
+	SQL> SELECT e.ename,d.dname
+	  2  FROM  e JOIN  d
+	  3  ON e.deptno=d.deptno(+);
+	ENAME	   DNAME
+	---------- --------------
+	MILLER	   ACCOUNTING
+	KING	   ACCOUNTING
+	......
+	ALLEN	   SALES
+	wuciren
+#右外连接
+	SQL>   SELECT e.ename,d.dname
+	  2  FROM  e JOIN  d
+	  3  ON e.deptno(+)=d.deptno;
+	ENAME	   DNAME
+	---------- --------------
+	Xiaohong   ACCOUNTING
+	SMITH	   RESEARCH
+	......
+	FORD	   RESEARCH
+	MILLER	   ACCOUNTING
+			   OPERATIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,319 @@
+--20物理备库到快照备库
+	--日志挖掘 ,sql优化,在线分区,测试部门压力和功能测试
+--10查看当前库是物理备库还是快照备库
+--30取消快照备库
+
+--10查看当前库是物理备库还是快照备库
+	select log_mode,controlfile_type ,open_mode,protection_mode,PROTECTION_LEVEL，database_role,switchover_status，FORCE_LOGGING, DB_UNIQUE_NAME from v$database;
+	--物理备库active standby
+	DATABASE_ROLE    OPEN_MODE            LOG_MODE     CONTROLFILE_TYPE PROTECTION_MODE      PROTECTION_LEVEL     SWITCHOVER_STATUS    FORCE_LOGGING DB_UNIQUE_NAME                
+		---------------- -------------------- ------------ ---------------- -------------------- -------------------- -------------------- ------------- ------------------------------
+		PHYSICAL STANDBY READ ONLY WITH APPLY ARCHIVELOG   STANDBY          MAXIMUM PERFORMANCE  MAXIMUM PERFORMANCE  NOT ALLOWED          YES           szpa                          
+	--快照
+	ARCHIVELOG    CURRENT    READ WRITE **   MAXIMUM PERFORMANCE    MAXIMUM PERFORMANCE    SNAPSHOT STANDBY ** 
+--30取消快照备库
+    echo $ORACLE_SID
+	ocp
+	[oracle@ofldb02 ~]$ sqlplus / as sysdba
+	 set timing on
+	shutdown immediate
+	startup nomount
+	alter database mount;  
+	alter database convert to physical standby;  
+		--long time
+	select status from v$instance;
+		--STARTED
+	 alter database mount standby database;  
+		--ORA-00750: database has been previously mounted and dismounted
+	 shutdown immediate
+	 startup nomount
+	  alter database mount standby database;  
+	alter database open read only;
+	ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect; 
+	--20物理备库到快照备库
+--隐式可靠还原点SNAPSHT_STANdbY_REQUIRED_
+--可以接受主库日志,不能应用,控制文件scn会更新
+su - oracle
+echo $ORACLE_SID
+ocp
+sqlplus / as sysdba
+alter database recover managed standby database cancel;
+alter database convert to snapshot standby;
+alter database open ;
+
+ORA-01153: 激活了不兼容的介质恢复
+alter database recover managed standby database cancel;
+--alter database flashback on;
+--ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect;
+select log_mode,controlfile_type ,open_mode,protection_mode,PROTECTION_LEVEL，database_role,switchover_status，FORCE_LOGGING, DB_UNIQUE_NAME from v$database;
+--ARCHIVELOG    CURRENT    READ WRITE **   MAXIMUM PERFORMANCE    MAXIMUM PERFORMANCE    SNAPSHOT STANDBY **    NOT ALLOWED    YES    oflbox01dg
+alter database open ;
+日志挖掘
+--取消快照备库
+--删除还原点
+alter database convert to physical standby;  
+ORA-01126: 数据库必须已装载到此实例并且不在任何实例中打开
+--resove
+echo $ORACLE_SID
+oflbox01
+[oracle@ofldb02 ~]$ sqlplus / as sysdba
+ set timing on
+shutdown immediate
+startup nomount
+alter database mount;  
+alter database convert to physical standby;  
+--long time
+select status from v$instance;
+--STARTED
+ alter database mount standby database;  
+ ORA-00750: database has been previously mounted and dismounted
+ shutdown immediate
+ startup nomount
+  alter database mount standby database;  
+alter database open read only;
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect;   
+select database_role,open_mode,log_mode,controlfile_type ,protection_mode,PROTECTION_LEVEL,switchover_status,FORCE_LOGGING, DB_UNIQUE_NAME from v$database;
+
+
+startup nomount
+ alter database mount standby database;  
+ alter database open read only;
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE disconnect;    
+
+
+
+
+--重新应用归档和在线日志
+create table milestest (id char(1));
+ORA-16000: 打开数据库以进行只读访问
+
+1679    IN-MEMORY    /archive/1_1679_785903547.dbf    2013/12/5 16:44:26    2013/12/5 16:52:50    8
+select sequence#,applied ,name,FIRST_TIME,NEXT_TIME,trunc( (NEXT_TIME-FIRST_TIME) *24*60) "minute" from v$archived_log@dgp where name not like '/%' order by 1 desc;
+1679    NO    o11gr2dg    2013/12/5 16:44:26    2013/12/5 16:52:50    8
+select * from v$log;
+3    1    1680    209715200    512    2    YES    CLEARING_CURRENT    169107327    2013/12/5 16:52:50    169032920    2013/12/5 16:27:34
+select * from v$log@dgp;
+1    1    1678    209715200    512    2    YES    INACTIVE    168925378    2013/12/5 15:32:10    169080489    2013/12/5 16:44:26
+2    1    1679    209715200    512    2    YES    INACTIVE    169080489    2013/12/5 16:44:26    169107327    2013/12/5 16:52:50
+3    1    1680    209715200    512    2    NO    CURRENT    169107327    2013/12/5 16:52:50    281474976710655    
+select * from v$logfile;
+3        ONLINE    /data/oradata/o11gr2dg/redo03.log.1    NO
+3        ONLINE    /data/oradata/o11gr2dg/redo03.log.2    NO
+2        ONLINE    /data/oradata/o11gr2dg/redo02.log.1    NO
+2        ONLINE    /data/oradata/o11gr2dg/redo02.log.2    NO
+1        ONLINE    /data/oradata/o11gr2dg/redo01.log.1    NO
+1        ONLINE    /data/oradata/o11gr2dg/redo01.log.2    NO
+4        STANDBY    /data/oradata/o11gr2dg/standbyredo01.log    NO
+5        STANDBY    /data/oradata/o11gr2dg/standbyredo02.log    NO
+6        STANDBY    /data/oradata/o11gr2dg/standbyredo03.log    NO
+7        STANDBY    /data/oradata/o11gr2dg/standbyredo04.log    NO
+ select * from v$archive_gap;
+ select * from v$standby_log;
+ 4    1626322231    1    1680    209715200    512    63406080    YES    ACTIVE    169107327    2013/12/5 16:52:50    169180396    2013/12/5 17:38:28    169180396    2013/12/5 17:38:28
+ select * from v$standby_log@dgp;
+ 4    UNASSIGNED    1    0    209715200    512    512    YES    UNASSIGNED    0        0        0    
+5    UNASSIGNED    1    0    209715200    512    512    YES    UNASSIGNED    0        0        0    
+6    UNASSIGNED    0    0    209715200    512    512    YES    UNASSIGNED    0        0        0    
+7    UNASSIGNED    0    0    209715200    512    512    YES    UNASSIGNED    0        0        0    
+ 
+ARCHIVELOG    CURRENT    READ WRITE    MAXIMUM AVAILABILITY    RESYNCHRONIZATION    PRIMARY    SESSIONS ACTIVE    YES    orclasms
+select log_mode,controlfile_type ,open_mode,protection_mode,PROTECTION_LEVEL，database_role,switchover_status，FORCE_LOGGING, DB_UNIQUE_NAME from v$database@primary;
+ARCHIVELOG    STANDBY    READ ONLY    MAXIMUM PERFORMANCE    MAXIMUM PERFORMANCE    PHYSICAL STANDBY    NOT ALLOWED    YES    orclasmp
+3、设置新的数据保护模式并重启数据库--primary 数据库操作 
+    SQL> 
+    alter database set standby database to maximize availability;
+    alter database set standby database to maximize PROTECTION; --mount，then crash
+    
+    提示：maximize 后可跟{PROTECTION | AVAILABILITY | PERFORMANCE}，分别对应最大保护，最高可用性及最高性能。
+    SQL> shutdown immediate
+    SQL> startup
+
+SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+select sid,SERIAL# from v$session where sid>10;
+
+在这种情况下，说明还有活动session，需要先kill掉，只留下当前sys进程
+select sid,SERIAL# from v$session where sid>10; 
+select * from v$session where USERNAME<>'SYS';
+emctl  stop
+
+5.17 主备库切换
+1. 查看主库的状态：确认a是否可以做switch over
+?    不能切换的情况
+SQL>SELECT SWITCHOVER_STATUS FROM V$DATABASE; 
+SWITCHOVER_STATUS 
+------------------ 
+SESSIONS ACTIVE
+在这种情况下，说明还有活动session，需要先kill掉，只留下当前sys进程
+select sid,SERIAL# from v$session where sid>10; 
+SID SERIAL# 
+---------- ---------- 
+12 14 
+17 3 
+查出当前连接session 
+SQL> select distinct ss.sid from v$mystat ss; 
+杀掉其他session 
+SQL> alter system kill session '12,14'; 
+System altered
+
+?    可以切换的情况
+SQL> SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+SWITCHOVER_STATUS
+--------------------
+TO STANDBY
+
+2.将主库切换至备用模式
+SQL> alter database commit to switchover to physical standby with session shutdown;
+
+3.关闭、装载主数据库
+SQL> shutdown abort;
+SQL> startup mount;
+4.查看备库准备向主库模式切换
+SQL> 
+SELECT SWITCHOVER_STATUS FROM V$DATABASE;
+SWITCHOVER_STATUS
+-----------------
+TO PRIMARY
+1 row selected
+注：如果是TO PRIMARY表示可以正常切换，不过还会遇到NOT ALLOWED和PENDING或者LATENT，实际操作下来如果备库的switchover_status为not allowed或者to primary都可以正常切换
+5.切换备库至主库模式
+SQL> alter database commit to switchover to primary with session shutdown;
+
+6.打开新的主数据库
+SQL> ALTER DATABASE OPEN;
+
+7. 在新的备库服务器上启动 REDO apply。
+ SQL> alter database recover managed standby database using current logfile 
+ disconnect from session;
+ 676822674@qq.com
+ 
+
+
+表中描述了不同保护模式下LOG_ARCHIVE_DEST_n 参数应该设置的属性： 
+
+
+　  最大保护  最高可能用  最高性能  
+REDO 写进程  LGWR   LGWR   LGWR 或 ARCH  
+网络传输模式  SYNC   SYNC   LGWR 进程时 SYNC 或 ASYNC ， ARCH 进程时 SYNC  
+磁盘写操作  AFFIRM  AFFIRM  AFFIRM 或 NOAFFIRM  
+是否需要standby redologs   YES   YES   可没有但推荐有  
+
+修改初始化参数--primary 数据库操作 
+
+
+    SQL> alter system set log_archive_dest_2='SERVICE=jsspdg
+       2 OPTIONAL LGWR SYNC AFFIRM VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
+       3 DB_UNIQUE_NAME=jsspdg';
+    系统已更改。 
+
+3、设置新的数据保护模式并重启数据库--primary 数据库操作 
+
+
+    语句非常简单，如下：
+
+    SQL> alter database set standby database to maximize availability;
+    
+    数据库已更改。
+    show parameter spfile
+    spfile                               string      /oracle/product/11.1.0/db_1/db
+                                                 s/spfileorclasm.ora
+SQL> 
+show parameter log_archive_dest_2 
+
+log_archive_dest_2                   string      SERVICE=orclasmp ASYNC DB_UNIQ
+                                                 UE_NAME=orclasmp VALID_FOR=(ON
+                                                 LINE_LOGFILES,PRIMARY_ROLE)
+                                                 
+                                                 
+                                                  OPTIONAL LGWR SYNC AFFIRM VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
+                                                  
+                                                 
+SERVICE=orclasmp ASYNC DB_UNIQUE_NAME=orclasmp VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
+SERVICE=orclasmp OPTIONAL LGWR SYNC AFFIRM DB_UNIQUE_NAME=orclasmp VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
+ alter system set log_archive_dest_2='SERVICE=orclasmp OPTIONAL LGWR SYNC AFFIRM DB_UNIQUE_NAME=orclasmp VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)';
+ 
+ 下面我们进入实践将一个data guard 配置从最高性能模式改为最高可用性模式： 
+
+
+1、首先查看当前的保护模式---primary 数据库操作 
+
+
+    SQL> select protection_mode,protection_level from v$database;
+    PROTECTION_MODE      PROTECTION_LEVEL
+    -------------------- --------------------
+    MAXIMUM PERFORMANCE MAXIMUM PERFORMANCE 
+
+2、修改初始化参数--primary 数据库操作 
+
+
+    SQL> alter system set log_archive_dest_2='SERVICE=jsspdg
+       2 OPTIONAL LGWR SYNC AFFIRM VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
+       3 DB_UNIQUE_NAME=jsspdg';
+    系统已更改。 
+
+3、设置新的数据保护模式并重启数据库--primary 数据库操作 
+
+
+    语句非常简单，如下：
+
+    SQL> alter database set standby database to maximize availability;
+    数据库已更改。
+
+    提示：maximize 后可跟{PROTECTION | AVAILABILITY | PERFORMANCE}，分别对应最大保护，最高可用性及最高性能。 
+
+
+    Down 掉数据库，重新启动
+
+    SQL> shutdown immediate
+    数据库已经关闭。
+    已经卸载数据库。
+    ORACLE 例程已经关闭。
+    SQL> startup
+    ORACLE 例程已经启动。
+    Total System Global Area 167772160 bytes
+    Fixed Size 1289484 bytes
+    Variable Size 121635572 bytes
+    Database Buffers 37748736 bytes
+    Redo Buffers 7098368 bytes
+    数据库装载完毕。
+    数据库已经打开。
+
+4、看一下当前的保护模式--primary 数据库操作 
+
+
+    SQL> select protection_mode,protection_level from v$database;
+    PROTECTION_MODE      PROTECTION_LEVEL
+    -------------------- --------------------
+    MAXIMUM AVAILABILITY MAXIMUMAVAILABILITY 
+
+5、修改standby 初始化参数设置(主要考虑角色切换，如果只测试的话本步可跳过) ---standby 数据库操作 
+
+
+    SQL> alter system set log_archive_dest_2='SERVICE=jssweb OPTIONAL LGWR SYNC AFFIRM
+       2 VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=jssweb';
+    系统已更改。 
+
+    查看当前的保护模式
+
+    SQL> select instance_name from v$instance;
+    INSTANCE_NAME
+    ----------------
+    jsspdg
+    SQL> select protection_mode,protection_level from v$database;
+    PROTECTION_MODE PROTECTION_LEVEL
+    -------------------- --------------------
+    MAXIMUM AVAILABILITY MAXIMUMAVAILABILITY
+
+    配置成功，正面顺便再测试一下。 
+
+
+6、停掉standby 数据库，再查看primary 数据库状态 
+
+
+    SQL> select protection_mode,protection_level from v$database;
+    PROTECTION_MODE PROTECTION_LEVEL
+    -------------------- --------------------
+    MAXIMUM AVAILABILITY RESYNCHRONIZATION 
+
+    Standby 数据库shutdown 后，primary 数据库保护级别切换为待同步。
+    300万也是立即同步的 
+ 
